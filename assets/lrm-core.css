@@ -288,6 +288,7 @@ ul.lrm-switcher li {
 @media only screen and (min-width: 600px) {
     .lrm-form {
         padding: .5em 2em .1em 2em !important;
+        margin: 0 !important;
     }
     .lrm-form .fieldset {
         margin: 2em 0 !important;
@@ -363,12 +364,26 @@ p.lrm-form-bottom-message a {
     /*}*/
 /*}*/
 
-#lrm-login, #lrm-signup, #lrm-reset-password {
+.lrm-login-section, .lrm-signup-section, .lrm-reset-password-section {
     display: none;
 }
 
-#lrm-login.is-selected, #lrm-signup.is-selected, #lrm-reset-password.is-selected {
+.lrm-login-section.is-selected, .lrm-signup-section.is-selected, .lrm-reset-password-section.is-selected {
     display: block;
+}
+
+/*
+=== INLINE ===
+*/
+.lrm-inline .lrm-user-modal-container {
+    border: 2px solid #d2d8d8;
+}
+.lrm-inline {
+
+}
+
+.lrm-inline p.lrm-form-bottom-message a {
+    color: inherit;
 }
 
 /* Loader animation */
@@ -404,6 +419,45 @@ p.lrm-form-bottom-message a {
 .lrm-integrations br {
     display: none;
     text-align: center;
+}
+
+/*
+==== lrm-pass-strength-result ====
+@since 1.1
+*/
+
+
+.lrm-pass-strength-result{
+    background-color:#eee;
+    border:1px solid #ddd;
+    color:#23282d;
+    margin:-2px 5px 5px 1px;
+    padding:3px 5px;
+    text-align:center;
+    width:25em;
+    opacity:0;
+    display: inline-block;
+    width: 100%;
+}
+.lrm-pass-strength-result.short{
+    background-color:#f1adad;
+    border-color:#e35b5b;
+    opacity:1
+}
+.lrm-pass-strength-result.bad{
+    background-color:#fbc5a9;
+    border-color:#f78b53;
+    opacity:1
+}
+.lrm-pass-strength-result.good{
+    background-color:#ffe399;
+    border-color:#ffc733;
+    opacity:1
+}
+.lrm-pass-strength-result.strong{
+    background-color:#c1e1b9;
+    border-color:#83c373;
+    opacity:1
 }
 
 /* Catcha PLUGIN */
