@@ -406,6 +406,45 @@ p.lrm-form-bottom-message a {
     text-align: center;
 }
 
+/*
+==== lrm-pass-strength-result ====
+@since 1.1
+*/
+
+
+#lrm-pass-strength-result{
+    background-color:#eee;
+    border:1px solid #ddd;
+    color:#23282d;
+    margin:-2px 5px 5px 1px;
+    padding:3px 5px;
+    text-align:center;
+    width:25em;
+    opacity:0;
+    display: inline-block;
+    width: 100%;
+}
+#lrm-pass-strength-result.short{
+    background-color:#f1adad;
+    border-color:#e35b5b;
+    opacity:1
+}
+#lrm-pass-strength-result.bad{
+    background-color:#fbc5a9;
+    border-color:#f78b53;
+    opacity:1
+}
+#lrm-pass-strength-result.good{
+    background-color:#ffe399;
+    border-color:#ffc733;
+    opacity:1
+}
+#lrm-pass-strength-result.strong{
+    background-color:#c1e1b9;
+    border-color:#83c373;
+    opacity:1
+}
+
 /* Catcha PLUGIN */
 .lrm-integrations .cptch_input {
     padding: 6px 8px;

@@ -1,9 +1,9 @@
 <div class="wrap underdev-settings <?php echo $this->handle; ?>-settings">
 
-	<h1><?php _e( 'Settings', $this->textdomain ) ?></h1>
+	<h1><?php _e( 'Settings', 'lrm' ) ?></h1>
 
 	<?php if ( empty( $sections ) ): ?>
-		<p><?php _e( 'No Settings available at the moment', $this->textdomain ); ?></p>
+		<p><?php _e( 'No Settings available at the moment', 'lrm' ); ?></p>
 	<?php else: ?>
 
 		<div class="menu-col box">

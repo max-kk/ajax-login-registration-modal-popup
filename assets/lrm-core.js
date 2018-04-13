@@ -54,6 +54,7 @@ jQuery(document).ready(function($) {
 
 	//open sign-up form
 	$(document).on('click', '.lrm-signup', signup_selected);
+	$(document).on('click', '.lrm-register', signup_selected);
 	//open login-form form
 	$(document).on('click', '.lrm-signin', login_selected);
 	$(document).on('click', '.lrm-login', login_selected);
@@ -88,7 +89,7 @@ jQuery(document).ready(function($) {
 			passwordField = togglePass.parent().find('input');
 
 		( 'password' == passwordField.attr('type') ) ? passwordField.attr('type', 'text') : passwordField.attr('type', 'password');
-		( 'Hide' == togglePass.text() ) ? togglePass.text('Show') : togglePass.text('Hide');
+		( togglePass.data("hide") == togglePass.text() ) ? togglePass.text( togglePass.data("show") ) : togglePass.text( togglePass.data("hide") );
 		//focus and move cursor to the end of input field
 		passwordField.putCursorAtEnd();
 	});
@@ -235,6 +236,65 @@ jQuery(document).ready(function($) {
 			return false;
 		}
 	}
+
+	/**
+	 * https://code.tutsplus.com/articles/using-the-included-password-strength-meter-script-in-wordpress--wp-34736
+	 *
+	 * @param $pass1
+	 * @param $strengthResult
+	 * @returns {*}
+	 */
+	function checkPasswordStrength( $pass1, $strengthResult ) {
+		var pass1 = $pass1.val();
+
+		$strengthResult.removeClass( 'short bad good strong' );
+
+		// Extend our blacklist array with those from the inputs & site data
+		var blacklistArray = ["querty", "password", "132"].concat( wp.passwordStrength.userInputBlacklist() )
+
+		// Get the password strength
+		var strength = wp.passwordStrength.meter( pass1, blacklistArray, pass1 );
+
+		// Add the strength meter results
+		switch ( strength ) {
+
+			case 2:
+				$strengthResult.addClass( 'bad' ).html( LRM.l10n.password_is_bad );
+				break;
+
+			case 3:
+				$strengthResult.addClass( 'good' ).html( LRM.l10n.password_is_good );
+				break;
+
+			case 4:
+				$strengthResult.addClass( 'strong' ).html( LRM.l10n.password_is_strong );
+				break;
+			//
+			// case 5:
+			// 	$strengthResult.addClass( 'short' ).html( pwsL10n.mismatch );
+			// 	break;
+
+			default:
+				$strengthResult.addClass( 'short' ).html( LRM.l10n.password_is_short );
+
+		}
+
+		//console.log( "Pass strength: ", strength );
+
+		return strength;
+	}
+
+
+	// Binding to trigger checkPasswordStrength
+	$( 'body' ).on( 'keyup', '#signup-password',
+		  function( event ) {
+			  checkPasswordStrength(
+					$("#signup-password"),         // First password field
+					$("#lrm-pass-strength-result")           // Strength meter
+			  );
+		  }
+	);
+
 
 });
 

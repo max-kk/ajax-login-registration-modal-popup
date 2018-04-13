@@ -1,0 +1,412 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: LRM\n"
+"POT-Creation-Date: 2018-04-02 12:23+0200\n"
+"PO-Revision-Date: 2018-04-05 19:06+0200\n"
+"Last-Translator: \n"
+"Language-Team: https://wordpress.org/plugins/ajax-login-and-registration-modal-popup/\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.7.7\n"
+"X-Poedit-Basepath: .\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-SearchPath-0: D:\\Projects\\Login Registration Modal\\ajax-login-registration-modal-popup\\includes\n"
+"X-Poedit-SearchPath-1: D:\\Projects\\Login Registration Modal\\ajax-login-registration-modal-popup\\views\n"
+
+#: D:\Projects\Login Registration Modal\ajax-login-registration-modal-popup\includes/class-core.php:43
+#: Modal\ajax-login-registration-modal-popup\views/settings-page.php:3
+msgid "Settings"
+msgstr "Configuración"
+
+#: D:\Projects\Login Registration Modal\ajax-login-registration-modal-popup\includes/class-settings.php:70
+#, php-format
+msgid "Do you like \"Login and Register Modal\" plugin? Please consider giving it a %1$sreview%2$s"
+msgstr "¿Te gusta el complemento \"Login and Register Modal\"? Por favor, considere darle una revisión %2$s %1$s %2$s"
+
+#: D:\Projects\Login Registration Modal\ajax-login-registration-modal-popup\includes/class-settings.php:73
+msgid "I already reviewed it"
+msgstr "Ya lo he revisado"
+
+#: D:\Projects\Login Registration Modal\ajax-login-registration-modal-popup\includes/class-settings.php:96
+#: Modal\ajax-login-registration-modal-popup\includes/class-settings.php:125
+msgid "General"
+msgstr "General"
+
+#: D:\Projects\Login Registration Modal\ajax-login-registration-modal-popup\includes/class-settings.php:98
+msgid "Installation steps"
+msgstr "Pasos de instalación"
+
+#: D:\Projects\Login Registration Modal\ajax-login-registration-modal-popup\includes/class-settings.php:101
+msgid "How to integrate modal on your site:"
+msgstr "Cómo integrar esta modal en tu pagina:"
+
+#: D:\Projects\Login Registration Modal\ajax-login-registration-modal-popup\includes/class-settings.php:107
+msgid "Supported plugins"
+msgstr "Plugins compatibles"
+
+#: D:\Projects\Login Registration Modal\ajax-login-registration-modal-popup\includes/class-settings.php:110
+msgid "Free version are compatible with:"
+msgstr "La versión gratuita es compatible con:"
+
+#: D:\Projects\Login Registration Modal\ajax-login-registration-modal-popup\includes/class-settings.php:116
+msgid "Terms"
+msgstr "Condiciones"
+
+#: D:\Projects\Login Registration Modal\ajax-login-registration-modal-popup\includes/class-settings.php:119
+msgid "Hide Terms box in Registration Form?"
+msgstr "Ocultar las condiciones en el formulario de registro?"
+
+#: D:\Projects\Login Registration Modal\ajax-login-registration-modal-popup\includes/class-settings.php:128
+msgid "Auto-login user after registration?"
+msgstr "¿Iniciar automáticamente la sesión del usuario después la registration?"
+
+#: D:\Projects\Login Registration Modal\ajax-login-registration-modal-popup\includes/class-settings.php:135
+msgid "Reload page after login/registration?"
+msgstr "¿Cargar de nuevo la página después el inicio de sesión / la registration?"
+
+#: D:\Projects\Login Registration Modal\ajax-login-registration-modal-popup\includes/class-settings.php:141
+msgid "Advanced"
+msgstr "Avanzado"
+
+#: D:\Projects\Login Registration Modal\ajax-login-registration-modal-popup\includes/class-settings.php:143
+msgid "Extra selectors (id, classes) to handle modal"
+msgstr "Selectores adicionales (id, clases) para configurar el modal"
+
+#: D:\Projects\Login Registration Modal\ajax-login-registration-modal-popup\includes/class-settings.php:146
+msgid "Extra selectors for handle login modal?"
+msgstr "¿Selectores adicionales para configurar el modal de inicio de sesión?"
+
+#: D:\Projects\Login Registration Modal\ajax-login-registration-modal-popup\includes/class-settings.php:154
+msgid "Extra selectors for handle register modal?"
+msgstr "¿Selectores adicionales para configurar el modal de registration?"
+
+#: D:\Projects\Login Registration Modal\ajax-login-registration-modal-popup\includes/class-settings.php:162
+msgid "Emails"
+msgstr "Email"
+
+#: D:\Projects\Login Registration Modal\ajax-login-registration-modal-popup\includes/class-settings.php:164
+#: Modal\ajax-login-registration-modal-popup\includes/class-settings.php:284
+msgid "Registration"
+msgstr "Registration"
+
+#: D:\Projects\Login Registration Modal\ajax-login-registration-modal-popup\includes/class-settings.php:167
+#: Modal\ajax-login-registration-modal-popup\includes/class-settings.php:191
+msgid "Subject"
+msgstr "Tema"
+
+#: D:\Projects\Login Registration Modal\ajax-login-registration-modal-popup\includes/class-settings.php:168
+msgid "[YOUR BLOG NAME] Your username and password info"
+msgstr "[SU NOMBRE DE BLOG] Tu nombre de usuario y tu contraseña"
+
+#: D:\Projects\Login Registration Modal\ajax-login-registration-modal-popup\includes/class-settings.php:169
+msgid "The email Subject to user about successful registration."
+msgstr "El email Tema al usuario en el caso de un registration exitosa"
+
+#: D:\Projects\Login Registration Modal\ajax-login-registration-modal-popup\includes/class-settings.php:175
+#: Modal\ajax-login-registration-modal-popup\includes/class-settings.php:199
+msgid "Body"
+msgstr "Cuerpo"
+
+#: D:\Projects\Login Registration Modal\ajax-login-registration-modal-popup\includes/class-settings.php:189
+#: Modal\ajax-login-registration-modal-popup\includes/class-settings.php:357
+msgid "Lost password"
+msgstr "Contraseña perdida"
+
+#: D:\Projects\Login Registration Modal\ajax-login-registration-modal-popup\includes/class-settings.php:192
+msgid "[YOUR BLOG NAME] Your new password"
+msgstr "[SU NOMBRE DE BLOG] Tu nueva contraseña"
+
+#: D:\Projects\Login Registration Modal\ajax-login-registration-modal-popup\includes/class-settings.php:194
+msgid "The email Subject to user with new password."
+msgstr "El email Tema al usuario con una nueva contraseña."
+
+#: D:\Projects\Login Registration Modal\ajax-login-registration-modal-popup\includes/class-settings.php:203
+msgid "Username:"
+msgstr "Nombre de usuario:"
+
+#: D:\Projects\Login Registration Modal\ajax-login-registration-modal-popup\includes/class-settings.php:204
+msgid "Your new password is:"
+msgstr "Tu nueva contraseña es:"
+
+#: D:\Projects\Login Registration Modal\ajax-login-registration-modal-popup\includes/class-settings.php:205
+msgid "Url to login:"
+msgstr "URL para iniciar sesión:"
+
+#: D:\Projects\Login Registration Modal\ajax-login-registration-modal-popup\includes/class-settings.php:210
+msgid "The email Body to user with new password. Allowed tags: {{USERNAME}}, {{PASSWORD}}, {{LOGIN_URL}}"
+msgstr "El email Cuerpo a usuario con nueva contraseña. Etiquetas permitidas: {{USERNAME}}, {{PASSWORD}}, {{LOGIN_URL}}"
+
+#: D:\Projects\Login Registration Modal\ajax-login-registration-modal-popup\includes/class-settings.php:215
+msgid "Expressions"
+msgstr "Expresiones"
+
+#: D:\Projects\Login Registration Modal\ajax-login-registration-modal-popup\includes/class-settings.php:217
+#: Modal\ajax-login-registration-modal-popup\includes/class-settings.php:249
+msgid "Login"
+msgstr "Iniciar sesión"
+
+#: D:\Projects\Login Registration Modal\ajax-login-registration-modal-popup\includes/class-settings.php:220
+#: Modal\ajax-login-registration-modal-popup\includes/class-settings.php:287
+msgid "Form heading"
+msgstr "Título del formulario"
+
+#: D:\Projects\Login Registration Modal\ajax-login-registration-modal-popup\includes/class-settings.php:221
+msgid "Sign in"
+msgstr "Regístrate"
+
+#: D:\Projects\Login Registration Modal\ajax-login-registration-modal-popup\includes/class-settings.php:227
+#: Modal\ajax-login-registration-modal-popup\includes/class-settings.php:367
+msgid "Form: E-mail or Username"
+msgstr "Forma: E-mail o nombre de usuario"
+
+#: D:\Projects\Login Registration Modal\ajax-login-registration-modal-popup\includes/class-settings.php:228
+#: Modal\ajax-login-registration-modal-popup\includes/class-settings.php:368
+msgid "E-mail or Username"
+msgstr "Email o nombre de usuario"
+
+#: D:\Projects\Login Registration Modal\ajax-login-registration-modal-popup\includes/class-settings.php:234
+msgid "Form: Password"
+msgstr "Forma: Contraseña"
+
+#: D:\Projects\Login Registration Modal\ajax-login-registration-modal-popup\includes/class-settings.php:235
+msgid "Password"
+msgstr "Contraseña"
+
+#: D:\Projects\Login Registration Modal\ajax-login-registration-modal-popup\includes/class-settings.php:241
+msgid "Form: Remember me"
+msgstr "Forma: Recuerdame"
+
+#: D:\Projects\Login Registration Modal\ajax-login-registration-modal-popup\includes/class-settings.php:242
+msgid "Remember me"
+msgstr "Recuerdame"
+
+#: D:\Projects\Login Registration Modal\ajax-login-registration-modal-popup\includes/class-settings.php:248
+msgid "Form button: Login"
+msgstr "Botón de formulario: Iniciar sesión"
+
+#: D:\Projects\Login Registration Modal\ajax-login-registration-modal-popup\includes/class-settings.php:255
+msgid "Link: Forgot your password?"
+msgstr "Enlace: ¿Olvidaste tu contraseña?"
+
+#: D:\Projects\Login Registration Modal\ajax-login-registration-modal-popup\includes/class-settings.php:256
+msgid "Forgot your password?"
+msgstr "¿Olvidaste tu contraseña?"
+
+#: D:\Projects\Login Registration Modal\ajax-login-registration-modal-popup\includes/class-settings.php:263
+msgid "Message: No Login/Email"
+msgstr "Mensaje: No inicio de sesión / email"
+
+#: D:\Projects\Login Registration Modal\ajax-login-registration-modal-popup\includes/class-settings.php:264
+msgid "Please enter login/email!"
+msgstr "gracias por escribir tu contraseña para iniciar sesión"
+
+#: D:\Projects\Login Registration Modal\ajax-login-registration-modal-popup\includes/class-settings.php:270
+msgid "Message: No Password"
+msgstr "Mensaje: Sin contraseña"
+
+#: D:\Projects\Login Registration Modal\ajax-login-registration-modal-popup\includes/class-settings.php:271
+msgid "Please enter password!"
+msgstr "¡Gracias por escribir tu contraseña!"
+
+#: D:\Projects\Login Registration Modal\ajax-login-registration-modal-popup\includes/class-settings.php:277
+msgid "Message: Login successful"
+msgstr "Mensaje: inicio de sesión exitoso"
+
+#: D:\Projects\Login Registration Modal\ajax-login-registration-modal-popup\includes/class-settings.php:278
+msgid "Login successful, reloading page..."
+msgstr "Inicio de sesión exitoso. La página esta cargando..."
+
+#: D:\Projects\Login Registration Modal\ajax-login-registration-modal-popup\includes/class-settings.php:288
+msgid "New account"
+msgstr "Nueva cuenta"
+
+#: D:\Projects\Login Registration Modal\ajax-login-registration-modal-popup\includes/class-settings.php:294
+msgid "Form: First name"
+msgstr "Forma: Nombre"
+
+#: D:\Projects\Login Registration Modal\ajax-login-registration-modal-popup\includes/class-settings.php:295
+msgid "First name"
+msgstr "Nombre"
+
+#: D:\Projects\Login Registration Modal\ajax-login-registration-modal-popup\includes/class-settings.php:301
+msgid "Form: Last name"
+msgstr "Forma: Apellido"
+
+#: D:\Projects\Login Registration Modal\ajax-login-registration-modal-popup\includes/class-settings.php:302
+msgid "Last name"
+msgstr "Apellido"
+
+#: D:\Projects\Login Registration Modal\ajax-login-registration-modal-popup\includes/class-settings.php:308
+msgid "Form: Email"
+msgstr "Forma: Email"
+
+#: D:\Projects\Login Registration Modal\ajax-login-registration-modal-popup\includes/class-settings.php:309
+msgid "Email"
+msgstr "Email"
+
+#: D:\Projects\Login Registration Modal\ajax-login-registration-modal-popup\includes/class-settings.php:315
+msgid "Form: Terms"
+msgstr "Forma: Condiciones"
+
+#: D:\Projects\Login Registration Modal\ajax-login-registration-modal-popup\includes/class-settings.php:316
+msgid "I agree to the <a href='#0'>Terms</a>"
+msgstr "Yo acepto las <a href='#0'> condiciones </a>"
+
+#: D:\Projects\Login Registration Modal\ajax-login-registration-modal-popup\includes/class-settings.php:322
+msgid "Form button: Create account"
+msgstr "Botón de formulario: Crear una cuenta"
+
+#: D:\Projects\Login Registration Modal\ajax-login-registration-modal-popup\includes/class-settings.php:323
+msgid "Create account"
+msgstr "Crear una cuenta"
+
+#: D:\Projects\Login Registration Modal\ajax-login-registration-modal-popup\includes/class-settings.php:330
+msgid "Message: Registration is disabled"
+msgstr "Mensaje: la registration está deshabilitado"
+
+#: D:\Projects\Login Registration Modal\ajax-login-registration-modal-popup\includes/class-settings.php:331
+msgid "Registration is disabled!"
+msgstr "¡La registration está deshabilitado!"
+
+#: D:\Projects\Login Registration Modal\ajax-login-registration-modal-popup\includes/class-settings.php:337
+msgid "Message: No First or Last name"
+msgstr "Mensaje: Sin nombre o apellido"
+
+#: D:\Projects\Login Registration Modal\ajax-login-registration-modal-popup\includes/class-settings.php:338
+msgid "Please enter First and Last name!"
+msgstr "¡Gracias para escribir tu nombre y tu apellido!"
+
+#: D:\Projects\Login Registration Modal\ajax-login-registration-modal-popup\includes/class-settings.php:344
+msgid "Message: Wrong email"
+msgstr "Mensaje: Email incorrecto"
+
+#: D:\Projects\Login Registration Modal\ajax-login-registration-modal-popup\includes/class-settings.php:345
+msgid "Please enter correct email!"
+msgstr "Gracias por escribir un email correcto!"
+
+#: D:\Projects\Login Registration Modal\ajax-login-registration-modal-popup\includes/class-settings.php:351
+msgid "Message: Registration successful"
+msgstr "Mensaje: Registration exitoso"
+
+#: D:\Projects\Login Registration Modal\ajax-login-registration-modal-popup\includes/class-settings.php:352
+msgid "Registration successful, reloading page."
+msgstr "Registration exitoso. La página esta cargando..."
+
+#: D:\Projects\Login Registration Modal\ajax-login-registration-modal-popup\includes/class-settings.php:360
+msgid "Message"
+msgstr "Mensaje"
+
+#: D:\Projects\Login Registration Modal\ajax-login-registration-modal-popup\includes/class-settings.php:361
+msgid "Lost your password? Please enter your email address. You will receive mail with new password."
+msgstr "¿Perdiste tu contraseña? Gracias por escribir tu correo electrónico. Recibirás un correo con una nueva contraseña."
+
+#: D:\Projects\Login Registration Modal\ajax-login-registration-modal-popup\includes/class-settings.php:374
+msgid "Form button: Reset password"
+msgstr "Botón de formulario: Restablecer la contraseña"
+
+#: D:\Projects\Login Registration Modal\ajax-login-registration-modal-popup\includes/class-settings.php:375
+msgid "Reset password"
+msgstr "Restablecer la contraseña"
+
+#: D:\Projects\Login Registration Modal\ajax-login-registration-modal-popup\includes/class-settings.php:381
+msgid "Form button: Back to login"
+msgstr "Botón de formulario: Volver al inicio de sesión"
+
+#: D:\Projects\Login Registration Modal\ajax-login-registration-modal-popup\includes/class-settings.php:382
+msgid "Back to login"
+msgstr "Atrás para iniciar sesión"
+
+#: D:\Projects\Login Registration Modal\ajax-login-registration-modal-popup\includes/class-settings.php:389
+msgid "Message: Empty login"
+msgstr "Mensaje: no inicio de sesión"
+
+#: D:\Projects\Login Registration Modal\ajax-login-registration-modal-popup\includes/class-settings.php:390
+msgid "Enter an username or e-mail address."
+msgstr "Escribe un nombre de usuario o una dirección de correo electrónico."
+
+#: D:\Projects\Login Registration Modal\ajax-login-registration-modal-popup\includes/class-settings.php:396
+msgid "Message: No user with that email address"
+msgstr "Mensaje: Ningún usuario con esta dirección de correo electrónico"
+
+#: D:\Projects\Login Registration Modal\ajax-login-registration-modal-popup\includes/class-settings.php:397
+msgid "There is no user registered with that email address."
+msgstr "No hay ningún usuario registrado con esta dirección de correo electrónico."
+
+#: D:\Projects\Login Registration Modal\ajax-login-registration-modal-popup\includes/class-settings.php:403
+msgid "Message: No user registered with that username"
+msgstr "Mensaje: Ningún usuario registrado con este nombre de usuario"
+
+#: D:\Projects\Login Registration Modal\ajax-login-registration-modal-popup\includes/class-settings.php:404
+msgid "There is no user registered with that username."
+msgstr "No hay ningún usuario registrado con este nombre de usuario."
+
+#: D:\Projects\Login Registration Modal\ajax-login-registration-modal-popup\includes/class-settings.php:410
+msgid "Message: Invalid username or e-mail address"
+msgstr "Mensaje: El nombre de usuario o la dirección de correo electrónico no son válidos"
+
+#: D:\Projects\Login Registration Modal\ajax-login-registration-modal-popup\includes/class-settings.php:411
+msgid "Invalid username or e-mail address."
+msgstr "Mensaje: El nombre de usuario o la dirección de correo electrónico no son válidos"
+
+#: D:\Projects\Login Registration Modal\ajax-login-registration-modal-popup\includes/class-settings.php:417
+msgid "Message: Unable send email"
+msgstr "Mensaje: No es posible enviar el correo electrónico"
+
+#: D:\Projects\Login Registration Modal\ajax-login-registration-modal-popup\includes/class-settings.php:418
+msgid "System is unable to send you mail contain your new password."
+msgstr "El sistema no puede enviarte el correo con tu nueva contraseña."
+
+#: D:\Projects\Login Registration Modal\ajax-login-registration-modal-popup\includes/class-settings.php:424
+msgid "Message: Something went wrong"
+msgstr "Mensaje: Algo malo sucedió"
+
+#: D:\Projects\Login Registration Modal\ajax-login-registration-modal-popup\includes/class-settings.php:425
+msgid "Oops! Something went wrong while updating your account."
+msgstr "Oops! Algo malo sucedió durante la actualización de tu cuenta."
+
+#: D:\Projects\Login Registration Modal\ajax-login-registration-modal-popup\includes/class-settings.php:431
+msgid "Message: Reset successful"
+msgstr "Mensaje: Restablecimiento exitoso"
+
+#: D:\Projects\Login Registration Modal\ajax-login-registration-modal-popup\includes/class-settings.php:432
+msgid "Check your email address for you new password."
+msgstr "Verifica tu dirección de correo electrónico para obtener una nueva contraseña."
+
+#: D:\Projects\Login Registration Modal\ajax-login-registration-modal-popup\includes/class-settings.php:437
+msgid "Other"
+msgstr "Otro"
+
+#: D:\Projects\Login Registration Modal\ajax-login-registration-modal-popup\includes/class-settings.php:440
+msgid "Close modal text"
+msgstr "Cerrar el modal texto"
+
+#: D:\Projects\Login Registration Modal\ajax-login-registration-modal-popup\includes/class-settings.php:441
+msgid "close"
+msgstr "Cerrar"
+
+#: D:\Projects\Login Registration Modal\ajax-login-registration-modal-popup\includes/class-settings.php:448
+msgid "Message: Invalid nonce"
+msgstr "Mensaje: Nonce inválido"
+
+#: D:\Projects\Login Registration Modal\ajax-login-registration-modal-popup\includes/class-settings.php:449
+msgid "Invalid nonce!"
+msgstr "¡Nonce inválido!"
+
+#: D:\Projects\Login Registration Modal\ajax-login-registration-modal-popup\includes/class-settings.php:462
+msgid "PRO features"
+msgstr "Funciones PRO"
+
+#: D:\Projects\Login Registration Modal\ajax-login-registration-modal-popup\views/form.php:26
+msgid "Show"
+msgstr "Mostrar"
+
+#: D:\Projects\Login Registration Modal\ajax-login-registration-modal-popup\views/form.php:26
+msgid "Hide"
+msgstr "Esconder"
+
+#: D:\Projects\Login Registration Modal\ajax-login-registration-modal-popup\views/settings-page.php:6
+msgid "No Settings available at the moment"
+msgstr "No hay configuraciones disponibles en este momento"
