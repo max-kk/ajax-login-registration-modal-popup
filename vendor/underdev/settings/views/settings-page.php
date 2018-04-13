@@ -18,7 +18,7 @@
 					$url = add_query_arg( 'section', $section_slug, $page_url );
 					?>
 
-					<li class="<?php echo esc_attr( $class ); ?>"><a href="<?php echo esc_attr( $url ); ?>"><?php echo esc_html( $section->name() ) ?></a></li>
+					<li class="<?php echo esc_attr( $class ); ?>"><a href="<?php echo esc_attr( $url ); ?>"><?php echo esc_html( $section->name(), 'lrm' ) ?></a></li>
 
 				<?php endforeach ?>
 
@@ -52,7 +52,7 @@
 
 					<div class="setting-group">
 
-						<h3><?php echo esc_html( $group->name() ); ?></h3>
+						<h3><?php echo esc_html( $group->name(), 'lrm' ); ?></h3>
 
 						<?php $description = $group->description(); ?>
 
@@ -67,7 +67,7 @@
 							<?php foreach ( $group->get_fields() as $field ): ?>
 
 								<tr>
-									<th><label for="<?php echo esc_attr( $field->input_id() ); ?>"><?php echo esc_html( $field->name() ); ?></label></th>
+									<th><label for="<?php echo esc_attr( $field->input_id() ); ?>"><?php echo esc_html( $field->name(), 'lrm' ); ?></label></th>
 									<td>
 										<?php
 										$field->render();

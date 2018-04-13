@@ -28,6 +28,8 @@ class LRM_Core {
         }
 
         add_action('init', array($this, 'process_ajax'), 11);
+
+        add_shortcode('lrm_form', array($this, 'shortcode'), 11);
         //if ( class_exists('LRM_Pro') ) {
         //} else {
         //    $this->process_ajax();
@@ -110,6 +112,16 @@ class LRM_Core {
         }
     }
 
+    public function shortcode() {
+        if (is_user_logged_in()) {
+            return;
+        }
+
+        ob_start();
+            $this->render_form( true );
+        return ob_get_clean();
+    }
+
     public function wp_footer__action() {
         /**
          * @since 1.01
@@ -120,15 +132,20 @@ class LRM_Core {
             return;
         }
 
-        $this->render_form();
+        //$this->render_form();
     }
 
-    public function render_form() {
+	/**
+     * @param bool $is_inline  Is not Modal form?
+     */
+    public function render_form( $is_inline = false ) {
         wp_enqueue_script('lrm-modal', LRM_URL . '/assets/lrm-core.js', array('jquery'), LRM_ASSETS_VER, true);
 
         wp_enqueue_style('lrm-modal', LRM_URL . '/assets/lrm-core.css', false, LRM_ASSETS_VER);
 
         require LRM_PATH . '/views/form.php';
+
+        require_once LRM_PATH . '/views/form-loader.php';
 
         $script_params = array(
             'ajax_url'           => add_query_arg( 'lrm', '1', site_url('/') ),

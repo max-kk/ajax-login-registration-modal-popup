@@ -65,9 +65,6 @@ class LRM_AJAX
         
         if ( isset( $_POST['password'] ) && LRM_Settings::get()->setting('general/registration/allow_user_set_password') ) {
             $password =  sanitize_text_field($_POST['password']);
-
-            // Defined in: "\wp-includes\default-filters.php"
-            remove_action( 'register_new_user', 'wp_send_new_user_notifications' );
         } else {
             $password = wp_generate_password(10, true);
         }
@@ -85,7 +82,7 @@ class LRM_AJAX
 
         // !! Disable system Emails
         // TODO - allow change this in settings
-        // For "wp_update_user"
+        // Defined in: "\wp-includes\default-filters.php"
         remove_action( 'register_new_user', 'wp_send_new_user_notifications' );
         // For "wp_update_user"
         add_filter( 'send_password_change_email', '__return_false' );

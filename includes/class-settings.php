@@ -250,6 +250,13 @@ class LRM_Settings {
                  'render'      => array( new CoreFields\Text(), 'input' ),
                  'sanitize'    => array( new CoreFields\Text(), 'sanitize' ),
              ) )
+//             ->add_field( array(
+//                 'slug'        => 'before-button',
+//                 'name'        => __('Form: Text before button, like "We use cookies, etc"', 'lrm' ),
+//                 'default'        => __('', 'lrm'),
+//                 'render'      => array( new CoreFields\Text(), 'input' ),
+//                 'sanitize'    => array( new CoreFields\Text(), 'sanitize' ),
+//             ) )
              ->add_field( array(
                  'slug'        => 'button',
                  'name'        => __('Form button: Login', 'lrm' ),

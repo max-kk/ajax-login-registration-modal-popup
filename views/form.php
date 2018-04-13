@@ -1,7 +1,7 @@
-<div class="lrm-user-modal" style="visibility: hidden;"> <!-- this is the entire modal form, including the background -->
+<div class="lrm-main <?php echo !$is_inline ? 'lrm-user-modal' : 'lrm-inline is-visible'; ?>" <?php echo !$is_inline ? 'style="visibility: hidden;"' : ''?>> <!-- this is the entire modal form, including the background -->
     <div class="lrm-user-modal-container"> <!-- this is the container wrapper -->
         <ul class="lrm-switcher">
-            <li><a href="#0" class="lrm-switch-to-link lrm-switch-to--login">
+            <li><a href="#0" class="lrm-switch-to-link lrm-switch-to--login <?php echo $is_inline ? 'selected' : ''; ?>">
                     <?php echo LRM_Settings::get()->setting('messages/login/heading', true); ?>
                 </a></li>
             <li><a href="#0" class="lrm-switch-to-link lrm-switch-to--register">
@@ -9,7 +9,7 @@
                 </a></li>
         </ul>
 
-        <div id="lrm-login"> <!-- log in form -->
+        <div class="lrm-login-section <?php echo $is_inline ? 'is-selected' : ''; ?>"> <!-- log in form -->
             <form class="lrm-form" action="#0">
 
                 <div class="lrm-integrations lrm-integrations--login">
@@ -31,16 +31,15 @@
                     <a href="#0" class="hide-password" data-show="<?php echo __( 'Show', 'lrm' ); ?>" data-hide="<?php echo __( 'Hide', 'lrm' ); ?>"><?php echo __( 'Show', 'lrm' ); ?></a>
                 </div>
 
-
                 <div class="fieldset">
                     <input type="checkbox" id="remember-me" name="remember-me" checked>
                     <label for="remember-me"><?php echo LRM_Settings::get()->setting('messages/login/remember-me', true); ?></label>
                 </div>
 
+
                 <div class="lrm-integrations lrm-integrations--login">
                     <?php do_action( 'lrm_login_form' ); ?>
                 </div>
-
 
                 <div class="fieldset">
                     <button class="full-width has-padding" type="submit">
@@ -53,11 +52,11 @@
                 <?php wp_nonce_field( 'ajax-login-nonce', 'security-login' ); ?>
             </form>
 
-            <p class="lrm-form-bottom-message"><a href="#0"><?php echo LRM_Settings::get()->setting('messages/login/forgot-password', true); ?></a></p>
+            <p class="lrm-form-bottom-message"><a href="#0" class="lrm-switch-to--reset-password"><?php echo LRM_Settings::get()->setting('messages/login/forgot-password', true); ?></a></p>
             <!-- <a href="#0" class="lrm-close-form">Close</a> -->
         </div> <!-- lrm-login -->
 
-        <div id="lrm-signup"> <!-- sign up form -->
+        <div class="lrm-signup-section"> <!-- sign up form -->
             <form class="lrm-form" action="#0">
 
                 <div class="lrm-integrations lrm-integrations--register">
@@ -90,14 +89,15 @@
                         <span class="lrm-error-message"></span>
                         <a href="#0" class="hide-password" data-show="<?php echo __( 'Show', 'lrm' ); ?>" data-hide="<?php echo __( 'Hide', 'lrm' ); ?>"><?php echo __( 'Show', 'lrm' ); ?></a>
                     </div>
-                    <span id="lrm-pass-strength-result"></span>
+                    <span class="lrm-pass-strength-result"></span>
                 <?php endif; ?>
 
+
                 <?php if( LRM_Settings::get()->setting('general/terms/off') ): ?>
-                 <div class="fieldset">
+                    <div class="fieldset">
                         <input type="checkbox" id="accept-terms">
                         <label for="accept-terms"><?php echo LRM_Settings::get()->setting('messages/registration/terms', true); ?></label>
-                 </div>
+                    </div>
                 <?php endif; ?>
 
                 <div class="lrm-integrations lrm-integrations--register">
@@ -110,7 +110,6 @@
                     do_action( 'lrm_register_form' );
                     ?>
                 </div>
-
 
 
                 <div class="fieldset">
@@ -127,7 +126,7 @@
             <!-- <a href="#0" class="lrm-close-form">Close</a> -->
         </div> <!-- lrm-signup -->
 
-        <div id="lrm-reset-password"> <!-- reset password form -->
+        <div class="lrm-reset-password-section"> <!-- reset password form -->
             <form class="lrm-form" action="#0">
 
                 <p class="lrm-form-message"><?php echo LRM_Settings::get()->setting('messages/lost_password/message', true); ?></p>
@@ -159,25 +158,10 @@
                 </div>
             </form>
 
-            <p class="lrm-form-bottom-message"><a href="#0"><?php echo LRM_Settings::get()->setting('messages/lost_password/to_login', true); ?></a></p>
+            <p class="lrm-form-bottom-message"><a href="#0" class="lrm-switch-to--login"><?php echo LRM_Settings::get()->setting('messages/lost_password/to_login', true); ?></a></p>
         </div> <!-- lrm-reset-password -->
         <a href="#0" class="lrm-close-form"><?php echo LRM_Settings::get()->setting('messages/other/close_modal'); ?></a>
     </div> <!-- lrm-user-modal-container -->
 </div> <!-- lrm-user-modal -->
 
 
-<script type="text/html" id="tpl-lrm-button-loader">
-<span class="lrm-button-loader">
-    <svg version="1.1" id="L4" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 100 40" enable-background="new 0 0 0 0" xml:space="preserve">
-      <circle fill="#ffffff" stroke="none" cx="30" cy="20" r="6">
-          <animate attributeName="opacity" dur="1s" values="0;1;0" repeatCount="indefinite" begin="0.1"/>
-      </circle>
-        <circle fill="#ffffff" stroke="none" cx="50" cy="20" r="6">
-            <animate attributeName="opacity" dur="1s" values="0;1;0" repeatCount="indefinite" begin="0.2"/>
-        </circle>
-        <circle fill="#ffffff" stroke="none" cx="70" cy="20" r="6">
-            <animate attributeName="opacity" dur="1s" values="0;1;0" repeatCount="indefinite" begin="0.3"/>
-        </circle>
-    </svg>
-</span>
-</script>
