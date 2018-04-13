@@ -1,9 +1,9 @@
 <div class="wrap underdev-settings <?php echo $this->handle; ?>-settings">
 
-	<h1><?php _e( 'Settings', 'ajax-login-registration-modal-popup' ) ?><?php echo class_exists('LRM_Pro') ? " :: PRO" : ""; ?></h1>
+	<h1><?php _e( 'Settings', $this->textdomain ) ?><?php echo class_exists('LRM_Pro') ? " :: PRO" : ""; ?></h1>
 
 	<?php if ( empty( $sections ) ): ?>
-		<p><?php _e( 'No Settings available at the moment', 'ajax-login-registration-modal-popup' ); ?></p>
+		<p><?php _e( 'No Settings available at the moment', $this->textdomain ); ?></p>
 	<?php else: ?>
 
 		<div class="menu-col box">

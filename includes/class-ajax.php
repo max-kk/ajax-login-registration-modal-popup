@@ -11,7 +11,7 @@ class LRM_AJAX
 
     public static function login() {
         // First check the nonce, if it fails the function will break
-        if (!isset($_POST['security-login']) || !wp_verify_nonce($_POST['security-login'], 'ajax-login-nonce')) {
+        if (!isset($_POST['security']) || !wp_verify_nonce($_POST['security'], 'ajax-login-nonce')) {
             wp_send_json_error(array('message' => LRM_Settings::get()->setting('messages/other/invalid_nonce')));
         }
 
@@ -48,7 +48,7 @@ class LRM_AJAX
 
     public static function signup() {
         // Verify nonce
-        if (!isset($_POST['security-signup']) || !wp_verify_nonce($_POST['security-signup'], 'ajax-signup-nonce')) {
+        if (!isset($_POST['security']) || !wp_verify_nonce($_POST['security'], 'ajax-signup-nonce')) {
             wp_send_json_error(array('message' => LRM_Settings::get()->setting('messages/other/invalid_nonce')));
         }
 
@@ -62,13 +62,6 @@ class LRM_AJAX
         $first_name = sanitize_text_field($_POST['first-name']);
         $last_name = sanitize_text_field($_POST['last-name']);
         $email    = sanitize_email($_POST['email']);
-        
-        if ( isset( $_POST['password'] ) && LRM_Settings::get()->setting('general/registration/allow_user_set_password') ) {
-            $password =  sanitize_text_field($_POST['password']);
-        } else {
-            $password = wp_generate_password(10, true);
-        }
-
 
         if ( !$first_name || !$last_name ) {
             wp_send_json_error(array('message' => LRM_Settings::get()->setting('messages/registration/no_name')));
@@ -78,11 +71,11 @@ class LRM_AJAX
             wp_send_json_error(array('message' => LRM_Settings::get()->setting('messages/registration/wrong_email')));
         }
 
-        $user_login = sanitize_user( sanitize_title_with_dashes($first_name . '_' . $last_name) );
+        $user_login = sanitize_title_with_dashes($first_name . '_' . $last_name);
 
         // !! Disable system Emails
         // TODO - allow change this in settings
-        // Defined in: "\wp-includes\default-filters.php"
+        // For "wp_update_user"
         remove_action( 'register_new_user', 'wp_send_new_user_notifications' );
         // For "wp_update_user"
         add_filter( 'send_password_change_email', '__return_false' );
@@ -102,7 +95,7 @@ class LRM_AJAX
          */
         $userdata = array(
 	        'ID'         => $user_id,
-            'user_pass'  => $password,
+            'user_pass'  => wp_generate_password(10, true),
             'user_email' => $email,
             'first_name' => $first_name,
             'last_name'  => $last_name,
@@ -159,7 +152,7 @@ class LRM_AJAX
 
     public static function lostpassword() {
         // First check the nonce, if it fails the function will break
-        if (!isset($_POST['security-lostpassword']) || !wp_verify_nonce($_POST['security-lostpassword'], 'ajax-forgot-nonce')) {
+        if (!isset($_POST['security']) || !wp_verify_nonce($_POST['security'], 'ajax-forgot-nonce')) {
             wp_send_json_error(array('message' => LRM_Settings::get()->setting('messages/other/invalid_nonce')));
         }
 

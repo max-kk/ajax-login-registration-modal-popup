@@ -1,9 +1,9 @@
 <div class="wrap underdev-settings <?php echo $this->handle; ?>-settings">
 
-	<h1><?php _e( 'Settings', 'lrm' ) ?></h1>
+	<h1><?php _e( 'Settings', $this->textdomain ) ?></h1>
 
 	<?php if ( empty( $sections ) ): ?>
-		<p><?php _e( 'No Settings available at the moment', 'lrm' ); ?></p>
+		<p><?php _e( 'No Settings available at the moment', $this->textdomain ); ?></p>
 	<?php else: ?>
 
 		<div class="menu-col box">
@@ -18,7 +18,7 @@
 					$url = add_query_arg( 'section', $section_slug, $page_url );
 					?>
 
-					<li class="<?php echo esc_attr( $class ); ?>"><a href="<?php echo esc_attr( $url ); ?>"><?php echo esc_html( $section->name(), 'lrm' ) ?></a></li>
+					<li class="<?php echo esc_attr( $class ); ?>"><a href="<?php echo esc_attr( $url ); ?>"><?php echo esc_html( $section->name() ) ?></a></li>
 
 				<?php endforeach ?>
 
@@ -52,7 +52,7 @@
 
 					<div class="setting-group">
 
-						<h3><?php echo esc_html( $group->name(), 'lrm' ); ?></h3>
+						<h3><?php echo esc_html( $group->name() ); ?></h3>
 
 						<?php $description = $group->description(); ?>
 
@@ -67,7 +67,7 @@
 							<?php foreach ( $group->get_fields() as $field ): ?>
 
 								<tr>
-									<th><label for="<?php echo esc_attr( $field->input_id() ); ?>"><?php echo esc_html( $field->name(), 'lrm' ); ?></label></th>
+									<th><label for="<?php echo esc_attr( $field->input_id() ); ?>"><?php echo esc_html( $field->name() ); ?></label></th>
 									<td>
 										<?php
 										$field->render();

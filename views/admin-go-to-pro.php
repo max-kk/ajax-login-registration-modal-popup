@@ -18,10 +18,10 @@
 	<li><a href="https://wordpress.org/plugins/accesspress-social-login-lite/" target="_blank">Social Login WordPress Plugin – AccessPress</a> (social login buttons below login/register form)</li>
 	<li>Math Captcha - soon</li>
 	<li>Easy Digital Downloads - soon</li>
-	<li><a href="https://maxim-kaminsky.com/shop/contact-me/" target="_blank">Request other plugin >></a></li>
+	<li><a href="https://maxim-kaminsky.com/shop/product/ajax-login-and-registration-modal-popup-pro/" target="_blank">Request other plugin >></a></li>
 </ul>
 
-<a href="https://maxim-kaminsky.com/shop/product/ajax-login-and-registration-modal-popup-pro/" target="_blank">GET A PRO >></a>
+<a href="https://maxim-kaminsky.com/shop/contact-me/" target="_blank">GET A PRO >></a>
 
 <br/>
 <br/>

@@ -1,11 +1,11 @@
 {
-  "name": "max-kk/ajax-login-registration-modal-popup",
+  "name": "max/woo-require-registration",
   "description": "description_text",
   "minimum-stability": "stable",
   "license": "proprietary",
   "authors": [
     {
-      "name": "Maxim Kaminsky",
+      "name": "author's name",
       "email": "email@example.com"
     }
   ],

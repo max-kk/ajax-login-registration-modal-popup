@@ -1,104 +1,75 @@
-<div class="lrm-main <?php echo !$is_inline ? 'lrm-user-modal' : 'lrm-inline is-visible'; ?>" <?php echo !$is_inline ? 'style="visibility: hidden;"' : ''?>> <!-- this is the entire modal form, including the background -->
+<div class="lrm-user-modal" style="visibility: hidden;"> <!-- this is the entire modal form, including the background -->
     <div class="lrm-user-modal-container"> <!-- this is the container wrapper -->
         <ul class="lrm-switcher">
-            <li><a href="#0" class="lrm-switch-to-link lrm-switch-to--login <?php echo $is_inline ? 'selected' : ''; ?>">
-                    <?php echo LRM_Settings::get()->setting('messages/login/heading', true); ?>
+            <li><a href="#0" class="lrm-switch-to-link lrm-switch-to--login">
+                    <?php echo LRM_Settings::get()->setting('messages/login/heading'); ?>
                 </a></li>
             <li><a href="#0" class="lrm-switch-to-link lrm-switch-to--register">
-                    <?php echo LRM_Settings::get()->setting('messages/registration/heading', true); ?>
+                    <?php echo LRM_Settings::get()->setting('messages/registration/heading'); ?>
                 </a></li>
         </ul>
 
-        <div class="lrm-login-section <?php echo $is_inline ? 'is-selected' : ''; ?>"> <!-- log in form -->
+        <div id="lrm-login"> <!-- log in form -->
             <form class="lrm-form" action="#0">
-
-                <div class="lrm-integrations lrm-integrations--login">
-                    <?php do_action( 'lrm_before_login_form' ); ?>
-                </div>
-
                 <p class="lrm-form-message lrm-form-message--init"></p>
 
-                <div class="fieldset">
-                    <label class="image-replace lrm-email" for="signin-email"><?php echo esc_attr( LRM_Settings::get()->setting('messages/login/username', true) ); ?></label>
-                    <input  name="username" class="full-width has-padding has-border" id="signin-email" type="text" placeholder="<?php echo esc_attr( LRM_Settings::get()->setting('messages/login/username', true) ); ?>" required value="">
+                <p class="fieldset">
+                    <label class="image-replace lrm-email" for="signin-email"><?php echo esc_attr( LRM_Settings::get()->setting('messages/login/username') ); ?></label>
+                    <input  name="username" class="full-width has-padding has-border" id="signin-email" type="text" placeholder="<?php echo esc_attr( LRM_Settings::get()->setting('messages/login/username') ); ?>" required value="">
                     <span class="lrm-error-message"></span>
-                </div>
+                </p>
 
-                <div class="fieldset">
-                    <label class="image-replace lrm-password" for="signin-password"><?php echo esc_attr( LRM_Settings::get()->setting('messages/login/password', true) ); ?></label>
-                    <input name="password" class="full-width has-padding has-border" id="signin-password" type="password"  placeholder="<?php echo esc_attr( LRM_Settings::get()->setting('messages/login/password', true) ); ?>" required value="">
+                <p class="fieldset">
+                    <label class="image-replace lrm-password" for="signin-password"><?php echo esc_attr( LRM_Settings::get()->setting('messages/login/password') ); ?></label>
+                    <input name="password" class="full-width has-padding has-border" id="signin-password" type="text"  placeholder="<?php echo esc_attr( LRM_Settings::get()->setting('messages/login/password') ); ?>" required value="">
                     <span class="lrm-error-message"></span>
-                    <a href="#0" class="hide-password" data-show="<?php echo __( 'Show', 'lrm' ); ?>" data-hide="<?php echo __( 'Hide', 'lrm' ); ?>"><?php echo __( 'Show', 'lrm' ); ?></a>
-                </div>
-
-                <div class="fieldset">
-                    <input type="checkbox" id="remember-me" name="remember-me" checked>
-                    <label for="remember-me"><?php echo LRM_Settings::get()->setting('messages/login/remember-me', true); ?></label>
-                </div>
-
+                    <a href="#0" class="hide-password">Hide</a>
+                </p>
 
                 <div class="lrm-integrations lrm-integrations--login">
                     <?php do_action( 'lrm_login_form' ); ?>
                 </div>
 
-                <div class="fieldset">
+                <p class="fieldset">
+                    <input type="checkbox" id="remember-me" name="remember-me" checked>
+                    <label for="remember-me"><?php echo LRM_Settings::get()->setting('messages/login/remember-me'); ?></label>
+                </p>
+
+                <p class="fieldset">
                     <button class="full-width has-padding" type="submit">
-                        <?php echo LRM_Settings::get()->setting('messages/login/button', true); ?>
+                        <?php echo LRM_Settings::get()->setting('messages/login/button'); ?>
                     </button>
-                </div>
+                </p>
                 <input type="hidden" name="lrm_action" value="login">
                 <input type="hidden" name="wp-submit" value="1">
 
-                <?php wp_nonce_field( 'ajax-login-nonce', 'security-login' ); ?>
+                <?php wp_nonce_field( 'ajax-login-nonce', 'security' ); ?>
             </form>
 
-            <p class="lrm-form-bottom-message"><a href="#0" class="lrm-switch-to--reset-password"><?php echo LRM_Settings::get()->setting('messages/login/forgot-password', true); ?></a></p>
+            <p class="lrm-form-bottom-message"><a href="#0"><?php echo LRM_Settings::get()->setting('messages/login/forgot-password'); ?></a></p>
             <!-- <a href="#0" class="lrm-close-form">Close</a> -->
         </div> <!-- lrm-login -->
 
-        <div class="lrm-signup-section"> <!-- sign up form -->
+        <div id="lrm-signup"> <!-- sign up form -->
             <form class="lrm-form" action="#0">
-
-                <div class="lrm-integrations lrm-integrations--register">
-                    <?php do_action( 'lrm_before_register_form' ); ?>
-                </div>
-
                 <p class="lrm-form-message lrm-form-message--init"></p>
                 
-                <div class="fieldset">
-                    <label class="image-replace lrm-username" for="signup-first-name"><?php echo esc_attr( LRM_Settings::get()->setting('messages/registration/first-name', true) ); ?></label>
+                <p class="fieldset">
+                    <label class="image-replace lrm-username" for="signup-first-name"><?php echo esc_attr( LRM_Settings::get()->setting('messages/registration/first-name') ); ?></label>
                     <input name="first-name" class="full-width has-padding has-border" id="signup-first-name" type="text" placeholder="<?php echo esc_attr( LRM_Settings::get()->setting('messages/registration/first-name') ); ?>" required>
                     <span class="lrm-error-message"></span>
-                </div>
-                <div class="fieldset">
-                    <label class="image-replace lrm-username" for="signup-last-name"><?php echo esc_attr( LRM_Settings::get()->setting('messages/registration/last-name', true) ); ?></label>
+                </p>
+                <p class="fieldset">
+                    <label class="image-replace lrm-username" for="signup-last-name"><?php echo esc_attr( LRM_Settings::get()->setting('messages/registration/last-name') ); ?></label>
                     <input name="last-name" class="full-width has-padding has-border" id="signup-last-name" type="text" placeholder="<?php echo esc_attr( LRM_Settings::get()->setting('messages/registration/last-name') ); ?>" required>
                     <span class="lrm-error-message"></span>
-                </div>
+                </p>
 
-                <div class="fieldset">
-                    <label class="image-replace lrm-email" for="signup-email"><?php echo esc_attr( LRM_Settings::get()->setting('messages/registration/email', true) ); ?></label>
+                <p class="fieldset">
+                    <label class="image-replace lrm-email" for="signup-email"><?php echo esc_attr( LRM_Settings::get()->setting('messages/registration/email') ); ?></label>
                     <input name="email" class="full-width has-padding has-border" id="signup-email" type="email" placeholder="<?php echo esc_attr( LRM_Settings::get()->setting('messages/registration/email') ); ?>" required>
                     <span class="lrm-error-message"></span>
-                </div>
-
-                <?php if( LRM_Settings::get()->setting('general/registration/allow_user_set_password') ): ?>
-                    <div class="fieldset">
-                        <label class="image-replace lrm-password" for="signup-password"><?php echo esc_attr( LRM_Settings::get()->setting('messages/registration/password', true) ); ?></label>
-                        <input name="password" class="full-width has-padding has-border" id="signup-password" type="password"  placeholder="<?php echo esc_attr( LRM_Settings::get()->setting('messages/registration/password', true) ); ?>" required value="">
-                        <span class="lrm-error-message"></span>
-                        <a href="#0" class="hide-password" data-show="<?php echo __( 'Show', 'lrm' ); ?>" data-hide="<?php echo __( 'Hide', 'lrm' ); ?>"><?php echo __( 'Show', 'lrm' ); ?></a>
-                    </div>
-                    <span class="lrm-pass-strength-result"></span>
-                <?php endif; ?>
-
-
-                <?php if( LRM_Settings::get()->setting('general/terms/off') ): ?>
-                    <div class="fieldset">
-                        <input type="checkbox" id="accept-terms">
-                        <label for="accept-terms"><?php echo LRM_Settings::get()->setting('messages/registration/terms', true); ?></label>
-                    </div>
-                <?php endif; ?>
+                </p>
 
                 <div class="lrm-integrations lrm-integrations--register">
                     <?php
@@ -111,31 +82,37 @@
                     ?>
                 </div>
 
+                <?php if( LRM_Settings::get()->setting('general/terms/off') ): ?>
+                 <p class="fieldset">
+                        <input type="checkbox" id="accept-terms">
+                        <label for="accept-terms"><?php echo LRM_Settings::get()->setting('messages/registration/terms'); ?></label>
+                    </p>
+                <?php endif; ?>
 
-                <div class="fieldset">
+                <p class="fieldset">
                     <button class="full-width has-padding" type="submit">
-                        <?php echo LRM_Settings::get()->setting('messages/registration/button', true); ?>
+                        <?php echo LRM_Settings::get()->setting('messages/registration/button'); ?>
                     </button>
-                </div>
+                </p>
 
                 <input type="hidden" name="lrm_action" value="signup">
                 <input type="hidden" name="wp-submit" value="1">
-                <?php wp_nonce_field( 'ajax-signup-nonce', 'security-signup' ); ?>
+                <?php wp_nonce_field( 'ajax-signup-nonce', 'security' ); ?>
             </form>
 
             <!-- <a href="#0" class="lrm-close-form">Close</a> -->
         </div> <!-- lrm-signup -->
 
-        <div class="lrm-reset-password-section"> <!-- reset password form -->
+        <div id="lrm-reset-password"> <!-- reset password form -->
             <form class="lrm-form" action="#0">
 
-                <p class="lrm-form-message"><?php echo LRM_Settings::get()->setting('messages/lost_password/message', true); ?></p>
+                <p class="lrm-form-message"><?php echo LRM_Settings::get()->setting('messages/lost_password/message'); ?></p>
 
-                <div class="fieldset">
-                    <label class="image-replace lrm-email" for="reset-email"><?php echo LRM_Settings::get()->setting('messages/lost_password/email', true); ?></label>
-                    <input class="full-width has-padding has-border" name="user_login" id="reset-email" type="text" required placeholder="<?php echo esc_attr( LRM_Settings::get()->setting('messages/lost_password/email', true) ); ?>">
+                <p class="fieldset">
+                    <label class="image-replace lrm-email" for="reset-email"><?php echo LRM_Settings::get()->setting('messages/lost_password/email'); ?></label>
+                    <input class="full-width has-padding has-border" name="user_login" id="reset-email" type="text" required placeholder="<?php echo esc_attr( LRM_Settings::get()->setting('messages/lost_password/email') ); ?>">
                     <span class="lrm-error-message"></span>
-                </div>
+                </p>
 
                 <div class="lrm-integrations lrm-integrations--reset-pass">
                     <?php
@@ -149,19 +126,34 @@
 
                 <input type="hidden" name="lrm_action" value="lostpassword">
                 <input type="hidden" name="wp-submit" value="1">
-                <?php wp_nonce_field( 'ajax-forgot-nonce', 'security-lostpassword' ); ?>
+                <?php wp_nonce_field( 'ajax-forgot-nonce', 'security' ); ?>
 
-                <div class="fieldset">
+                <p class="fieldset">
                     <button class="full-width has-padding" type="submit">
-                        <?php echo LRM_Settings::get()->setting('messages/lost_password/button', true); ?>
+                        <?php echo LRM_Settings::get()->setting('messages/lost_password/button'); ?>
                     </button>
-                </div>
+                </p>
             </form>
 
-            <p class="lrm-form-bottom-message"><a href="#0" class="lrm-switch-to--login"><?php echo LRM_Settings::get()->setting('messages/lost_password/to_login', true); ?></a></p>
+            <p class="lrm-form-bottom-message"><a href="#0"><?php echo LRM_Settings::get()->setting('messages/lost_password/to_login'); ?></a></p>
         </div> <!-- lrm-reset-password -->
         <a href="#0" class="lrm-close-form"><?php echo LRM_Settings::get()->setting('messages/other/close_modal'); ?></a>
     </div> <!-- lrm-user-modal-container -->
 </div> <!-- lrm-user-modal -->
 
 
+<script type="text/html" id="tpl-lrm-button-loader">
+<span class="lrm-button-loader">
+    <svg version="1.1" id="L4" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 100 40" enable-background="new 0 0 0 0" xml:space="preserve">
+      <circle fill="#ffffff" stroke="none" cx="30" cy="20" r="6">
+          <animate attributeName="opacity" dur="1s" values="0;1;0" repeatCount="indefinite" begin="0.1"/>
+      </circle>
+        <circle fill="#ffffff" stroke="none" cx="50" cy="20" r="6">
+            <animate attributeName="opacity" dur="1s" values="0;1;0" repeatCount="indefinite" begin="0.2"/>
+        </circle>
+        <circle fill="#ffffff" stroke="none" cx="70" cy="20" r="6">
+            <animate attributeName="opacity" dur="1s" values="0;1;0" repeatCount="indefinite" begin="0.3"/>
+        </circle>
+    </svg>
+</span>
+</script>
