@@ -96,9 +96,13 @@ class Settings {
 
 	/**
 	 * Add new section
+	 *
 	 * @param string $name Section name
 	 * @param string $slug Section slug
+	 *
 	 * @return Section
+	 *
+	 * @throws \Exception
 	 */
 	public function add_section( $name, $slug ) {
 

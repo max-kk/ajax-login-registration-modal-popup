@@ -7,6 +7,14 @@
 
 <br/>
 
+<p><strong>The PRO version extra features:</strong></p>
+<ul>
+	<li>Allow user set custom password (not random generated) during registration</li>
+	<li>Redirect user to specified page after login/registration (for example User Profile)</li>
+</ul>
+
+<br/>
+
 <p><strong>The PRO version is 100% tested and are compatible with a following plugins:</strong></p>
 <ul>
 	<li><a href="https://wordpress.org/plugins/woocommerce/" target="_blank">Woocommerce</a> (show modal when clicked "Add to cart" in list or single product)</li>

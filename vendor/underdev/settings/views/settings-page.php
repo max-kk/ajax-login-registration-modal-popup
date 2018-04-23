@@ -18,7 +18,7 @@
 					$url = add_query_arg( 'section', $section_slug, $page_url );
 					?>
 
-					<li class="<?php echo esc_attr( $class ); ?>"><a href="<?php echo esc_attr( $url ); ?>"><?php echo esc_html( $section->name() ) ?></a></li>
+					<li class="<?php echo esc_attr( $class ); ?>"><a href="<?php echo esc_attr( $url ); ?>"><?php echo $section->name() ?></a></li>
 
 				<?php endforeach ?>
 
@@ -57,7 +57,7 @@
 						<?php $description = $group->description(); ?>
 
 						<?php if ( ! empty( $description ) ): ?>
-							<p class="description"><?php echo esc_html( $description ); ?></p>
+							<p class="description"><?php echo $description; ?></p>
 						<?php endif ?>
 
 						<?php do_action( $this->handle . '/settings/group/' . $group->slug() . '/before' ); ?>

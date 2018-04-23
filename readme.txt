@@ -43,18 +43,23 @@ Easy to integrate modal with Login and Registration features. Compatible with an
 * Unlimited plugin updates
 * Compatibility with other popular plugins (list below)
 
+**The PRO version extra features:**
+1. Allow user set custom password (not random generated) during registration
+2. Redirect user to specified page after login/registration (for example User Profile)
+3. [Request other feature >>](https://maxim-kaminsky.com/shop/contact-me/)
+
 **The PRO version is 100% tested and are compatible with a following plugins:**
 
 1. [Woocommerce](https://wordpress.org/plugins/woocommerce/) (show modal when clicked "Add to cart" in list or single product)
-1. [Captcha](https://wordpress.org/plugins/captcha/)
-1. [WP reCaptcha Integration](https://wordpress.org/plugins/wp-recaptcha-integration/)
-1. [Really Simple CAPTCHA](https://wordpress.org/plugins/really-simple-captcha/)
-1. [Captcha bank](https://ru.wordpress.org/plugins/captcha-bank/)
-1. [WordPress Social Login](https://wordpress.org/plugins/wordpress-social-login/) (social login buttons below login/register form)
-1. [Social Login WordPress Plugin – AccessPress](https://wordpress.org/plugins/accesspress-social-login-lite/) (social login buttons below login/register form)
-1. Math Captcha - soon
-1. Easy Digital Downloads - soon
-1. [Request other plugin >>](https://maxim-kaminsky.com/shop/contact-me/)
+2. [Captcha](https://wordpress.org/plugins/captcha/)
+3. [WP reCaptcha Integration](https://wordpress.org/plugins/wp-recaptcha-integration/)
+4. [Really Simple CAPTCHA](https://wordpress.org/plugins/really-simple-captcha/)
+5. [Captcha bank](https://ru.wordpress.org/plugins/captcha-bank/)
+6. [WordPress Social Login](https://wordpress.org/plugins/wordpress-social-login/) (social login buttons below login/register form)
+7. [Social Login WordPress Plugin – AccessPress](https://wordpress.org/plugins/accesspress-social-login-lite/) (social login buttons below login/register form)
+8. Math Captcha - soon
+9. Easy Digital Downloads - soon
+10. [Request other plugin >>](https://maxim-kaminsky.com/shop/contact-me/)
 
 
 [GET A PRO >>](https://maxim-kaminsky.com/shop/product/ajax-login-and-registration-modal-popup-pro/)
@@ -86,8 +91,19 @@ Use this tutorial to add class from text above for your menu element - [https://
 7. Admin settings - Expressions
 8. Integration link or button element
 9. Integration to menu item
+10. Admin settings - General [PRO]
+11. Admin settings - Expressions [PRO]
+12. Registration with Password field [PRO]
 
 == Changelog ==
+
+= VER 1.10 - 23/04/2018 =
+
+- Added German translation
+- Finally implemented support for https://translate.wordpress.org/projects/wp-plugins/ajax-login-and-registration-modal-popup
+- "Show" and "Hide" password labels can be translated in admin
+- "Expressions" now escaped in admin and public to avoid issues with splashing quotes in FR and other languages
+- Other tweaks
 
 = VER 1.05 - 05/04/2018 =
 

@@ -1,13 +1,13 @@
 <?php
-/*
-    Plugin Name: AJAX Login and Registration modal popup
-    Plugin URI: https://maxim-kaminsky.com/shop/product/ajax-login-and-registration-modal-popup-pro/
-    Description: Easy to integrate modal with Login and Registration features.
-    Version: 1.10
-    Author URI: http://maxim-kaminsky.com/
-	Author: Maxim K
-	Text Domain: ajax-login-registration-modal-popup
-	Domain Path: /languages
+/**
+	Plugin Name:    AJAX Login and Registration modal popup
+	Plugin URI:     https://maxim-kaminsky.com/shop/product/ajax-login-and-registration-modal-popup-pro/
+	Description:    Easy to integrate modal with Login and Registration features.
+	Version:        1.10
+	Author URI:     http://maxim-kaminsky.com/
+	Author:         Maxim K
+	Text Domain:    ajax-login-and-registration-modal-popup
+	Domain Path:     /languages
 */
 
 define("LRM_URL", plugin_dir_url(__FILE__));

@@ -57,7 +57,7 @@
 						<?php $description = $group->description(); ?>
 
 						<?php if ( ! empty( $description ) ): ?>
-							<p class="description"><?php echo esc_html( $description ); ?></p>
+							<p class="description"><?php echo $description; ?></p>
 						<?php endif ?>
 
 						<?php do_action( $this->handle . '/settings/group/' . $group->slug() . '/before' ); ?>

@@ -10,7 +10,7 @@
         </ul>
 
         <div id="lrm-login"> <!-- log in form -->
-            <form class="lrm-form" action="#0">
+            <form class="lrm-form" action="#0" data-action="login">
 
                 <div class="lrm-integrations lrm-integrations--login">
                     <?php do_action( 'lrm_before_login_form' ); ?>
@@ -28,7 +28,7 @@
                     <label class="image-replace lrm-password" for="signin-password"><?php echo esc_attr( LRM_Settings::get()->setting('messages/login/password', true) ); ?></label>
                     <input name="password" class="full-width has-padding has-border" id="signin-password" type="password"  placeholder="<?php echo esc_attr( LRM_Settings::get()->setting('messages/login/password', true) ); ?>" required value="">
                     <span class="lrm-error-message"></span>
-                    <a href="#0" class="hide-password" data-show="<?php echo __( 'Show', 'lrm' ); ?>" data-hide="<?php echo __( 'Hide', 'lrm' ); ?>"><?php echo __( 'Show', 'lrm' ); ?></a>
+                    <a href="#0" class="hide-password" data-show="<?php echo LRM_Settings::get()->setting('messages/other/show_pass'); ?>" data-hide="<?php echo LRM_Settings::get()->setting('messages/other/hide_pass'); ?>"><?php echo LRM_Settings::get()->setting('messages/other/show_pass'); ?></a>
                 </div>
 
 
@@ -58,7 +58,7 @@
         </div> <!-- lrm-login -->
 
         <div id="lrm-signup"> <!-- sign up form -->
-            <form class="lrm-form" action="#0">
+            <form class="lrm-form" action="#0" data-action="registration">
 
                 <div class="lrm-integrations lrm-integrations--register">
                     <?php do_action( 'lrm_before_register_form' ); ?>
@@ -83,12 +83,12 @@
                     <span class="lrm-error-message"></span>
                 </div>
 
-                <?php if( LRM_Settings::get()->setting('general/registration/allow_user_set_password') ): ?>
+                <?php if( LRM_Settings::get()->setting('general_pro/all/allow_user_set_password') ): ?>
                     <div class="fieldset">
                         <label class="image-replace lrm-password" for="signup-password"><?php echo esc_attr( LRM_Settings::get()->setting('messages/registration/password', true) ); ?></label>
-                        <input name="password" class="full-width has-padding has-border" id="signup-password" type="password"  placeholder="<?php echo esc_attr( LRM_Settings::get()->setting('messages/registration/password', true) ); ?>" required value="">
+                        <input name="password" class="full-width has-padding has-border" id="signup-password" type="password"  placeholder="<?php echo esc_attr( LRM_Settings::get()->setting('messages_pro/registration/password', true) ); ?>" required value="">
                         <span class="lrm-error-message"></span>
-                        <a href="#0" class="hide-password" data-show="<?php echo __( 'Show', 'lrm' ); ?>" data-hide="<?php echo __( 'Hide', 'lrm' ); ?>"><?php echo __( 'Show', 'lrm' ); ?></a>
+                        <a href="#0" class="hide-password" data-show="<?php echo __( 'Show', 'ajax-login-and-registration-modal-popup' ); ?>" data-hide="<?php echo __( 'Hide', 'ajax-login-and-registration-modal-popup' ); ?>"><?php echo __( 'Show', 'ajax-login-and-registration-modal-popup' ); ?></a>
                     </div>
                     <span id="lrm-pass-strength-result"></span>
                 <?php endif; ?>
@@ -128,7 +128,7 @@
         </div> <!-- lrm-signup -->
 
         <div id="lrm-reset-password"> <!-- reset password form -->
-            <form class="lrm-form" action="#0">
+            <form class="lrm-form" action="#0" data-action="lost-password">
 
                 <p class="lrm-form-message"><?php echo LRM_Settings::get()->setting('messages/lost_password/message', true); ?></p>
 

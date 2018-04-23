@@ -63,7 +63,7 @@ class LRM_AJAX
         $last_name = sanitize_text_field($_POST['last-name']);
         $email    = sanitize_email($_POST['email']);
         
-        if ( isset( $_POST['password'] ) && LRM_Settings::get()->setting('general/registration/allow_user_set_password') ) {
+        if ( isset( $_POST['password'] ) && LRM_Settings::get()->setting('general_pro/all/allow_user_set_password') ) {
             $password =  sanitize_text_field($_POST['password']);
 
             // Defined in: "\wp-includes\default-filters.php"

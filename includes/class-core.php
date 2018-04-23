@@ -61,7 +61,7 @@ class LRM_Core {
     {
         load_plugin_textdomain(
             //'lrm', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/'
-            'lrm', false, dirname( LRM_BASENAME ) . '/languages/'
+            'ajax-login-and-registration-modal-popup', false, dirname( LRM_BASENAME ) . '/languages/'
         );
     }
 
@@ -138,19 +138,10 @@ class LRM_Core {
                 'login'     => LRM_Settings::get()->setting('advanced/selectors_mapping/login'),
                 'register'  => LRM_Settings::get()->setting('advanced/selectors_mapping/register'),
             ),
-            'l10n'  => array(
-                'password_is_good'  => LRM_Settings::get()->setting('messages/registration/password_is_good'),
-                'password_is_strong'  => LRM_Settings::get()->setting('messages/registration/password_is_strong'),
-                'password_is_short'  => LRM_Settings::get()->setting('messages/registration/password_is_short'),
-                'password_is_bad'  => LRM_Settings::get()->setting('messages/registration/password_is_bad'),
-            ),
         );
 
         wp_localize_script('lrm-modal', 'LRM', $script_params);
-
-        wp_enqueue_script( 'password-strength-meter' );
     }
-
 
 
     /**
