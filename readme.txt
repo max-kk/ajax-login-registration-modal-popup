@@ -97,6 +97,16 @@ Use this tutorial to add class from text above for your menu element - [https://
 
 == Changelog ==
 
+= VER 1.12 - 25/04/2018 =
+
+- Bugfix: Registration "Terms box" it's displayed even if not disabled in settings
+- Tweak: Option "Auto-login user after Registration" replaced with "User must confirm email after registration?"
+- Wording tweaks - thanks to @Paul from U2GUIDE.com
+
+= VER 1.11 - 23/04/2018 =
+
+- Notice if newer PRO version exists
+
 = VER 1.10 - 23/04/2018 =
 
 - Added German translation

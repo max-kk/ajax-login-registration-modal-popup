@@ -1,5 +1,5 @@
 <ul>
-	<li>3 months personal support from developer via Email</li>
+	<li>3 months of personal support from developer via Email</li>
 	<li>Troubleshooting problems and conflicts with other plugins/themes (1 site)</li>
 	<li>Unlimited plugin updates</li>
 	<li>Compatibility with other popular plugins (list below)</li>
@@ -15,7 +15,7 @@
 
 <br/>
 
-<p><strong>The PRO version is 100% tested and are compatible with a following plugins:</strong></p>
+<p><strong>The PRO version is 100% tested and compatible with the following plugins:</strong></p>
 <ul>
 	<li><a href="https://wordpress.org/plugins/woocommerce/" target="_blank">Woocommerce</a> (show modal when clicked "Add to cart" in list or single product)</li>
 	<li><a href="https://wordpress.org/plugins/captcha/" target="_blank">Captcha</a></li>
@@ -35,11 +35,11 @@
 <br/>
 <hr>
 
-<h4>I need a support but don't want buy the PRO, what i should do?</h4>
-<p>Use Wordpress community forums. Typically I replies here within 2 days.</p>
+<h4>I need a support but don't want to buy the PRO, what should I do?</h4>
+<p>Use Wordpress community forums. I usually reply within 2 days.</p>
 
-<h4>I have feature request or want to make compatible with another plugin. What should I do?</h4>
-<p>Drop me a line here: LINK</p>
+<h4>I have feature request or compatibility request with another plugin. What should I do?</h4>
+<p>Drop me a line <a href="https://maxim-kaminsky.com/shop/contact-me/" target="_blank">here</a>.</p>
 
 <style>
 	.underdev-settings .setting-col .setting-group .form-table th {

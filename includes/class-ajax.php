@@ -83,6 +83,8 @@ class LRM_AJAX
 
         $user_login = sanitize_user( sanitize_title_with_dashes($first_name . '_' . $last_name) );
 
+        $user_login = rtrim($user_login, '_-');
+
         // !! Disable system Emails
         // TODO - allow change this in settings
         // For "wp_update_user"
@@ -118,8 +120,11 @@ class LRM_AJAX
         if( !is_wp_error($user_id) ) {
 
             do_action('lrm/registration_successful', $user_id);
-            
-            if ( LRM_Settings::get()->setting('general/registration/auto_login_after_registration') ) {
+
+            // Is user logged in?
+            $user_signon = false;
+
+            if ( ! LRM_Settings::get()->setting('general/registration/user_must_confirm_email') ) {
                 $info = array();
                 $info['user_login'] = $user_login;
                 $info['user_password'] = $userdata['user_pass'];
@@ -146,10 +151,17 @@ class LRM_AJAX
 
             wp_mail($email, $subject, $mail_body);
 
-            wp_send_json_success(array(
-                'logged_in' => true,
-                'message' => LRM_Settings::get()->setting('messages/registration/success')
-            ));
+            if ( $user_signon && !is_wp_error($user_signon) ) {
+                wp_send_json_success( array(
+                    'logged_in' => true,
+                    'message'   => LRM_Settings::get()->setting( 'messages/registration/success' )
+                ) );
+            } else {
+                wp_send_json_success( array(
+                    'logged_in' => false,
+                    'message'   => LRM_Settings::get()->setting( 'messages/registration/success_please_login' )
+                ) );
+            }
         } else {
 
             do_action('lrm/registration_fail', $user_id);

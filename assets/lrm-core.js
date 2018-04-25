@@ -164,6 +164,8 @@ var LRM = LRM ? LRM : {};
 			success: function(response){
 				$form.find(".lrm-button-loader").remove();
 
+				// If user Logged in After Login or Registration
+				// If Email Verify after Registration enabled - we skip this
 				if ( response.success && response.data.logged_in ) {
 					LRM.is_user_logged_in = true;
 					$(document).trigger('lrm_user_logged_in', [response, $form]);

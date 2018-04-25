@@ -85,15 +85,17 @@
 
                 <?php if( LRM_Settings::get()->setting('general_pro/all/allow_user_set_password') ): ?>
                     <div class="fieldset">
-                        <label class="image-replace lrm-password" for="signup-password"><?php echo esc_attr( LRM_Settings::get()->setting('messages/registration/password', true) ); ?></label>
-                        <input name="password" class="full-width has-padding has-border" id="signup-password" type="password"  placeholder="<?php echo esc_attr( LRM_Settings::get()->setting('messages_pro/registration/password', true) ); ?>" required value="">
-                        <span class="lrm-error-message"></span>
-                        <a href="#0" class="hide-password" data-show="<?php echo __( 'Show', 'ajax-login-and-registration-modal-popup' ); ?>" data-hide="<?php echo __( 'Hide', 'ajax-login-and-registration-modal-popup' ); ?>"><?php echo __( 'Show', 'ajax-login-and-registration-modal-popup' ); ?></a>
+                        <div class="lrm-position-relative">
+                            <label class="image-replace lrm-password" for="signup-password"><?php echo esc_attr( LRM_Settings::get()->setting('messages/registration/password', true) ); ?></label>
+                            <input name="password" class="full-width has-padding has-border" id="signup-password" type="password"  placeholder="<?php echo esc_attr( LRM_Settings::get()->setting('messages_pro/registration/password', true) ); ?>" required value="">
+                            <span class="lrm-error-message"></span>
+                            <a href="#0" class="hide-password" data-show="<?php echo __( 'Show', 'ajax-login-and-registration-modal-popup' ); ?>" data-hide="<?php echo __( 'Hide', 'ajax-login-and-registration-modal-popup' ); ?>"><?php echo __( 'Show', 'ajax-login-and-registration-modal-popup' ); ?></a>
+                        </div>
+                        <span id="lrm-pass-strength-result"></span>
                     </div>
-                    <span id="lrm-pass-strength-result"></span>
                 <?php endif; ?>
 
-                <?php if( LRM_Settings::get()->setting('general/terms/off') ): ?>
+                <?php if( ! LRM_Settings::get()->setting('general/terms/off') ): ?>
                  <div class="fieldset">
                         <input type="checkbox" id="accept-terms">
                         <label for="accept-terms"><?php echo LRM_Settings::get()->setting('messages/registration/terms', true); ?></label>

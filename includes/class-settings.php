@@ -61,6 +61,18 @@ class LRM_Settings {
      */
     public function beg_for_review() {
 
+        if ( !defined("LRM_PRO_VERSION") ) {
+
+            echo '<div class="notice notice-info notification-notice"><p>';
+
+            printf(
+                'Looks like newer version of "AJAX Login and Registration modal popup PR0" plugin available! Please login yo your cabinet and <a href="%s" target="_blank">download it</a>!',
+                'https://maxim-kaminsky.com/shop/my-account/orders/'
+            );
+
+            echo '</p></div>';
+        }
+
         $screen = get_current_screen();
 
         if ( $screen->id != 'settings_page_' . $this->page_id ) {
@@ -125,16 +137,17 @@ class LRM_Settings {
             ->add_field( array(
                 'slug'        => 'off',
                 'name'        => __('Hide Terms box in Registration Form?', 'ajax-login-and-registration-modal-popup' ),
-                'default'     => true,
+                'default'     => false,
                 'render'      => array( new CoreFields\Checkbox(), 'input' ),
                 'sanitize'    => array( new CoreFields\Checkbox(), 'sanitize' ),
             ) );
         
         $general->add_group( __( 'General', 'ajax-login-and-registration-modal-popup' ), 'registration' )
             ->add_field( array(
-                'slug'        => 'auto_login_after_registration',
-                'name'        => __('Auto-login user after registration?', 'ajax-login-and-registration-modal-popup' ),
-                'default'     => true,
+                'slug'        => 'user_must_confirm_email',
+                'name'        => __('User must confirm email after registration?', 'ajax-login-and-registration-modal-popup' ),
+                'description' => __('If this option is enabled - the user won\'t automatically be logged into his account. He will need to open the email with his login information and enter them on the Log In tab.', 'ajax-login-and-registration-modal-popup' ),
+                'default'     => false,
                 'render'      => array( new CoreFields\Checkbox(), 'input' ),
                 'sanitize'    => array( new CoreFields\Checkbox(), 'sanitize' ),
             ) )
@@ -151,7 +164,7 @@ class LRM_Settings {
         $ADVANCED_SECTION->add_group( __( 'Extra selectors (id, classes) to handle modal', 'ajax-login-and-registration-modal-popup' ), 'selectors_mapping' )
             ->add_field( array(
                 'slug'        => 'login',
-                'name'        => __('Extra selectors for handle login modal?', 'ajax-login-and-registration-modal-popup' ),
+                'name'        => __('Extra selectors to handle log in modal?', 'ajax-login-and-registration-modal-popup' ),
                 'description' => 'Comma separated values for jQuery, example: <code>.popup_login, #popup_login</code> or <code>.popup_login_show</code>.',
                 'default'     => '.popup_login',
                 'render'      => array( new LRM_Field_Text(), 'input' ),
@@ -159,7 +172,7 @@ class LRM_Settings {
             ) )
             ->add_field( array(
                 'slug'        => 'register',
-                'name'        => __('Extra selectors for handle register modal?', 'ajax-login-and-registration-modal-popup' ),
+                'name'        => __('Extra selectors to handle register modal?', 'ajax-login-and-registration-modal-popup' ),
                 'description' => 'Comma separated values for jQuery, example: <code>.popup_register, #popup_register</code> or <code>.popup_register_show</code>',
                 'default'     => '.popup_register',
                 'render'      => array( new LRM_Field_Text(), 'input' ),
@@ -233,8 +246,8 @@ class LRM_Settings {
              ) )
              ->add_field( array(
                  'slug'        => 'username',
-                 'name'        => __('Form: E-mail or Username', 'ajax-login-and-registration-modal-popup' ),
-                 'default'        => __('E-mail or Username', 'ajax-login-and-registration-modal-popup'),
+                 'name'        => __('Form: Email or Username', 'ajax-login-and-registration-modal-popup' ),
+                 'default'        => __('Email or Username', 'ajax-login-and-registration-modal-popup'),
                  'render'      => array( new LRM_Field_Text(), 'input' ),
                  'sanitize'    => array( new LRM_Field_Text(), 'sanitize' ),
              ) )
@@ -255,7 +268,7 @@ class LRM_Settings {
              ->add_field( array(
                  'slug'        => 'button',
                  'name'        => __('Form button: Login', 'ajax-login-and-registration-modal-popup' ),
-                 'default'        => __('Login', 'ajax-login-and-registration-modal-popup'),
+                 'default'        => __('Log in', 'ajax-login-and-registration-modal-popup'),
                  'render'      => array( new LRM_Field_Text(), 'input' ),
                  'sanitize'    => array( new LRM_Field_Text(), 'sanitize' ),
              ) )
@@ -269,15 +282,15 @@ class LRM_Settings {
             // == MESSAGES ==
              ->add_field( array(
                 'slug'        => 'no_login',
-                'name'        => __('Message: No Login/Email', 'ajax-login-and-registration-modal-popup' ),
-                'default'        => __('Please enter login/email!', 'ajax-login-and-registration-modal-popup'),
+                'name'        => __('Message: No Username/Email', 'ajax-login-and-registration-modal-popup' ),
+                'default'        => __('Please enter your Username/email!', 'ajax-login-and-registration-modal-popup'),
                 'render'      => array( new LRM_Field_Text(), 'input' ),
                 'sanitize'    => array( new LRM_Field_Text(), 'sanitize' ),
              ) )
              ->add_field( array(
                  'slug'        => 'no_pass',
                  'name'        => __('Message: No Password', 'ajax-login-and-registration-modal-popup' ),
-                 'default'        => __('Please enter password!', 'ajax-login-and-registration-modal-popup'),
+                 'default'        => __('Please enter your password!', 'ajax-login-and-registration-modal-popup'),
                  'render'      => array( new LRM_Field_Text(), 'input' ),
                  'sanitize'    => array( new LRM_Field_Text(), 'sanitize' ),
              ) )
@@ -331,7 +344,7 @@ class LRM_Settings {
              ->add_field( array(
                  'slug'        => 'terms',
                  'name'        => __('Form: Terms', 'ajax-login-and-registration-modal-popup' ),
-                 'default'        => __('I agree to the <a href=\'#0\'>Terms</a>', 'ajax-login-and-registration-modal-popup'),
+                 'default'        => __('I agree with the <a href=\'#0\'>Terms</a>', 'ajax-login-and-registration-modal-popup'),
                  'render'      => array( new LRM_Field_Text(), 'input' ),
                  'sanitize'    => array( new LRM_Field_Text(), 'sanitize' ),
              ) )
@@ -352,22 +365,29 @@ class LRM_Settings {
             ) )
              ->add_field( array(
                  'slug'        => 'no_name',
-                 'name'        => __('Message: No First or Last name', 'ajax-login-and-registration-modal-popup' ),
-                 'default'        => __('Please enter First and Last name!', 'ajax-login-and-registration-modal-popup'),
+                 'name'        => __('Message: No First or Last Name', 'ajax-login-and-registration-modal-popup' ),
+                 'default'        => __('Please enter your First and Last Name!', 'ajax-login-and-registration-modal-popup'),
                  'render'      => array( new LRM_Field_Text(), 'input' ),
                  'sanitize'    => array( new LRM_Field_Text(), 'sanitize' ),
              ) )
              ->add_field( array(
                  'slug'        => 'wrong_email',
                  'name'        => __('Message: Wrong email', 'ajax-login-and-registration-modal-popup' ),
-                 'default'        => __('Please enter correct email!', 'ajax-login-and-registration-modal-popup'),
+                 'default'        => __('Please enter a correct email!', 'ajax-login-and-registration-modal-popup'),
                  'render'      => array( new LRM_Field_Text(), 'input' ),
                  'sanitize'    => array( new LRM_Field_Text(), 'sanitize' ),
              ) )
              ->add_field( array(
                  'slug'        => 'success',
                  'name'        => __('Message: Registration successful', 'ajax-login-and-registration-modal-popup' ),
-                 'default'        => __('Registration successful, reloading page.', 'ajax-login-and-registration-modal-popup'),
+                 'default'        => __('Registration was successful, reloading page.', 'ajax-login-and-registration-modal-popup'),
+                 'render'      => array( new LRM_Field_Text(), 'input' ),
+                 'sanitize'    => array( new LRM_Field_Text(), 'sanitize' ),
+             ) )
+             ->add_field( array(
+                 'slug'        => 'success_please_login',
+                 'name'        => __('Message: Registration successful', 'ajax-login-and-registration-modal-popup' ),
+                 'default'        => __('Registration was successful. We have sent you an email with your login information. Please use them to log into your account.', 'ajax-login-and-registration-modal-popup'),
                  'render'      => array( new LRM_Field_Text(), 'input' ),
                  'sanitize'    => array( new LRM_Field_Text(), 'sanitize' ),
              ) );
@@ -382,8 +402,8 @@ class LRM_Settings {
              ) )
              ->add_field( array(
                  'slug'        => 'email',
-                 'name'        => __('Form: E-mail or Username', 'ajax-login-and-registration-modal-popup' ),
-                 'default'        => __('E-mail or Username', 'ajax-login-and-registration-modal-popup'),
+                 'name'        => __('Form: Email or Username', 'ajax-login-and-registration-modal-popup' ),
+                 'default'        => __('Email or Username', 'ajax-login-and-registration-modal-popup'),
                  'render'      => array( new LRM_Field_Text(), 'input' ),
                  'sanitize'    => array( new LRM_Field_Text(), 'sanitize' ),
              ) )
@@ -404,14 +424,14 @@ class LRM_Settings {
                 // Errors!
                  ->add_field( array(
                     'slug'        => 'invalid_email',
-                    'name'        => __('Message: Empty login', 'ajax-login-and-registration-modal-popup' ),
-                    'default'        => __('Enter an username or e-mail address.', 'ajax-login-and-registration-modal-popup'),
+                    'name'        => __('Message: Missing login', 'ajax-login-and-registration-modal-popup' ),
+                    'default'        => __('Enter an username or email address.', 'ajax-login-and-registration-modal-popup'),
                     'render'      => array( new LRM_Field_Text(), 'input' ),
                     'sanitize'    => array( new LRM_Field_Text(), 'sanitize' ),
                 ) )
                  ->add_field( array(
                      'slug'        => 'email_not_exists',
-                     'name'        => __('Message: No user with that email address', 'ajax-login-and-registration-modal-popup' ),
+                     'name'        => __('Message: No user registered with that email address', 'ajax-login-and-registration-modal-popup' ),
                      'default'        => __('There is no user registered with that email address.', 'ajax-login-and-registration-modal-popup'),
                      'render'      => array( new LRM_Field_Text(), 'input' ),
                      'sanitize'    => array( new LRM_Field_Text(), 'sanitize' ),
@@ -432,8 +452,8 @@ class LRM_Settings {
                  ) )
                  ->add_field( array(
                      'slug'        => 'unable_send',
-                     'name'        => __('Message: Unable send email', 'ajax-login-and-registration-modal-popup' ),
-                     'default'        => __('System is unable to send you mail contain your new password.', 'ajax-login-and-registration-modal-popup'),
+                     'name'        => __('Message: Unable to send email', 'ajax-login-and-registration-modal-popup' ),
+                     'default'        => __('System is unable to send you the mail containing your new password.', 'ajax-login-and-registration-modal-popup'),
                      'render'      => array( new LRM_Field_Text(), 'input' ),
                      'sanitize'    => array( new LRM_Field_Text(), 'sanitize' ),
                  ) )
@@ -447,7 +467,7 @@ class LRM_Settings {
                  ->add_field( array(
                      'slug'        => 'success',
                      'name'        => __('Message: Reset successful', 'ajax-login-and-registration-modal-popup' ),
-                     'default'        => __('Check your email address for you new password.', 'ajax-login-and-registration-modal-popup'),
+                     'default'        => __('Check your mailbox to access your new password.', 'ajax-login-and-registration-modal-popup'),
                      'render'      => array( new LRM_Field_Text(), 'input' ),
                      'sanitize'    => array( new LRM_Field_Text(), 'sanitize' ),
                  ) );
@@ -479,8 +499,8 @@ class LRM_Settings {
 
              ->add_field( array(
                  'slug'        => 'invalid_nonce',
-                 'name'        => __('Message: Invalid nonce', 'ajax-login-and-registration-modal-popup' ),
-                 'default'        => __('Invalid nonce!', 'ajax-login-and-registration-modal-popup'),
+                 'name'        => __('Message: Security token is expired', 'ajax-login-and-registration-modal-popup' ),
+                 'default'        => __('Security token is expired! Please refresh the page!', 'ajax-login-and-registration-modal-popup'),
                  'render'      => array( new LRM_Field_Text(), 'input' ),
                  'sanitize'    => array( new LRM_Field_Text(), 'sanitize' ),
              ) );
@@ -490,7 +510,7 @@ class LRM_Settings {
 
             $MESSAGES_SECTION = $this->settings->add_section( 'GET A PRO >>',  'get_a_pro' );
 
-            $MESSAGES_SECTION->add_group( 'Why you should get PRO version?', 'main' )
+            $MESSAGES_SECTION->add_group( 'Why get PRO version?', 'main' )
                              ->add_field( array(
                                  'slug'     => 'heading',
                                  'name'     => __('PRO features', 'ajax-login-and-registration-modal-popup' ),

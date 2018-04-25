@@ -1,4 +1,6 @@
-
+.lrm-position-relative {
+    position: relative;
+}
 /* --------------------------------
 
 xsigin/signup popup
@@ -416,7 +418,7 @@ p.lrm-form-bottom-message a {
     background-color:#eee;
     border:1px solid #ddd;
     color:#23282d;
-    margin:-2px 5px 5px 1px;
+    margin:1px 5px 5px 1px;
     padding:3px 5px;
     text-align:center;
     width:25em;

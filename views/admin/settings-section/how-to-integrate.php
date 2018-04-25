@@ -6,7 +6,7 @@
 	<li>If you wish to display any link, like "My Cabinet" only when user is logged in - add class <code>.lrm-show-if-logged-in</code>.</li>
 </ol>
 
-<p>That's all! Easy, is not it?</p>
+<p>That's all! Easy, isn't it?</p>
 <p>
 	If you need support: use
 	<a class="button" target="_blank" href="https://wordpress.org/support/plugin/ajax-login-and-registration-modal-popup">support forum</a>
