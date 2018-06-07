@@ -32,6 +32,7 @@ xsigin/signup popup
     -ms-transform: translateY(0);
     -o-transform: translateY(0);
     transform: translateY(0);
+    visibility: visible !important;
 }
 
 .lrm-user-modal-container {
@@ -61,6 +62,7 @@ ul.lrm-switcher {
 }
 ul.lrm-switcher li {
     list-style-type: none !important;
+
 }
 .lrm-user-modal-container .lrm-switcher:after {
     content: "";
@@ -71,6 +73,8 @@ ul.lrm-switcher li {
     width: 50%;
     float: left;
     text-align: center;
+    margin: 0 !important;
+    padding: 0 !important;
 }
 .lrm-user-modal-container .lrm-switcher li:first-child a {
     border-radius: .25em 0 0 0;
@@ -131,6 +135,24 @@ ul.lrm-switcher li {
     position: relative;
     margin: 1.4em 0;
     padding: 0 !important;
+    clear: both;
+}
+
+.clearfix:after {
+    display: table;
+    content: "";
+    clear: both;
+}
+
+.lrm-col-half-width {
+    width: 49%;
+    float: left;
+    clear: none;
+    position: relative;
+}
+
+.lrm-col-last{
+    float: right;
 }
 
 /*.lrm-form .fieldset:first-child {*/
@@ -185,12 +207,13 @@ ul.lrm-switcher li {
 .lrm-form input.full-width,
 .lrm-form button.full-width{
     width: 100% !important;
+    box-sizing: border-box;
 }
 .lrm-form input.has-padding,
 .lrm-form button.has-padding {
     padding: 12px 20px 12px 50px;
 }
-.lrm-form input.has-border {
+.lrm-form input.has-border{
     border: 1px solid #d2d8d8;
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -198,11 +221,56 @@ ul.lrm-switcher li {
     -o-appearance: none;
     appearance: none;
 }
+
+
+
 .lrm-form input.has-border:focus {
     border-color: #343642;
     box-shadow: 0 0 5px rgba(52, 54, 66, 0.1);
     outline: none;
 }
+/* INTEGRATIONS */
+
+.lrm-integrations label {
+    font-weight: bold;
+}
+
+.lrm-form .lrm-integrations input[type="text"],
+.lrm-form .lrm-integrations input[type="tel"],
+.lrm-form .lrm-integrations input[type="email"],
+.lrm-form .lrm-integrations input[type="number"],
+.lrm-form .lrm-integrations input[type="select"]{
+    border: 1px solid #d2d8d8;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    -o-appearance: none;
+    appearance: none;
+    width: 100% !important;
+    box-sizing: border-box;
+    padding: 12px 20px;
+    font-size: 16px;
+}
+
+.lrm-form .lrm-integrations input[type="text"]:focus,
+.lrm-form .lrm-integrations input[type="tel"]:focus,
+.lrm-form .lrm-integrations input[type="number"]:focus,
+.lrm-form .lrm-integrations input[type="email"]:focus,
+.lrm-form .lrm-integrations input[type="select"]:focus{
+    border-color: #343642;
+    box-shadow: 0 0 5px rgba(52, 54, 66, 0.1);
+    outline: none;
+}
+
+.lrm-form .acf-field {
+    text-align: left;
+}
+
+.lrm-form .acf-input-prepend,
+.lrm-form .acf-input-append {
+    padding: 13px 7px;
+}
+
 .lrm-form input.has-error {
     border: 1px solid #d76666;
 }

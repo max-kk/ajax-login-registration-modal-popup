@@ -66,18 +66,28 @@
 
                 <p class="lrm-form-message lrm-form-message--init"></p>
                 
-                <div class="fieldset">
-                    <label class="image-replace lrm-username" for="signup-first-name"><?php echo esc_attr( LRM_Settings::get()->setting('messages/registration/first-name', true) ); ?></label>
-                    <input name="first-name" class="full-width has-padding has-border" id="signup-first-name" type="text" placeholder="<?php echo esc_attr( LRM_Settings::get()->setting('messages/registration/first-name') ); ?>" required>
-                    <span class="lrm-error-message"></span>
-                </div>
-                <div class="fieldset">
-                    <label class="image-replace lrm-username" for="signup-last-name"><?php echo esc_attr( LRM_Settings::get()->setting('messages/registration/last-name', true) ); ?></label>
-                    <input name="last-name" class="full-width has-padding has-border" id="signup-last-name" type="text" placeholder="<?php echo esc_attr( LRM_Settings::get()->setting('messages/registration/last-name') ); ?>" required>
+                <div class="fieldset fieldset--username">
+                    <label class="image-replace lrm-username" for="signup-username"><?php echo esc_attr( LRM_Settings::get()->setting('messages/registration/username', true) ); ?></label>
+                    <input name="username" class="full-width has-padding has-border" id="signup-username" type="text" placeholder="<?php echo esc_attr( LRM_Settings::get()->setting('messages/registration/username') ); ?>" required>
                     <span class="lrm-error-message"></span>
                 </div>
 
-                <div class="fieldset">
+                <?php if( LRM_Settings::get()->setting('general/registration/display_first_and_last_name') ): ?>
+                <div class="fieldset clearfix">
+                    <div class="lrm-col-half-width fieldset--first-name">
+                        <label class="image-replace lrm-username" for="signup-first-name"><?php echo esc_attr( LRM_Settings::get()->setting('messages/registration/first-name', true) ); ?></label>
+                        <input name="first-name" class="full-width has-padding has-border" id="signup-first-name" type="text" placeholder="<?php echo esc_attr( LRM_Settings::get()->setting('messages/registration/first-name') ); ?>" required>
+                        <span class="lrm-error-message"></span>
+                    </div>
+                    <div class="lrm-col-half-width lrm-col-last fieldset--last-name">
+                        <label class="image-replace lrm-username" for="signup-last-name"><?php echo esc_attr( LRM_Settings::get()->setting('messages/registration/last-name', true) ); ?></label>
+                        <input name="last-name" class="full-width has-padding has-border" id="signup-last-name" type="text" placeholder="<?php echo esc_attr( LRM_Settings::get()->setting('messages/registration/last-name') ); ?>">
+                        <span class="lrm-error-message"></span>
+                    </div>
+                </div>
+                <?php endif; ?>
+
+                <div class="fieldset fieldset--email">
                     <label class="image-replace lrm-email" for="signup-email"><?php echo esc_attr( LRM_Settings::get()->setting('messages/registration/email', true) ); ?></label>
                     <input name="email" class="full-width has-padding has-border" id="signup-email" type="email" placeholder="<?php echo esc_attr( LRM_Settings::get()->setting('messages/registration/email') ); ?>" required>
                     <span class="lrm-error-message"></span>
@@ -95,13 +105,6 @@
                     </div>
                 <?php endif; ?>
 
-                <?php if( ! LRM_Settings::get()->setting('general/terms/off') ): ?>
-                 <div class="fieldset">
-                        <input type="checkbox" id="accept-terms">
-                        <label for="accept-terms"><?php echo LRM_Settings::get()->setting('messages/registration/terms', true); ?></label>
-                 </div>
-                <?php endif; ?>
-
                 <div class="lrm-integrations lrm-integrations--register">
                     <?php
                     /**
@@ -113,7 +116,12 @@
                     ?>
                 </div>
 
-
+                <?php if( ! LRM_Settings::get()->setting('general/terms/off') ): ?>
+                    <div class="fieldset">
+                        <input type="checkbox" id="accept-terms" required="required">
+                        <label for="accept-terms"><?php echo LRM_Settings::get()->setting('messages/registration/terms', true); ?></label>
+                    </div>
+                <?php endif; ?>
 
                 <div class="fieldset">
                     <button class="full-width has-padding" type="submit">

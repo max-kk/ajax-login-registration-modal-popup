@@ -5,190 +5,250 @@ var LRM = LRM ? LRM : {};
 /** @var $ jQuery */
 +(function($) {
 
-	var $formModal = $('.lrm-user-modal'),
-	$formLogin = $formModal.find('#lrm-login'),
-	$formSignup = $formModal.find('#lrm-signup'),
-	$formForgotPassword = $formModal.find('#lrm-reset-password'),
-	$formModalTab = $('.lrm-switcher'),
-	$tabLogin = $formModalTab.children('li').eq(0).children('a'),
-	$tabSignup = $formModalTab.children('li').eq(1).children('a'),
-	$forgotPasswordLink = $formLogin.find('.lrm-form-bottom-message a'),
-	$backToLoginLink = $formForgotPassword.find('.lrm-form-bottom-message a'),
-	loader_html = $("#tpl-lrm-button-loader").html();
+	if ( $('.lrm-user-modal').length > 0 ){
+		lrm_init()
+	} else {
+		setTimeout(function() {
+			lrm_init();
+		}, 1200);
+	}
 
-	$(document).on('lrm_show_signup', signup_selected);
+	function lrm_init() {
+		var $formModal = $('.lrm-user-modal'),
+			  $formLogin = $formModal.find('#lrm-login'),
+			  $formSignup = $formModal.find('#lrm-signup'),
+			  $formForgotPassword = $formModal.find('#lrm-reset-password'),
+			  $formModalTab = $('.lrm-switcher'),
+			  $tabLogin = $formModalTab.children('li').eq(0).children('a'),
+			  $tabSignup = $formModalTab.children('li').eq(1).children('a'),
+			  $forgotPasswordLink = $formLogin.find('.lrm-form-bottom-message a'),
+			  $backToLoginLink = $formForgotPassword.find('.lrm-form-bottom-message a'),
+			  loader_html = $("#tpl-lrm-button-loader").html();
 
-	$(document).on('lrm_show_signin', login_selected);
-	$(document).on('lrm_show_login', login_selected);
+		$(document).on('lrm_show_signup', signup_selected);
 
-	setTimeout(function() {
-		if ( LRM.selectors_mapping.login ) {
-			$(LRM.selectors_mapping.login)
-			.off("click")
-			.on('click', function(event){
-				event.preventDefault();
-				$(document).trigger('lrm_show_login');
-				return false;
-			});
-		}
-		if ( LRM.selectors_mapping.register ) {
-			$(LRM.selectors_mapping.register)
-			.off("click")
-			.on('click', function(event){
-					event.preventDefault();
-					$(document).trigger('lrm_show_signup');
-					return false;
-			});
-		}
-	}, 300);
+		$(document).on('lrm_show_signin', login_selected);
+		$(document).on('lrm_show_login', login_selected);
 
-	//$("form.cart").on('submit', signup_selected);
+		setTimeout(function () {
+			if (LRM.selectors_mapping.login) {
+				$(LRM.selectors_mapping.login)
+					  .off("click")
+					  .on('click', function (event) {
+						  event.preventDefault();
+						  $(document).trigger('lrm_show_login');
+						  return false;
+					  });
+			}
+			if (LRM.selectors_mapping.register) {
+				$(LRM.selectors_mapping.register)
+					  .off("click")
+					  .on('click', function (event) {
+						  event.preventDefault();
+						  $(document).trigger('lrm_show_signup');
+						  return false;
+					  });
+			}
+		}, 300);
 
-	//open sign-up form
-	$(document).on('click', '.lrm-signup', signup_selected);
-	$(document).on('click', '.lrm-register', signup_selected);
-	//open login-form form
-	$(document).on('click', '.lrm-signin', login_selected);
-	$(document).on('click', '.lrm-login', login_selected);
+		//$("form.cart").on('submit', signup_selected);
 
-	$(document).on('click', '#lrm-login .lrm-form-message a', function(event){
-		event.preventDefault();
-		forgot_password_selected();
-	});
+		//open sign-up form
+		$(document).on('click', '.lrm-signup', signup_selected);
+		$(document).on('click', '.lrm-register', signup_selected);
+		//open login-form form
+		$(document).on('click', '.lrm-signin', login_selected);
+		$(document).on('click', '.lrm-login', login_selected);
 
-	//close modal
-	$formModal.on('click', function(event){
-		if( $(event.target).is($formModal) || $(event.target).is('.lrm-close-form') ) {
-			$formModal.removeClass('is-visible');
-		}
-	});
-	//close modal when clicking the esc keyboard button
-	$(document).keyup(function(event){
-    	if(event.which=='27'){
-    		$formModal.removeClass('is-visible');
-	    }
-    });
-
-	//switch from a tab to another
-	$formModalTab.on('click', function(event) {
-		event.preventDefault();
-		( $(event.target).is( $tabLogin ) ) ? login_selected(event) : signup_selected(event);
-	});
-
-	//hide or show password
-	$('.hide-password').on('click', function(){
-		var togglePass= $(this),
-			passwordField = togglePass.parent().find('input');
-
-		( 'password' == passwordField.attr('type') ) ? passwordField.attr('type', 'text') : passwordField.attr('type', 'password');
-		( togglePass.data("hide") == togglePass.text() ) ? togglePass.text( togglePass.data("show") ) : togglePass.text( togglePass.data("hide") );
-		//focus and move cursor to the end of input field
-		passwordField.putCursorAtEnd();
-	});
-
-	//show forgot-password form
-	$forgotPasswordLink.on('click', function(event){
-		event.preventDefault();
-		forgot_password_selected();
-	});
-
-	//back to login from the forgot-password form
-	$backToLoginLink.on('click', function(event){
-		event.preventDefault();
-		login_selected(event);
-	});
-
-	function login_selected(event){
-		if ( LRM.is_user_logged_in ) {
-			return true;
-		}
-
-		$formModal.addClass('is-visible');
-		$formLogin.addClass('is-selected');
-		$formSignup.removeClass('is-selected');
-		$formForgotPassword.removeClass('is-selected');
-		$tabLogin.addClass('selected');
-		$tabSignup.removeClass('selected');
-
-		if ( event ) {
+		$(document).on('click', '#lrm-login .lrm-form-message a', function (event) {
 			event.preventDefault();
-		}
-		return false;
-	}
+			forgot_password_selected();
+		});
 
-	function signup_selected(event){
-		if ( LRM.is_user_logged_in ) {
-			return true;
-		}
-
-		$formModal.addClass('is-visible');
-		$formLogin.removeClass('is-selected');
-		$formSignup.addClass('is-selected');
-		$formForgotPassword.removeClass('is-selected');
-		$tabLogin.removeClass('selected');
-		$tabSignup.addClass('selected');
-
-		if ( event ) {
-			event.preventDefault();
-		}
-		return false;
-	}
-
-	function forgot_password_selected(){
-		if ( LRM.is_user_logged_in ) {
-			return true;
-		}
-
-		$formLogin.removeClass('is-selected');
-		$formSignup.removeClass('is-selected');
-		$formForgotPassword.addClass('is-selected');
-		return false;
-	}
-
-	$(document).on('submit', '.lrm-form', function(event){
-		event.preventDefault();
-
-		var $form = $(event.target);
-
-		$form.find(".has-error").removeClass("has-error")
-			  .next("span").removeClass("is-visible");
-
-		$form.find("button[type='submit']").prepend(loader_html);
-
-
-		$.ajax({
-			type: 'POST',
-			dataType: 'json',
-			url: LRM.ajax_url,
-			data: $form.serialize(),
-			success: function(response){
-				$form.find(".lrm-button-loader").remove();
-
-				// If user Logged in After Login or Registration
-				// If Email Verify after Registration enabled - we skip this
-				if ( response.success && response.data.logged_in ) {
-					LRM.is_user_logged_in = true;
-					$(document).trigger('lrm_user_logged_in', [response, $form]);
-
-					if ( LRM.reload_after_login ) {
-						window.location.reload();
-					}
-				} else if (!response.data.for) {
-					$form.find(".lrm-form-message").html(response.data.message);
-
-					if ( !response.success ) {
-						$form.find(".lrm-form-message").addClass("lrm-is-error");
-					}
-				} else {
-					$form.find('input[name="'+response.data.for+'"]').addClass('has-error')
-						  .next('span').html(response.data.message).addClass('is-visible');
-					$form.find(".lrm-form-message").removeClass("lrm-is-error").html("");
-				}
-
-				$(document).trigger('lrm_pro/maybe_refresh_recaptcha');
+		//close modal
+		$formModal.on('click', function (event) {
+			if ($(event.target).is($formModal) || $(event.target).is('.lrm-close-form')) {
+				$formModal.removeClass('is-visible');
 			}
 		});
-	});
+		//close modal when clicking the esc keyboard button
+		$(document).keyup(function (event) {
+			if (event.which == '27') {
+				$formModal.removeClass('is-visible');
+			}
+		});
+
+		//switch from a tab to another
+		$formModalTab.on('click', function (event) {
+			event.preventDefault();
+			( $(event.target).is($tabLogin) ) ? login_selected(event, true) : signup_selected(event, true);
+		});
+
+		//hide or show password
+		$('.hide-password').on('click', function () {
+			var togglePass = $(this),
+				  passwordField = togglePass.parent().find('input');
+
+			( 'password' == passwordField.attr('type') ) ? passwordField.attr('type', 'text') : passwordField.attr('type', 'password');
+			( togglePass.data("hide") == togglePass.text() ) ? togglePass.text(togglePass.data("show")) : togglePass.text(togglePass.data("hide"));
+			//focus and move cursor to the end of input field
+			passwordField.putCursorAtEnd();
+		});
+
+		//show forgot-password form
+		$forgotPasswordLink.on('click', function (event) {
+			event.preventDefault();
+			forgot_password_selected();
+		});
+
+		//back to login from the forgot-password form
+		$backToLoginLink.on('click', function (event) {
+			event.preventDefault();
+			login_selected(event, true);
+		});
+
+		function login_selected(event, is_system_call) {
+			// if (LRM.is_user_logged_in) {
+			// 	return true;
+			// }
+
+			if ( "undefined" != typeof(is_system_call) || !is_system_call ) {
+				LRM.redirect_url = "";
+				if (event.target && $(event.target).hasClass("lrm-redirect")) {
+					LRM.redirect_url = $(event.target).attr("href");
+				}
+			}
+
+			$formModal.addClass('is-visible');
+			$formLogin.addClass('is-selected');
+			$formSignup.removeClass('is-selected');
+			$formForgotPassword.removeClass('is-selected');
+			$tabLogin.addClass('selected');
+			$tabSignup.removeClass('selected');
+
+			if (event) {
+				event.preventDefault();
+			}
+			return false;
+		}
+
+		function signup_selected(event, is_system_call) {
+			// if (LRM.is_user_logged_in) {
+			// 	return true;
+			// }
+
+			if ( "undefined" != typeof(is_system_call) || !is_system_call ) {
+				LRM.redirect_url = "";
+				if (event.target && $(event.target).hasClass("lrm-redirect")) {
+					LRM.redirect_url = $(event.target).attr("href");
+				}
+			}
+
+			$formModal.addClass('is-visible');
+			$formLogin.removeClass('is-selected');
+			$formSignup.addClass('is-selected');
+			$formForgotPassword.removeClass('is-selected');
+			$tabLogin.removeClass('selected');
+			$tabSignup.addClass('selected');
+
+			if (event) {
+				event.preventDefault();
+			}
+			return false;
+		}
+
+		function forgot_password_selected() {
+			// if (LRM.is_user_logged_in) {
+			// 	return true;
+			// }
+
+			$formLogin.removeClass('is-selected');
+			$formSignup.removeClass('is-selected');
+			$formForgotPassword.addClass('is-selected');
+			return false;
+		}
+
+		$(document).on('submit', '.lrm-form', function (event) {
+			event.preventDefault();
+
+			if ( LRM.is_customize_preview ) {
+				alert( "Not possible submit form in Preview Mode!" );
+				return;
+			}
+
+			var $form = $(event.target);
+
+			// Fix for ACF PRO plugin
+			if ( $form.data("action") == "registration" && $form.find("#acf-form-data").length > 0 && acf.validation.active ) {
+				if ( "yes" !== $form.data("lrm-acf-validated") ) {
+					return;
+				}
+				// Reset validation flag
+				$form.data("lrm-acf-validated", "no");
+			}
+
+			$form.find(".has-error").removeClass("has-error")
+				  .next("span").removeClass("is-visible");
+
+			$form.find("button[type='submit']").prepend(loader_html);
+
+			$form.find(".lrm-form-message").html("");
+
+
+			$.ajax({
+				type: 'POST',
+				dataType: 'json',
+				url: LRM.ajax_url,
+				data: $form.serialize(),
+				success: function (response) {
+					$form.find(".lrm-button-loader").remove();
+
+					if ( response.data.message ) {
+						if ( !response.data.for ) {
+							$form.find(".lrm-form-message").html(response.data.message);
+
+							if (!response.success) {
+								$form.find(".lrm-form-message").addClass("lrm-is-error");
+							}
+
+							$(".lrm-user-modal").animate({scrollTop: 80}, 400);
+						} else {
+							$form.find('input[name="' + response.data.for + '"]').addClass('has-error')
+								  .next('span').html(response.data.message).addClass('is-visible');
+							$form.find(".lrm-form-message").removeClass("lrm-is-error").html("");
+
+						}
+					}
+
+					// If user Logged in After Login or Registration
+					// If Email Verify after Registration enabled - we skip this
+					if (response.success && response.data.logged_in) {
+						LRM.is_user_logged_in = true;
+						$(document).trigger('lrm_user_logged_in', [response, $form]);
+
+						if (LRM.reload_after_login) {
+							window.location.reload();
+						}
+					}
+
+					$(document).trigger('lrm_pro/maybe_refresh_recaptcha');
+				}
+				// error: function(jqXHR, textStatus, errorThrown) {
+				// 	$form.find(".lrm-button-loader").remove();
+				//
+				// 	alert("An error occurred, please contact with administrator... \n\rFor more details look at the console (F12 or Ctrl+Shift+I, Console tab)!");
+				//
+				// 	if (window.console == undefined) {
+				// 		return;
+				// 	}
+				// 	console.log('statusCode:', jqXHR.status);
+				// 	console.log('errorThrown:', errorThrown);
+				// 	console.log('responseText:', jqXHR.responseText);
+				// }
+			});
+		});
+
+	}
 
 	// ajaxSetup is global, but we use it to ensure JSON is valid once returned.
 	$.ajaxSetup( {

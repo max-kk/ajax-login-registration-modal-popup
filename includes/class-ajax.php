@@ -11,9 +11,7 @@ class LRM_AJAX
 
     public static function login() {
         // First check the nonce, if it fails the function will break
-        if (!isset($_POST['security-login']) || !wp_verify_nonce($_POST['security-login'], 'ajax-login-nonce')) {
-            wp_send_json_error(array('message' => LRM_Settings::get()->setting('messages/other/invalid_nonce')));
-        }
+        self::_verify_nonce( 'security-login', 'ajax-login-nonce' );
 
         LRM_Core::get()->call_pro('check_captcha');
 
@@ -42,15 +40,15 @@ class LRM_AJAX
 
             do_action('lrm/login_successful', $user_signon);
 
-            wp_send_json_success(array('logged_in' => true,'message'=>LRM_Settings::get()->setting('messages/login/success')));
+            $message = LRM_Settings::get()->setting('general/registration/reload_after_login') ? LRM_Settings::get()->setting('messages/login/success') : LRM_Settings::get()->setting('messages/login/success_no_reload');
+
+            wp_send_json_success(array('logged_in' => true,'message'=>$message));
         }
     }
 
     public static function signup() {
         // Verify nonce
-        if (!isset($_POST['security-signup']) || !wp_verify_nonce($_POST['security-signup'], 'ajax-signup-nonce')) {
-            wp_send_json_error(array('message' => LRM_Settings::get()->setting('messages/other/invalid_nonce')));
-        }
+        self::_verify_nonce( 'security-signup', 'ajax-signup-nonce' );
 
         LRM_Core::get()->call_pro('check_captcha');
 
@@ -59,9 +57,16 @@ class LRM_AJAX
         endif;
 
         // Post values
-        $first_name = sanitize_text_field($_POST['first-name']);
-        $last_name = sanitize_text_field($_POST['last-name']);
-        $email    = sanitize_email($_POST['email']);
+        $user_login = sanitize_user(trim($_POST['username']));
+        
+        $display_first_and_last_name = LRM_Settings::get()->setting('general/registration/display_first_and_last_name');
+        
+        if ( $display_first_and_last_name ) {
+            $first_name = sanitize_text_field( $_POST['first-name'] );
+            $last_name  = sanitize_text_field( $_POST['last-name'] );
+        }
+        
+        $email = sanitize_email($_POST['email']);
         
         if ( isset( $_POST['password'] ) && LRM_Settings::get()->setting('general_pro/all/allow_user_set_password') ) {
             $password =  sanitize_text_field($_POST['password']);
@@ -73,17 +78,21 @@ class LRM_AJAX
         }
 
 
-        if ( !$first_name || !$last_name ) {
-            wp_send_json_error(array('message' => LRM_Settings::get()->setting('messages/registration/no_name')));
+        if ( !$user_login ) {
+            wp_send_json_error(array('message' => LRM_Settings::get()->setting('messages/registration/no_username'), 'for'=>'username'));
+        }
+
+        if ( $display_first_and_last_name && !$first_name ) {
+            wp_send_json_error(array('message' => LRM_Settings::get()->setting('messages/registration/no_name'), 'for'=>'first-name'));
         }
 
         if ( !$email || !is_email($email) ) {
-            wp_send_json_error(array('message' => LRM_Settings::get()->setting('messages/registration/wrong_email')));
+            wp_send_json_error(array('message' => LRM_Settings::get()->setting('messages/registration/wrong_email'), 'for'=>'email'));
         }
 
-        $user_login = sanitize_user( sanitize_title_with_dashes($first_name . '_' . $last_name) );
-
-        $user_login = rtrim($user_login, '_-');
+//        $user_login = sanitize_user( sanitize_title_with_dashes($first_name . '_' . $last_name) );
+//
+//        $user_login = rtrim($user_login, '_-');
 
         // !! Disable system Emails
         // TODO - allow change this in settings
@@ -109,10 +118,15 @@ class LRM_AJAX
 	        'ID'         => $user_id,
             'user_pass'  => $password,
             'user_email' => $email,
-            'first_name' => $first_name,
-            'last_name'  => $last_name,
-            'nickname'   => $first_name . ' ' . $last_name,
         );
+        
+        if ( $display_first_and_last_name ) {
+            $userdata['first_name'] = $first_name;    
+            $userdata['last_name'] = $last_name;
+            $userdata['nickname'] = $first_name . ' ' . $last_name;
+        } else {
+            $userdata['nickname'] = $user_login;
+        }
 
         $user_id = wp_update_user( $userdata );
 
@@ -149,7 +163,9 @@ class LRM_AJAX
                 LRM_Settings::get()->setting('mails/registration/body')
             );
 
-            wp_mail($email, $subject, $mail_body);
+            $mail_body = apply_filters( "lrm/mails/registration/body", $mail_body, $user_login, $userdata );
+
+            $mail_sent = LRM_Mailer::send( $email, $subject, $mail_body );
 
             if ( $user_signon && !is_wp_error($user_signon) ) {
                 wp_send_json_success( array(
@@ -174,9 +190,7 @@ class LRM_AJAX
 
     public static function lostpassword() {
         // First check the nonce, if it fails the function will break
-        if (!isset($_POST['security-lostpassword']) || !wp_verify_nonce($_POST['security-lostpassword'], 'ajax-forgot-nonce')) {
-            wp_send_json_error(array('message' => LRM_Settings::get()->setting('messages/other/invalid_nonce')));
-        }
+        self::_verify_nonce( 'security-lostpassword', 'ajax-forgot-nonce' );
 
         $errors = new WP_Error();
 
@@ -247,7 +261,7 @@ class LRM_AJAX
                     LRM_Settings::get()->setting('mails/lost_password/body')
                 );
 
-                $mail_sent = wp_mail( $to, $subject, $mail_body );
+                $mail_sent = LRM_Mailer::send( $to, $subject, $mail_body );
 
                 if( !$mail_sent ) {
                     $errors->add('unable_send', LRM_Settings::get()->setting('messages/lost_password/unable_send'));
@@ -270,6 +284,16 @@ class LRM_AJAX
             wp_send_json_success(array(
                 'message'=>LRM_Settings::get()->setting('messages/lost_password/success')
             ));
+        }
+    }
+
+    public function _verify_nonce( $post_key, $nonce_key ) {
+        if ( defined("WP_CACHE") ) {
+            return true;
+        }
+
+        if ( !isset($_POST[$post_key]) || !wp_verify_nonce($_POST[$post_key], $nonce_key) ) {
+            wp_send_json_error(array('message' => LRM_Settings::get()->setting('messages/other/invalid_nonce')));
         }
     }
 
