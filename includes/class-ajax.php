@@ -29,7 +29,34 @@ class LRM_AJAX
             wp_send_json_error(array('message' => LRM_Settings::get()->setting('messages/login/no_pass'), 'for'=>'password'));
         }
 
-        $user_signon = wp_signon( $info, false );
+        $secure_cookie = is_ssl();
+
+        // If the user wants ssl but the session is not ssl, force a secure cookie.
+        if ( !$secure_cookie && !empty($info['user_login']) && !force_ssl_admin() ) {
+            $user_name = sanitize_user($_POST['log']);
+            $user = get_user_by( 'login', $user_name );
+
+            if ( ! $user && strpos( $user_name, '@' ) ) {
+                $user = get_user_by( 'email', $user_name );
+            }
+
+            if ( $user ) {
+                if ( get_user_option('use_ssl', $user->ID) ) {
+                    $secure_cookie = true;
+                    force_ssl_admin(true);
+                }
+            }
+        }
+
+        $user_signon = wp_signon( $info, $secure_cookie );
+
+        if ( !is_wp_error($user_signon) && empty( $_COOKIE[ LOGGED_IN_COOKIE ] ) ) {
+            if ( headers_sent() ) {
+                /* translators: 1: Browser cookie documentation URL, 2: Support forums URL */
+                $user_signon = new WP_Error( 'test_cookie', sprintf( __( '<strong>ERROR</strong>: Cookies are blocked due to unexpected output. For help, please see <a href="%1$s">this documentation</a> or try the <a href="%2$s">support forums</a>.' ),
+                    __( 'https://codex.wordpress.org/Cookies' ), __( 'https://wordpress.org/support/' ) ) );
+            }
+        }
 
         if ( is_wp_error($user_signon) ){
 
@@ -194,7 +221,7 @@ class LRM_AJAX
 
         $errors = new WP_Error();
 
-        $account = sanitize_email( trim($_POST['user_login']) );
+        $account = sanitize_text_field( trim($_POST['user_login']) );
 
         LRM_Core::get()->call_pro('check_captcha');
 
@@ -234,28 +261,39 @@ class LRM_AJAX
             add_filter( 'send_password_change_email', '__return_false' );
 
             // lets generate our new password
-            //$random_password = wp_generate_password( 12, false );
-            $random_password = wp_generate_password();
 
             // Get user data by field and data, fields are id, slug, email and login
             $user = get_user_by( $get_by, $account );
 
-            $update_user = wp_update_user( array ( 'ID' => $user->ID, 'user_pass' => $random_password ) );
+            $password_reset_key = get_password_reset_key( $user );
 
             // if  update user return true then lets send user an email containing the new password
-            if( $update_user ) {
+            if( $password_reset_key && ! is_wp_error($password_reset_key) ) {
                 $to = $user->user_email;
                 $subject = LRM_Settings::get()->setting('mails/lost_password/subject');
+
+                $reset_pass_url = '';
+
+                if ( ! class_exists( 'WooCommerce' ) ) {
+                    $reset_pass_url = add_query_arg( array( 'key' => $password_reset_key, 'login' => rawurlencode( $user->user_login ) ), wc_get_endpoint_url( 'lost-password', '', wc_get_page_permalink( 'myaccount' ) ) );
+                } else if ( is_multisite() ) {
+                    $reset_pass_url = network_site_url( "wp-login.php?action=rp&key=$password_reset_key&login=" . rawurlencode( $user->user_login ), 'login' );
+                } else {
+                    $reset_pass_url = add_query_arg(
+                        array('action'=>'rp', 'key'=>$password_reset_key, 'login'=> rawurlencode( $user->user_login )),
+                        wp_login_url()
+                    );
+                }
 
                 $mail_body = str_replace(
                     array(
                         '{{USERNAME}}',
-                        '{{PASSWORD}}',
+                        '{{CHANGE_PASSWORD_URL}}',
                         '{{LOGIN_URL}}',
                     ),
-                    array(
+                    array( 
                         $user->user_login,
-                        $random_password,
+                        $reset_pass_url,
                         wp_login_url(),
                     ),
                     LRM_Settings::get()->setting('mails/lost_password/body')
@@ -272,7 +310,7 @@ class LRM_AJAX
         }
 
         // Return
-        if( ! empty( $error ) ) {
+        if( $errors->get_error_messages() ) {
             do_action('lrm/lost_password_fail', $errors);
 
             wp_send_json_error(array(

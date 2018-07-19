@@ -114,8 +114,8 @@ var LRM = LRM ? LRM : {};
 
 			if ( "undefined" != typeof(is_system_call) || !is_system_call ) {
 				LRM.redirect_url = "";
-				if (event.target && $(event.target).hasClass("lrm-redirect")) {
-					LRM.redirect_url = $(event.target).attr("href");
+				if ( $(this).hasClass("lrm-redirect") ) {
+					LRM.redirect_url = $(this).attr("href");
 				}
 			}
 
@@ -139,9 +139,10 @@ var LRM = LRM ? LRM : {};
 
 			if ( "undefined" != typeof(is_system_call) || !is_system_call ) {
 				LRM.redirect_url = "";
-				if (event.target && $(event.target).hasClass("lrm-redirect")) {
-					LRM.redirect_url = $(event.target).attr("href");
+				if ( $(this).hasClass("lrm-redirect") ) {
+					LRM.redirect_url = $(this).attr("href");
 				}
+
 			}
 
 			$formModal.addClass('is-visible');

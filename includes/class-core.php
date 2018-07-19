@@ -29,7 +29,7 @@ class LRM_Core {
             add_action('lrm_lostpassword_form', array($this, 'form_fblogin__action'));
         }
 
-        add_action('init', array($this, 'process_ajax'), 11);
+        add_action('wp_loaded', array($this, 'process_ajax'), 12);
         //if ( class_exists('LRM_Pro') ) {
         //} else {
         //    $this->process_ajax();
@@ -135,6 +135,11 @@ class LRM_Core {
     }
 
     public function enqueue_assets() {
+
+        if ( !is_customize_preview() && is_user_logged_in() ) {
+            return;
+        }
+
         wp_enqueue_script('lrm-modal', LRM_URL . '/assets/lrm-core.js', array('jquery'), LRM_ASSETS_VER, true);
 
         wp_enqueue_style('lrm-modal', LRM_URL . '/assets/lrm-core.css', false, LRM_ASSETS_VER);
@@ -142,6 +147,7 @@ class LRM_Core {
         $script_params = array(
             'redirect_url'       => '',
             'ajax_url'           => add_query_arg( 'lrm', '1', site_url('/') ),
+            //'ajax_url'           => add_query_arg( 'lrm', '1', admin_url('admin-ajax.php') ),
             'is_user_logged_in'  => is_user_logged_in(),
             'reload_after_login' => LRM_Settings::get()->setting('general/registration/reload_after_login'),
             'selectors_mapping' => array(

@@ -24,6 +24,7 @@ class LRM_Settings {
         require_once LRM_PATH .  "/includes/settings/class-settings-field--text.php";
         require_once LRM_PATH .  "/includes/settings/class-settings-field--textarea.php";
         require_once LRM_PATH .  "/includes/settings/class-settings-field--textarea-html.php";
+        require_once LRM_PATH .  "/includes/settings/class-settings-field--editor.php";
 
         // register menu as always
         add_action( 'admin_menu', array( $this, 'register_menu' ) );
@@ -65,7 +66,7 @@ class LRM_Settings {
 
         if ( lrm_is_pro() ) {
 
-            if ( !defined("LRM_PRO_VERSION") || version_compare(LRM_PRO_VERSION, '1.13', '<') ) {
+            if ( !defined("LRM_PRO_VERSION") || version_compare(LRM_PRO_VERSION, '1.16', '<') ) {
 
                 echo '<div class="notice notice-info notification-notice"><p>';
 
@@ -78,13 +79,14 @@ class LRM_Settings {
             }
 
             // Update notice for 1.18 > 1.20
-            if ( LRM_Settings::get()->setting('general/registration/user_must_confirm_email')
-                    && false ===  strpos( LRM_Settings::get()->setting('mails/lost_password/body'), '{{VERIFY_ACCOUNT_URL}}' ) ) {
-
+            if ( 
+                LRM_Pro_User_Verification::link_verification_is_on()
+                && false ===  strpos( LRM_Settings::get()->setting('mails/registration/body'), '{{VERIFY_ACCOUNT_URL}}' )
+            ) {
                 echo '<div class="notice notice-error notification-notice"><p>';
 
                 printf(
-                    '"AJAX Login and Register Modal" warning: please add tag {{VERIFY_ACCOUNT_URL}} to "Registration" mail body in <a href="%s">Emails Section</a>, else user can\'t verify account and login to your site.',
+                    '"AJAX Login and Register Modal" warning: please add tag <code>{{VERIFY_ACCOUNT_URL}}</code> to "Registration" mail body in <a href="%s">Emails Section</a>, else user can\'t verify account and login to your site.',
                     admin_url('options-general.php?page=login-and-register-popup&section=mails')
                 );
 
@@ -94,18 +96,25 @@ class LRM_Settings {
         }
 
         // Update notice for 1.18 > 1.20
-        if ( false === strpos( LRM_Settings::get()->setting('mails/lost_password/body'), '{{PASSWORD}}' ) ) {
+        if ( false === strpos( LRM_Settings::get()->setting('mails/lost_password/body'), '{{CHANGE_PASSWORD_URL}}' ) ) {
 
             echo '<div class="notice notice-error notification-notice"><p>';
 
             printf(
-                '"AJAX Login and Register Modal" warning: please update "Lost password" mail body in <a href="%s">Emails Section</a> (replace {{PASSWORD}} with {{CHANGE_PASSWORD_URL}})',
+                '"AJAX Login and Register Modal" warning: please update "Lost password" mail body in <a href="%s">Emails Section</a> (replace <code>{{PASSWORD}}</code> with <code>{{CHANGE_PASSWORD_URL}}</code>)',
                 admin_url('options-general.php?page=login-and-register-popup&section=mails')
             );
 
             echo '</p></div>';
 
         }
+
+        $screen = get_current_screen();
+
+        if ( $screen->id != 'settings_page_' . $this->page_id ) {
+            return;
+        }
+
         // Update notice for 1.18 > 1.20
         if ( ! get_option("users_can_register") ) {
 
@@ -120,26 +129,18 @@ class LRM_Settings {
 
         }
 
-        $screen = get_current_screen();
+        if ( ! get_option( 'rem_beg_message' ) ) {
+            echo '<div class="notice notice-info notification-notice"><p>';
 
-        if ( $screen->id != 'settings_page_' . $this->page_id ) {
-            return;
+            printf( __( 'Do you like "Login and Register Modal" plugin? Please consider giving it a %1$sreview%2$s', 'ajax-login-and-registration-modal-popup' ), '<a href="https://wordpress.org/support/plugin/ajax-login-and-registration-modal-popup/reviews/#new-post" class="button button-secondary" target="_blank">⭐⭐⭐⭐⭐ ', '</a>' );
+
+            echo '<a href="' . add_query_arg( array('action'=>'dismiss_rem_beg_message', '_wpnonce' => wp_create_nonce('lrm-beg-dismiss')) ) . '" class="dismiss-beg-message button" type="submit" style="float: right;">';
+            _e( 'I already reviewed it', 'ajax-login-and-registration-modal-popup' );
+            echo '</a>';
+
+            echo '</p></div>';
+
         }
-
-        if ( get_option( 'rem_beg_message' ) ) {
-            return;
-        }
-
-        echo '<div class="notice notice-info notification-notice"><p>';
-
-        printf( __( 'Do you like "Login and Register Modal" plugin? Please consider giving it a %1$sreview%2$s', 'ajax-login-and-registration-modal-popup' ), '<a href="https://wordpress.org/support/plugin/ajax-login-and-registration-modal-popup/reviews/#new-post" class="button button-secondary" target="_blank">⭐⭐⭐⭐⭐ ', '</a>' );
-
-        echo '<a href="' . add_query_arg( array('action'=>'dismiss_rem_beg_message', '_wpnonce' => wp_create_nonce('lrm-beg-dismiss')) ) . '" class="dismiss-beg-message button" type="submit" style="float: right;">';
-        _e( 'I already reviewed it', 'ajax-login-and-registration-modal-popup' );
-        echo '</a>';
-
-        echo '</p></div>';
-
     }
 
     /**
@@ -188,15 +189,33 @@ class LRM_Settings {
                 'render'      => array( new CoreFields\Checkbox(), 'input' ),
                 'sanitize'    => array( new CoreFields\Checkbox(), 'sanitize' ),
             ) );
-        
+
+
+        $user_must_confirm_email_description = __('If this option is enabled - the user won\'t automatically be logged into his account.', 'ajax-login-and-registration-modal-popup' ) . ' <br/>';
+
+        if ( ! lrm_is_pro() ) {
+            $user_must_confirm_email_description .= __('He will need to open the email with his login information and enter them on the Log In tab.', 'ajax-login-and-registration-modal-popup' );
+        } else {
+//            if ( LRM_Settings::get()->setting('general_pro/all/allow_user_set_password') ) {
+//                $user_must_confirm_email_description .= '<strong>' . __('[ACTIVE]') . '</strong>';
+//            }
+//
+            $user_must_confirm_email_description .= '<strong>' . __('[If user can\'t set password] ') . '</strong>' . __('He will need to open the email with his login information and enter them on the Log In tab.', 'ajax-login-and-registration-modal-popup' );
+
+            $user_must_confirm_email_description .= '<br/>';
+//
+//            if ( ! LRM_Settings::get()->setting('general_pro/all/allow_user_set_password') ) {
+//                $user_must_confirm_email_description .= '<strong>' . __('[ACTIVE]') . '</strong>';
+//            }
+
+            $user_must_confirm_email_description .= '<strong>' . __('[If user can set password] ') . '</strong>' . __('He will need to open the email and click verification link. Please add {{VERIFY_ACCOUNT_URL}} tag to Registration Email.', 'ajax-login-and-registration-modal-popup' );
+        }
+
         $general->add_group( __( 'General', 'ajax-login-and-registration-modal-popup' ), 'registration' )
             ->add_field( array(
                 'slug'        => 'user_must_confirm_email',
                 'name'        => __('User must confirm email after registration?', 'ajax-login-and-registration-modal-popup' ),
-                'description' =>
-                    !lrm_is_pro ()
-                        ? __('If this option is enabled - the user won\'t automatically be logged into his account. He will need to open the email with his login information and enter them on the Log In tab.', 'ajax-login-and-registration-modal-popup' )
-                        : __('If this option is enabled - the user won\'t automatically be logged into his account. He will need to open the email and click verification link. Please add {{VERIFY_ACCOUNT_URL}} tag to Registration Email.', 'ajax-login-and-registration-modal-popup' ),
+                'description' => $user_must_confirm_email_description,
                 'default'     => false,
                 'render'      => array( new CoreFields\Checkbox(), 'input' ),
                 'sanitize'    => array( new CoreFields\Checkbox(), 'sanitize' ),
@@ -204,14 +223,15 @@ class LRM_Settings {
             ->add_field( array(
                 'slug'        => 'reload_after_login',
                 'name'        => __('Reload page after login/registration?', 'ajax-login-and-registration-modal-popup' ),
-                'default'     => true,
+                'default'     => 'true',
+                'description' => 'Does not have sense with option "' . __('User must confirm email after registration?', 'ajax-login-and-registration-modal-popup' ) . '" enabled.',
                 'render'      => array( new CoreFields\Checkbox(), 'input' ),
                 'sanitize'    => array( new CoreFields\Checkbox(), 'sanitize' ),
             ) )
             ->add_field( array(
                 'slug'        => 'display_first_and_last_name',
                 'name'        => __('Display First and Last name fields in Registration Form?', 'ajax-login-and-registration-modal-popup' ),
-                'default'     => true,
+                'default'     => 'true',
                 'render'      => array( new CoreFields\Checkbox(), 'input' ),
                 'sanitize'    => array( new CoreFields\Checkbox(), 'sanitize' ),
             ) );
@@ -281,8 +301,8 @@ class LRM_Settings {
                     'pretty'   => true,
                 ),
                 'description' => 'The email Body to user about successful registration. Allowed tags: {{USERNAME}}, {{PASSWORD}}, {{LOGIN_URL}}, {{VERIFY_ACCOUNT_URL}} (only for PRO)',
-                'render'      => array( new CoreFields\Editor(), 'input' ),
-                'sanitize'    => array( new CoreFields\Editor(), 'sanitize' ),
+                'render'      => array( new LRM_Field_Editor(), 'input' ),
+                'sanitize'    => array( new LRM_Field_Editor(), 'sanitize' ),
             ) );
 
         $EMAILS_SECTION->add_group( __( 'Lost password', 'ajax-login-and-registration-modal-popup' ), 'lost_password' )
@@ -305,8 +325,8 @@ class LRM_Settings {
                     'pretty'   => true,
                 ),
                 'description' => __( 'The email Body to user with new password. Allowed tags: {{USERNAME}}, {{CHANGE_PASSWORD_URL}}, {{SITE_URL}}, {{LOGIN_URL}}', 'ajax-login-and-registration-modal-popup' ),
-                'render'      => array( new CoreFields\Editor(), 'input' ),
-                'sanitize'    => array( new CoreFields\Editor(), 'sanitize' ),
+                'render'      => array( new LRM_Field_Editor(), 'input' ),
+                'sanitize'    => array( new LRM_Field_Editor(), 'sanitize' ),
             ) );
 
         $MESSAGES_SECTION = $this->settings->add_section( __( 'Expressions', 'ajax-login-and-registration-modal-popup' ), 'messages' );
@@ -605,7 +625,7 @@ class LRM_Settings {
 
         if ( !class_exists('LRM_Pro') ) {
 
-            $MESSAGES_SECTION = $this->settings->add_section( 'GET A PRO >>',  'get_a_pro' );
+            $MESSAGES_SECTION = $this->settings->add_section( 'GET PRO >>',  'get_a_pro' );
 
             $MESSAGES_SECTION->add_group( 'Why get PRO version?', 'main' )
                              ->add_field( array(
@@ -648,15 +668,62 @@ class LRM_Settings {
     /**
      * Get single setting value
      * @uses   SettingsAPI Settings API class
-     * @param  string $setting setting section/group/field separated with /
+     * @param  string $setting_slug setting section/group/field separated with /
      * @param  bool do_stripslashes
      * @return mixed           field value or null if name not found
      */
-    public function setting( $setting, $do_stripslashes = false) {
+    public function setting($setting_slug, $do_stripslashes = false) {
 
-        $value = $this->settings->get_setting( $setting );
+        $value = $this->settings->get_setting( $setting_slug );
+
+        // IF Value is empty and it's message string - try to get translated
+
+        if ( 0 === strpos($setting_slug, 'messages/') || 0 === strpos($setting_slug, 'mails/') ) {
+
+            $value = stripslashes($value);
+        }
+
+        if (!$value && 0 === strpos($setting_slug, 'messages/') && defined("LRM/SETTINGS/TRY_GET_TRANSLATED")) {
+            $fields = $this->get_section_settings_fields('messages');
+
+            $default_value = $fields[$setting_slug]->default_value();
+            if ($default_value) {
+                $__value = __($default_value, 'ajax-login-and-registration-modal-popup');
+                if ($default_value !== $__value) {
+                    $value = $__value;
+                }
+            }
+
+        }
+
         return $do_stripslashes ? stripslashes( $value ) : $value;
 
+    }
+
+
+    /**
+     * Get all fields from section
+     *
+     * @param string $section_slug
+     *
+     * @since 1.24
+     *
+     * @return \underDEV\Utils\Settings\Field[]
+     */
+    public function get_section_settings_fields( $section_slug ) {
+
+        $fields = array();
+
+        $section = $this->settings->get_section( $section_slug );
+
+        foreach ( $section->get_groups() as $group_slug => $group ) {
+
+            foreach ( $group->get_fields() as $field_slug => $field ) {
+                $fields[ $section . '/' . $group_slug . '/' . $field_slug ] = $field;
+            }
+        }
+
+        return $fields;
     }
 
     private function _reset_translations() {

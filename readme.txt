@@ -2,7 +2,7 @@
 Contributors: kaminskym
 Tags: login, registration, register, modal, popup, ajax
 Requires at least: 4.1
-Tested up to: 4.9.5
+Tested up to: 4.9.6
 Requires PHP: 5.4
 Stable tag: trunk
 License: GPLv2 or later
@@ -14,6 +14,8 @@ Easy to integrate modal with Login and Registration features.
 
 Easy to integrate modal with Login and Registration features. Compatible with any theme.
 
+[DEMO >>](https://demo.maxim-kaminsky.com/lrm/)
+
 **Features:**
 
 1. Easy to integrate
@@ -23,6 +25,7 @@ Easy to integrate modal with Login and Registration features. Compatible with an
 5. Compatible with other plugins
 6. Tested with latest WP version
 7. Developer support (via forums or personal via email for PRO users)
+7. Supports WP Customizer (in PRO)
 
 **Customization options:**
 
@@ -35,6 +38,7 @@ Easy to integrate modal with Login and Registration features. Compatible with an
 1. [Login LockDown](https://wordpress.org/plugins/login-lockdown/) (limit login attempts count)
 2. [WP Facebook Login](https://wordpress.org/plugins/wp-facebook-login/)
 3. [WP Foto Vote](https://wp-vote.net/wordpress-voting-plugin/) (photo contest plugin from author of this plugin ☺)
+4. [All In One WP Security & Firewall](https://wordpress.org/plugins/all-in-one-wp-security-and-firewall/) (tested with "Renamed Login Page")
 
 **Roadmap**
 
@@ -43,7 +47,7 @@ Easy to integrate modal with Login and Registration features. Compatible with an
 
 = PRO features =
 
-* 3 months personal support from developer via Email
+* 6 months personal support from developer via Email
 * Troubleshooting problems and conflicts with other plugins/themes (1 site)
 * Unlimited plugin updates
 * Compatibility with other popular plugins (list below)
@@ -51,23 +55,28 @@ Easy to integrate modal with Login and Registration features. Compatible with an
 **The PRO version extra features:**
 1. Allow user set custom password (not random generated) during registration
 2. Redirect user to specified page after login/registration (for example User Profile)
-3. [Request other feature >>](https://maxim-kaminsky.com/shop/contact-me/)
+3. Customize buttons color in WP Customizer
+4. [Request other feature >>](https://maxim-kaminsky.com/shop/contact-me/)
 
 **The PRO version is 100% tested and are compatible with a following plugins:**
 
-1. [Woocommerce](https://wordpress.org/plugins/woocommerce/) (show modal when clicked "Add to cart" in list or single product)
-2. [Captcha](https://wordpress.org/plugins/captcha/)
-3. [WP reCaptcha Integration](https://wordpress.org/plugins/wp-recaptcha-integration/)
-4. [Really Simple CAPTCHA](https://wordpress.org/plugins/really-simple-captcha/)
-5. [Captcha bank](https://ru.wordpress.org/plugins/captcha-bank/)
-6. [WordPress Social Login](https://wordpress.org/plugins/wordpress-social-login/) (social login buttons below login/register form)
-7. [Social Login WordPress Plugin – AccessPress](https://wordpress.org/plugins/accesspress-social-login-lite/) (social login buttons below login/register form)
-8. Math Captcha - soon
-9. Easy Digital Downloads - soon
-10. [Request other plugin >>](https://maxim-kaminsky.com/shop/contact-me/)
+1. [Woocommerce](https://wordpress.org/plugins/woocommerce/) (show modal when clicked "Add to cart" in list or single product or in Cart when click "Process to Checkout")
+2. [WooCommerce Sense](https://wordpress.org/plugins/woocommerce/) (fix for Login process)
+3. [Captcha](https://wordpress.org/plugins/captcha/)
+4. [WP reCaptcha Integration](https://wordpress.org/plugins/wp-recaptcha-integration/)
+5. [Really Simple CAPTCHA](https://wordpress.org/plugins/really-simple-captcha/)
+6. [Captcha bank](https://ru.wordpress.org/plugins/captcha-bank/)
+7. [WordPress Social Login](https://wordpress.org/plugins/wordpress-social-login/) (social login buttons below login/register form)
+8. [Social Login WordPress Plugin – AccessPress](https://wordpress.org/plugins/accesspress-social-login-lite/) (social login buttons below login/register form)
+9. [Jetpack - SSO login](https://jetpack.com/support/sso/) [Wordpress.com login button](https://monosnap.com/file/4Na5FYYONRj79jnLBmQFK3hjnMJQDR)
+10. Math Captcha - soon
+11. Easy Digital Downloads - soon
+12. [Request other plugin >>](https://maxim-kaminsky.com/shop/contact-me/)
 
 
-[GET A PRO >>](https://maxim-kaminsky.com/shop/product/ajax-login-and-registration-modal-popup-pro/)
+[GET PRO >>](https://maxim-kaminsky.com/shop/product/ajax-login-and-registration-modal-popup-pro/)
+
+[PRO DEMO >>](https://demo.maxim-kaminsky.com/lrm/pro/)
 
 == Installation ==
 
@@ -79,13 +88,21 @@ Easy to integrate modal with Login and Registration features. Compatible with an
 
 = How to integrate this plugin to my website? =
 
-Just add class "lrm-login" to the <button> or <a> element for show login tab or "lrm-signup" for registration tab.
+Just add class `lrm-login` to the `<button>` or `<a>` element for show login tab or `lrm-signup` for registration tab.
+
+Example: `<a href="/wp-login.php" class="lrm-login">Login</a>`
 
 = How can I attach modal to menu item? =
 
 Use this tutorial to add class from text above for your menu element - [https://www.lockedowndesign.com/add-css-classes-to-menu-items-in-wordpress/](https://www.lockedowndesign.com/add-css-classes-to-menu-items-in-wordpress/)
 
+= How can I add log out link/button? =
+
+Please read this post: https://wordpress.org/support/topic/logout-link-8/#post-10180543
+
 = How can I call modal from Javascript? =
+
+Look "Developer hooks" section below.
 
 = Developer hooks =
 
@@ -137,19 +154,45 @@ If you have login issue with Adminize plugin - go to Adminize plugin settings an
 11. Admin settings - Expressions [PRO]
 12. Registration with Password field [PRO]
 
+== Known issues ==
+
+- With Theme my login (TML) plugin (3 Password fields on the Create Account tab, if enable password field in LRM and TML)
+
 == Changelog ==
 
-= VER 1.20 - 02/06/2018 =
+= VER 1.24 - 13/07/2018 =
 
-- Changed "password reset" way: before after password reset request password was immediately changes, now email will be send with change password link
-- Warning if Registration is disabled in WP Settings
-- Possible Hide First & Last name fields in plugin Settings
+- Fixed password reset issues with WooCommerce installed
+- Fixed issue with slashed quotes after saving in Emails section
 
-==== Update instructions: ====
+= VER 1.23 - 30/06/2018 =
+
+- Fixed issues with HTTPS and Login (when try open to /wp-admin/ wordpress require re-login).
+
+= VER 1.22 - 18/06/2018 =
+
+- Message about disabled user registration now displayed only on Plugin settings page (not site-wide)
+- Fixes for "All In One WP Security & Firewall" plugin
+
+= VER 1.21 - 14/06/2018 =
+
+- Fixed issue with Reset password: not possible use username to reset, only email
+
+= VER 1.20 - 10/06/2018 =
+
+- Warning if New Users Registration is disabled in WP Settings
+- Possible Hide First & Last name fields (Registration Form) in plugin Settings
+- Small settings fix: (default "true" values for checkboxes is added in a wrong way)
+- Changed "password reset" way: before after password reset request password was immediately changed, now email will be send with change password link
+
+= Update instructions from 1.1x to 1.20: =
 
 **Open "EXPRESSIONS" tab and find "Lost password" section**
 
-Replace "Lost your password? Please enter your email address. You will receive mail with new password." with "Lost your password? Please enter your email address. You will receive mail with link to set new password."
+Replace
+**"Lost your password? Please enter your email address. You will receive mail with new password."**
+with
+**"Lost your password? Please enter your email address. You will receive mail with link to set new password."**
 
 **Open "Emails" tab and find "Lost password" section**
 

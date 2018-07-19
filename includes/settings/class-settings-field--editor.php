@@ -3,9 +3,7 @@
  * Editor field class
  */
 
-namespace underDEV\Utils\Settings\CoreFields;
-
-class Editor {
+class LRM_Field_Editor {
 
 	/**
 	 * Editor field

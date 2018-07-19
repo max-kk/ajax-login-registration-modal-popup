@@ -221,7 +221,7 @@ class Settings {
 				}
 
 			}
-
+			
 		}
 
 		return apply_filters( $this->handle . '/settings/saved_settings', $this->settings, $this );

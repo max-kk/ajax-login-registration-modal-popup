@@ -1,5 +1,5 @@
 <ul>
-	<li>3 months of personal support from developer via Email</li>
+	<li>6 months of personal support from developer via Email</li>
 	<li>Troubleshooting problems and conflicts with other plugins/themes (1 site)</li>
 	<li>Unlimited plugin updates</li>
 	<li>Compatibility with other popular plugins (list below)</li>
@@ -18,6 +18,7 @@
 <p><strong>The PRO version is 100% tested and compatible with the following plugins:</strong></p>
 <ul>
 	<li><a href="https://wordpress.org/plugins/woocommerce/" target="_blank">Woocommerce</a> (show modal when clicked "Add to cart" in list or single product)</li>
+	<li><a href="https://woocommerce.com/products/sensei/" target="_blank">Woocommerce Sensei plugin</a> (fixed login issue)</li>
 	<li><a href="https://wordpress.org/plugins/captcha/" target="_blank">Captcha</a></li>
 	<li><a href="https://wordpress.org/plugins/wp-recaptcha-integration/" target="_blank">WP reCaptcha Integration</a></li>
 	<li><a href="https://wordpress.org/plugins/really-simple-captcha/" target="_blank">Really Simple CAPTCHA</a></li>

@@ -239,7 +239,7 @@ ul.lrm-switcher li {
 .lrm-form .lrm-integrations input[type="tel"],
 .lrm-form .lrm-integrations input[type="email"],
 .lrm-form .lrm-integrations input[type="number"],
-.lrm-form .lrm-integrations input[type="select"]{
+.lrm-form .lrm-integrations select{
     border: 1px solid #d2d8d8;
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -256,7 +256,7 @@ ul.lrm-switcher li {
 .lrm-form .lrm-integrations input[type="tel"]:focus,
 .lrm-form .lrm-integrations input[type="number"]:focus,
 .lrm-form .lrm-integrations input[type="email"]:focus,
-.lrm-form .lrm-integrations input[type="select"]:focus{
+.lrm-form .lrm-integrations select:focus{
     border-color: #343642;
     box-shadow: 0 0 5px rgba(52, 54, 66, 0.1);
     outline: none;
@@ -278,8 +278,9 @@ ul.lrm-switcher li {
     /* space left for the HIDE button */
     padding-right: 65px;
 }
+.lrm-form a.button,
+.lrm-form button,
 .lrm-form button[type=submit] {
-    padding: 16px 0;
     cursor: pointer;
     background: #2f889a;
     color: #FFF;
@@ -291,8 +292,16 @@ ul.lrm-switcher li {
     -o-appearance: none;
     appearance: none;
     height: auto;
-    font-size: 20px;
     border-radius: 5px;
+}
+.lrm-form a.button,
+.lrm-form button {
+    font-size: 16px;
+    padding: 8px 0;
+}
+.lrm-form button[type=submit] {
+    font-size: 20px;
+    padding: 16px 0;
 }
 .no-touch .lrm-form button[type=submit]:hover, .no-touch .lrm-form button[type=submit]:focus {
     background: #3599ae;
@@ -523,4 +532,69 @@ p.lrm-form-bottom-message a {
 
 .wp-social-login-provider-list img {
     display: inline-block;
+}
+
+/**
+    Jetpack
+*/
+#jetpack-sso-wrap {
+    margin-top: 10px;
+}
+
+a.jetpack-sso {
+    display: block;
+    width: 100%;
+    text-align: center;
+    text-decoration: none;
+}
+
+.jetpack-sso-or {
+    margin-bottom: 16px;
+    position: relative;
+    text-align: center;
+}
+
+.jetpack-sso-or:before {
+    background: #E5E5E5;
+    content: '';
+    height: 1px;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 100%;
+}
+.jetpack-sso-or span {
+    background: #fff;
+    color: #777;
+    position: relative;
+    padding: 0 8px;
+    text-transform: uppercase
+}
+
+.jetpack-sso.button {
+    height: 36px;
+    line-height: 34px;
+    float: none;
+    margin-bottom: 16px;
+    position: relative;
+    width: 100%;
+}
+
+.jetpack-sso.button > span {
+    position: relative;
+    padding-left: 30px;
+}
+
+
+.jetpack-sso.button .genericon-wordpress {
+    position: absolute;
+    left: 0;
+    top: -3px;
+    font-size: 24px;
+}
+
+@media screen and ( max-width: 782px ) {
+    .jetpack-sso.button {
+        line-height: 22px;
+    }
 }
