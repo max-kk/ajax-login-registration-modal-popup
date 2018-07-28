@@ -66,7 +66,7 @@ class LRM_Settings {
 
         if ( lrm_is_pro() ) {
 
-            if ( !defined("LRM_PRO_VERSION") || version_compare(LRM_PRO_VERSION, '1.16', '<') ) {
+            if ( !defined("LRM_PRO_VERSION") || version_compare(LRM_PRO_VERSION, '1.17', '<') ) {
 
                 echo '<div class="notice notice-info notification-notice"><p>';
 
@@ -79,7 +79,8 @@ class LRM_Settings {
             }
 
             // Update notice for 1.18 > 1.20
-            if ( 
+            if (
+                lrm_is_pro( 1.17 ) &&
                 LRM_Pro_User_Verification::link_verification_is_on()
                 && false ===  strpos( LRM_Settings::get()->setting('mails/registration/body'), '{{VERIFY_ACCOUNT_URL}}' )
             ) {
@@ -257,6 +258,21 @@ class LRM_Settings {
             ) )
         ->description( __('Use your custom selector to find button/link for attach modal.', 'ajax-login-and-registration-modal-popup' ) );
 
+        $ADVANCED_SECTION->add_group( __( 'Data validation', 'ajax-login-and-registration-modal-popup' ), 'validation' )
+            ->add_field( array(
+                'slug'        => 'type',
+                'name'        => __('Data validation method', 'ajax-login-and-registration-modal-popup'),
+                'addons'      => array(
+                    'options'     => array(
+                        'both'      => 'Both (browser and server)',
+                        'server'    => 'Server only - more requests, no browser default messages',
+                    ),
+                ),
+                'default'     => 'both',
+                'description' => __('With using "server" method you can avoid displaying default browser "field invalid" messages and gives more customization options.', 'ajax-login-and-registration-modal-popup' ),
+                'render'      => array( new CoreFields\Select(), 'input' ),
+                'sanitize'    => array( new CoreFields\Select(), 'sanitize' ),
+            ) );
 
         $EMAILS_SECTION = $this->settings->add_section( __( 'Emails', 'ajax-login-and-registration-modal-popup' ), 'mails' );
 

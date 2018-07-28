@@ -160,10 +160,20 @@ If you have login issue with Adminize plugin - go to Adminize plugin settings an
 
 == Changelog ==
 
-= VER 1.24 - 13/07/2018 =
+= VER 1.26 - 26/07/2018 =
+
+- Small admin instructions tweaks
+- Optionally you can disable Browser validation (in Advanced section)
+
+= VER 1.25 - 21/07/2018 =
+
+- Fixed Critical issue if PRO version is installed and version < 1.17
+
+= VER 1.24 - 20/07/2018 =
 
 - Fixed password reset issues with WooCommerce installed
 - Fixed issue with slashed quotes after saving in Emails section
+- Minor fixes
 
 = VER 1.23 - 30/06/2018 =
 

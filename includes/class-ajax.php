@@ -274,7 +274,7 @@ class LRM_AJAX
 
                 $reset_pass_url = '';
 
-                if ( ! class_exists( 'WooCommerce' ) ) {
+                if ( class_exists( 'WooCommerce' ) ) {
                     $reset_pass_url = add_query_arg( array( 'key' => $password_reset_key, 'login' => rawurlencode( $user->user_login ) ), wc_get_endpoint_url( 'lost-password', '', wc_get_page_permalink( 'myaccount' ) ) );
                 } else if ( is_multisite() ) {
                     $reset_pass_url = network_site_url( "wp-login.php?action=rp&key=$password_reset_key&login=" . rawurlencode( $user->user_login ), 'login' );

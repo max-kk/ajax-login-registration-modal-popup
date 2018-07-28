@@ -1,3 +1,9 @@
+<!--
+<?php
+$fields_required = ('both' === LRM_Settings::get()->setting('advanced/validation/type')) ? 'required' : '';
+echo LRM_Settings::get()->setting('advanced/validation/type');
+?>
+-->
 <div class="lrm-user-modal" style="visibility: hidden;"> <!-- this is the entire modal form, including the background -->
     <div class="lrm-user-modal-container"> <!-- this is the container wrapper -->
         <ul class="lrm-switcher">
@@ -20,13 +26,13 @@
 
                 <div class="fieldset">
                     <label class="image-replace lrm-email" for="signin-email"><?php echo esc_attr( LRM_Settings::get()->setting('messages/login/username', true) ); ?></label>
-                    <input  name="username" class="full-width has-padding has-border" id="signin-email" type="text" placeholder="<?php echo esc_attr( LRM_Settings::get()->setting('messages/login/username', true) ); ?>" required value="">
+                    <input  name="username" class="full-width has-padding has-border" id="signin-email" type="text" placeholder="<?php echo esc_attr( LRM_Settings::get()->setting('messages/login/username', true) ); ?>" <?= $fields_required; ?> value="">
                     <span class="lrm-error-message"></span>
                 </div>
 
                 <div class="fieldset">
                     <label class="image-replace lrm-password" for="signin-password"><?php echo esc_attr( LRM_Settings::get()->setting('messages/login/password', true) ); ?></label>
-                    <input name="password" class="full-width has-padding has-border" id="signin-password" type="password"  placeholder="<?php echo esc_attr( LRM_Settings::get()->setting('messages/login/password', true) ); ?>" required value="">
+                    <input name="password" class="full-width has-padding has-border" id="signin-password" type="password"  placeholder="<?php echo esc_attr( LRM_Settings::get()->setting('messages/login/password', true) ); ?>" <?= $fields_required; ?> value="">
                     <span class="lrm-error-message"></span>
                     <a href="#0" class="hide-password" data-show="<?php echo LRM_Settings::get()->setting('messages/other/show_pass'); ?>" data-hide="<?php echo LRM_Settings::get()->setting('messages/other/hide_pass'); ?>"><?php echo LRM_Settings::get()->setting('messages/other/show_pass'); ?></a>
                 </div>
@@ -68,7 +74,7 @@
                 
                 <div class="fieldset fieldset--username">
                     <label class="image-replace lrm-username" for="signup-username"><?php echo esc_attr( LRM_Settings::get()->setting('messages/registration/username', true) ); ?></label>
-                    <input name="username" class="full-width has-padding has-border" id="signup-username" type="text" placeholder="<?php echo esc_attr( LRM_Settings::get()->setting('messages/registration/username') ); ?>" required>
+                    <input name="username" class="full-width has-padding has-border" id="signup-username" type="text" placeholder="<?php echo esc_attr( LRM_Settings::get()->setting('messages/registration/username') ); ?>" <?= $fields_required; ?>>
                     <span class="lrm-error-message"></span>
                 </div>
 
@@ -76,7 +82,7 @@
                 <div class="fieldset clearfix">
                     <div class="lrm-col-half-width fieldset--first-name">
                         <label class="image-replace lrm-username" for="signup-first-name"><?php echo esc_attr( LRM_Settings::get()->setting('messages/registration/first-name', true) ); ?></label>
-                        <input name="first-name" class="full-width has-padding has-border" id="signup-first-name" type="text" placeholder="<?php echo esc_attr( LRM_Settings::get()->setting('messages/registration/first-name') ); ?>" required>
+                        <input name="first-name" class="full-width has-padding has-border" id="signup-first-name" type="text" placeholder="<?php echo esc_attr( LRM_Settings::get()->setting('messages/registration/first-name') ); ?>" <?= $fields_required; ?>>
                         <span class="lrm-error-message"></span>
                     </div>
                     <div class="lrm-col-half-width lrm-col-last fieldset--last-name">
@@ -89,7 +95,7 @@
 
                 <div class="fieldset fieldset--email">
                     <label class="image-replace lrm-email" for="signup-email"><?php echo esc_attr( LRM_Settings::get()->setting('messages/registration/email', true) ); ?></label>
-                    <input name="email" class="full-width has-padding has-border" id="signup-email" type="email" placeholder="<?php echo esc_attr( LRM_Settings::get()->setting('messages/registration/email') ); ?>" required>
+                    <input name="email" class="full-width has-padding has-border" id="signup-email" type="email" placeholder="<?php echo esc_attr( LRM_Settings::get()->setting('messages/registration/email') ); ?>" <?= $fields_required; ?>>
                     <span class="lrm-error-message"></span>
                 </div>
 
@@ -97,7 +103,7 @@
                     <div class="fieldset">
                         <div class="lrm-position-relative">
                             <label class="image-replace lrm-password" for="signup-password"><?php echo esc_attr( LRM_Settings::get()->setting('messages/registration/password', true) ); ?></label>
-                            <input name="password" class="full-width has-padding has-border" id="signup-password" type="password"  placeholder="<?php echo esc_attr( LRM_Settings::get()->setting('messages_pro/registration/password', true) ); ?>" required value="">
+                            <input name="password" class="full-width has-padding has-border" id="signup-password" type="password"  placeholder="<?php echo esc_attr( LRM_Settings::get()->setting('messages_pro/registration/password', true) ); ?>" <?= $fields_required; ?> value="">
                             <span class="lrm-error-message"></span>
                             <a href="#0" class="hide-password" data-show="<?php echo __( 'Show', 'ajax-login-and-registration-modal-popup' ); ?>" data-hide="<?php echo __( 'Hide', 'ajax-login-and-registration-modal-popup' ); ?>"><?php echo __( 'Show', 'ajax-login-and-registration-modal-popup' ); ?></a>
                         </div>
@@ -144,7 +150,7 @@
 
                 <div class="fieldset">
                     <label class="image-replace lrm-email" for="reset-email"><?php echo LRM_Settings::get()->setting('messages/lost_password/email', true); ?></label>
-                    <input class="full-width has-padding has-border" name="user_login" id="reset-email" type="text" required placeholder="<?php echo esc_attr( LRM_Settings::get()->setting('messages/lost_password/email', true) ); ?>">
+                    <input class="full-width has-padding has-border" name="user_login" id="reset-email" type="text" <?= $fields_required; ?> placeholder="<?php echo esc_attr( LRM_Settings::get()->setting('messages/lost_password/email', true) ); ?>">
                     <span class="lrm-error-message"></span>
                 </div>
 
