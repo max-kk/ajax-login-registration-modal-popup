@@ -11,5 +11,8 @@
   ],
   "require": {
     "underdev/settings": "1.2"
+  },
+  "autoload": {
+    "exclude-from-classmap": ["includes/plugin-update-checker/"]
   }
 }

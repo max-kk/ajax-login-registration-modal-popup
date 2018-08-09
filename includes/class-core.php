@@ -30,6 +30,18 @@ class LRM_Core {
         }
 
         add_action('wp_loaded', array($this, 'process_ajax'), 12);
+
+        // RUN PRO UPDATER
+        if ( is_admin() && lrm_is_pro() ) {
+
+            require 'plugin-update-checker/plugin-update-checker.php';
+            $myUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
+                'https://addons-updater.wp-vote.net/?action=get_metadata&slug=ajax-login-and-registration-modal-popup-pro',
+                LRM_PRO_PATH . 'login-registration-modal-pro.php', //Full path to the main plugin file or functions.php.
+                'ajax-login-and-registration-modal-popup-pro'
+            );
+        }
+
         //if ( class_exists('LRM_Pro') ) {
         //} else {
         //    $this->process_ajax();
@@ -159,6 +171,7 @@ class LRM_Core {
 
         wp_localize_script('lrm-modal', 'LRM', $script_params);
     }
+
     public function render_form() {
 
         require LRM_PATH . '/views/form.php';

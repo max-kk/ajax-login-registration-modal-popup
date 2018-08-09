@@ -66,12 +66,12 @@ class LRM_Settings {
 
         if ( lrm_is_pro() ) {
 
-            if ( !defined("LRM_PRO_VERSION") || version_compare(LRM_PRO_VERSION, '1.17', '<') ) {
+            if ( !defined("LRM_PRO_VERSION") || version_compare(LRM_PRO_VERSION, '1.18', '<') ) {
 
                 echo '<div class="notice notice-info notification-notice"><p>';
 
                 printf(
-                    'Looks like newer version of "AJAX Login and Registration modal popup PRO" plugin available! Please login yo your cabinet and <a href="%s" target="_blank">download it</a>!',
+                    'Looks like newer version of "AJAX Login and Registration modal popup PRO" plugin available! Please go to Plugins menu and run the update or open your cabinet and <a href="%s" target="_blank">download it</a>!',
                     'https://maxim-kaminsky.com/shop/my-account/orders/'
                 );
 

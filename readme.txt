@@ -160,6 +160,19 @@ If you have login issue with Adminize plugin - go to Adminize plugin settings an
 
 == Changelog ==
 
+= VER 1.29 - 09/08/2018 =
+
+- Loading spinner html moved from php to JS to avoid issues with the W3C Total Cache plugin
+
+= VER 1.28 - 01/08/2018 =
+
+- Added filter "lrm/mails/registration/is_need_send" that allows stop sending registration email
+- Partial Russian translation added (thanks to @raccoon72)
+
+= VER 1.27 - 30/07/2018 =
+
+- Integrated auto-updater for PRO version
+
 = VER 1.26 - 26/07/2018 =
 
 - Small admin instructions tweaks

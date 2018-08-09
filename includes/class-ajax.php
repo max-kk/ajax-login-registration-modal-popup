@@ -174,25 +174,28 @@ class LRM_AJAX
                 $user_signon = wp_signon( $info, false );
             }
 
-            $subject = LRM_Settings::get()->setting('mails/registration/subject');
+            if ( apply_filters( "lrm/mails/registration/is_need_send", true, $user_id, $userdata, $user_signon) ) {
 
-            $mail_body = str_replace(
-                array(
-                    '{{USERNAME}}',
-                    '{{PASSWORD}}',
-                    '{{LOGIN_URL}}',
-                ),
-                array(
-                    $user_login,
-                    $userdata['user_pass'],
-                    wp_login_url(),
-                ),
-                LRM_Settings::get()->setting('mails/registration/body')
-            );
+                $subject = LRM_Settings::get()->setting('mails/registration/subject');
 
-            $mail_body = apply_filters( "lrm/mails/registration/body", $mail_body, $user_login, $userdata );
+                $mail_body = str_replace(
+                    array(
+                        '{{USERNAME}}',
+                        '{{PASSWORD}}',
+                        '{{LOGIN_URL}}',
+                    ),
+                    array(
+                        $user_login,
+                        $userdata['user_pass'],
+                        wp_login_url(),
+                    ),
+                    LRM_Settings::get()->setting('mails/registration/body')
+                );
 
-            $mail_sent = LRM_Mailer::send( $email, $subject, $mail_body );
+                $mail_body = apply_filters("lrm/mails/registration/body", $mail_body, $user_login, $userdata);
+
+                $mail_sent = LRM_Mailer::send($email, $subject, $mail_body);
+            }
 
             if ( $user_signon && !is_wp_error($user_signon) ) {
                 wp_send_json_success( array(
@@ -284,6 +287,8 @@ class LRM_AJAX
                         wp_login_url()
                     );
                 }
+
+                $reset_pass_url = apply_filters( 'lrm/lost_password/link', $reset_pass_url, $password_reset_key, $user );
 
                 $mail_body = str_replace(
                     array(
