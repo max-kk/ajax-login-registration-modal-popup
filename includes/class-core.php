@@ -102,6 +102,8 @@ class LRM_Core {
         if ( !empty($_REQUEST['lrm_action']) ) {
             $lrm_action = sanitize_key($_REQUEST['lrm_action']);
 
+            define("LRM_IS_AJAX", true);
+
             do_action( 'wp_ajax_nopriv_lrm_' . $lrm_action );
             die();
         }

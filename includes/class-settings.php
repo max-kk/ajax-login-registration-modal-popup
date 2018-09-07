@@ -655,6 +655,8 @@ class LRM_Settings {
         }
 
         do_action('lrm/register_settings', $this->settings);
+
+        $this->register_wpml_strings();
     }
 
 
@@ -690,16 +692,24 @@ class LRM_Settings {
      */
     public function setting($setting_slug, $do_stripslashes = false) {
 
-        $value = $this->settings->get_setting( $setting_slug );
+        $setting_path = explode('/', $setting_slug);
 
+        $value = $this->_get_maybe_wpml_translated_string($setting_slug, $setting_path[0]);
+
+        if ( null !== $value ) {
+            return stripslashes($value);
+        }
+
+        $value = $this->settings->get_setting( $setting_slug );
         // IF Value is empty and it's message string - try to get translated
 
-        if ( 0 === strpos($setting_slug, 'messages/') || 0 === strpos($setting_slug, 'mails/') ) {
+
+        if ( $setting_path[0] == 'messages' || $setting_path[0] == 'mails' ) {
 
             $value = stripslashes($value);
         }
 
-        if (!$value && 0 === strpos($setting_slug, 'messages/') && defined("LRM/SETTINGS/TRY_GET_TRANSLATED")) {
+        if (!$value && $setting_path[0] == 'messages' && defined("LRM/SETTINGS/TRY_GET_TRANSLATED")) {
             $fields = $this->get_section_settings_fields('messages');
 
             $default_value = $fields[$setting_slug]->default_value();
@@ -714,6 +724,76 @@ class LRM_Settings {
 
         return $do_stripslashes ? stripslashes( $value ) : $value;
 
+    }
+
+    /**
+     * Get translated option value (string)
+     * If enabled WPML - then try return translated
+     *
+     * @param string $setting_slug
+     * @param $section_slug
+     *
+     * @return string
+     * @since 1.33
+     */
+    protected function _get_maybe_wpml_translated_string($setting_slug, $section_slug) {
+
+        // && isset($this->wpml_labels[$key])
+        if ( function_exists('icl_translate') ) {
+
+            // SKIP if we on Default language
+            global $sitepress;
+
+            $current_language = $sitepress->get_current_language();
+            $default_language = $sitepress->get_default_language();
+
+            /**
+             * Switch Language for AJAX
+             * @since 1.33
+             */
+            if ( defined("LRM_IS_AJAX") ) {
+                /**
+                 * @var WPML_Language_Resolution $wpml_language_resolution
+                 */
+                global $wpml_language_resolution;
+
+                if ($current_language != $wpml_language_resolution->get_referrer_language_code()) {
+                    $sitepress->switch_lang($wpml_language_resolution->get_referrer_language_code());
+                    $current_language = $sitepress->get_current_language();
+                }
+            }
+
+            if ( $default_language == $current_language ) {
+                return null;
+            }
+
+            $fields = $this->get_section_settings_fields($section_slug);
+            return icl_translate('AJAX Login & Registration modal', $fields[$setting_slug]->name(). ' [' . $fields[$setting_slug]->group() . '/' .$fields[$setting_slug]->slug() . ']', $fields[$setting_slug]->default_value());
+        }
+        return null;
+    }
+
+    /**
+     * Add strings to WPML strings translator
+     *
+     * @since 1.33
+     */
+    protected function register_wpml_strings() {
+        if (function_exists('icl_register_string')) {
+            $messages = $this->get_section_settings_fields('messages');
+            $mails = $this->get_section_settings_fields('mails');
+            $messages_pro = $this->get_section_settings_fields('messages_pro');
+
+            $all = $messages + $mails;
+
+            if ( $messages_pro ) {
+                $all = $all + $messages_pro;
+            }
+
+            foreach ($all as $key => $field) {
+                icl_register_string('AJAX Login & Registration modal', $field->name(). ' [' . $field->group() . '/' .$field->slug() . ']', $field->default_value());
+            }
+        }
     }
 
 
@@ -735,7 +815,7 @@ class LRM_Settings {
         foreach ( $section->get_groups() as $group_slug => $group ) {
 
             foreach ( $group->get_fields() as $field_slug => $field ) {
-                $fields[ $section . '/' . $group_slug . '/' . $field_slug ] = $field;
+                $fields[ $section_slug . '/' . $group_slug . '/' . $field_slug ] = $field;
             }
         }
 

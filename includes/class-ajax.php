@@ -69,7 +69,11 @@ class LRM_AJAX
 
             $message = LRM_Settings::get()->setting('general/registration/reload_after_login') ? LRM_Settings::get()->setting('messages/login/success') : LRM_Settings::get()->setting('messages/login/success_no_reload');
 
-            wp_send_json_success(array('logged_in' => true,'message'=>$message));
+            wp_send_json_success(array(
+                'logged_in' => true,
+                'user_id'   => $user_signon->ID,
+                'message'   => $message
+            ));
         }
     }
 
@@ -83,17 +87,22 @@ class LRM_AJAX
             wp_send_json_error(array('message' => LRM_Settings::get()->setting('messages/registration/disabled')));
         endif;
 
+        $email = sanitize_email($_POST['email']);
+
         // Post values
-        $user_login = sanitize_user(trim($_POST['username']));
-        
+        if ( ! LRM_Settings::get()->setting('general_pro/all/hide_username') ) {
+            $user_login = sanitize_user(trim($_POST['username']));
+        } else {
+            $email_arr = explode('@', $email);
+            $user_login = sanitize_user(trim($email_arr[0]), true);
+        }
+
         $display_first_and_last_name = LRM_Settings::get()->setting('general/registration/display_first_and_last_name');
-        
+
         if ( $display_first_and_last_name ) {
             $first_name = sanitize_text_field( $_POST['first-name'] );
             $last_name  = sanitize_text_field( $_POST['last-name'] );
         }
-        
-        $email = sanitize_email($_POST['email']);
         
         if ( isset( $_POST['password'] ) && LRM_Settings::get()->setting('general_pro/all/allow_user_set_password') ) {
             $password =  sanitize_text_field($_POST['password']);
@@ -171,7 +180,7 @@ class LRM_AJAX
                 $info['user_password'] = $userdata['user_pass'];
                 $info['remember'] = true;
 
-                $user_signon = wp_signon( $info, false );
+                $user_signon = wp_signon( $info );
             }
 
             if ( apply_filters( "lrm/mails/registration/is_need_send", true, $user_id, $userdata, $user_signon) ) {
@@ -194,12 +203,13 @@ class LRM_AJAX
 
                 $mail_body = apply_filters("lrm/mails/registration/body", $mail_body, $user_login, $userdata);
 
-                $mail_sent = LRM_Mailer::send($email, $subject, $mail_body);
+                $mail_sent = LRM_Mailer::send($email, $subject, $mail_body, 'registration');
             }
 
             if ( $user_signon && !is_wp_error($user_signon) ) {
                 wp_send_json_success( array(
                     'logged_in' => true,
+                    'user_id'   => $user_id,
                     'message'   => LRM_Settings::get()->setting( 'messages/registration/success' )
                 ) );
             } else {
@@ -304,7 +314,7 @@ class LRM_AJAX
                     LRM_Settings::get()->setting('mails/lost_password/body')
                 );
 
-                $mail_sent = LRM_Mailer::send( $to, $subject, $mail_body );
+                $mail_sent = LRM_Mailer::send( $to, $subject, $mail_body, 'lost_password' );
 
                 if( !$mail_sent ) {
                     $errors->add('unable_send', LRM_Settings::get()->setting('messages/lost_password/unable_send'));
@@ -330,7 +340,7 @@ class LRM_AJAX
         }
     }
 
-    public function _verify_nonce( $post_key, $nonce_key ) {
+    public static function _verify_nonce( $post_key, $nonce_key ) {
         if ( defined("WP_CACHE") ) {
             return true;
         }

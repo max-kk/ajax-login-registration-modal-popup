@@ -31,10 +31,11 @@ class LRM_Mailer {
 	 * @param string|array $to          Array or comma-separated list of email addresses to send message.
 	 * @param string       $subject     Email subject
 	 * @param string       $mail_body     Message contents
+	 * @param string       $mail_key     Email ID, like "registration"
 	 * @param string|array $headers     Optional. Additional headers.
 	 * @return bool Whether the email contents were sent successfully.
 	 */
-	public static function send( $to, $subject, $mail_body, $headers = '' ) {
+	public static function send( $to, $subject, $mail_body, $mail_key = '', $headers = '' ) {
 
 		if ( 'text/html' == LRM_Settings::get()->setting('mails/mail/format') ) {
 			// Convert links to html
@@ -44,7 +45,11 @@ class LRM_Mailer {
 			add_filter( 'wp_mail_content_type', array( 'LRM_Mailer', 'set_mail_type' ) );
 		}
 
+		do_action( "lrm/mail/before_sent", $mail_key );
+
 		$mail_sent = wp_mail( $to, $subject, $mail_body );
+
+        do_action( "lrm/mail/after_sent", $mail_key );
 
 		if ( 'text/html' == LRM_Settings::get()->setting('mails/mail/format') ) {
 			remove_filter( 'wp_mail_content_type', array( 'LRM_Mailer', 'set_mail_type' ) );

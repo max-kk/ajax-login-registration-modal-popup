@@ -37,13 +37,18 @@ Easy to integrate modal with Login and Registration features. Compatible with an
 
 1. [Login LockDown](https://wordpress.org/plugins/login-lockdown/) (limit login attempts count)
 2. [WP Facebook Login](https://wordpress.org/plugins/wp-facebook-login/)
-3. [WP Foto Vote](https://wp-vote.net/wordpress-voting-plugin/) (photo contest plugin from author of this plugin ☺)
+3. [WP Foto Vote contests](https://wp-vote.net/wordpress-voting-plugin/) (photo contest plugin from author of this plugin ☺)
 4. [All In One WP Security & Firewall](https://wordpress.org/plugins/all-in-one-wp-security-and-firewall/) (tested with "Renamed Login Page")
+5. [Eonet Manual User Approve](https://wordpress.org/plugins/eonet-manual-user-approve/) - [review user before they an sign in](https://trello.com/c/72l3LfC7/3-how-to-manually-review-new-users-registrations)
+6. [WPML](https://wpml.org/) [Multi-language support](https://trello.com/c/trX6b6xR/4-multi-language-support-via-wpml)
 
 **Roadmap**
 
 * Allow include form to page content (without modal)
-* Colors/styles customizer
+* Colors/styles customizer [partially implemented via WP Customizer]
+* Documentation and Videos
+* ?WooCommerce Login/Registration form integration
+* Registration Form builder
 
 = PRO features =
 
@@ -53,26 +58,28 @@ Easy to integrate modal with Login and Registration features. Compatible with an
 * Compatibility with other popular plugins (list below)
 
 **The PRO version extra features:**
+
 1. Allow user set custom password (not random generated) during registration
-2. Redirect user to specified page after login/registration (for example User Profile)
+2. Redirect user to specified page after login/registration/logout (for example User Profile)
 3. Customize buttons color in WP Customizer
 4. [Request other feature >>](https://maxim-kaminsky.com/shop/contact-me/)
 
 **The PRO version is 100% tested and are compatible with a following plugins:**
 
 1. [Woocommerce](https://wordpress.org/plugins/woocommerce/) (show modal when clicked "Add to cart" in list or single product or in Cart when click "Process to Checkout")
-2. [WooCommerce Sense](https://wordpress.org/plugins/woocommerce/) (fix for Login process)
-3. [Captcha](https://wordpress.org/plugins/captcha/)
-4. [WP reCaptcha Integration](https://wordpress.org/plugins/wp-recaptcha-integration/)
-5. [Really Simple CAPTCHA](https://wordpress.org/plugins/really-simple-captcha/)
-6. [Captcha bank](https://ru.wordpress.org/plugins/captcha-bank/)
-7. [WordPress Social Login](https://wordpress.org/plugins/wordpress-social-login/) (social login buttons below login/register form)
-8. [Social Login WordPress Plugin – AccessPress](https://wordpress.org/plugins/accesspress-social-login-lite/) (social login buttons below login/register form)
-9. [Jetpack - SSO login](https://jetpack.com/support/sso/) [Wordpress.com login button](https://monosnap.com/file/4Na5FYYONRj79jnLBmQFK3hjnMJQDR)
-10. Math Captcha - soon
-11. Easy Digital Downloads - soon
-12. [Request other plugin >>](https://maxim-kaminsky.com/shop/contact-me/)
-
+2. [WooCommerce Sensei](https://woocommerce.com/products/sensei/) (fix for Login process)
+3. [BuddyPress](https://wordpress.org/plugins/buddypress/) ([replace default registration form with BuddyPress one](https://monosnap.com/file/3RNMa7Wl3EYWidw9znAJbgJ5QVL7oy))
+4. [Captcha](https://wordpress.org/plugins/captcha/)
+5. [WP reCaptcha Integration](https://wordpress.org/plugins/wp-recaptcha-integration/)
+6. [Really Simple CAPTCHA](https://wordpress.org/plugins/really-simple-captcha/)
+7. [Captcha bank](https://ru.wordpress.org/plugins/captcha-bank/)
+8. [WordPress Social Login](https://wordpress.org/plugins/wordpress-social-login/) (social login buttons below login/register form)
+9. [Social Login WordPress Plugin – AccessPress](https://wordpress.org/plugins/accesspress-social-login-lite/) (social login buttons below login/register form)
+10. [Jetpack - SSO login](https://jetpack.com/support/sso/) [Wordpress.com login button](https://monosnap.com/file/4Na5FYYONRj79jnLBmQFK3hjnMJQDR)
+11. [WC Vendors & WC Vendors Pro](https://wordpress.org/plugins/wc-vendors/) [Apply to become vendor checkbox](https://monosnap.com/file/TmpY4bYTHwF36ouN6fGpdjKZi5k3jz)
+12. Math Captcha - soon
+13. Easy Digital Downloads - soon
+14. [Request other plugin >>](https://maxim-kaminsky.com/shop/contact-me/)
 
 [GET PRO >>](https://maxim-kaminsky.com/shop/product/ajax-login-and-registration-modal-popup-pro/)
 
@@ -159,6 +166,23 @@ If you have login issue with Adminize plugin - go to Adminize plugin settings an
 - With Theme my login (TML) plugin (3 Password fields on the Create Account tab, if enable password field in LRM and TML)
 
 == Changelog ==
+
+= VER 1.33 - 07/09/2018 =
+
+- Small tweaks for LRM Pro to allow the user create account with email only
+- Return user ID after login/registration to JS
+
+= VER 1.32 - 01/09/2018 =
+
+- Small tweaks for LRM Pro BuddyPress integration - option to disable BuddyPress form
+
+= VER 1.31 - 27/08/2018 =
+
+- Small tweaks for LRM Pro BuddyPress integration
+
+= VER 1.30 - 15/08/2018 =
+
+- Since this version if New Users Registration is Off in settings - Registration Tab will be hidden
 
 = VER 1.29 - 09/08/2018 =
 
