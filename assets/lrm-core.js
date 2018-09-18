@@ -55,10 +55,10 @@ var LRM = LRM ? LRM : {};
 
 		//open sign-up form
 		$(document).on('click', '.lrm-signup', signup_selected);
-		$(document).on('click', '.lrm-register', signup_selected);
+		$(document).on('click', '[class*="lrm-register"]', signup_selected);
 		//open login-form form
 		$(document).on('click', '.lrm-signin', login_selected);
-		$(document).on('click', '.lrm-login', login_selected);
+		$(document).on('click', '[class*="lrm-login"]', login_selected);
 
 		$(document).on('click', '#lrm-login .lrm-form-message a', function (event) {
 			event.preventDefault();
@@ -119,6 +119,12 @@ var LRM = LRM ? LRM : {};
 				}
 			}
 
+			/**
+			 * @since 1.34
+			 * this - clicked element
+			 */
+			$(document).triggerHandler("lrm/before_display/login", this, event);
+
 			$formModal.addClass('is-visible');
 			$formLogin.addClass('is-selected');
 			$formSignup.removeClass('is-selected');
@@ -142,8 +148,13 @@ var LRM = LRM ? LRM : {};
 				if ( $(this).hasClass("lrm-redirect") ) {
 					LRM.redirect_url = $(this).attr("href");
 				}
-
 			}
+
+			/**
+			 * @since 1.34
+			 * this - clicked element
+			 */
+			$(document).triggerHandler("lrm/before_display/registration", this, event);
 
 			$formModal.addClass('is-visible');
 			$formLogin.removeClass('is-selected');
@@ -163,21 +174,32 @@ var LRM = LRM ? LRM : {};
 			// 	return true;
 			// }
 
+			/**
+			 * @since 1.34
+			 * this - clicked element
+			 */
+			$(document).triggerHandler("lrm/before_display/forgot_password", this, event);
+
 			$formLogin.removeClass('is-selected');
 			$formSignup.removeClass('is-selected');
 			$formForgotPassword.addClass('is-selected');
 			return false;
 		}
 
-		$(document).on('submit', '.lrm-form', function (event) {
-			event.preventDefault();
+		$(document).on('submit', '.lrm-form', lrm_submit_form);
 
+		function lrm_submit_form (event) {
 			if ( LRM.is_customize_preview ) {
 				alert( "Not possible submit form in Preview Mode!" );
 				return;
 			}
-
 			var $form = $(event.target);
+
+			event.preventDefault();
+
+			if ( $(document).triggerHandler('lrm/do_not_submit_form', $form) ) {
+				return false;
+			}
 
 			// Fix for ACF PRO plugin
 			if ( $form.data("action") == "registration" && $form.find("#acf-form-data").length > 0 && acf.validation.active ) {
@@ -221,18 +243,21 @@ var LRM = LRM ? LRM : {};
 						}
 					}
 
+					// $form.data("action") for get
+					$(document).triggerHandler('lrm/ajax_response', [response, $form, $form.data("action")]);
+
 					// If user Logged in After Login or Registration
 					// If Email Verify after Registration enabled - we skip this
 					if (response.success && response.data.logged_in) {
 						LRM.is_user_logged_in = true;
-						$(document).trigger('lrm_user_logged_in', [response, $form]);
+						$(document).triggerHandler('lrm_user_logged_in', [response, $form, $form.data("action")]);
 
 						if (LRM.reload_after_login) {
 							window.location.reload();
 						}
 					}
 
-					$(document).trigger('lrm_pro/maybe_refresh_recaptcha');
+					$(document).triggerHandler('lrm_pro/maybe_refresh_recaptcha');
 				}
 				// error: function(jqXHR, textStatus, errorThrown) {
 				// 	$form.find(".lrm-button-loader").remove();
@@ -246,8 +271,11 @@ var LRM = LRM ? LRM : {};
 				// 	console.log('errorThrown:', errorThrown);
 				// 	console.log('responseText:', jqXHR.responseText);
 				// }
+
 			});
-		});
+
+			return false;
+		}
 
 	}
 

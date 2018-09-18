@@ -24,7 +24,7 @@ $users_can_register = get_option("users_can_register");
             <form class="lrm-form" action="#0" data-action="login">
 
                 <div class="lrm-integrations lrm-integrations--login">
-                    <?php do_action( 'lrm_before_login_form' ); ?>
+                    <?php do_action( 'lrm/login_form/before' ); ?>
                 </div>
 
                 <p class="lrm-form-message lrm-form-message--init"></p>
@@ -49,19 +49,27 @@ $users_can_register = get_option("users_can_register");
                 </div>
 
                 <div class="lrm-integrations lrm-integrations--login">
-                    <?php do_action( 'lrm_login_form' ); ?>
+                    <?php do_action( 'lrm_login_form' ); // Deprecated ?>
+                    <?php do_action( 'lrm/login_form' ); ?>
                 </div>
-
 
                 <div class="fieldset">
                     <button class="full-width has-padding" type="submit">
                         <?php echo LRM_Settings::get()->setting('messages/login/button', true); ?>
                     </button>
                 </div>
+
+                <div class="lrm-integrations lrm-integrations--login">
+                    <?php do_action( 'lrm/login_form/after' ); ?>
+                </div>
+
                 <input type="hidden" name="lrm_action" value="login">
                 <input type="hidden" name="wp-submit" value="1">
 
                 <?php wp_nonce_field( 'ajax-login-nonce', 'security-login' ); ?>
+
+                <!-- For Invisible Recaptcha plugin -->
+                <span class="wpcf7-submit" style="display: none;"></span>
             </form>
 
             <p class="lrm-form-bottom-message"><a href="#0"><?php echo LRM_Settings::get()->setting('messages/login/forgot-password', true); ?></a></p>
@@ -78,7 +86,7 @@ $users_can_register = get_option("users_can_register");
                 <form class="lrm-form" action="#0" data-action="registration">
 
                     <div class="lrm-integrations lrm-integrations--register">
-                        <?php do_action( 'lrm_before_register_form' ); ?>
+                        <?php do_action( 'lrm/register_form/before' ); ?>
                     </div>
 
                     <p class="lrm-form-message lrm-form-message--init"></p>
@@ -115,24 +123,18 @@ $users_can_register = get_option("users_can_register");
                     <?php if( LRM_Settings::get()->setting('general_pro/all/allow_user_set_password') ): ?>
                         <div class="fieldset">
                             <div class="lrm-position-relative">
-                                <label class="image-replace lrm-password" for="signup-password"><?php echo esc_attr( LRM_Settings::get()->setting('messages/registration/password', true) ); ?></label>
+                                <label class="image-replace lrm-password" for="signup-password"><?php echo esc_attr( LRM_Settings::get()->setting('messages_pro/registration/password', true) ); ?></label>
                                 <input name="password" class="full-width has-padding has-border" id="signup-password" type="password"  placeholder="<?php echo esc_attr( LRM_Settings::get()->setting('messages_pro/registration/password', true) ); ?>" <?= $fields_required; ?> value="">
                                 <span class="lrm-error-message"></span>
-                                <a href="#0" class="hide-password" data-show="<?php echo __( 'Show', 'ajax-login-and-registration-modal-popup' ); ?>" data-hide="<?php echo __( 'Hide', 'ajax-login-and-registration-modal-popup' ); ?>"><?php echo __( 'Show', 'ajax-login-and-registration-modal-popup' ); ?></a>
+                                <a href="#0" class="hide-password" data-show="<?php echo LRM_Settings::get()->setting('messages/other/show_pass'); ?>" data-hide="<?php echo LRM_Settings::get()->setting('messages/other/hide_pass'); ?>"><?php echo LRM_Settings::get()->setting('messages/other/show_pass'); ?></a>
                             </div>
                             <span id="lrm-pass-strength-result"></span>
                         </div>
                     <?php endif; ?>
 
                     <div class="lrm-integrations lrm-integrations--register">
-                        <?php
-                        /**
-                         * Fires following the 'Email' field in the user registration form.
-                         *
-                         * @since 2.1.0
-                         */
-                        do_action( 'lrm_register_form' );
-                        ?>
+                        <?php do_action( 'lrm_register_form' ); ?>
+                        <?php do_action( 'lrm/register_form' ); ?>
                     </div>
 
                     <?php if( ! LRM_Settings::get()->setting('general/terms/off') ): ?>
@@ -142,15 +144,27 @@ $users_can_register = get_option("users_can_register");
                         </div>
                     <?php endif; ?>
 
+                    <div class="lrm-info lrm-info--register">
+                        <?php do_action( 'lrm/register_form/before_button' ); ?>
+                    </div>
+
                     <div class="fieldset">
                         <button class="full-width has-padding" type="submit">
                             <?php echo LRM_Settings::get()->setting('messages/registration/button', true); ?>
                         </button>
                     </div>
 
+                    <div class="lrm-integrations lrm-integrations--register">
+                        <?php do_action( 'lrm/register_form/after' ); ?>
+                    </div>
+
+
                     <input type="hidden" name="lrm_action" value="signup">
                     <input type="hidden" name="wp-submit" value="1">
                     <?php wp_nonce_field( 'ajax-signup-nonce', 'security-signup' ); ?>
+                    <!-- For Invisible Recaptcha plugin -->
+                    <span class="wpcf7-submit" style="display: none;"></span>
+
                 </form>
 
             <?php endif; ?>
@@ -190,6 +204,9 @@ $users_can_register = get_option("users_can_register");
                         <?php echo LRM_Settings::get()->setting('messages/lost_password/button', true); ?>
                     </button>
                 </div>
+                <!-- For Invisible Recaptcha plugin -->
+                <span class="wpcf7-submit" style="display: none;"></span>
+
             </form>
 
             <p class="lrm-form-bottom-message"><a href="#0"><?php echo LRM_Settings::get()->setting('messages/lost_password/to_login', true); ?></a></p>

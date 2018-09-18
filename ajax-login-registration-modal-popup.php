@@ -3,7 +3,7 @@
 	Plugin Name:    AJAX Login and Registration modal popup DEV
 	Plugin URI:     https://maxim-kaminsky.com/shop/product/ajax-login-and-registration-modal-popup-pro/
 	Description:    Easy to integrate modal with Login and Registration features.
-	Version:        1.33
+	Version:        1.34
 	Author URI:     http://maxim-kaminsky.com/
 	Author:         Maxim K
 	Text Domain:    ajax-login-and-registration-modal-popup
@@ -24,11 +24,11 @@ define("LRM_ASSETS_URL", LRM_URL . '/assets/');
 
 define("LRM_PATH", plugin_dir_path(__FILE__));
 define("LRM_BASENAME", plugin_basename( __FILE__ ));
-define("LRM_VERSION", '1.33');
+define("LRM_VERSION", '1.34');
 
-define("LRM_ASSETS_VER", 17);
+define("LRM_ASSETS_VER", 18);
 
-define("LRM/SETTINGS/TRY_GET_TRANSLATED", 1);
+//define("LRM/SETTINGS/TRY_GET_TRANSLATED", 1);
 
 require_once( LRM_PATH . '/vendor/autoload.php' );
 
@@ -64,17 +64,3 @@ function lrm_is_pro( $required_version = false ) {
 function lrm_setting( $setting_slug, $do_stripslashes = false ) {
     return LRM_Settings::get()->setting( $setting_slug, $do_stripslashes = false );
 }
-
-//add_action('wp_logout','auto_redirect_after_logout');
-//function auto_redirect_after_logout(){
-//    wp_redirect( home_url() );
-//    exit();
-//}
-//
-//add_action( 'check_admin_referer', function($action, $result) {
-//    if ( 'log-out' == $action && is_user_logged_in() && !empty($_GET['action']) && 'logout' == $_GET['action'] ) {
-//        wp_logout();
-//        wp_redirect( home_url() );
-//        exit();
-//    }
-//} );

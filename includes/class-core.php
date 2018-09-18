@@ -17,6 +17,7 @@ class LRM_Core {
         require_once LRM_PATH . '/includes/class-mailer.php';
         require_once LRM_PATH . '/includes/class-settings.php';
         require_once LRM_PATH . '/includes/class-ajax.php';
+        require_once LRM_PATH . '/includes/class-admin-menus.php';
 
         LRM_Settings::get();
 
@@ -48,6 +49,8 @@ class LRM_Core {
         //}
 
         add_filter('plugin_action_links_' . LRM_BASENAME, array($this, 'add_settings_link'));
+
+        new LRM_Admin_Menus();
     }
 
     /**
@@ -126,9 +129,9 @@ class LRM_Core {
      * @param string    $function
      * @return mixed
      */
-    public function call_pro($function) {
+    public function call_pro($function, $param1 = false) {
         if ( class_exists('LRM_Pro') ) {
-            return LRM_Pro::get()->$function();
+            return LRM_Pro::get()->$function($param1);
         }
     }
 
@@ -154,9 +157,9 @@ class LRM_Core {
             return;
         }
 
-        wp_enqueue_script('lrm-modal', LRM_URL . '/assets/lrm-core.js', array('jquery'), LRM_ASSETS_VER, true);
+        wp_enqueue_script('lrm-modal', LRM_URL . 'assets/lrm-core.js', array('jquery'), LRM_ASSETS_VER, true);
 
-        wp_enqueue_style('lrm-modal', LRM_URL . '/assets/lrm-core.css', false, LRM_ASSETS_VER);
+        wp_enqueue_style('lrm-modal', LRM_URL . 'assets/lrm-core.css', false, LRM_ASSETS_VER);
 
         $script_params = array(
             'redirect_url'       => '',

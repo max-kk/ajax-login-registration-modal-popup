@@ -66,7 +66,7 @@ class LRM_Settings {
 
         if ( lrm_is_pro() ) {
 
-            if ( !defined("LRM_PRO_VERSION") || version_compare(LRM_PRO_VERSION, '1.18', '<') ) {
+            if ( !defined("LRM_PRO_VERSION") || version_compare(LRM_PRO_VERSION, '1.22', '<') ) {
 
                 echo '<div class="notice notice-info notification-notice"><p>';
 
@@ -225,7 +225,7 @@ class LRM_Settings {
                 'slug'        => 'reload_after_login',
                 'name'        => __('Reload page after login/registration?', 'ajax-login-and-registration-modal-popup' ),
                 'default'     => 'true',
-                'description' => 'Does not have sense with option "' . __('User must confirm email after registration?', 'ajax-login-and-registration-modal-popup' ) . '" enabled.',
+                'description' => 'During registration that option only work if «' . __('User must confirm email after registration?', 'ajax-login-and-registration-modal-popup' ) . '» option is disabled.',
                 'render'      => array( new CoreFields\Checkbox(), 'input' ),
                 'sanitize'    => array( new CoreFields\Checkbox(), 'sanitize' ),
             ) )
@@ -739,7 +739,7 @@ class LRM_Settings {
     protected function _get_maybe_wpml_translated_string($setting_slug, $section_slug) {
 
         // && isset($this->wpml_labels[$key])
-        if ( function_exists('icl_translate') ) {
+        if ( class_exists('SitePress') ) {
 
             // SKIP if we on Default language
             global $sitepress;
@@ -779,7 +779,7 @@ class LRM_Settings {
      * @since 1.33
      */
     protected function register_wpml_strings() {
-        if (function_exists('icl_register_string')) {
+        if ( function_exists('icl_register_string') ) {
             $messages = $this->get_section_settings_fields('messages');
             $mails = $this->get_section_settings_fields('mails');
             $messages_pro = $this->get_section_settings_fields('messages_pro');

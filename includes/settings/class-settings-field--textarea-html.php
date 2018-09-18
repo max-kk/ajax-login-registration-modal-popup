@@ -7,12 +7,14 @@ class LRM_Field_Textarea_With_Html {
 
 	/**
 	 * Text field
-	 * @param  Field $field Field instance
+	 * @param  underDEV\Utils\Settings\Field $field Field instance
 	 * @return void
 	 */
 	public function input( $field ) {
 
-		echo '<textarea rows="3" id="' . $field->input_id() . '" name="' . $field->input_name() . '" class="large-text">' . stripslashes($field->value()) . '</textarea>';
+        $rows = (int)$field->addon( 'rows' ) ? $field->addon( 'rows' ) : 3;
+
+		echo '<textarea rows="' . $rows . '" id="' . $field->input_id() . '" name="' . $field->input_name() . '" class="large-text">' . stripslashes($field->value()) . '</textarea>';
 
 	}
 

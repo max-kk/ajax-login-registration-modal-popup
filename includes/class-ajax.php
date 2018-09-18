@@ -10,10 +10,12 @@ class LRM_AJAX
 {
 
     public static function login() {
+        $start = microtime(true);
+
         // First check the nonce, if it fails the function will break
         self::_verify_nonce( 'security-login', 'ajax-login-nonce' );
 
-        LRM_Core::get()->call_pro('check_captcha');
+        LRM_Core::get()->call_pro('check_captcha', 'login');
 
         // Nonce is checked, get the POST data and sign user on
         $info = array();
@@ -81,7 +83,7 @@ class LRM_AJAX
         // Verify nonce
         self::_verify_nonce( 'security-signup', 'ajax-signup-nonce' );
 
-        LRM_Core::get()->call_pro('check_captcha');
+        LRM_Core::get()->call_pro('check_captcha', 'signup' );
 
         if ( !get_option('users_can_register') ) :
             wp_send_json_error(array('message' => LRM_Settings::get()->setting('messages/registration/disabled')));
@@ -101,10 +103,10 @@ class LRM_AJAX
 
         if ( $display_first_and_last_name ) {
             $first_name = sanitize_text_field( $_POST['first-name'] );
-            $last_name  = sanitize_text_field( $_POST['last-name'] );
+            $last_name  = ! empty($_POST['last-name']) ? sanitize_text_field( $_POST['last-name'] ) : '';
         }
         
-        if ( isset( $_POST['password'] ) && LRM_Settings::get()->setting('general_pro/all/allow_user_set_password') ) {
+        if ( !empty( $_POST['password'] ) && LRM_Settings::get()->setting('general_pro/all/allow_user_set_password') ) {
             $password =  sanitize_text_field($_POST['password']);
 
             // Defined in: "\wp-includes\default-filters.php"
@@ -112,7 +114,6 @@ class LRM_AJAX
         } else {
             $password = wp_generate_password(10, true);
         }
-
 
         if ( !$user_login ) {
             wp_send_json_error(array('message' => LRM_Settings::get()->setting('messages/registration/no_username'), 'for'=>'username'));
@@ -236,7 +237,7 @@ class LRM_AJAX
 
         $account = sanitize_text_field( trim($_POST['user_login']) );
 
-        LRM_Core::get()->call_pro('check_captcha');
+        LRM_Core::get()->call_pro('check_captcha', 'lostpassword');
 
         if( empty( $account ) ) {
             $errors->add('invalid_email', LRM_Settings::get()->setting('messages/lost_password/invalid_email'));

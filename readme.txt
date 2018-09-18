@@ -39,8 +39,8 @@ Easy to integrate modal with Login and Registration features. Compatible with an
 2. [WP Facebook Login](https://wordpress.org/plugins/wp-facebook-login/)
 3. [WP Foto Vote contests](https://wp-vote.net/wordpress-voting-plugin/) (photo contest plugin from author of this plugin ☺)
 4. [All In One WP Security & Firewall](https://wordpress.org/plugins/all-in-one-wp-security-and-firewall/) (tested with "Renamed Login Page")
-5. [Eonet Manual User Approve](https://wordpress.org/plugins/eonet-manual-user-approve/) - [review user before they an sign in](https://trello.com/c/72l3LfC7/3-how-to-manually-review-new-users-registrations)
-6. [WPML](https://wpml.org/) [Multi-language support](https://trello.com/c/trX6b6xR/4-multi-language-support-via-wpml)
+5. [Eonet Manual User Approve](https://wordpress.org/plugins/eonet-manual-user-approve/): review user before they an sign in - [tutorial](https://trello.com/c/72l3LfC7/3-how-to-manually-review-new-users-registrations)
+6. [WPML](https://wpml.org/): Multi-language support - [tutorial](https://trello.com/c/trX6b6xR/4-multi-language-support-via-wpml)
 
 **Roadmap**
 
@@ -60,26 +60,29 @@ Easy to integrate modal with Login and Registration features. Compatible with an
 **The PRO version extra features:**
 
 1. Allow user set custom password (not random generated) during registration
-2. Redirect user to specified page after login/registration/logout (for example User Profile)
-3. Customize buttons color in WP Customizer
-4. [Request other feature >>](https://maxim-kaminsky.com/shop/contact-me/)
+2. Redirect user to specified page after login/registration/logout (for example to the User Profile)
+3. User verification via click on the link in registration email
+4. Email only registration - hide username filed from registration form
+5. Customize buttons color in [WP Customizer](https://trello.com/c/RXvJzKIQ/7-how-to-customize-form-colors)
+6. [Request other feature >>](https://maxim-kaminsky.com/shop/contact-me/)
 
 **The PRO version is 100% tested and are compatible with a following plugins:**
 
-1. [Woocommerce](https://wordpress.org/plugins/woocommerce/) (show modal when clicked "Add to cart" in list or single product or in Cart when click "Process to Checkout")
+1. **[Woocommerce](https://wordpress.org/plugins/woocommerce/)** (show modal when clicked "Add to cart" in list or single product or in Cart when click "Process to Checkout")
 2. [WooCommerce Sensei](https://woocommerce.com/products/sensei/) (fix for Login process)
-3. [BuddyPress](https://wordpress.org/plugins/buddypress/) ([replace default registration form with BuddyPress one](https://monosnap.com/file/3RNMa7Wl3EYWidw9znAJbgJ5QVL7oy))
-4. [Captcha](https://wordpress.org/plugins/captcha/)
-5. [WP reCaptcha Integration](https://wordpress.org/plugins/wp-recaptcha-integration/)
-6. [Really Simple CAPTCHA](https://wordpress.org/plugins/really-simple-captcha/)
-7. [Captcha bank](https://ru.wordpress.org/plugins/captcha-bank/)
-8. [WordPress Social Login](https://wordpress.org/plugins/wordpress-social-login/) (social login buttons below login/register form)
-9. [Social Login WordPress Plugin – AccessPress](https://wordpress.org/plugins/accesspress-social-login-lite/) (social login buttons below login/register form)
-10. [Jetpack - SSO login](https://jetpack.com/support/sso/) [Wordpress.com login button](https://monosnap.com/file/4Na5FYYONRj79jnLBmQFK3hjnMJQDR)
-11. [WC Vendors & WC Vendors Pro](https://wordpress.org/plugins/wc-vendors/) [Apply to become vendor checkbox](https://monosnap.com/file/TmpY4bYTHwF36ouN6fGpdjKZi5k3jz)
-12. Math Captcha - soon
-13. Easy Digital Downloads - soon
-14. [Request other plugin >>](https://maxim-kaminsky.com/shop/contact-me/)
+3. **[WP reCaptcha Integration](https://wordpress.org/plugins/wp-recaptcha-integration/)**
+4. **[Invisible reCaptcha](https://wordpress.org/plugins/invisible-recaptcha/)** - [tutorial](https://trello.com/c/SYR5pXxn/8-how-to-set-up-invisible-recaptcha)
+5. **[BuddyPress](https://wordpress.org/plugins/buddypress/)** ([replace default registration form with BuddyPress one >>](https://monosnap.com/file/3RNMa7Wl3EYWidw9znAJbgJ5QVL7oy))
+6. [Captcha](https://wordpress.org/plugins/captcha/)
+7. [Really Simple CAPTCHA](https://wordpress.org/plugins/really-simple-captcha/)
+8. [Captcha bank](https://ru.wordpress.org/plugins/captcha-bank/)
+9. [WordPress Social Login](https://wordpress.org/plugins/wordpress-social-login/) (social login buttons below login/register form)
+10. [Social Login WordPress Plugin – AccessPress](https://wordpress.org/plugins/accesspress-social-login-lite/) (social login buttons below login/register form)
+11. [Jetpack - SSO login](https://jetpack.com/support/sso/) [Wordpress.com login button >>](https://monosnap.com/file/4Na5FYYONRj79jnLBmQFK3hjnMJQDR)
+12. [WC Vendors & WC Vendors Pro](https://wordpress.org/plugins/wc-vendors/) [Apply to become vendor checkbox >>](https://monosnap.com/file/TmpY4bYTHwF36ouN6fGpdjKZi5k3jz)
+13. Math Captcha - soon
+14. Easy Digital Downloads - soon
+15. [Request other plugin >>](https://maxim-kaminsky.com/shop/contact-me/)
 
 [GET PRO >>](https://maxim-kaminsky.com/shop/product/ajax-login-and-registration-modal-popup-pro/)
 
@@ -167,10 +170,17 @@ If you have login issue with Adminize plugin - go to Adminize plugin settings an
 
 == Changelog ==
 
+= VER 1.34 - 18/09/2018 =
+
+- Tweaks for PRO compatibility with the [Invisible reCaptcha](https://wordpress.org/plugins/invisible-recaptcha/) plugin- [tutorial](https://trello.com/c/SYR5pXxn/8-how-to-set-up-invisible-recaptcha)
+- Tweaks for CSS & JS selectors for make them working even with prefixes, like "divi-lrm-login", that can be added by some themes in menus
+- Added [predefined list](https://monosnap.com/file/TsOHDJZR4HzlgkmiZVvPmxkkGPpPH1) of menu items
+
 = VER 1.33 - 07/09/2018 =
 
 - Small tweaks for LRM Pro to allow the user create account with email only
 - Return user ID after login/registration to JS
+- Full compatibility with [WPML](https://wpml.org/) plugin for [multi-language support](https://trello.com/c/trX6b6xR/4-multi-language-support-via-wpml)
 
 = VER 1.32 - 01/09/2018 =
 
