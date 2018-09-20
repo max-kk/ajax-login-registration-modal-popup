@@ -170,6 +170,10 @@ If you have login issue with Adminize plugin - go to Adminize plugin settings an
 
 == Changelog ==
 
+= VER 1.35 - 20/09/2018 =
+
+- Fixes for a Plylang plugin
+
 = VER 1.34 - 18/09/2018 =
 
 - Tweaks for PRO compatibility with the [Invisible reCaptcha](https://wordpress.org/plugins/invisible-recaptcha/) plugin- [tutorial](https://trello.com/c/SYR5pXxn/8-how-to-set-up-invisible-recaptcha)

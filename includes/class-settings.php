@@ -779,14 +779,14 @@ class LRM_Settings {
      * @since 1.33
      */
     protected function register_wpml_strings() {
-        if ( function_exists('icl_register_string') ) {
+        if ( class_exists('SitePress') ) {
             $messages = $this->get_section_settings_fields('messages');
             $mails = $this->get_section_settings_fields('mails');
-            $messages_pro = $this->get_section_settings_fields('messages_pro');
 
             $all = $messages + $mails;
 
-            if ( $messages_pro ) {
+            if ( lrm_is_pro() ) {
+                $messages_pro = $this->get_section_settings_fields('messages_pro');
                 $all = $all + $messages_pro;
             }
 
