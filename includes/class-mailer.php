@@ -43,6 +43,9 @@ class LRM_Mailer {
 			// EOR to <BR>
 			$mail_body = nl2br($mail_body);
 			add_filter( 'wp_mail_content_type', array( 'LRM_Mailer', 'set_mail_type' ) );
+
+			// Apply custom template
+            $mail_body = str_replace('{{CONTENT}}', $mail_body, LRM_Settings::get()->setting('mails/template/code'));
 		}
 
 		do_action( "lrm/mail/before_sent", $mail_key );

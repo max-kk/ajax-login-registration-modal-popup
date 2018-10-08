@@ -24,6 +24,7 @@ class LRM_Settings {
         require_once LRM_PATH .  "/includes/settings/class-settings-field--text.php";
         require_once LRM_PATH .  "/includes/settings/class-settings-field--textarea.php";
         require_once LRM_PATH .  "/includes/settings/class-settings-field--textarea-html.php";
+        require_once LRM_PATH .  "/includes/settings/class-settings-field--textarea-html-extended.php";
         require_once LRM_PATH .  "/includes/settings/class-settings-field--editor.php";
 
         // register menu as always
@@ -274,6 +275,24 @@ class LRM_Settings {
                 'sanitize'    => array( new CoreFields\Select(), 'sanitize' ),
             ) );
 
+//        $ADVANCED_SECTION->add_group( __( 'Troubleshooting', 'ajax-login-and-registration-modal-popup' ), 'troubleshooting' )
+//            ->add_field( array(
+//                'slug'        => 'hook',
+//                'name'        => __('When to call login/registration actions.', 'ajax-login-and-registration-modal-popup'),
+//                'addons'      => array(
+//                    'options'     => array(
+//                        'wp_loaded'           => '"wp_loaded" - hook by Default [late]',
+//                        'init'              => '"init" hook',
+//                        'plugins_loaded'    => '"plugins_loaded" hook',
+//                    ),
+//                ),
+//                'default'     => 'wp_loaded',
+//                'description' => __('By default calls made very late to allow other plugins apply hooks/filters, like reCaptcha, WooCommerce, etc.
+//                But for fix issues (like redirect that broken login process) with some plugins like s2member, etc you could play with this option.', 'ajax-login-and-registration-modal-popup' ),
+//                'render'      => array( new CoreFields\Select(), 'input' ),
+//                'sanitize'    => array( new CoreFields\Select(), 'sanitize' ),
+//            ) );
+
         $EMAILS_SECTION = $this->settings->add_section( __( 'Emails', 'ajax-login-and-registration-modal-popup' ), 'mails' );
 
         $EMAILS_SECTION->add_group( __( 'Mails', 'ajax-login-and-registration-modal-popup' ), 'mail' )
@@ -343,6 +362,52 @@ class LRM_Settings {
                 'description' => __( 'The email Body to user with new password. Allowed tags: {{USERNAME}}, {{CHANGE_PASSWORD_URL}}, {{SITE_URL}}, {{LOGIN_URL}}', 'ajax-login-and-registration-modal-popup' ),
                 'render'      => array( new LRM_Field_Editor(), 'input' ),
                 'sanitize'    => array( new LRM_Field_Editor(), 'sanitize' ),
+            ) );
+
+        $EMAILS_SECTION->add_group( __( 'Admin emails', 'ajax-login-and-registration-modal-popup' ), 'admin_new_user' )
+            ->add_field( array(
+                'slug'        => 'on',
+                'name'        => __('Send email to admin about new user?', 'ajax-login-and-registration-modal-popup' ),
+                'default'     => false,
+                'render'      => array( new CoreFields\Checkbox(), 'input' ),
+                'sanitize'    => array( new CoreFields\Checkbox(), 'sanitize' ),
+            ) )
+            ->add_field( array(
+                'slug'        => 'subject',
+                'name'        => __('Subject', 'ajax-login-and-registration-modal-popup'),
+                'default'     => '[YOUR BLOG NAME] ' . __( 'New user registration on your site:', 'ajax-login-and-registration-modal-popup' ),
+                'description' => __( 'The email Subject to user about successful registration.', 'ajax-login-and-registration-modal-popup' ),
+                'render'      => array( new LRM_Field_Text(), 'input' ),
+                'sanitize'    => array( new LRM_Field_Text(), 'sanitize' ),
+            ) )
+            ->add_field( array(
+                'slug'        => 'body',
+                'name'        => __('Body', 'ajax-login-and-registration-modal-popup' ),
+                'default'     =>
+                    __('New user just registered on', 'ajax-login-and-registration-modal-popup' ) .' [YOUR BLOG NAME].' . "\r\n\r\n" .
+                    __('Username:', 'ajax-login-and-registration-modal-popup' ) . ' {{USERNAME}}' . "\r\n\r\n" .
+                    __('Email:', 'ajax-login-and-registration-modal-popup' ) . ' {{EMAIL}}' . "\r\n\r\n" .
+                    __('View:', 'ajax-login-and-registration-modal-popup' ) . ' {{USER_ADMIN_URL}}',
+                'addons'      => array(
+                    'pretty'   => true,
+                ),
+                'description' => 'The email Body to admin about new user. Allowed tags: {{USERNAME}}, {{EMAIL}}, {{USER_ADMIN_URL}}. <br/><b>Please note</b> - in case of using Social login this email will be not triggered, so please check Social Login plugin settings for that.',
+                'render'      => array( new LRM_Field_Editor(), 'input' ),
+                'sanitize'    => array( new LRM_Field_Editor(), 'sanitize' ),
+            ) );
+
+        $EMAILS_SECTION->add_group( __( 'Template for HTML emails', 'ajax-login-and-registration-modal-popup' ), 'template' )
+            ->add_field( array(
+                'slug'        => 'code',
+                'name'        => __('HTML email template', 'ajax-login-and-registration-modal-popup' ),
+                'default'     => '{{CONTENT}}',
+                'description' => __('Put here your custom mail html template + css + tag {{CONTENT}} (required).', 'ajax-login-and-registration-modal-popup')
+                    . sprintf('<a href="%s">Tutorial >></a>', 'https://trello.com/c/OX5IIUEr/10-how-to-style-email-templates'),
+                'render'      => array( new LRM_Field_Textarea_With_Html_Extended(), 'input' ),
+                'sanitize'    => array( new LRM_Field_Textarea_With_Html_Extended(), 'sanitize' ),
+                'addons'      => array(
+                    'rows'   => 4,
+                ),
             ) );
 
         $MESSAGES_SECTION = $this->settings->add_section( __( 'Expressions', 'ajax-login-and-registration-modal-popup' ), 'messages' );

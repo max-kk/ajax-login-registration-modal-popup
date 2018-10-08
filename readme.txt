@@ -41,6 +41,7 @@ Easy to integrate modal with Login and Registration features. Compatible with an
 4. [All In One WP Security & Firewall](https://wordpress.org/plugins/all-in-one-wp-security-and-firewall/) (tested with "Renamed Login Page")
 5. [Eonet Manual User Approve](https://wordpress.org/plugins/eonet-manual-user-approve/): review user before they an sign in - [tutorial](https://trello.com/c/72l3LfC7/3-how-to-manually-review-new-users-registrations)
 6. [WPML](https://wpml.org/): Multi-language support - [tutorial](https://trello.com/c/trX6b6xR/4-multi-language-support-via-wpml)
+7. [s2member](https://wordpress.org/plugins/s2member/) plugin: tweaks for login process
 
 **Roadmap**
 
@@ -170,9 +171,19 @@ If you have login issue with Adminize plugin - go to Adminize plugin settings an
 
 == Changelog ==
 
+= VER 1.37 - 06/10/2018 =
+
+- Added new email - for admin about new user registration (please note - in case of using Social login this email will be not triggered)
+- Added html template field to simplify email templates customization - https://trello.com/c/OX5IIUEr/10-how-to-style-email-templates
+
+= VER 1.36 - 05/10/2018 =
+
+- Tweaks for s2member plugin + tweaks that can fix possible issues wih any other plugins that tried to redirect after login
+- Fixed a bug with the "Forgot Password" link in modal
+
 = VER 1.35 - 20/09/2018 =
 
-- Fixes for a Plylang plugin
+- Fixes for a Polylang plugin
 
 = VER 1.34 - 18/09/2018 =
 

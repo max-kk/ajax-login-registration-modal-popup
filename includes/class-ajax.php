@@ -205,6 +205,80 @@ class LRM_AJAX
                 $mail_body = apply_filters("lrm/mails/registration/body", $mail_body, $user_login, $userdata);
 
                 $mail_sent = LRM_Mailer::send($email, $subject, $mail_body, 'registration');
+
+            }
+
+            if ( LRM_Settings::get()->setting('mails/admin_new_user/on') ) {
+
+                // The blogname option is escaped with esc_html on the way into the database in sanitize_option
+                // we want to reverse this for the plain text arena of emails.
+                $blogname = wp_specialchars_decode(get_option('blogname'), ENT_QUOTES);
+
+                // Admin Notification
+                $switched_locale = switch_to_locale(get_locale());
+
+                $mail_body = str_replace(
+                    array(
+                        'YOUR BLOG NAME',
+                        '{{USERNAME}}',
+                        '{{EMAIL}}',
+                        '{{USER_ADMIN_URL}}',
+                    ),
+                    array(
+                        $blogname,
+                        $user_login,
+                        $email,
+                        admin_url( 'user-edit.php?user_id=' . $user_id ),
+                    ),
+                    LRM_Settings::get()->setting('mails/admin_new_user/body')
+                );
+
+                $wp_new_user_notification_email_admin = array(
+                    'to' => get_option('admin_email'),
+                    /* translators: Password change notification email subject. %s: Site title */
+                    'subject' => LRM_Settings::get()->setting('mails/admin_new_user/subject'),
+                    'message' => $mail_body,
+                    'headers' => '',
+                );
+
+                /**
+                 * Filters the contents of the new user notification email sent to the site admin.
+                 *
+                 * @since 4.9.0
+                 *
+                 * @param array $wp_new_user_notification_email {
+                 *     Used to build wp_mail().
+                 *
+                 * @type string $to The intended recipient - site admin email address.
+                 * @type string $subject The subject of the email.
+                 * @type string $message The body of the email.
+                 * @type string $headers The headers of the email.
+                 * }
+                 * @param WP_User $user User object for new user.
+                 * @param string $blogname The site title.
+                 */
+                $wp_new_user_notification_email_admin = apply_filters('wp_new_user_notification_email_admin', $wp_new_user_notification_email_admin, $user_id, $blogname);
+
+                LRM_Mailer::send(
+                    $wp_new_user_notification_email_admin['to'],
+                    wp_specialchars_decode($wp_new_user_notification_email_admin['subject']),
+                    $wp_new_user_notification_email_admin['message'],
+                    'registration_admin',
+                    $wp_new_user_notification_email_admin['headers']
+                );
+
+                if ($switched_locale) {
+                    restore_previous_locale();
+                }
+
+            }
+
+            if ( class_exists( 'WCVendors_Pro' ) ) {
+                /**
+                 * Tweaks for WC Vendors plugin
+                 * @since 1.38
+                 */
+                do_action('woocommerce_created_customer', $user_id, $userdata, $userdata['user_pass']);
             }
 
             if ( $user_signon && !is_wp_error($user_signon) ) {

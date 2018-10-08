@@ -30,7 +30,24 @@ class LRM_Core {
             add_action('lrm_lostpassword_form', array($this, 'form_fblogin__action'));
         }
 
-        add_action('wp_loaded', array($this, 'process_ajax'), 12);
+        if ( !empty($_REQUEST['lrm_action']) ) {
+//            $lrm_advanced_option = get_option('lrm_advanced');
+//
+//            if ($lrm_advanced_option && isset($lrm_advanced_option['troubleshooting']['hook'])) {
+//                $hook_to_use = $lrm_advanced_option['troubleshooting']['hook'];
+//            } else {
+//                $hook_to_use = ;
+//            }
+
+            add_filter( 'wp_redirect', array($this, 'wp_redirect__filter'), 9, 2 );
+
+            // Disable redirect after Login
+            add_filter( 'ws_plugin__s2member_login_redirect', '__return_false', 99 );
+            // Try to remove all actions from "wp_login" action to avoid redirects
+            remove_all_actions('wp_login');
+
+            add_action( 'wp_loaded', array($this, 'process_ajax'), 12 );
+        }
 
         // RUN PRO UPDATER
         if ( is_admin() && lrm_is_pro() ) {
@@ -110,6 +127,25 @@ class LRM_Core {
             do_action( 'wp_ajax_nopriv_lrm_' . $lrm_action );
             die();
         }
+    }
+
+    /**
+     * Try to change Hook position to avoid redirect during login/registration
+     * Calls only once
+     *
+     * @param $location
+     * @param $status
+     * @since 1.36
+     *
+     * @return mixed
+     */
+    public function wp_redirect__filter($location, $status) {
+        wp_send_json_error(array(
+            'message' => sprintf(
+                __( 'Some plugin try to redirect during this action to the following url: %s. Please try to disable plugins related to the Security/User Profile/Membership and try again.', 'ajax-login-and-registration-modal-popup' ),
+                $location
+            )
+        ));
     }
 
     /**

@@ -62,7 +62,7 @@ var LRM = LRM ? LRM : {};
 
 		$(document).on('click', '#lrm-login .lrm-form-message a', function (event) {
 			event.preventDefault();
-			forgot_password_selected();
+			forgot_password_selected(event);
 		});
 
 		//close modal
@@ -98,7 +98,7 @@ var LRM = LRM ? LRM : {};
 		//show forgot-password form
 		$forgotPasswordLink.on('click', function (event) {
 			event.preventDefault();
-			forgot_password_selected();
+			forgot_password_selected(event);
 		});
 
 		//back to login from the forgot-password form
@@ -169,7 +169,7 @@ var LRM = LRM ? LRM : {};
 			return false;
 		}
 
-		function forgot_password_selected() {
+		function forgot_password_selected(event) {
 			// if (LRM.is_user_logged_in) {
 			// 	return true;
 			// }
