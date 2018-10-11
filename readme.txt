@@ -171,6 +171,11 @@ If you have login issue with Adminize plugin - go to Adminize plugin settings an
 
 == Changelog ==
 
+= VER 1.40 - 10/10/2018 =
+
+- A lot of JS & CSS updates - so please test your modal forms design and functionality after update!!
+- Inline mode with shortcode [lrm_form default_tab="login"], where default_tab can be set as 'login', 'register', 'lost-password'
+
 = VER 1.37 - 06/10/2018 =
 
 - Added new email - for admin about new user registration (please note - in case of using Social login this email will be not triggered)

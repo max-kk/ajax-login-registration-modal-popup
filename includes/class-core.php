@@ -21,6 +21,8 @@ class LRM_Core {
 
         LRM_Settings::get();
 
+        add_shortcode('lrm_form', array($this, 'shortcode'));
+
         add_action('wp_enqueue_scripts', array($this, 'enqueue_assets'), 5);
         add_action('wp_footer', array($this, 'wp_footer__action'), 1);
 
@@ -68,6 +70,20 @@ class LRM_Core {
         add_filter('plugin_action_links_' . LRM_BASENAME, array($this, 'add_settings_link'));
 
         new LRM_Admin_Menus();
+    }
+
+    public function shortcode($atts) {
+        if ( !is_customize_preview() && is_user_logged_in() ) {
+            return;
+        }
+
+        $atts = wp_parse_args($atts, array(
+            'default_tab'  => 'login',
+        ));
+
+        ob_start();
+            $this->render_form( true, $atts['default_tab'] );
+        return ob_get_clean(  );
     }
 
     /**
@@ -213,7 +229,11 @@ class LRM_Core {
         wp_localize_script('lrm-modal', 'LRM', $script_params);
     }
 
-    public function render_form() {
+    public function render_form( $is_inline = false, $default_tab = 'login' ) {
+
+        if ( !in_array($default_tab, array('login', 'register', 'lost-password')) ) {
+            $default_tab = 'login';
+        }
 
         require LRM_PATH . '/views/form.php';
 

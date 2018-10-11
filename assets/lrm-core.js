@@ -14,16 +14,17 @@ var LRM = LRM ? LRM : {};
 	}
 
 	function lrm_init() {
-		var $formModal = $('.lrm-user-modal'),
-			  $formLogin = $formModal.find('#lrm-login'),
-			  $formSignup = $formModal.find('#lrm-signup'),
-			  $formForgotPassword = $formModal.find('#lrm-reset-password'),
-			  $formModalTab = $('.lrm-switcher'),
-			  $tabLogin = $formModalTab.children('li').eq(0).children('a'),
-			  $tabSignup = $formModalTab.children('li').eq(1).children('a'),
-			  $forgotPasswordLink = $formLogin.find('.lrm-form-bottom-message a'),
-			  $backToLoginLink = $formForgotPassword.find('.lrm-form-bottom-message a'),
-			  loader_html = '<span class="lrm-button-loader"> <svg version="1.1" id="L4" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 100 40" enable-background="new 0 0 0 0" xml:space="preserve"> <circle fill="#ffffff" stroke="none" cx="30" cy="20" r="6"> <animate attributeName="opacity" dur="1s" values="0;1;0" repeatCount="indefinite" begin="0.1"/> </circle> <circle fill="#ffffff" stroke="none" cx="50" cy="20" r="6"> <animate attributeName="opacity" dur="1s" values="0;1;0" repeatCount="indefinite" begin="0.2"/> </circle> <circle fill="#ffffff" stroke="none" cx="70" cy="20" r="6"> <animate attributeName="opacity" dur="1s" values="0;1;0" repeatCount="indefinite" begin="0.3"/> </circle> </svg></span>';
+		// var $formModal = $('.lrm-user-modal'),
+		// 	  $formLogin = $formModal.find('#lrm-login'),
+		// 	  $formSignup = $formModal.find('#lrm-signup'),
+		// 	  $formForgotPassword = $formModal.find('#lrm-reset-password'),
+		// 	  $formModalTab = $('.lrm-switcher'),
+		// 	  $tabLogin = $formModalTab.children('li').eq(0).children('a'),
+		// 	  $tabSignup = $formModalTab.children('li').eq(1).children('a'),
+		// 	  $forgotPasswordLink = $formLogin.find('.lrm-form-bottom-message a'),
+		// 	  $backToLoginLink = $formForgotPassword.find('.lrm-form-bottom-message a'),
+
+	  	var loader_html = '<span class="lrm-button-loader"> <svg version="1.1" id="L4" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 100 40" enable-background="new 0 0 0 0" xml:space="preserve"> <circle fill="#ffffff" stroke="none" cx="30" cy="20" r="6"> <animate attributeName="opacity" dur="1s" values="0;1;0" repeatCount="indefinite" begin="0.1"/> </circle> <circle fill="#ffffff" stroke="none" cx="50" cy="20" r="6"> <animate attributeName="opacity" dur="1s" values="0;1;0" repeatCount="indefinite" begin="0.2"/> </circle> <circle fill="#ffffff" stroke="none" cx="70" cy="20" r="6"> <animate attributeName="opacity" dur="1s" values="0;1;0" repeatCount="indefinite" begin="0.3"/> </circle> </svg></span>';
 
 		$(document).on('lrm_show_signup', signup_selected);
 
@@ -36,7 +37,7 @@ var LRM = LRM ? LRM : {};
 					  .off("click")
 					  .on('click', function (event) {
 						  event.preventDefault();
-						  $(document).trigger('lrm_show_login');
+						  $(document).trigger('lrm_show_login', [event]);
 						  return false;
 					  });
 			}
@@ -45,7 +46,7 @@ var LRM = LRM ? LRM : {};
 					  .off("click")
 					  .on('click', function (event) {
 						  event.preventDefault();
-						  $(document).trigger('lrm_show_signup');
+						  $(document).trigger('lrm_show_signup', [event]);
 						  return false;
 					  });
 			}
@@ -56,33 +57,36 @@ var LRM = LRM ? LRM : {};
 		//open sign-up form
 		$(document).on('click', '.lrm-signup', signup_selected);
 		$(document).on('click', '[class*="lrm-register"]', signup_selected);
+		$(document).on('click', '.lrm-switch-to--register', signup_selected);
+
 		//open login-form form
 		$(document).on('click', '.lrm-signin', login_selected);
 		$(document).on('click', '[class*="lrm-login"]', login_selected);
+		$(document).on('click', '.lrm-switch-to--login', login_selected);
 
-		$(document).on('click', '#lrm-login .lrm-form-message a', function (event) {
+		$(document).on('click', '.lrm-login .lrm-form-message a,.lrm-switch-to--reset-password', function (event) {
 			event.preventDefault();
 			forgot_password_selected(event);
 		});
 
 		//close modal
-		$formModal.on('click', function (event) {
-			if ($(event.target).is($formModal) || $(event.target).is('.lrm-close-form')) {
-				$formModal.removeClass('is-visible');
+		$('.lrm-user-modal').on('click', function(event){
+			if ($(event.target).is('.lrm-user-modal') || $(event.target).is('.lrm-close-form')) {
+				$(this).removeClass('is-visible');
 			}
 		});
 		//close modal when clicking the esc keyboard button
 		$(document).keyup(function (event) {
 			if (event.which == '27') {
-				$formModal.removeClass('is-visible');
+				$(".lrm-user-modal").removeClass('is-visible');
 			}
 		});
 
 		//switch from a tab to another
-		$formModalTab.on('click', function (event) {
-			event.preventDefault();
-			( $(event.target).is($tabLogin) ) ? login_selected(event, true) : signup_selected(event, true);
-		});
+		// $formModalTab.on('click', function (event) {
+		// 	event.preventDefault();
+		// 	( $(event.target).is($tabLogin) ) ? login_selected(event, true) : signup_selected(event, true);
+		// });
 
 		//hide or show password
 		$('.hide-password').on('click', function () {
@@ -96,28 +100,21 @@ var LRM = LRM ? LRM : {};
 		});
 
 		//show forgot-password form
-		$forgotPasswordLink.on('click', function (event) {
-			event.preventDefault();
-			forgot_password_selected(event);
-		});
+		// $forgotPasswordLink.on('click', function (event) {
+		// 	event.preventDefault();
+		// 	forgot_password_selected(event);
+		// });
+		//
+		// //back to login from the forgot-password form
+		// $backToLoginLink.on('click', function (event) {
+		// 	event.preventDefault();
+		// 	login_selected(event, true);
+		// });
 
-		//back to login from the forgot-password form
-		$backToLoginLink.on('click', function (event) {
-			event.preventDefault();
-			login_selected(event, true);
-		});
-
-		function login_selected(event, is_system_call) {
+		function login_selected(event, event_orig) {
 			// if (LRM.is_user_logged_in) {
 			// 	return true;
 			// }
-
-			if ( "undefined" != typeof(is_system_call) || !is_system_call ) {
-				LRM.redirect_url = "";
-				if ( $(this).hasClass("lrm-redirect") ) {
-					LRM.redirect_url = $(this).attr("href");
-				}
-			}
 
 			/**
 			 * @since 1.34
@@ -125,12 +122,40 @@ var LRM = LRM ? LRM : {};
 			 */
 			$(document).triggerHandler("lrm/before_display/login", this, event);
 
+			var $formModal = $(event.target).closest(".lrm-main");
+
+			if ( ! $formModal.length ) {
+				LRM.redirect_url = "";
+				if ( !event_orig ) {
+					var el = event.target ? event.target : this;
+				} else {
+					var el = event_orig.target;
+				}
+				if ( el && $(el).hasClass("lrm-redirect") ) {
+					LRM.redirect_url = $(el).attr("href");
+				}
+			}
+
+			if ( ! $formModal.length ) {
+				$formModal = $(".lrm-user-modal");
+			}
+
+			// var $formModal = $('.lrm-user-modal'),
+			// 	  $formLogin = $formModal.find('.lrm-login'),
+			// 	  $formSignup = $formModal.find('.lrm-signup'),
+			// 	  $formForgotPassword = $formModal.find('.lrm-reset-password'),
+			// 	  $formModalTab = $('.lrm-switcher'),
+			// 	  $tabLogin = $formModalTab.children('li').eq(0).children('a'),
+			// 	  $tabSignup = $formModalTab.children('li').eq(1).children('a'),
+			// 	  $forgotPasswordLink = $formLogin.find('.lrm-form-bottom-message a'),
+			// 	  $backToLoginLink = $formForgotPassword.find('.lrm-form-bottom-message a'),
+			//
 			$formModal.addClass('is-visible');
-			$formLogin.addClass('is-selected');
-			$formSignup.removeClass('is-selected');
-			$formForgotPassword.removeClass('is-selected');
-			$tabLogin.addClass('selected');
-			$tabSignup.removeClass('selected');
+			$formModal.find('.lrm-signin-section').addClass('is-selected');
+			$formModal.find('.lrm-signup-section').removeClass('is-selected');
+			$formModal.find('.lrm-reset-password-section').removeClass('is-selected');
+			$formModal.find('.lrm-switcher').children('li').eq(0).children('a').addClass('selected');
+			$formModal.find('.lrm-switcher').children('li').eq(1).children('a').removeClass('selected');
 
 			if (event) {
 				event.preventDefault();
@@ -138,17 +163,10 @@ var LRM = LRM ? LRM : {};
 			return false;
 		}
 
-		function signup_selected(event, is_system_call) {
+		function signup_selected(event, event_orig) {
 			// if (LRM.is_user_logged_in) {
 			// 	return true;
 			// }
-
-			if ( "undefined" != typeof(is_system_call) || !is_system_call ) {
-				LRM.redirect_url = "";
-				if ( $(this).hasClass("lrm-redirect") ) {
-					LRM.redirect_url = $(this).attr("href");
-				}
-			}
 
 			/**
 			 * @since 1.34
@@ -156,12 +174,38 @@ var LRM = LRM ? LRM : {};
 			 */
 			$(document).triggerHandler("lrm/before_display/registration", this, event);
 
+			// $formModal.addClass('is-visible');
+			// $formLogin.removeClass('is-selected');
+			// $formSignup.addClass('is-selected');
+			// $formForgotPassword.removeClass('is-selected');
+			// $tabLogin.removeClass('selected');
+			// $tabSignup.addClass('selected');
+
+			var $formModal = $(event.target).closest(".lrm-main");
+
+
+			if ( ! $formModal.length ) {
+				LRM.redirect_url = "";
+				if ( !event_orig ) {
+					var el = event.target ? event.target : this;
+				} else {
+					var el = event_orig.target;
+				}
+				if ( el && $(el).hasClass("lrm-redirect") ) {
+					LRM.redirect_url = $(el).attr("href");
+				}
+			}
+
+			if ( ! $formModal.length ) {
+				$formModal = $(".lrm-user-modal");
+			}
+
 			$formModal.addClass('is-visible');
-			$formLogin.removeClass('is-selected');
-			$formSignup.addClass('is-selected');
-			$formForgotPassword.removeClass('is-selected');
-			$tabLogin.removeClass('selected');
-			$tabSignup.addClass('selected');
+			$formModal.find('.lrm-signin-section').removeClass('is-selected');
+			$formModal.find('.lrm-signup-section').addClass('is-selected');
+			$formModal.find('.lrm-reset-password-section').removeClass('is-selected');
+			$formModal.find('.lrm-switcher').children('li').eq(0).children('a').removeClass('selected');
+			$formModal.find('.lrm-switcher').children('li').eq(1).children('a').addClass('selected');
 
 			if (event) {
 				event.preventDefault();
@@ -180,9 +224,20 @@ var LRM = LRM ? LRM : {};
 			 */
 			$(document).triggerHandler("lrm/before_display/forgot_password", this, event);
 
-			$formLogin.removeClass('is-selected');
-			$formSignup.removeClass('is-selected');
-			$formForgotPassword.addClass('is-selected');
+			var $formModal = $(event.target).closest(".lrm-main");
+
+			if ( ! $formModal.length ) {
+				$formModal = $(".lrm-user-modal");
+			}
+
+			$formModal.addClass('is-visible');
+			$formModal.find('.lrm-signin-section').removeClass('is-selected');
+			$formModal.find('.lrm-signup-section').removeClass('is-selected');
+			$formModal.find('.lrm-reset-password-section').addClass('is-selected');
+
+			// $formLogin.removeClass('is-selected');
+			// $formSignup.removeClass('is-selected');
+			// $formForgotPassword.addClass('is-selected');
 			return false;
 		}
 
@@ -190,7 +245,7 @@ var LRM = LRM ? LRM : {};
 
 		function lrm_submit_form (event) {
 			if ( LRM.is_customize_preview ) {
-				alert( "Not possible submit form in Preview Mode!" );
+				alert( "Not possible to submit form in Preview Mode!" );
 				return;
 			}
 			var $form = $(event.target);
@@ -258,19 +313,19 @@ var LRM = LRM ? LRM : {};
 					}
 
 					$(document).triggerHandler('lrm_pro/maybe_refresh_recaptcha');
+				},
+				error: function(jqXHR, textStatus, errorThrown) {
+					$form.find(".lrm-button-loader").remove();
+
+					alert("An error occurred, please contact with administrator... \n\rFor more details look at the console (F12 or Ctrl+Shift+I, Console tab)!");
+
+					if (window.console == undefined) {
+						return;
+					}
+					console.log('statusCode:', jqXHR.status);
+					console.log('errorThrown:', errorThrown);
+					console.log('responseText:', jqXHR.responseText);
 				}
-				// error: function(jqXHR, textStatus, errorThrown) {
-				// 	$form.find(".lrm-button-loader").remove();
-				//
-				// 	alert("An error occurred, please contact with administrator... \n\rFor more details look at the console (F12 or Ctrl+Shift+I, Console tab)!");
-				//
-				// 	if (window.console == undefined) {
-				// 		return;
-				// 	}
-				// 	console.log('statusCode:', jqXHR.status);
-				// 	console.log('errorThrown:', errorThrown);
-				// 	console.log('responseText:', jqXHR.responseText);
-				// }
 
 			});
 
