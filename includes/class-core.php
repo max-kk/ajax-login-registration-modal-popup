@@ -21,6 +21,9 @@ class LRM_Core {
 
         LRM_Settings::get();
 
+	// Fix for https://wordpress.org/plugins/eonet-manual-user-approve/, to stop reset user password
+	add_filter('eonet_mua_avoid_password_reset', '__return_false');
+
         add_shortcode('lrm_form', array($this, 'shortcode'));
 
         add_action('wp_enqueue_scripts', array($this, 'enqueue_assets'), 5);

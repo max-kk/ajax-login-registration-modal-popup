@@ -35,13 +35,13 @@ $users_can_register = get_option("users_can_register");
 
                 <div class="fieldset">
                     <label class="image-replace lrm-email"><?php echo esc_attr( LRM_Settings::get()->setting('messages/login/username', true) ); ?></label>
-                    <input  name="username" class="full-width has-padding has-border" type="text" placeholder="<?php echo esc_attr( LRM_Settings::get()->setting('messages/login/username', true) ); ?>" <?= $fields_required; ?> value="">
+                    <input  name="username" class="full-width has-padding has-border" type="text" placeholder="<?php echo esc_attr( LRM_Settings::get()->setting('messages/login/username', true) ); ?>" <?= $fields_required; ?> value="" autocomplete="username">
                     <span class="lrm-error-message"></span>
                 </div>
 
                 <div class="fieldset">
                     <label class="image-replace lrm-password"><?php echo esc_attr( LRM_Settings::get()->setting('messages/login/password', true) ); ?></label>
-                    <input name="password" class="full-width has-padding has-border" type="password"  placeholder="<?php echo esc_attr( LRM_Settings::get()->setting('messages/login/password', true) ); ?>" <?= $fields_required; ?> value="">
+                    <input name="password" class="full-width has-padding has-border" type="password"  placeholder="<?php echo esc_attr( LRM_Settings::get()->setting('messages/login/password', true) ); ?>" <?= $fields_required; ?> value="" autocomplete="current-password">
                     <span class="lrm-error-message"></span>
                     <span class="hide-password" data-show="<?php echo LRM_Settings::get()->setting('messages/other/show_pass'); ?>" data-hide="<?php echo LRM_Settings::get()->setting('messages/other/hide_pass'); ?>"><?php echo LRM_Settings::get()->setting('messages/other/show_pass'); ?></span>
                 </div>
@@ -129,7 +129,7 @@ $users_can_register = get_option("users_can_register");
                         <div class="fieldset">
                             <div class="lrm-position-relative">
                                 <label class="image-replace lrm-password" for="signup-password"><?php echo esc_attr( LRM_Settings::get()->setting('messages_pro/registration/password', true) ); ?></label>
-                                <input name="password" class="full-width has-padding has-border" id="signup-password" type="password"  placeholder="<?php echo esc_attr( LRM_Settings::get()->setting('messages_pro/registration/password', true) ); ?>" <?= $fields_required; ?> value="">
+                                <input name="password" class="full-width has-padding has-border" id="signup-password" type="password"  placeholder="<?php echo esc_attr( LRM_Settings::get()->setting('messages_pro/registration/password', true) ); ?>" <?= $fields_required; ?> value="" autocomplete="new-password">
                                 <span class="lrm-error-message"></span>
                                 <span class="hide-password" data-show="<?php echo LRM_Settings::get()->setting('messages/other/show_pass'); ?>" data-hide="<?php echo LRM_Settings::get()->setting('messages/other/hide_pass'); ?>"><?php echo LRM_Settings::get()->setting('messages/other/show_pass'); ?></span>
                             </div>

@@ -107,6 +107,16 @@ Example: `<a href="/wp-login.php" class="lrm-login">Login</a>`
 
 Use this tutorial to add class from text above for your menu element - [https://www.lockedowndesign.com/add-css-classes-to-menu-items-in-wordpress/](https://www.lockedowndesign.com/add-css-classes-to-menu-items-in-wordpress/)
 
+= Class "lrm-hide-if-logged-in" is not working in GeneratePress theme? =
+
+[https://www.wpbeginner.com/plugins/how-to-easily-add-custom-css-to-your-wordpress-site/](Add this custom css):
+`
+body.logged-in li.lrm-hide-if-logged-in a { display: none; }
+body.logged-in li [class*='lrm-hide-if-logged-in'] a { display: none; }
+`
+
+Thanks to Kash Monsefi for a report.
+
 = How can I add log out link/button? =
 
 Please read this post: https://wordpress.org/support/topic/logout-link-8/#post-10180543
@@ -171,8 +181,14 @@ If you have login issue with Adminize plugin - go to Adminize plugin settings an
 
 == Changelog ==
 
+= VER 1.41 - 02/11/2018 =
+
+- New option - use WooCommerce emails templates, so your emails will looks the same (useful for WC stores)
+- Tweaks for password managers
+
 = VER 1.40 - 10/10/2018 =
 
+- Tweak for https://wordpress.org/plugins/eonet-manual-user-approve/ (stop reset password during user approval)
 - A lot of JS & CSS updates - so please test your modal forms design and functionality after update!!
 - Inline mode with shortcode [lrm_form default_tab="login"], where default_tab can be set as 'login', 'register', 'lost-password'
 

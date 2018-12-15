@@ -37,16 +37,24 @@ class LRM_Mailer {
 	 */
 	public static function send( $to, $subject, $mail_body, $mail_key = '', $headers = '' ) {
 
-		if ( 'text/html' == LRM_Settings::get()->setting('mails/mail/format') ) {
+	    $email_format = LRM_Settings::get()->setting('mails/mail/format');
+        $is_html_format = in_array( $email_format, array('wc-text/html', 'text/html') );
+
+		if ( $is_html_format  ) {
 			// Convert links to html
 			$mail_body = make_clickable($mail_body);
 			// EOR to <BR>
 			$mail_body = nl2br($mail_body);
 			add_filter( 'wp_mail_content_type', array( 'LRM_Mailer', 'set_mail_type' ) );
-
-			// Apply custom template
-            $mail_body = str_replace('{{CONTENT}}', $mail_body, LRM_Settings::get()->setting('mails/template/code'));
 		}
+
+		if ( 'text/html' == $email_format ) {
+            // Apply custom template
+            $mail_body = str_replace('{{CONTENT}}', $mail_body, LRM_Settings::get()->setting('mails/template/code'));
+        } elseif ( 'wc-text/html' == $email_format ) {
+		    // Use WooCommerce template
+            $mail_body = self::set_wc_style( $mail_body, $subject );
+        }
 
 		do_action( "lrm/mail/before_sent", $mail_key );
 
@@ -54,12 +62,47 @@ class LRM_Mailer {
 
         do_action( "lrm/mail/after_sent", $mail_key );
 
-		if ( 'text/html' == LRM_Settings::get()->setting('mails/mail/format') ) {
+		if ( $is_html_format ) {
 			remove_filter( 'wp_mail_content_type', array( 'LRM_Mailer', 'set_mail_type' ) );
 		}
 
 		return $mail_sent;
 	}
+
+    /**
+     * @param string $content
+     * @param string $subject
+     *
+     * @return false|string
+     *
+     * @since 1.41
+     */
+	public static function set_wc_style( $content, $subject ) {
+        ob_start();
+        WC_Emails::instance();
+        do_action( 'woocommerce_email_header', $subject, null );
+        echo $content;
+        do_action( 'woocommerce_email_footer', null );
+        $content = ob_get_clean();
+
+        ob_start();
+        wc_get_template( 'emails/email-styles.php' );
+        $css = apply_filters( 'woocommerce_email_styles', ob_get_clean() );
+
+
+        if ( ! class_exists( 'Emogrifier' ) ) {
+            include_once WC()->plugin_path() . '/includes/libraries/class-emogrifier.php';
+        }
+        try {
+            $emogrifier = new Emogrifier( $content, $css );
+            $content    = $emogrifier->emogrify();
+        } catch ( Exception $e ) {
+            $content = '<style type="text/css">' . $css . '</style>' . $content;
+        }
+
+        return $content;
+
+    }
 
 	/**
 	 * Sets mail type to text/html for wp_mail

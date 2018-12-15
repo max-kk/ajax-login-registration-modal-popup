@@ -35,7 +35,7 @@ class LRM_AJAX
 
         // If the user wants ssl but the session is not ssl, force a secure cookie.
         if ( !$secure_cookie && !empty($info['user_login']) && !force_ssl_admin() ) {
-            $user_name = sanitize_user($_POST['log']);
+            $user_name = sanitize_user($info['user_login']);
             $user = get_user_by( 'login', $user_name );
 
             if ( ! $user && strpos( $user_name, '@' ) ) {
@@ -177,7 +177,7 @@ class LRM_AJAX
 
             if ( ! LRM_Settings::get()->setting('general/registration/user_must_confirm_email') ) {
                 $info = array();
-                $info['user_login'] = $user_login;
+                $info['user_login'] = $userdata['nickname'];
                 $info['user_password'] = $userdata['user_pass'];
                 $info['remember'] = true;
 
@@ -281,7 +281,14 @@ class LRM_AJAX
                 do_action('woocommerce_created_customer', $user_id, $userdata, $userdata['user_pass']);
             }
 
-            if ( $user_signon && !is_wp_error($user_signon) ) {
+            if ( is_wp_error($user_signon) ) {
+                wp_send_json_success( array(
+                    'logged_in' => false,
+                    'message'   => $user_signon->get_error_message(),
+                ) );
+            }
+
+            if ( $user_signon ) {
                 wp_send_json_success( array(
                     'logged_in' => true,
                     'user_id'   => $user_id,

@@ -303,11 +303,12 @@ class LRM_Settings {
                     'options'     => array(
                         'plain'      => 'plain',
                         'text/html'  => 'text/html',
+                        'wc-text/html'  => 'text/html using WooCommerce template (require WooCommerce plugin)',
                     ),
                 ),
                 'default'     => 'plain',
                 'description' => sprintf(
-                    __('To enable support of html tags - use text/html email format. More - <a href="%1$s" target="_blank">%1$s</a>', 'ajax-login-and-registration-modal-popup' ),
+                    __('To enable support of html tags - use text/html email format. More - <a href="%1$s" target="_blank">%1$s</a><br/> Option "use WooCommerce template" is experimental feature and could have issues with some WC plugins.', 'ajax-login-and-registration-modal-popup' ),
                     'http://blog.cakemail.com/html-vs-plain-text/'
                 ),
                 'render'      => array( new CoreFields\Select(), 'input' ),
@@ -396,7 +397,7 @@ class LRM_Settings {
                 'sanitize'    => array( new LRM_Field_Editor(), 'sanitize' ),
             ) );
 
-        $EMAILS_SECTION->add_group( __( 'Template for HTML emails', 'ajax-login-and-registration-modal-popup' ), 'template' )
+        $EMAILS_SECTION->add_group( __( 'Template for HTML emails (text/html format only, not WooCommerce!)', 'ajax-login-and-registration-modal-popup' ), 'template' )
             ->add_field( array(
                 'slug'        => 'code',
                 'name'        => __('HTML email template', 'ajax-login-and-registration-modal-popup' ),
@@ -844,7 +845,7 @@ class LRM_Settings {
      * @since 1.33
      */
     protected function register_wpml_strings() {
-        if ( class_exists('SitePress') ) {
+        if ( class_exists('SitePress') && function_exists('icl_register_string') ) {
             $messages = $this->get_section_settings_fields('messages');
             $mails = $this->get_section_settings_fields('mails');
 
