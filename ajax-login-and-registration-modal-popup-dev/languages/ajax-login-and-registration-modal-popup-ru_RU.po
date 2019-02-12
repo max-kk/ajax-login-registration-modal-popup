@@ -1,0 +1,333 @@
+# Translation of Plugins - AJAX Login and Registration modal popup - Development (trunk) in Russian
+# This file is distributed under the same license as the Plugins - AJAX Login and Registration modal popup - Development (trunk) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: +0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: GlotPress/2.4.0-alpha\n"
+"Language: ru\n"
+"Project-Id-Version: Plugins - AJAX Login and Registration modal popup - Development (trunk)\n"
+
+#: includes/class-settings.php:390
+msgid "View:"
+msgstr "Посмотреть:"
+
+#: includes/class-settings.php:389
+msgid "Email:"
+msgstr "Эл. адрес:"
+
+#: includes/class-settings.php:388
+msgid "Username:"
+msgstr "Имя пользователя (Логин):"
+
+#: includes/class-settings.php:196
+msgid "If this option is enabled - the user won't automatically be logged into his account."
+msgstr "Если эта опция включена - пользователь не будет автоматически регистрироваться."
+
+#: includes/class-ajax.php:59
+msgid "https://wordpress.org/support/"
+msgstr "https://wordpress.org/support/"
+
+#: includes/class-ajax.php:59
+msgid "https://codex.wordpress.org/Cookies"
+msgstr "https://codex.wordpress.org/Cookies"
+
+#. translators: 1: Browser cookie documentation URL, 2: Support forums URL
+#: includes/class-ajax.php:58
+msgid "<strong>ERROR</strong>: Cookies are blocked due to unexpected output. For help, please see <a href=\"%1$s\">this documentation</a> or try the <a href=\"%2$s\">support forums</a>."
+msgstr "<strong>ОШИБКА</strong>: Cookies заблокированы из-за неожиданного выхода. Для получения справки см.<a href=\"%1$s\">эта документация</a> или попробуйте <a href=\"%2$s\">форумы поддержки</a>"
+
+#: includes/class-settings.php:567
+msgid "Please enter your First Name!"
+msgstr "Пожалуйста, введите свое Имя!"
+
+#: includes/class-settings.php:566
+msgid "Message: No First Name"
+msgstr "Сообщение: Нет имени"
+
+#: includes/class-settings.php:560
+msgid "Please enter your UserName!"
+msgstr "Пожалуйста, введите Ваш логин!"
+
+#: includes/class-settings.php:559
+msgid "Message: No UserName"
+msgstr "Сообщение: Нет UserName"
+
+#: includes/class-settings.php:500
+msgid "Form: Username"
+msgstr "Форма: имя пользователя"
+
+#: includes/class-settings.php:483
+msgid "Login successful, you can close this window."
+msgstr "Вы успешно вошли в систему, можете закрыть это окно."
+
+#: includes/class-settings.php:310
+msgid "To enable support of html tags - use text/html email format. More - <a href=\"%1$s\" target=\"_blank\">%1$s</a>"
+msgstr "Чтобы включить поддержку html-тегов - используйте text/html формат электронной почты. Больше - <a href=\"%1$s\" target=\"_blank\">%1$s</a>"
+
+#: includes/class-settings.php:301
+msgid "Email format"
+msgstr "Формат электронной почты"
+
+#: includes/class-settings.php:298
+msgid "Mails"
+msgstr "Сообщения"
+
+#: includes/class-settings.php:701
+msgid "Security token is expired! Please refresh the page!"
+msgstr "Защитный токен истёк! Пожалуйста, обновите страницу!"
+
+#: includes/class-settings.php:700
+msgid "Message: Security token is expired"
+msgstr "Сообщение: токен безопасности истек"
+
+#: includes/class-settings.php:668
+msgid "Check your mailbox to access your new password."
+msgstr "Проверьте ваш почтовый ящик, чтобы получить доступ к новому паролю."
+
+#: includes/class-settings.php:632
+msgid "Message: No user registered with that email address"
+msgstr "Сообщение: Нет пользователей, зарегистрированных с этим адресом электронной почты"
+
+#: includes/class-settings.php:625
+msgid "Message: Missing login"
+msgstr "Сообщение: Отсутствует логин"
+
+#: includes/class-settings.php:588
+msgid "Registration was successful. We have sent you an email with your login information. Please use them to log into your account."
+msgstr "Регистрация прошла успешно. Мы отправили вам электронное письмо с вашей регистрационной информацией. Используйте их для входа в свою учетную запись."
+
+#: includes/class-settings.php:469
+msgid "Please enter your password!"
+msgstr "Пожалуйста, введите ваш пароль!"
+
+#: includes/class-settings.php:462
+msgid "Please enter your Username/email!"
+msgstr "Пожалуйста, введите ваше имя пользователя / адрес электронной почты!"
+
+#: includes/class-settings.php:461
+msgid "Message: No Username/Email"
+msgstr "Сообщение: Нет логина / Email"
+
+#: includes/class-settings.php:447
+msgid "Log in"
+msgstr "Авторизоваться"
+
+#: includes/class-settings.php:219 includes/class-settings.php:229
+msgid "User must confirm email after registration?"
+msgstr "Пользователь должен подтвердить адрес электронной почты после регистрации?"
+
+#: includes/class-settings.php:692
+msgid "Hide password"
+msgstr "Скрыть пароль"
+
+#: includes/class-settings.php:684
+msgid "Show password"
+msgstr "Показать пароль"
+
+#: includes/class-settings.php:693
+msgid "Hide"
+msgstr "Скрыть"
+
+#: includes/class-settings.php:685
+msgid "Show"
+msgstr "Показать"
+
+#: vendor/underdev/settings/views/settings-page.php:6
+#: views/admin/settings-page.php:6 views/settings-page.php:6
+msgid "No Settings available at the moment"
+msgstr "Нет доступных настроек на данный момент"
+
+#: includes/class-settings.php:714
+msgid "PRO features"
+msgstr "PRO функции"
+
+#: includes/class-settings.php:677
+msgid "close"
+msgstr "Закрыть"
+
+#: includes/class-settings.php:673
+msgid "Other"
+msgstr "Другие"
+
+#. Plugin URI of the plugin/theme
+msgid "https://maxim-kaminsky.com/shop/product/ajax-login-and-registration-modal-popup-pro/"
+msgstr "https://maxim-kaminsky.com/shop/product/ajax-login-and-registration-modal-popup-pro/"
+
+#. Plugin Name of the plugin/theme
+msgid "AJAX Login and Registration modal popup"
+msgstr "AJAX Вход и регистрация POPUP"
+
+#: includes/class-settings.php:676
+msgid "Close modal text"
+msgstr "Закрыть модальный текст"
+
+#: includes/class-settings.php:667
+msgid "Message: Reset successful"
+msgstr "Сообщение: Сброс произведен успешно"
+
+#: includes/class-settings.php:661
+msgid "Oops! Something went wrong while updating your account."
+msgstr "К сожалению, при обновлении учетной записи что-то пошло не так ."
+
+#: includes/class-settings.php:660
+msgid "Message: Something went wrong"
+msgstr "Сообщение: Что-то пошло не так"
+
+#: includes/class-settings.php:654
+msgid "System is unable to send you the mail containing your new password."
+msgstr "Система не может отправить вам письмо с новым паролем."
+
+#: includes/class-settings.php:653
+msgid "Message: Unable to send email"
+msgstr "Сообщение: невозможно отправить письмо"
+
+#: includes/class-settings.php:647
+msgid "Invalid username or e-mail address."
+msgstr "Неверное имя пользователя или адрес электронной почты."
+
+#: includes/class-settings.php:646
+msgid "Message: Invalid username or e-mail address"
+msgstr "Сообщение: неверное имя пользователя или адрес электронной почты"
+
+#: includes/class-settings.php:640
+msgid "There is no user registered with that username."
+msgstr "Пользователь не зарегистрирован с этим именем пользователя."
+
+#: includes/class-settings.php:639
+msgid "Message: No user registered with that username"
+msgstr "Сообщение: Пользователь не зарегистрирован с этим именем пользователя"
+
+#: includes/class-settings.php:626
+msgid "Enter an username or email address."
+msgstr "Введите имя пользователя или адрес электронной почты."
+
+#: includes/class-settings.php:618
+msgid "Back to login"
+msgstr "Вернуться на страницу входа"
+
+#: includes/class-settings.php:522
+msgid "Email*"
+msgstr "Эл. адрес*"
+
+#: includes/class-settings.php:521
+msgid "Form: Email"
+msgstr "Форма: электронная почта"
+
+#: includes/class-settings.php:515
+msgid "Last name"
+msgstr "Фамилия"
+
+#: includes/class-settings.php:514
+msgid "Form: Last name"
+msgstr "Форма: Фамилия"
+
+#: includes/class-settings.php:508
+msgid "First name*"
+msgstr "Имя*"
+
+#: includes/class-settings.php:507
+msgid "Form: First name"
+msgstr "Форма: Имя"
+
+#: includes/class-settings.php:494
+msgid "New account"
+msgstr "Новая учетная запись"
+
+#: includes/class-settings.php:476
+msgid "Login successful, reloading page..."
+msgstr "Вы вошли, перезагрузите страницу ..."
+
+#: includes/class-settings.php:468
+msgid "Message: No Password"
+msgstr "Сообщение: Нет пароля"
+
+#: includes/class-settings.php:454
+msgid "Forgot your password?"
+msgstr "Забыли пароль?"
+
+#. Author URI of the plugin/theme
+msgid "http://maxim-kaminsky.com/"
+msgstr "http://maxim-kaminsky.com/"
+
+#. Author of the plugin/theme
+msgid "Maxim K"
+msgstr "Максим К"
+
+#: includes/class-settings.php:633
+msgid "There is no user registered with that email address."
+msgstr "Пользователь с таким адресом не зарегестрирован"
+
+#: includes/class-settings.php:611
+msgid "Reset password"
+msgstr "Сбросить пароль"
+
+#: includes/class-settings.php:545
+msgid "Create account"
+msgstr "Создать аккаунт"
+
+#: includes/class-settings.php:453
+msgid "Link: Forgot your password?"
+msgstr "Ссылка: Забыли пароль?"
+
+#: includes/class-settings.php:446
+msgid "Form button: Login"
+msgstr "Кнопка формы: Вход"
+
+#: includes/class-settings.php:440
+msgid "Remember me"
+msgstr "Запомнить меня"
+
+#: includes/class-settings.php:439
+msgid "Form: Remember me"
+msgstr "Форма: Запомнить меня"
+
+#: includes/class-settings.php:322
+msgid "[YOUR BLOG NAME] Your username and password info"
+msgstr "[YOUR BLOG NAME] Ваше имя пользователя и пароль"
+
+#: includes/class-settings.php:321 includes/class-settings.php:345
+#: includes/class-settings.php:377
+msgid "Subject"
+msgstr "Тема"
+
+#: includes/class-settings.php:318 includes/class-settings.php:490
+msgid "Registration"
+msgstr "Регистрация"
+
+#: includes/class-settings.php:296
+msgid "Emails"
+msgstr "Сообщение электронной почты"
+
+#: includes/class-settings.php:179
+msgid "Free version are compatible with:"
+msgstr "Бесплатная версия совместима с:"
+
+#: includes/class-settings.php:176
+msgid "Supported plugins"
+msgstr "Поддерживаемые плагины"
+
+#: includes/class-settings.php:169
+msgid "How to integrate modal on your site:"
+msgstr "Как интегрировать модальное окно на ваш сайт:"
+
+#: includes/class-settings.php:166
+msgid "Installation steps"
+msgstr "Этапы установки"
+
+#: includes/class-core.php:82
+#: vendor/underdev/settings/views/settings-page.php:3
+#: views/admin/settings-page.php:3 views/settings-page.php:3
+msgid "Settings"
+msgstr "Настройки"
+
+#: includes/class-settings.php:164 includes/class-settings.php:216
+msgid "General"
+msgstr "Основные"
+
+#: includes/class-admin-menus.php:38 includes/class-settings.php:415
+msgid "Login"
+msgstr "Логин"

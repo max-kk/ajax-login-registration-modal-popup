@@ -1,0 +1,35 @@
+/* helpers.scss */
+html.html-has-lrm {
+    overflow: auto !important;
+}
+
+.lrm-position-relative {
+    position: relative;
+}
+
+.clearfix:after {
+    display: table;
+    content: "";
+    clear: both;
+}
+
+.lrm-col-half-width {
+    position: relative;
+    padding: 0 !important;
+}
+.lrm-col-first {
+    margin-bottom: $fieldset-margin-tb;
+}
+
+@include respond-to(min-width, 600px) {
+    .lrm-col-half-width {
+        width: 49%;
+        float: left;
+        clear: none;
+        margin: 0;
+    }
+
+    .lrm-col-last {
+        float: right;
+    }
+}

@@ -1,0 +1,89 @@
+/*******************
+Login Form
+********************/
+.lrm-user-modal-container {
+    border-radius: 0;
+    max-width: 400px;
+    margin-top: 4em;
+    margin-bottom: 3em;
+}
+
+.lrm-form input {
+    border-radius: 0;
+}
+
+.lrm-user-modal-container .lrm-switcher.-is-not-login-only li:last-child a {
+    border-radius: 0;
+}
+
+.lrm-user-modal-container .lrm-switcher.-is-not-login-only a.selected {
+    color: #000;
+}
+
+.lrm-user-modal-container .lrm-switcher a {
+    background: #000;
+    color: #ccc;
+}
+
+.lrm-form input.has-border {
+    border: 1px solid transparent;
+    border-bottom: 1px solid #000;
+}
+
+.lrm-form input.has-border:focus {
+    border-color: #000;
+    box-shadow: 0 0 5px rgba(52, 54, 66, 0.1);
+}
+
+.lrm-user-modal-container .input-text:focus,
+.lrm-user-modal-container input[type=email]:focus,
+.lrm-user-modal-container input[type=password]:focus,
+.lrm-user-modal-container input[type=search]:focus,
+.lrm-user-modal-container input[type=tel]:focus,
+.lrm-user-modal-container input[type=text]:focus,
+.lrm-user-modal-container input[type=url]:focus,
+.lrm-user-modal-container textarea:focus {
+    background-color: #fff;
+    color: #000;
+    border: 1px solid #000;
+}
+
+.lrm-user-modal-container .input-text,
+.lrm-user-modal-container input[type=email],
+.lrm-user-modal-container input[type=password],
+.lrm-user-modal-container input[type=search],
+.lrm-user-modal-container input[type=tel],
+.lrm-user-modal-container input[type=text],
+.lrm-user-modal-container input[type=url],
+.lrm-user-modal-container textarea {
+    background-color: transparent !important;
+    color: #000;
+    border-radius: 0;
+    font-weight: 300;
+    box-shadow: none;
+}
+
+.lrm-user-modal-container .lrm-switcher.-is-not-login-only li:first-child a {
+    border-radius: 0;
+}
+
+.lrm-form button[type=submit],
+.lrm-form #buddypress input[type=submit],
+.lrm-form input[type=submit] {
+    font-size: 16px;
+}
+
+.lrm-form a.button,
+.lrm-form button,
+.lrm-form button[type=submit],
+.lrm-form #buddypress input[type=submit],
+.lrm-form input[type=submit] {
+    background: #000;
+    font-weight: 300;
+    border-radius: 0;
+}
+
+.lrm-user-modal-container label[for="accept-terms"] a {
+    font-weight: 500;
+}
+

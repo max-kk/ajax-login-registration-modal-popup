@@ -1,0 +1,219 @@
+/* integrations.scss */
+
+.lrm-integrations label {
+    font-weight: bold;
+}
+
+.lrm-form .lrm-integrations input[type="text"],
+.lrm-form .lrm-integrations input[type="tel"],
+.lrm-form .lrm-integrations input[type="email"],
+.lrm-form .lrm-integrations input[type="number"],
+.lrm-form .lrm-integrations input[type="url"],
+.lrm-form .lrm-integrations input[type="date"],
+.lrm-form .lrm-integrations textarea,
+.lrm-form .lrm-integrations select {
+    border: 1px solid #d2d8d8;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    -o-appearance: none;
+    appearance: none;
+    width: 100% !important;
+    box-sizing: border-box;
+    padding: 12px 20px;
+    font-size: 16px;
+}
+
+.lrm-form .lrm-integrations input[type="text"]:focus,
+.lrm-form .lrm-integrations input[type="tel"]:focus,
+.lrm-form .lrm-integrations input[type="number"]:focus,
+.lrm-form .lrm-integrations input[type="email"]:focus,
+.lrm-form .lrm-integrations input[type="url"]:focus,
+.lrm-form .lrm-integrations input[type="date"]:focus,
+.lrm-form .lrm-integrations textarea:focus
+.lrm-form .lrm-integrations select:focus {
+    border-color: #343642;
+    box-shadow: 0 0 5px rgba(52, 54, 66, 0.1);
+    outline: none;
+}
+
+.lrm-form .acf-field {
+    text-align: left;
+}
+
+.lrm-form .acf-input-prepend,
+.lrm-form .acf-input-append {
+    padding: 13px 7px;
+}
+
+.lrm-form input.has-error {
+    border: 1px solid #d76666;
+}
+
+.lrm-integrations {
+    text-align: center;
+}
+
+.lrm-integrations,
+.lrm-integrations label,
+.lrm-integrations p {
+    font-size: 16px;
+}
+
+.lrm-integrations br {
+    display: none;
+    text-align: center;
+}
+
+/*
+==== lrm-pass-strength-result ====
+@since 1.1
+*/
+
+.lrm-pass-strength-result {
+    background-color: #eee;
+    border: 1px solid #ddd;
+    color: #23282d;
+    margin: 1px 5px 5px 1px;
+    padding: 3px 5px;
+    text-align: center;
+    width: 25em;
+    opacity: 0;
+    display: inline-block;
+    width: 100%;
+}
+
+.lrm-pass-strength-result.short {
+    background-color: #f1adad;
+    border-color: #e35b5b;
+    opacity: 1
+}
+
+.lrm-pass-strength-result.bad {
+    background-color: #fbc5a9;
+    border-color: #f78b53;
+    opacity: 1
+}
+
+.lrm-pass-strength-result.good {
+    background-color: #ffe399;
+    border-color: #ffc733;
+    opacity: 1
+}
+
+.lrm-pass-strength-result.strong {
+    background-color: #c1e1b9;
+    border-color: #83c373;
+    opacity: 1
+}
+
+/* Catcha PLUGIN */
+.lrm-integrations .cptch_input {
+    padding: 6px 8px;
+    font-size: 16px !important;
+}
+
+.wp-social-login-provider-list img {
+    display: inline-block;
+}
+
+/**
+    Jetpack
+*/
+#jetpack-sso-wrap {
+    margin-top: 10px;
+}
+
+a.jetpack-sso {
+    display: block;
+    width: 100%;
+    text-align: center;
+    text-decoration: none;
+}
+
+.jetpack-sso-or {
+    margin-bottom: 16px;
+    position: relative;
+    text-align: center;
+}
+
+.jetpack-sso-or:before {
+    background: #E5E5E5;
+    content: '';
+    height: 1px;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 100%;
+}
+
+.jetpack-sso-or span {
+    background: #fff;
+    color: #777;
+    position: relative;
+    padding: 0 8px;
+    text-transform: uppercase
+}
+
+.jetpack-sso.button {
+    height: 36px;
+    line-height: 34px;
+    float: none;
+    margin-bottom: 16px;
+    position: relative;
+    width: 100%;
+}
+
+.jetpack-sso.button > span {
+    position: relative;
+    padding-left: 30px;
+}
+
+.jetpack-sso.button .genericon-wordpress {
+    position: absolute;
+    left: 0;
+    top: -3px;
+    font-size: 24px;
+}
+
+@media screen and (max-width: 782px) {
+    .jetpack-sso.button {
+        line-height: 22px;
+    }
+}
+
+/* UltimateMember Registration form customization */
+
+.lrm-signup-section .um-button.um-alt {
+    display: none;
+}
+
+.lrm-signup-section .um-col-alt .um-right.um-half {
+    display: none;
+}
+
+.lrm-signup-section .um-col-alt .um-half {
+    width: 100%;
+}
+
+.um-register.um {
+    max-width: unset !important;
+}
+
+.lrm-signup-section .um-col-alt {
+    padding-bottom: .9em;
+}
+
+.lrm-signup-section #um-submit-btn {
+    width: 100%;
+}
+
+@media (min-height: 33.875em) {
+    .um .picker--opened .picker__frame {
+        top: 50%;
+    }
+}
+
+.lrm-grecaptcha > div {
+    margin: auto;
+}

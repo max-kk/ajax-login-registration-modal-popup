@@ -10,9 +10,18 @@
     }
   ],
   "require": {
+<<<<<<< HEAD
+    "underdev/settings": "1.2",
+    "max-kk/wp-skins-customizer": "dev-master"
+  },
+  "autoload": {
+    "classmap": ["includes/", "skins/", "vendor/max-kk/wp-notice-lib/"],
+    "exclude-from-classmap": ["vendor/plugin-update-checker/"]
+=======
     "underdev/settings": "1.2"
   },
   "autoload": {
     "exclude-from-classmap": ["includes/plugin-update-checker/"]
+>>>>>>> 77157a6b4927006a5788ce89f08bd5719fbafea8
   }
 }

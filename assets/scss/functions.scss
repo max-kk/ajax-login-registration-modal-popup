@@ -1,0 +1,18 @@
+@mixin respond-to($type, $query) {
+    @media only screen and ($type: $query) {
+        @content;
+    }
+}
+
+// RTL direction
+@mixin rtl() {
+    [dir="rtl"] &,
+    [lang="ar"] & {
+        @content;
+    }
+}
+
+// Usage:
+// @include respond-to(max-width, 768px) {
+//    width: 50%;
+// }

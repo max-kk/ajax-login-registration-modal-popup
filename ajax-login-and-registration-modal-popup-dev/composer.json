@@ -1,0 +1,20 @@
+{
+  "name": "max-kk/ajax-login-registration-modal-popup",
+  "description": "description_text",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "Maxim Kaminsky",
+      "email": "email@example.com"
+    }
+  ],
+  "require": {
+    "underdev/settings": "1.2",
+    "max-kk/wp-skins-customizer": "dev-master"
+  },
+  "autoload": {
+    "classmap": ["includes/", "skins/", "vendor/max-kk/wp-notice-lib/"],
+    "exclude-from-classmap": ["vendor/plugin-update-checker/"]
+  }
+}

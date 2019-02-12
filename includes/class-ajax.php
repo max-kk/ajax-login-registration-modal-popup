@@ -1,5 +1,7 @@
 <?php
 
+defined( 'ABSPATH' ) || exit;
+
 /**
  * Class LRM_AJAX
  *
@@ -71,10 +73,22 @@ class LRM_AJAX
 
             $message = LRM_Settings::get()->setting('general/registration/reload_after_login') ? LRM_Settings::get()->setting('messages/login/success') : LRM_Settings::get()->setting('messages/login/success_no_reload');
 
+<<<<<<< HEAD
+            $action = lrm_setting('redirects/login/action');
+            $redirect_url = LRM_Redirects_Manager::get_redirect( 'login', $user_signon->ID );
+
+            wp_send_json_success(array(
+                'logged_in' => true,
+                'user_id'   => $user_signon->ID,
+                'message'   => $message,
+                'action'    => $redirect_url ? 'redirect' : $action,
+                'redirect_url'=> $redirect_url,
+=======
             wp_send_json_success(array(
                 'logged_in' => true,
                 'user_id'   => $user_signon->ID,
                 'message'   => $message
+>>>>>>> 77157a6b4927006a5788ce89f08bd5719fbafea8
             ));
         }
     }
@@ -85,7 +99,7 @@ class LRM_AJAX
 
         LRM_Core::get()->call_pro('check_captcha', 'signup' );
 
-        if ( !get_option('users_can_register') ) :
+        if ( !apply_filters('lrm/users_can_register', get_option("users_can_register") ) ) :
             wp_send_json_error(array('message' => LRM_Settings::get()->setting('messages/registration/disabled')));
         endif;
 
@@ -97,10 +111,25 @@ class LRM_AJAX
         } else {
             $email_arr = explode('@', $email);
             $user_login = sanitize_user(trim($email_arr[0]), true);
+<<<<<<< HEAD
+
+            $user_exists = get_user_by( 'login', $user_login );
+
+            if ( $user_exists ) {
+                $user_login .= '_' . rand(99, 999);
+            }
+
+=======
+>>>>>>> 77157a6b4927006a5788ce89f08bd5719fbafea8
         }
 
         $display_first_and_last_name = LRM_Settings::get()->setting('general/registration/display_first_and_last_name');
 
+<<<<<<< HEAD
+        $first_name = '';
+        $last_name = '';
+=======
+>>>>>>> 77157a6b4927006a5788ce89f08bd5719fbafea8
         if ( $display_first_and_last_name ) {
             $first_name = sanitize_text_field( $_POST['first-name'] );
             $last_name  = ! empty($_POST['last-name']) ? sanitize_text_field( $_POST['last-name'] ) : '';
@@ -172,18 +201,62 @@ class LRM_AJAX
 
             do_action('lrm/registration_successful', $user_id);
 
+<<<<<<< HEAD
+            /**
+             * Tweak in case other plugins has changed user login during insert to DB
+             * @since 1.41
+             */
+            $user = get_user_by( 'ID', $user_id );
+
+            // Is user logged in?
+            $user_signon = false;
+
+            //if ( ! LRM_Settings::get()->setting('general/registration/user_must_confirm_email') ) {
+            // TODO - migrate setting??
+
+            if ( in_array( lrm_setting('redirects/registration/action'), ['auto-login', 'reload', 'redirect'] ) ) {
+                $info = array();
+                $info['user_login'] = $user->user_login;
+=======
             // Is user logged in?
             $user_signon = false;
 
             if ( ! LRM_Settings::get()->setting('general/registration/user_must_confirm_email') ) {
                 $info = array();
                 $info['user_login'] = $userdata['nickname'];
+>>>>>>> 77157a6b4927006a5788ce89f08bd5719fbafea8
                 $info['user_password'] = $userdata['user_pass'];
                 $info['remember'] = true;
 
                 $user_signon = wp_signon( $info );
             }
 
+<<<<<<< HEAD
+
+            if ( apply_filters( "lrm/mails/registration/is_need_send", true, $user_id, $userdata, $user_signon) ) {
+
+                $subject = LRM_Settings::get()->setting('mails/registration/subject');
+
+                $mail_body = str_replace(
+                    array(
+                        '{{FIRST_NAME}}',
+                        '{{LAST_NAME}}',
+                        '{{USERNAME}}',
+                        '{{PASSWORD}}',
+                        '{{LOGIN_URL}}',
+                    ),
+                    array(
+                        $user->first_name,
+                        $user->last_name,
+                        $user->user_login,
+                        $userdata['user_pass'],
+                        wp_login_url(),
+                    ),
+                    LRM_Settings::get()->setting('mails/registration/body')
+                );
+
+                $mail_body = apply_filters("lrm/mails/registration/body", $mail_body, $user->user_login, $userdata);
+=======
             if ( apply_filters( "lrm/mails/registration/is_need_send", true, $user_id, $userdata, $user_signon) ) {
 
                 $subject = LRM_Settings::get()->setting('mails/registration/subject');
@@ -203,6 +276,7 @@ class LRM_AJAX
                 );
 
                 $mail_body = apply_filters("lrm/mails/registration/body", $mail_body, $user_login, $userdata);
+>>>>>>> 77157a6b4927006a5788ce89f08bd5719fbafea8
 
                 $mail_sent = LRM_Mailer::send($email, $subject, $mail_body, 'registration');
 
@@ -210,23 +284,37 @@ class LRM_AJAX
 
             if ( LRM_Settings::get()->setting('mails/admin_new_user/on') ) {
 
+<<<<<<< HEAD
+=======
                 // The blogname option is escaped with esc_html on the way into the database in sanitize_option
                 // we want to reverse this for the plain text arena of emails.
                 $blogname = wp_specialchars_decode(get_option('blogname'), ENT_QUOTES);
 
+>>>>>>> 77157a6b4927006a5788ce89f08bd5719fbafea8
                 // Admin Notification
                 $switched_locale = switch_to_locale(get_locale());
 
                 $mail_body = str_replace(
                     array(
+<<<<<<< HEAD
+                        '{{FIRST_NAME}}',
+                        '{{LAST_NAME}}',
+=======
                         'YOUR BLOG NAME',
+>>>>>>> 77157a6b4927006a5788ce89f08bd5719fbafea8
                         '{{USERNAME}}',
                         '{{EMAIL}}',
                         '{{USER_ADMIN_URL}}',
                     ),
                     array(
+<<<<<<< HEAD
+                        $user->first_name,
+                        $user->last_name,
+                        $user->user_login,
+=======
                         $blogname,
                         $user_login,
+>>>>>>> 77157a6b4927006a5788ce89f08bd5719fbafea8
                         $email,
                         admin_url( 'user-edit.php?user_id=' . $user_id ),
                     ),
@@ -288,6 +376,19 @@ class LRM_AJAX
                 ) );
             }
 
+<<<<<<< HEAD
+            $action = lrm_setting('redirects/registration/action');
+            $redirect_url = $user_signon ? LRM_Redirects_Manager::get_redirect( 'registration', $user_signon->ID ) : '';
+
+            wp_send_json_success( array(
+                'logged_in' => $user_signon ? true : false,
+                'user_id'   => $user_id ? $user_id : false,
+                'message'   => $user_signon ? lrm_setting( 'messages/registration/success' ) : lrm_setting( 'messages/registration/success_please_login' ),
+
+                'redirect_url' => $redirect_url,
+                'action'       => $action,
+            ) );
+=======
             if ( $user_signon ) {
                 wp_send_json_success( array(
                     'logged_in' => true,
@@ -300,6 +401,7 @@ class LRM_AJAX
                     'message'   => LRM_Settings::get()->setting( 'messages/registration/success_please_login' )
                 ) );
             }
+>>>>>>> 77157a6b4927006a5788ce89f08bd5719fbafea8
         } else {
 
             do_action('lrm/registration_fail', $user_id);
@@ -367,6 +469,13 @@ class LRM_AJAX
                 $to = $user->user_email;
                 $subject = LRM_Settings::get()->setting('mails/lost_password/subject');
 
+<<<<<<< HEAD
+                $reset_pass_url = LRM_Pages_Manager::get_password_reset_url($password_reset_key, $user);
+
+                // The blogname option is escaped with esc_html on the way into the database in sanitize_option
+                // we want to reverse this for the plain text arena of emails.
+                $blogname = wp_specialchars_decode(get_option('blogname'), ENT_QUOTES);
+=======
                 $reset_pass_url = '';
 
                 if ( class_exists( 'WooCommerce' ) ) {
@@ -381,6 +490,7 @@ class LRM_AJAX
                 }
 
                 $reset_pass_url = apply_filters( 'lrm/lost_password/link', $reset_pass_url, $password_reset_key, $user );
+>>>>>>> 77157a6b4927006a5788ce89f08bd5719fbafea8
 
                 $mail_body = str_replace(
                     array(
@@ -402,7 +512,11 @@ class LRM_AJAX
                     $errors->add('unable_send', LRM_Settings::get()->setting('messages/lost_password/unable_send'));
                 }
             } else {
-                $errors->add('something_wrong', LRM_Settings::get()->setting('messages/lost_password/something_wrong'));
+                $err_msg = LRM_Settings::get()->setting('messages/lost_password/something_wrong');
+                if ( is_wp_error($password_reset_key) ) {
+                    $err_msg .= ' ' . $password_reset_key->get_error_message();
+                }
+                $errors->add('something_wrong', $err_msg);
             }
         }
 
@@ -422,6 +536,119 @@ class LRM_AJAX
         }
     }
 
+<<<<<<< HEAD
+    /**
+     * AJAX call
+     */
+    public static function password_reset() {
+
+        self::_verify_nonce('security-password-reset2', 'ajax-password-reset-nonce' );
+
+        if ( ! isset( $_POST['password1'] ) || empty( trim($_POST['password1']) ) ) {
+            wp_send_json_error(array('message' => lrm_setting('messages/password/password_is_missing'), 'for'=>'password1'));
+        }
+
+        $errors = new WP_Error();
+
+        $rp_data = self::_validate_password_reset($errors);
+
+        if ( $errors->get_error_code() ) {
+            wp_send_json_error(array(
+                'message'=> implode('<br/>', $errors->get_error_messages())
+            ));
+        }
+
+        $new_pass = wp_unslash( trim($_POST['password1']) );
+
+        list($rp_key, $rp_login, $rp_path, $user) = $rp_data;
+
+        $rp_cookie = 'wp-resetpass-' . COOKIEHASH;
+
+        /**
+         * Fires before the password reset procedure is validated.
+         *
+         * @since 3.5.0
+         *
+         * @param object           $errors WP Error object.
+         * @param WP_User|WP_Error $user   WP_User object if the login and reset key match. WP_Error object otherwise.
+         */
+        do_action( 'validate_password_reset', $errors, $user );
+
+
+        if ( ( ! $errors->get_error_code() ) && $new_pass ) {
+            reset_password($user, $new_pass);
+            setcookie( $rp_cookie, ' ', time() - YEAR_IN_SECONDS, $rp_path, COOKIE_DOMAIN, is_ssl(), true );
+
+            wp_send_json_success(array(
+                'message'=> __( 'Your password has been reset.' ) . ' <a href="' . esc_url( wp_login_url() ) . '" class="lrm-login">' . __( 'Log in' ) . '</a>'
+            ));
+        }
+
+        wp_send_json_error(array(
+            'message'=> implode('<br/>', $errors->get_error_messages())
+        ));
+
+    }
+
+    /**
+     * @param WP_Error $errors
+     * @return array
+     */
+    public static function _validate_password_reset($errors ) {
+        if ( ! isset( $_REQUEST['key'] ) || empty( $_REQUEST['key'] ) ) {
+            $errors->add( 'empty_key', __( 'Your password reset link key is missing.' ) );
+        }
+
+        if ( ! isset( $_REQUEST['login'] ) || empty( $_REQUEST['login'] ) ) {
+            $errors->add( 'empty_login', __( 'Your password reset link login is missing.' ) );
+        }
+
+        if ( $errors->get_error_code() ) {
+            return [];
+        }
+
+        list( $rp_path ) = explode( '?', wp_unslash( $_SERVER['REQUEST_URI'] ) );
+        $rp_key = wp_unslash( $_REQUEST['key'] );
+        $rp_login = wp_unslash( $_REQUEST['login'] );
+
+//
+//        if ( isset( $_GET['key'] ) ) {
+//            $value = sprintf( '%s:%s', wp_unslash( $_GET['login'] ), wp_unslash( $_GET['key'] ) );
+//            setcookie( $rp_cookie, $value, 0, $rp_path, COOKIE_DOMAIN, is_ssl(), true );
+//            wp_safe_redirect( remove_query_arg( array( 'key', 'login' ) ) );
+//            exit;
+//        }
+
+        $user = false;
+        if ( $rp_key && $rp_login ) {
+            $user = check_password_reset_key( $rp_key, $rp_login );
+            if ( $user && ! hash_equals( $rp_key, $rp_key ) ) {
+                $user = false;
+            }
+        } else {
+            $user = false;
+        }
+
+        if ( ! $user || is_wp_error( $user ) ) {
+
+            $request_msg = ' ' . sprintf( __( 'Please <a href="%s" class="lrm-forgot-password">request a new link.</a>'), site_url('wp-login.php?action=lostpassword') );
+
+            //setcookie( $rp_cookie, ' ', time() - YEAR_IN_SECONDS, $rp_path, COOKIE_DOMAIN, is_ssl(), true );
+            if ( $user && $user->get_error_code() === 'expired_key' ) {
+                $errors->add('invalidkey', __('Your password reset link appears to be invalid.') . $request_msg);
+                //wp_redirect( site_url( 'wp-login.php?action=lostpassword&error=expiredkey' ) );
+            } else {
+                $errors->add('expiredkey', __('Your password reset link has expired.') . $request_msg);
+                //wp_redirect( site_url( 'wp-login.php?action=lostpassword&error=invalidkey' ) );
+            }
+        }
+
+        return [$rp_key, $rp_login, $rp_path, $user];
+
+    }
+
+=======
+>>>>>>> 77157a6b4927006a5788ce89f08bd5719fbafea8
     public static function _verify_nonce( $post_key, $nonce_key ) {
         if ( defined("WP_CACHE") ) {
             return true;

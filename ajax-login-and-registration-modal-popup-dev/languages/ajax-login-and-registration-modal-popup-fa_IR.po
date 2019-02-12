@@ -1,0 +1,240 @@
+# Translation of Plugins - AJAX Login and Registration modal popup - Development (trunk) in Persian
+# This file is distributed under the same license as the Plugins - AJAX Login and Registration modal popup - Development (trunk) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2018-12-18 14:10+0200\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 1.7.7\n"
+"Language: fa\n"
+"Project-Id-Version: Plugins - AJAX Login and Registration modal popup - Development (trunk)\n"
+"POT-Creation-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+
+#. translators: 1: Browser cookie documentation URL, 2: Support forums URL
+#: includes/class-ajax.php:58
+msgid "<strong>ERROR</strong>: Cookies are blocked due to unexpected output. For help, please see <a href=\"%1$s\">this documentation</a> or try the <a href=\"%2$s\">support forums</a>."
+msgstr "<strong>خطا</strong>: کوکی ها به دلیل خروجی های غیر منتظره مسدود هستند. به منظور کمک، لطفاً ببینید <a href=\"%1$s\">این مستندات</a> را یا  <a href=\"%2$s\">انجمن پشتیبانی</a> را امتحان کنید."
+
+#: includes/class-settings.php:567
+msgid "Please enter your First Name!"
+msgstr "لطفاً نام خود را وارد کنید!"
+
+#: includes/class-settings.php:566
+msgid "Message: No First Name"
+msgstr "پیام: بدون نام!"
+
+#: includes/class-settings.php:560
+msgid "Please enter your UserName!"
+msgstr "لطفاً نام کاربری خود را وارد کنید!"
+
+#: includes/class-settings.php:559
+msgid "Message: No UserName"
+msgstr "پیام: بدون نام کاربری"
+
+#: includes/class-settings.php:500
+msgid "Form: Username"
+msgstr "فرم: نام کاربری"
+
+#: includes/class-settings.php:483
+msgid "Login successful, you can close this window."
+msgstr "با موفقیت وارد شدید. می توانید این پنجره را ببندید."
+
+#: includes/class-settings.php:482
+msgid "Message: Login successful (with \"Reload page after login/registration?\" disabled)"
+msgstr "پیام: ورود موفق (زمانی که \"بارگذاری صفحه پس از ورود/ثبت نام\" فعال نیست.)"
+
+#: includes/class-settings.php:475
+msgid "Message: Login successful (with \"Reload page after login/registration?\" enabled)"
+msgstr "پیام: ورود موفق (زمانی که \"بارگذاری صفحه پس از ورود/ثبت نام\" فعال است.)"
+
+#: includes/class-settings.php:362
+msgid "The email Body to user with new password. Allowed tags: {{USERNAME}}, {{CHANGE_PASSWORD_URL}}, {{SITE_URL}}, {{LOGIN_URL}}"
+msgstr "متن ایمیل به کاربری که درخواست بازیابی رمز عبور داده است. از تگ های زیر در متن ایمیل می توانید استفاده کنید: {{USERNAME}}, {{CHANGE_PASSWORD_URL}}, {{SITE_URL}}, {{LOGIN_URL}}"
+
+#: includes/class-settings.php:357
+msgid "To reset your password, visit the following address:"
+msgstr "برای بازیابی رمز عبورتان، روی لینک زیر کلیک کنید:"
+
+#: includes/class-settings.php:356
+msgid "If this was a mistake, just ignore this email and nothing will happen."
+msgstr "اگر اشتباه شده است، فقط این ایمیل را نادیده بگیرید تا رمز عبورتان بدون تغییر باقی بماند."
+
+#: includes/class-settings.php:235
+msgid "Display First and Last name fields in Registration Form?"
+msgstr "آیا کادرهای نام و نام خانوادگی در فرم ثبت نام نمایش داده شود؟"
+
+#: includes/class-settings.php:632
+msgid "Message: No user registered with that email address"
+msgstr "پیام: هیچ کاربری با آدرس ایمیل وارد شده، عضو نشده است."
+
+#: includes/class-settings.php:469
+msgid "Please enter your password!"
+msgstr "لطفاً رمز عبور خود را وارد کنید!"
+
+#: includes/class-settings.php:625
+msgid "Message: Missing login"
+msgstr "پیام: ورود ناموفق"
+
+#: includes/class-settings.php:462
+msgid "Please enter your Username/email!"
+msgstr "لطفاً نام کاربری یا ایمیل تان را وارد کنید!"
+
+#: includes/class-settings.php:461
+msgid "Message: No Username/Email"
+msgstr "پیام: بدون نام کاربری/ایمیل"
+
+#: includes/class-settings.php:447
+msgid "Log in"
+msgstr "ورود"
+
+#: includes/class-settings.php:588
+msgid "Registration was successful. We have sent you an email with your login information. Please use them to log into your account."
+msgstr "ثبت نام با موفقیت انجام شد. ما در حال ارسال اطلاعات ورود به ایمیل شما هستیم. لطفاً از این اطلاعات برای ورود به حساب کاربری تان استفاده کنید."
+
+#: includes/class-settings.php:521
+msgid "Form: Email"
+msgstr "فرم: ایمیل"
+
+#: includes/class-settings.php:515
+msgid "Last name"
+msgstr "نام خانوادگی"
+
+#: includes/class-settings.php:514
+msgid "Form: Last name"
+msgstr "فرم: نام خانوادگی"
+
+#: includes/class-settings.php:508
+msgid "First name*"
+msgstr "نام*"
+
+#: includes/class-settings.php:507
+msgid "Form: First name"
+msgstr "فرم: نام"
+
+#: includes/class-settings.php:494
+msgid "New account"
+msgstr "حساب جدید"
+
+#: includes/class-settings.php:476
+msgid "Login successful, reloading page..."
+msgstr "ورود با موفقیت انجام شد. صفحه در حال بارگذاری می باشد..."
+
+#: includes/class-settings.php:468
+msgid "Message: No Password"
+msgstr "پیام: بدون رمز عبور"
+
+#: includes/class-settings.php:454
+msgid "Forgot your password?"
+msgstr "رمز عبور خود را فراموش کرده اید؟"
+
+#: includes/class-core.php:82
+#: vendor/underdev/settings/views/settings-page.php:3
+#: views/admin/settings-page.php:3 views/settings-page.php:3
+msgid "Settings"
+msgstr "تنظیمات"
+
+#: includes/class-settings.php:241
+msgid "Advanced"
+msgstr "پیشرفته"
+
+#: includes/class-settings.php:186
+msgid "Terms"
+msgstr "قوانین"
+
+#: includes/class-settings.php:164 includes/class-settings.php:216
+msgid "General"
+msgstr "عمومی"
+
+#: includes/class-settings.php:166
+msgid "Installation steps"
+msgstr "راهنمای استفاده"
+
+#: includes/class-settings.php:296
+msgid "Emails"
+msgstr "ایمیل ها"
+
+#: includes/class-settings.php:426 includes/class-settings.php:604
+msgid "Email or Username"
+msgstr "ایمیل یا نام کاربری"
+
+#: includes/class-settings.php:425 includes/class-settings.php:603
+msgid "Form: Email or Username"
+msgstr "فرم: ایمیل یا نام کاربری"
+
+#: includes/class-settings.php:418 includes/class-settings.php:493
+msgid "Form heading"
+msgstr "ورود"
+
+#: includes/class-admin-menus.php:38 includes/class-settings.php:415
+msgid "Login"
+msgstr "ورود"
+
+#: includes/class-settings.php:413
+msgid "Expressions"
+msgstr "ترجمه"
+
+#: includes/class-settings.php:501
+msgid "Username*"
+msgstr "نام کاربری*"
+
+#: includes/class-settings.php:348
+msgid "The email Subject to user with new password."
+msgstr "موضوع ایمیل ارسالی به کاربر برای ارسال رمز عبور پس از ثبت نام است."
+
+#: includes/class-settings.php:346
+msgid "[YOUR BLOG NAME] Your new password"
+msgstr "[نام وب سایت خود را اینجا بنویسید...] رمز عبور شما"
+
+#: includes/class-settings.php:343 includes/class-settings.php:593
+msgid "Lost password"
+msgstr "فراموشی رمز عبور"
+
+#: includes/class-settings.php:329 includes/class-settings.php:353
+#: includes/class-settings.php:385
+msgid "Body"
+msgstr "متن ایمیل"
+
+#: includes/class-settings.php:323 includes/class-settings.php:379
+msgid "The email Subject to user about successful registration."
+msgstr "متن ایمیل ارسالی به کاربر برای اعلام ثبت نام موفق است."
+
+#: includes/class-settings.php:322
+msgid "[YOUR BLOG NAME] Your username and password info"
+msgstr "[نام وب سایت خود را اینجا بنویسید...] اطلاعات نام کاربری و رمز عبور شما"
+
+#: includes/class-settings.php:321 includes/class-settings.php:345
+#: includes/class-settings.php:377
+msgid "Subject"
+msgstr "موضوع"
+
+#: includes/class-settings.php:318 includes/class-settings.php:490
+msgid "Registration"
+msgstr "ثبت نام"
+
+#: includes/class-settings.php:453
+msgid "Link: Forgot your password?"
+msgstr "لینک: رمز عبور خود را فراموش کرده اید؟"
+
+#: includes/class-settings.php:446
+msgid "Form button: Login"
+msgstr "دکمه فرم: ورود"
+
+#: includes/class-settings.php:440
+msgid "Remember me"
+msgstr "مرا به خاطر بسپار"
+
+#: includes/class-settings.php:439
+msgid "Form: Remember me"
+msgstr "فرم: مرا به خاطر بسپار"
+
+#: includes/class-settings.php:433
+msgid "Password"
+msgstr "رمز عبور"
+
+#: includes/class-settings.php:432
+msgid "Form: Password"
+msgstr "فرم: رمز عبور"

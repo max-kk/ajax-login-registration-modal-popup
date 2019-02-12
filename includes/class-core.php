@@ -1,5 +1,7 @@
 <?php
 
+defined( 'ABSPATH' ) || exit;
+
 /**
  * Class LRM_Core
  */
@@ -14,6 +16,21 @@ class LRM_Core {
 
         $this->load_plugin_textdomain();
 
+<<<<<<< HEAD
+        WP_Admin_Dismissible_Notice::get();
+        LRM_Settings::get();
+
+        // Fix for https://wordpress.org/plugins/eonet-manual-user-approve/, to stop reset user password
+	    add_filter('eonet_mua_avoid_password_reset', '__return_false');
+
+        add_shortcode('lrm_form', array($this, 'shortcode'));
+        add_shortcode('lrm_lostpassword_form', array($this, 'lostpassword_shortcode'));
+
+        add_action('wp_enqueue_scripts', array($this, 'enqueue_assets'), 5);
+        add_action('wp_footer', array($this, 'wp_footer__action'), 1);
+
+        add_action('init', array('LRM_Updater', 'init'));
+=======
         require_once LRM_PATH . '/includes/class-mailer.php';
         require_once LRM_PATH . '/includes/class-settings.php';
         require_once LRM_PATH . '/includes/class-ajax.php';
@@ -28,6 +45,7 @@ class LRM_Core {
 
         add_action('wp_enqueue_scripts', array($this, 'enqueue_assets'), 5);
         add_action('wp_footer', array($this, 'wp_footer__action'), 1);
+>>>>>>> 77157a6b4927006a5788ce89f08bd5719fbafea8
 
         if ( !class_exists('LRM_Pro') ) {
             add_action('lrm_login_form', array($this, 'form_fblogin__action'));
@@ -36,6 +54,8 @@ class LRM_Core {
         }
 
         if ( !empty($_REQUEST['lrm_action']) ) {
+<<<<<<< HEAD
+=======
 //            $lrm_advanced_option = get_option('lrm_advanced');
 //
 //            if ($lrm_advanced_option && isset($lrm_advanced_option['troubleshooting']['hook'])) {
@@ -44,6 +64,7 @@ class LRM_Core {
 //                $hook_to_use = ;
 //            }
 
+>>>>>>> 77157a6b4927006a5788ce89f08bd5719fbafea8
             add_filter( 'wp_redirect', array($this, 'wp_redirect__filter'), 9, 2 );
 
             // Disable redirect after Login
@@ -55,9 +76,15 @@ class LRM_Core {
         }
 
         // RUN PRO UPDATER
+<<<<<<< HEAD
+        if ( file_exists(LRM_PATH . 'vendor/plugin-update-checker/plugin-update-checker.php') && is_admin() && lrm_is_pro() ) {
+
+            require LRM_PATH . 'vendor/plugin-update-checker/plugin-update-checker.php';
+=======
         if ( is_admin() && lrm_is_pro() ) {
 
             require 'plugin-update-checker/plugin-update-checker.php';
+>>>>>>> 77157a6b4927006a5788ce89f08bd5719fbafea8
             $myUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
                 'https://addons-updater.wp-vote.net/?action=get_metadata&slug=ajax-login-and-registration-modal-popup-pro',
                 LRM_PRO_PATH . 'login-registration-modal-pro.php', //Full path to the main plugin file or functions.php.
@@ -73,6 +100,44 @@ class LRM_Core {
         add_filter('plugin_action_links_' . LRM_BASENAME, array($this, 'add_settings_link'));
 
         new LRM_Admin_Menus();
+<<<<<<< HEAD
+
+        WP_Skins_Customizer::init();
+        LRM_Skins::instance()->load_defaults();
+
+        LRM_Pages_Manager::init();
+    }
+
+    public function shortcode($atts) {
+        $atts = wp_parse_args($atts, array(
+            'default_tab'  => 'login',
+            'logged_in_message'  => 'You have been already logged in!',
+        ));
+
+
+        if ( !is_customize_preview() && is_user_logged_in() ) {
+            return $atts['logged_in_message'];
+        }
+
+        ob_start();
+            $this->render_form( true, $atts['default_tab'] );
+        return ob_get_clean(  );
+    }
+
+
+    public function lostpassword_shortcode($atts) {
+        $atts = wp_parse_args($atts, array(
+            'logged_in_message'  => 'You have been already logged in!',
+        ));
+
+
+        if ( !is_customize_preview() && is_user_logged_in() ) {
+            return $atts['logged_in_message'];
+        }
+
+        ob_start();
+            require LRM_PATH . 'views/restore-password.php';
+=======
     }
 
     public function shortcode($atts) {
@@ -86,6 +151,7 @@ class LRM_Core {
 
         ob_start();
             $this->render_form( true, $atts['default_tab'] );
+>>>>>>> 77157a6b4927006a5788ce89f08bd5719fbafea8
         return ob_get_clean(  );
     }
 
@@ -128,6 +194,10 @@ class LRM_Core {
          * Fix for ACF PRO
          * @since 1.18
          */
+<<<<<<< HEAD
+
+=======
+>>>>>>> 77157a6b4927006a5788ce89f08bd5719fbafea8
         if ( isset($_REQUEST['action']) && $_REQUEST['action'] == 'acf/validate_save_post') {
             return;
         }
@@ -135,6 +205,7 @@ class LRM_Core {
         add_action('wp_ajax_nopriv_lrm_login', array('LRM_AJAX', 'login'));
         add_action('wp_ajax_nopriv_lrm_signup', array('LRM_AJAX', 'signup'));
         add_action('wp_ajax_nopriv_lrm_lostpassword', array('LRM_AJAX', 'lostpassword'));
+        add_action('wp_ajax_nopriv_lrm_password_reset', array('LRM_AJAX', 'password_reset'));
 
         //var_dump( function_exists('cptch_login_check') );
         //add_filter('authenticate', 'cptch_login_check', 21, 1);
@@ -143,6 +214,10 @@ class LRM_Core {
 
             define("LRM_IS_AJAX", true);
 
+<<<<<<< HEAD
+
+=======
+>>>>>>> 77157a6b4927006a5788ce89f08bd5719fbafea8
             do_action( 'wp_ajax_nopriv_lrm_' . $lrm_action );
             die();
         }
@@ -196,7 +271,11 @@ class LRM_Core {
          * @since 1.01
          */
         if ( !$is_customize_preview ) {
+<<<<<<< HEAD
+            require LRM_PATH . 'views/footer_styles.php';
+=======
             require LRM_PATH . '/views/footer_styles.php';
+>>>>>>> 77157a6b4927006a5788ce89f08bd5719fbafea8
         }
 
         if ( !$is_customize_preview && is_user_logged_in() ) {
@@ -208,6 +287,35 @@ class LRM_Core {
 
     public function enqueue_assets() {
 
+<<<<<<< HEAD
+        if ( ( !is_customize_preview() && is_user_logged_in() ) || is_admin() ) {
+            return;
+        }
+
+        $required_scripts = array('jquery');
+
+        // For the Password Reset page
+        if ( get_the_ID() == LRM_Pages_Manager::get_page_id('restore-password') ) {
+            $required_scripts[] = 'password-strength-meter';
+        }
+
+        wp_enqueue_script('lrm-modal', LRM_URL . 'assets/lrm-core.js', $required_scripts, LRM_ASSETS_VER, true);
+
+        wp_enqueue_style('lrm-modal', LRM_URL . 'assets/lrm-core-compiled.css', false, LRM_ASSETS_VER);
+
+        LRM_Skins::i()->load_current_skin_assets();
+        //wp_enqueue_style('lrm-modal-skin', LRM_URL . 'assets/lrm-skin.css', false, LRM_ASSETS_VER);
+
+        $ajax_url = add_query_arg( 'lrm', '1', site_url('/') );
+
+        if ( LRM_WPML_Integration::is_wpml_active() ) {
+            $ajax_url = apply_filters( 'wpml_permalink', $ajax_url );
+        }
+
+        $script_params = array(
+            'redirect_url'       => '',
+            'ajax_url'           => $ajax_url,
+=======
         if ( !is_customize_preview() && is_user_logged_in() ) {
             return;
         }
@@ -219,26 +327,49 @@ class LRM_Core {
         $script_params = array(
             'redirect_url'       => '',
             'ajax_url'           => add_query_arg( 'lrm', '1', site_url('/') ),
+>>>>>>> 77157a6b4927006a5788ce89f08bd5719fbafea8
             //'ajax_url'           => add_query_arg( 'lrm', '1', admin_url('admin-ajax.php') ),
             'is_user_logged_in'  => is_user_logged_in(),
             'reload_after_login' => LRM_Settings::get()->setting('general/registration/reload_after_login'),
-            'selectors_mapping' => array(
+            'selectors_mapping'  => array(
                 'login'     => LRM_Settings::get()->setting('advanced/selectors_mapping/login'),
                 'register'  => LRM_Settings::get()->setting('advanced/selectors_mapping/register'),
             ),
             'is_customize_preview' => is_customize_preview(),
+<<<<<<< HEAD
+            'l10n'  => array(
+                'password_is_good'  => LRM_Settings::get()->setting('messages/password/password_is_good'),
+                'password_is_strong'  => LRM_Settings::get()->setting('messages/password/password_is_strong'),
+                'password_is_short'  => LRM_Settings::get()->setting('messages/password/password_is_short'),
+                'password_is_bad'  => LRM_Settings::get()->setting('messages/password/password_is_bad'),
+                'passwords_is_mismatch'  => LRM_Settings::get()->setting('messages/password/passwords_is_mismatch'),
+            ),            
+=======
+>>>>>>> 77157a6b4927006a5788ce89f08bd5719fbafea8
         );
 
         wp_localize_script('lrm-modal', 'LRM', $script_params);
     }
 
+<<<<<<< HEAD
+    /**
+     * @param bool $is_inline
+     * @param string $default_tab array('login', 'register', 'lost-password')
+     */
+    public function render_form($is_inline = false, $default_tab = 'login' ) {
+=======
     public function render_form( $is_inline = false, $default_tab = 'login' ) {
+>>>>>>> 77157a6b4927006a5788ce89f08bd5719fbafea8
 
         if ( !in_array($default_tab, array('login', 'register', 'lost-password')) ) {
             $default_tab = 'login';
         }
 
+<<<<<<< HEAD
+        require LRM_PATH . 'views/form.php';
+=======
         require LRM_PATH . '/views/form.php';
+>>>>>>> 77157a6b4927006a5788ce89f08bd5719fbafea8
 
     }
 

@@ -1,0 +1,624 @@
+# Translation of Plugins - AJAX Login and Registration modal popup - Development (trunk) in Norwegian (Bokmål)
+# This file is distributed under the same license as the Plugins - AJAX Login and Registration modal popup - Development (trunk) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2018-12-18 14:11+0200\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Poedit 1.7.7\n"
+"Language: nb_NO\n"
+"Project-Id-Version: Plugins - AJAX Login and Registration modal popup - Development (trunk)\n"
+"POT-Creation-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+
+#: includes/class-settings.php:404
+msgid "Put here your custom mail html template + css + tag {{CONTENT}} (required)."
+msgstr "Legg din tilpassede HTML-mal + CSS + plassholder {{CONTENT}} (påkrevet) for e-post inn her."
+
+#: includes/class-settings.php:402
+msgid "HTML email template"
+msgstr "E-post-mal for HTML"
+
+#: includes/class-settings.php:399
+msgid "Template for HTML emails"
+msgstr "Mal for e-poster med HTML"
+
+#: includes/class-settings.php:390
+msgid "View:"
+msgstr "Vis:"
+
+#: includes/class-settings.php:389
+msgid "Email:"
+msgstr "E-post:"
+
+#: includes/class-settings.php:388
+msgid "Username:"
+msgstr "Brukernavn:"
+
+#: includes/class-settings.php:387
+msgid "New user just registered on"
+msgstr "Ny bruker registrerte seg nå på"
+
+#: includes/class-settings.php:378
+msgid "New user registration on your site:"
+msgstr "Ny brukerregistrering på ditt nettsted:"
+
+#: includes/class-settings.php:370
+msgid "Send email to admin about new user?"
+msgstr "Send e-post til admin om ny bruker?"
+
+#: includes/class-settings.php:367
+msgid "Admin emails"
+msgstr "E-poster for admin"
+
+#: includes/class-core.php:145
+msgid "Some plugin try to redirect during this action to the following url: %s. Please try to disable plugins related to the Security/User Profile/Membership and try again."
+msgstr ""
+
+#: includes/class-admin-menus.php:67
+msgid "Add to menu"
+msgstr "Legg til på meny"
+
+#: includes/class-admin-menus.php:64
+msgid "Select All"
+msgstr "Velg alle"
+
+#: includes/class-admin-menus.php:56
+msgid "Log-out"
+msgstr "Logg ut"
+
+#: includes/class-admin-menus.php:47
+msgid "Register"
+msgstr "Registrer"
+
+#: includes/class-admin-menus.php:21
+msgid "Login & Registration modal"
+msgstr "Modal for innlogging og registrering"
+
+#: includes/plugin-update-checker/Puc/v4p4/Vcs/PluginUpdateChecker.php:98
+msgid "There is no changelog available."
+msgstr "Det er ingen endringslogg tilgjengelig."
+
+#: includes/plugin-update-checker/Puc/v4p4/Plugin/UpdateChecker.php:558
+msgid "Unknown update checker status \"%s\""
+msgstr "Ukjent status for oppdateringssjekker: \"%s\""
+
+#: includes/plugin-update-checker/Puc/v4p4/Plugin/UpdateChecker.php:552
+msgctxt "the plugin title"
+msgid "Could not determine if updates are available for %s."
+msgstr "Kunne ikke avgjøre om oppdateringer er tilgjengelig for %s."
+
+#: includes/plugin-update-checker/Puc/v4p4/Plugin/UpdateChecker.php:550
+msgctxt "the plugin title"
+msgid "A new version of the %s plugin is available."
+msgstr "En ny versjon av utvidelsen %s er tilgjengelig."
+
+#: includes/plugin-update-checker/Puc/v4p4/Plugin/UpdateChecker.php:548
+msgctxt "the plugin title"
+msgid "The %s plugin is up to date."
+msgstr "Utvidelsen %s er oppdatert."
+
+#: includes/plugin-update-checker/Puc/v4p4/Plugin/UpdateChecker.php:455
+msgid "More information about %s"
+msgstr "Mer informasjon om %s"
+
+#: includes/plugin-update-checker/Puc/v4p4/Plugin/UpdateChecker.php:432
+msgid "View details"
+msgstr "Vis detaljer"
+
+#: includes/plugin-update-checker/Puc/v4p4/Plugin/UpdateChecker.php:395
+msgid "Check for updates"
+msgstr "Sjekk for oppdateringer"
+
+#: includes/class-settings.php:273
+msgid "With using \"server\" method you can avoid displaying default browser \"field invalid\" messages and gives more customization options."
+msgstr ""
+
+#: includes/class-settings.php:265
+msgid "Data validation method"
+msgstr "Metode for datavalidering"
+
+#: includes/class-settings.php:262
+msgid "Data validation"
+msgstr "Datavalidering"
+
+#: includes/class-settings.php:213
+msgid "He will need to open the email and click verification link. Please add {{VERIFY_ACCOUNT_URL}} tag to Registration Email."
+msgstr "Han vil måtte åpne e-posten og klikke på bekreftelseslenken. Vennligst legg til plassholderen {{VERIFY_ACCOUNT_URL}} i e-posten for registrering."
+
+#: includes/class-settings.php:213
+msgid "[If user can set password] "
+msgstr "[om brukeren kan sette passord] "
+
+#: includes/class-settings.php:205
+msgid "[If user can't set password] "
+msgstr "[om brukeren ikke kan sette passord]"
+
+#: includes/class-settings.php:199 includes/class-settings.php:205
+msgid "He will need to open the email with his login information and enter them on the Log In tab."
+msgstr ""
+
+#: includes/class-settings.php:196
+msgid "If this option is enabled - the user won't automatically be logged into his account."
+msgstr "Om dette alternativet er aktivt vil brukeren ikke automatisk logges inn på sin konto."
+
+#: includes/class-ajax.php:59
+msgid "https://wordpress.org/support/"
+msgstr "https://wordpress.org/support/"
+
+#: includes/class-ajax.php:59
+msgid "https://codex.wordpress.org/Cookies"
+msgstr "https://codex.wordpress.org/Cookies"
+
+#. translators: 1: Browser cookie documentation URL, 2: Support forums URL
+#: includes/class-ajax.php:58
+msgid "<strong>ERROR</strong>: Cookies are blocked due to unexpected output. For help, please see <a href=\"%1$s\">this documentation</a> or try the <a href=\"%2$s\">support forums</a>."
+msgstr "<strong>FEIL</strong>: Infokapsler er blokkert på grunn av uventet output i systemet. For hjelp, vennligst se <a href=\"%1$s\">denne dokumentasjonen</a> eller prøv <a href=\"%2$s\">brukerstøtteforum</a>."
+
+#: includes/class-settings.php:567
+msgid "Please enter your First Name!"
+msgstr "Vennligst skriv inn ditt fornavn!"
+
+#: includes/class-settings.php:566
+msgid "Message: No First Name"
+msgstr "Melding: Intet fornavn"
+
+#: includes/class-settings.php:560
+msgid "Please enter your UserName!"
+msgstr "Vennligst skriv inn ditt brukernavn!"
+
+#: includes/class-settings.php:559
+msgid "Message: No UserName"
+msgstr "Melding: Intet brukernavn"
+
+#: includes/class-settings.php:500
+msgid "Form: Username"
+msgstr "Skjema: Brukernavn"
+
+#: includes/class-settings.php:483
+msgid "Login successful, you can close this window."
+msgstr "Du er nå logget inn og kan lukke dette vinduet."
+
+#: includes/class-settings.php:482
+msgid "Message: Login successful (with \"Reload page after login/registration?\" disabled)"
+msgstr "Melding: Du er nå innlogget (med \"Last inn side på nytt etter innlogging/registrering?\" deaktivert)"
+
+#: includes/class-settings.php:475
+msgid "Message: Login successful (with \"Reload page after login/registration?\" enabled)"
+msgstr "Melding: Du er nå innlogget (med \"Last inn side på nytt etter innlogging/registrering?\" aktivert)"
+
+#: includes/class-settings.php:362
+msgid "The email Body to user with new password. Allowed tags: {{USERNAME}}, {{CHANGE_PASSWORD_URL}}, {{SITE_URL}}, {{LOGIN_URL}}"
+msgstr "Meldingskropp til bruker med nytt passord. Tillatte plassholdere: {{USERNAME}}, {{CHANGE_PASSWORD_URL}}, {{SITE_URL}}, {{LOGIN_URL}}"
+
+#: includes/class-settings.php:357
+msgid "To reset your password, visit the following address:"
+msgstr "For å nullstille passordet ditt, vennligst besøk følgende adresse:"
+
+#: includes/class-settings.php:356
+msgid "If this was a mistake, just ignore this email and nothing will happen."
+msgstr "Hvis dette var en feil, kan du bare ignorere denne e-posten og ingenting vil skje."
+
+#: includes/class-settings.php:235
+msgid "Display First and Last name fields in Registration Form?"
+msgstr "Vis For- og Etternavn feltene i registreringsskjema?"
+
+#: includes/class-settings.php:310
+msgid "To enable support of html tags - use text/html email format. More - <a href=\"%1$s\" target=\"_blank\">%1$s</a>"
+msgstr "For å aktivere støtte for HTML-elementer - bruk formatet text/html. Mer - <a href=\"%1$s\" target=\"_blank\">%1$s</a>"
+
+#: includes/class-settings.php:301
+msgid "Email format"
+msgstr "Format for e-post"
+
+#: includes/class-settings.php:298
+msgid "Mails"
+msgstr "E-poster"
+
+#: includes/class-settings.php:701
+msgid "Security token is expired! Please refresh the page!"
+msgstr "Sikkerhetskoden er utløpt. Vennligst oppfrisk siden!"
+
+#: includes/class-settings.php:700
+msgid "Message: Security token is expired"
+msgstr "Melding: Sikkerhetskoden (token) er utløpt"
+
+#: includes/class-settings.php:668
+msgid "Check your mailbox to access your new password."
+msgstr "Sjekk din innboks for e-post for å få tilgang til ditt nye passord."
+
+#: includes/class-settings.php:632
+msgid "Message: No user registered with that email address"
+msgstr "Melding: Ingen buker registrert med den e-postadressen"
+
+#: includes/class-settings.php:625
+msgid "Message: Missing login"
+msgstr "Melding: Mangler innlogging"
+
+#: includes/class-settings.php:588
+msgid "Registration was successful. We have sent you an email with your login information. Please use them to log into your account."
+msgstr "Registreringen var vellykket. Vi har sendt deg en e-post med informasjon om din innlogging. Vennligst bruk den for å logge inn på brukerkontoen."
+
+#: includes/class-settings.php:469
+msgid "Please enter your password!"
+msgstr "Vennligst oppgi ditt passord!"
+
+#: includes/class-settings.php:462
+msgid "Please enter your Username/email!"
+msgstr "Vennligst oppgi ditt brukernavn/e-post!"
+
+#: includes/class-settings.php:461
+msgid "Message: No Username/Email"
+msgstr "Melding: Intet brukernavn/epost"
+
+#: includes/class-settings.php:447
+msgid "Log in"
+msgstr "Logg inn"
+
+#: includes/class-settings.php:219 includes/class-settings.php:229
+msgid "User must confirm email after registration?"
+msgstr "Bruker må bekrefte e-post etter registrering?"
+
+#: includes/class-settings.php:692
+msgid "Hide password"
+msgstr "Skjul passord"
+
+#: includes/class-settings.php:684
+msgid "Show password"
+msgstr "Vis passord"
+
+#: includes/class-settings.php:260
+msgid "Use your custom selector to find button/link for attach modal."
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://maxim-kaminsky.com/"
+msgstr "https://maxim-kaminsky.com/"
+
+#. Author of the plugin/theme
+msgid "Maxim K"
+msgstr "Maxim K"
+
+#. Description of the plugin/theme
+msgid "Easy to integrate modal with Login and Registration features."
+msgstr "Enkelt å integrere modal med funksjonene for innlogging og registrering."
+
+#. Plugin URI of the plugin/theme
+msgid "https://maxim-kaminsky.com/shop/product/ajax-login-and-registration-modal-popup-pro/"
+msgstr "https://maxim-kaminsky.com/shop/product/ajax-login-and-registration-modal-popup-pro/"
+
+#. Plugin Name of the plugin/theme
+msgid "AJAX Login and Registration modal popup"
+msgstr "AJAX Modal popup for innlogging og registrering"
+
+#: includes/class-settings.php:693
+msgid "Hide"
+msgstr "Skjul"
+
+#: includes/class-settings.php:685
+msgid "Show"
+msgstr "Vis"
+
+#: vendor/underdev/settings/views/settings-page.php:6
+#: views/admin/settings-page.php:6 views/settings-page.php:6
+msgid "No Settings available at the moment"
+msgstr "Ingen innstillinger tilgjengelig nå"
+
+#: includes/class-settings.php:714
+msgid "PRO features"
+msgstr "PRO-funksjoner"
+
+#: includes/class-settings.php:677
+msgid "close"
+msgstr "lukk"
+
+#: includes/class-settings.php:676
+msgid "Close modal text"
+msgstr "Lukk modal tekst"
+
+#: includes/class-settings.php:673
+msgid "Other"
+msgstr "Annen"
+
+#: includes/class-settings.php:667
+msgid "Message: Reset successful"
+msgstr "Melding: Tilbakestilling vellykket"
+
+#: includes/class-settings.php:661
+msgid "Oops! Something went wrong while updating your account."
+msgstr "Oops! Noe gikk galt ved oppdatering av din konto."
+
+#: includes/class-settings.php:660
+msgid "Message: Something went wrong"
+msgstr "Melding: Noe gikk galt"
+
+#: includes/class-settings.php:654
+msgid "System is unable to send you the mail containing your new password."
+msgstr "Systemet er ikke i stand til å send deg e-posten som inneholder ditt nye passord."
+
+#: includes/class-settings.php:653
+msgid "Message: Unable to send email"
+msgstr "Melding: Kan ikke sende e-post"
+
+#: includes/class-settings.php:647
+msgid "Invalid username or e-mail address."
+msgstr "Ugyldig brukernavn eller e-postadresse."
+
+#: includes/class-settings.php:646
+msgid "Message: Invalid username or e-mail address"
+msgstr "Melding: Ugyldig brukernavn eller e-postadresse"
+
+#: includes/class-settings.php:640
+msgid "There is no user registered with that username."
+msgstr "Det er ingen bruker med det brukernavnet."
+
+#: includes/class-settings.php:639
+msgid "Message: No user registered with that username"
+msgstr "Melding: Ingen bruker med det brukernavnet"
+
+#: includes/class-settings.php:633
+msgid "There is no user registered with that email address."
+msgstr "Det er ingen bruker med den e-postadressen."
+
+#: includes/class-settings.php:626
+msgid "Enter an username or email address."
+msgstr "Oppgi brukernavn eller e-postadresse."
+
+#: includes/class-settings.php:618
+msgid "Back to login"
+msgstr "Tilbake til innlogging"
+
+#: includes/class-settings.php:617
+msgid "Form button: Back to login"
+msgstr "Skjema-knapp: Tilbake til innlogging"
+
+#: includes/class-settings.php:611
+msgid "Reset password"
+msgstr "Tilbakestill passord"
+
+#: includes/class-settings.php:610
+msgid "Form button: Reset password"
+msgstr "Skjema-knapp: Tilbakestill passord"
+
+#: includes/class-settings.php:597
+msgid "Lost your password? Please enter your email address. You will receive mail with link to set new password."
+msgstr "Glemt ditt passord? Vennligst oppgi din e-postadresse. Du vil motta en e-post med lenke til å sette nytt passord."
+
+#: includes/class-settings.php:596
+msgid "Message"
+msgstr "Melding"
+
+#: includes/class-settings.php:581
+msgid "Registration was successful, reloading page."
+msgstr "Registrering vellykket. Laster siden på nytt."
+
+#: includes/class-settings.php:580 includes/class-settings.php:587
+msgid "Message: Registration successful"
+msgstr "Melding: Registrering vellykket"
+
+#: includes/class-settings.php:574
+msgid "Please enter a correct email!"
+msgstr "Vennligst oppgi korrekt e-post"
+
+#: includes/class-settings.php:573
+msgid "Message: Wrong email"
+msgstr "Melding: Feil e-post"
+
+#: includes/class-settings.php:553
+msgid "Registration is disabled!"
+msgstr "Registrering er deaktivert!"
+
+#: includes/class-settings.php:552
+msgid "Message: Registration is disabled"
+msgstr "Melding: Registrering er deaktivert"
+
+#: includes/class-settings.php:545
+msgid "Create account"
+msgstr "Opprett konto"
+
+#: includes/class-settings.php:544
+msgid "Form button: Create account"
+msgstr "Skjema-knapp: Opprett konto"
+
+#: includes/class-settings.php:537
+msgid "I agree with the <a href='#0'>Terms</a>"
+msgstr "Jeg aksepterer <a href='#0'>betingelsene</a>"
+
+#: includes/class-settings.php:536
+msgid "Form: Terms"
+msgstr "Skjema: Betingelser"
+
+#: includes/class-settings.php:522
+msgid "Email*"
+msgstr "E-post*"
+
+#: includes/class-settings.php:521
+msgid "Form: Email"
+msgstr "Skjema: E-post"
+
+#: includes/class-settings.php:515
+msgid "Last name"
+msgstr "Etternavn"
+
+#: includes/class-settings.php:514
+msgid "Form: Last name"
+msgstr "Skjema: Etternavn"
+
+#: includes/class-settings.php:508
+msgid "First name*"
+msgstr "Fornavn*"
+
+#: includes/class-settings.php:507
+msgid "Form: First name"
+msgstr "Skjema: Fornavn"
+
+#: includes/class-settings.php:494
+msgid "New account"
+msgstr "Ny konto"
+
+#: includes/class-settings.php:476
+msgid "Login successful, reloading page..."
+msgstr "Innlogging vellykket, laster siden på nytt..."
+
+#: includes/class-settings.php:468
+msgid "Message: No Password"
+msgstr "Melding: Intet passord"
+
+#: includes/class-settings.php:454
+msgid "Forgot your password?"
+msgstr "Glemt ditt passord?"
+
+#: includes/class-settings.php:453
+msgid "Link: Forgot your password?"
+msgstr "Lenke: Glemt ditt passord?"
+
+#: includes/class-settings.php:446
+msgid "Form button: Login"
+msgstr "Skjema-knapp: Logg inn"
+
+#: includes/class-settings.php:440
+msgid "Remember me"
+msgstr "Husk meg"
+
+#: includes/class-settings.php:439
+msgid "Form: Remember me"
+msgstr "Skjema: Husk meg"
+
+#: includes/class-settings.php:433
+msgid "Password"
+msgstr "Passord"
+
+#: includes/class-settings.php:432
+msgid "Form: Password"
+msgstr "Skjema: Passord"
+
+#: includes/class-settings.php:426 includes/class-settings.php:604
+msgid "Email or Username"
+msgstr "E-post eller brukernavn"
+
+#: includes/class-settings.php:425 includes/class-settings.php:603
+msgid "Form: Email or Username"
+msgstr "Skjema: E-post eller brukernavn"
+
+#: includes/class-settings.php:419
+msgid "Sign in"
+msgstr "Innlogging"
+
+#: includes/class-settings.php:418 includes/class-settings.php:493
+msgid "Form heading"
+msgstr "Topptekst på skjema"
+
+#: includes/class-admin-menus.php:38 includes/class-settings.php:415
+msgid "Login"
+msgstr "Logg inn"
+
+#: includes/class-settings.php:413
+msgid "Expressions"
+msgstr "Uttrykk"
+
+#: includes/class-settings.php:501
+msgid "Username*"
+msgstr "Brukernavn*"
+
+#: includes/class-settings.php:348
+msgid "The email Subject to user with new password."
+msgstr "Emnefeltet i e-post til bruker om nytt passord."
+
+#: includes/class-settings.php:346
+msgid "[YOUR BLOG NAME] Your new password"
+msgstr "[YOUR BLOG NAME] Ditt nye passord"
+
+#: includes/class-settings.php:343 includes/class-settings.php:593
+msgid "Lost password"
+msgstr "Glemt passord"
+
+#: includes/class-settings.php:329 includes/class-settings.php:353
+#: includes/class-settings.php:385
+msgid "Body"
+msgstr "Meldingskropp"
+
+#: includes/class-settings.php:323 includes/class-settings.php:379
+msgid "The email Subject to user about successful registration."
+msgstr "Emnefeltet i e-post til bruker om vellykket registrering."
+
+#: includes/class-settings.php:322
+msgid "[YOUR BLOG NAME] Your username and password info"
+msgstr "[YOUR BLOG NAME] Informasjon om ditt brukernavn og passord"
+
+#: includes/class-settings.php:321 includes/class-settings.php:345
+#: includes/class-settings.php:377
+msgid "Subject"
+msgstr "Emne"
+
+#: includes/class-settings.php:318 includes/class-settings.php:490
+msgid "Registration"
+msgstr "Registrering"
+
+#: includes/class-settings.php:296
+msgid "Emails"
+msgstr "E-poster"
+
+#: includes/class-settings.php:254
+msgid "Extra selectors to handle register modal?"
+msgstr ""
+
+#: includes/class-settings.php:246
+msgid "Extra selectors to handle log in modal?"
+msgstr ""
+
+#: includes/class-settings.php:243
+msgid "Extra selectors (id, classes) to handle modal"
+msgstr ""
+
+#: includes/class-settings.php:241
+msgid "Advanced"
+msgstr "Avansert"
+
+#: includes/class-settings.php:227
+msgid "Reload page after login/registration?"
+msgstr "Last inn side på nytt etter innlogging/registrering?"
+
+#: includes/class-settings.php:189
+msgid "Hide Terms box in Registration Form?"
+msgstr "Skjul boksen Betingelser i registreringsskjemaet?"
+
+#: includes/class-settings.php:186
+msgid "Terms"
+msgstr "Betingelser"
+
+#: includes/class-settings.php:179
+msgid "Free version are compatible with:"
+msgstr "Gratisversjonen er kompatibel med:"
+
+#: includes/class-settings.php:176
+msgid "Supported plugins"
+msgstr "Støttede utvidelser"
+
+#: includes/class-settings.php:169
+msgid "How to integrate modal on your site:"
+msgstr "Hvordan integrere modal på ditt nettsted:"
+
+#: includes/class-settings.php:166
+msgid "Installation steps"
+msgstr "Trinn for å installere"
+
+#: includes/class-settings.php:164 includes/class-settings.php:216
+msgid "General"
+msgstr "Generelt"
+
+#: includes/class-settings.php:140
+msgid "I already reviewed it"
+msgstr "Jeg har allerede vurdert den"
+
+#: includes/class-settings.php:137
+msgid "Do you like \"Login and Register Modal\" plugin? Please consider giving it a %1$sreview%2$s"
+msgstr "Liker du utvidelsen \"Login and Register Modal\"? Venligst vurder å gi den en %1$somtale/vurdering%2$s"
+
+#: includes/class-core.php:82
+#: vendor/underdev/settings/views/settings-page.php:3
+#: views/admin/settings-page.php:3 views/settings-page.php:3
+msgid "Settings"
+msgstr "Innstillinger"

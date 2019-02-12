@@ -3,12 +3,21 @@ var LRM = LRM ? LRM : {};
 //jQuery(document).ready(function($) {
 // jQuery(document).ready(
 /** @var $ jQuery */
+<<<<<<< HEAD
++(function ($) {
+
+	if ($('.lrm-user-modal').length > 0) {
+		lrm_init()
+	} else {
+		setTimeout(function () {
+=======
 +(function($) {
 
 	if ( $('.lrm-user-modal').length > 0 ){
 		lrm_init()
 	} else {
 		setTimeout(function() {
+>>>>>>> 77157a6b4927006a5788ce89f08bd5719fbafea8
 			lrm_init();
 		}, 1200);
 	}
@@ -16,7 +25,13 @@ var LRM = LRM ? LRM : {};
 	function is_mobile_or_tablet() {
 		var check = false;
 
+<<<<<<< HEAD
+		(function (a) {
+			if (/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino|android|ipad|playbook|silk/i.test(a) || /1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i.test(a.substr(0, 4))) check = true;
+		})(navigator.userAgent || navigator.vendor || window.opera);
+=======
 		(function(a){if(/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino|android|ipad|playbook|silk/i.test(a)||/1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i.test(a.substr(0,4))) check = true;})(navigator.userAgent||navigator.vendor||window.opera);
+>>>>>>> 77157a6b4927006a5788ce89f08bd5719fbafea8
 
 		return check;
 	}
@@ -32,9 +47,19 @@ var LRM = LRM ? LRM : {};
 		// 	  $forgotPasswordLink = $formLogin.find('.lrm-form-bottom-message a'),
 		// 	  $backToLoginLink = $formForgotPassword.find('.lrm-form-bottom-message a'),
 
+<<<<<<< HEAD
+		var loader_html = '<span class="lrm-button-loader"> <svg version="1.1" id="L4" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 100 40" enable-background="new 0 0 0 0" xml:space="preserve"> <circle fill="#ffffff" stroke="none" cx="30" cy="20" r="6"> <animate attributeName="opacity" dur="1s" values="0;1;0" repeatCount="indefinite" begin="0.1"/> </circle> <circle fill="#ffffff" stroke="none" cx="50" cy="20" r="6"> <animate attributeName="opacity" dur="1s" values="0;1;0" repeatCount="indefinite" begin="0.2"/> </circle> <circle fill="#ffffff" stroke="none" cx="70" cy="20" r="6"> <animate attributeName="opacity" dur="1s" values="0;1;0" repeatCount="indefinite" begin="0.3"/> </circle> </svg></span>';
+
+		$("html").addClass("html-has-lrm");
+		$("body").addClass("has-lrm");
+
+		$(document).on('lrm_show_signup', signup_selected);
+		$(document).on('lrm_show_register', signup_selected);
+=======
 	  	var loader_html = '<span class="lrm-button-loader"> <svg version="1.1" id="L4" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 100 40" enable-background="new 0 0 0 0" xml:space="preserve"> <circle fill="#ffffff" stroke="none" cx="30" cy="20" r="6"> <animate attributeName="opacity" dur="1s" values="0;1;0" repeatCount="indefinite" begin="0.1"/> </circle> <circle fill="#ffffff" stroke="none" cx="50" cy="20" r="6"> <animate attributeName="opacity" dur="1s" values="0;1;0" repeatCount="indefinite" begin="0.2"/> </circle> <circle fill="#ffffff" stroke="none" cx="70" cy="20" r="6"> <animate attributeName="opacity" dur="1s" values="0;1;0" repeatCount="indefinite" begin="0.3"/> </circle> </svg></span>';
 
 		$(document).on('lrm_show_signup', signup_selected);
+>>>>>>> 77157a6b4927006a5788ce89f08bd5719fbafea8
 
 		$(document).on('lrm_show_signin', login_selected);
 		$(document).on('lrm_show_login', login_selected);
@@ -74,6 +99,43 @@ var LRM = LRM ? LRM : {};
 		$(document).on(handle_event, '[class*="lrm-login"]', login_selected);
 		$(document).on('click', '.lrm-switch-to--login', login_selected);
 
+<<<<<<< HEAD
+		$(document).on('click', '.lrm-forgot-password,.lrm-login .lrm-form-message a,.lrm-switch-to--reset-password', function (event) {
+			event.preventDefault();
+			forgot_password_selected(event);
+		});
+
+		//close modal
+		$('.lrm-user-modal').on('click', function (event) {
+			if ($(event.target).is('.lrm-user-modal') || $(event.target).is('.lrm-close-form')) {
+				$(this).removeClass('is-visible');
+			}
+		});
+		//close modal when clicking the esc keyboard button
+		$(document).keyup(function (event) {
+			if (event.which == '27') {
+				$(".lrm-user-modal").removeClass('is-visible');
+			}
+		});
+
+		//switch from a tab to another
+		// $formModalTab.on('click', function (event) {
+		// 	event.preventDefault();
+		// 	( $(event.target).is($tabLogin) ) ? login_selected(event, true) : signup_selected(event, true);
+		// });
+
+		//hide or show password
+		$('.hide-password').on('click', function () {
+			var togglePass = $(this),
+				  passwordField = togglePass.parent().find('input');
+
+			('password' == passwordField.attr('type')) ? passwordField.attr('type', 'text') : passwordField.attr('type', 'password');
+			(togglePass.data("hide") == togglePass.text()) ? togglePass.text(togglePass.data("show")) : togglePass.text(togglePass.data("hide"));
+			//focus and move cursor to the end of input field
+			passwordField.putCursorAtEnd();
+		});
+
+=======
 		$(document).on('click', '.lrm-login .lrm-form-message a,.lrm-switch-to--reset-password', function (event) {
 			event.preventDefault();
 			forgot_password_selected(event);
@@ -109,6 +171,7 @@ var LRM = LRM ? LRM : {};
 			passwordField.putCursorAtEnd();
 		});
 
+>>>>>>> 77157a6b4927006a5788ce89f08bd5719fbafea8
 		//show forgot-password form
 		// $forgotPasswordLink.on('click', function (event) {
 		// 	event.preventDefault();
@@ -134,19 +197,33 @@ var LRM = LRM ? LRM : {};
 
 			var $formModal = $(event.target).closest(".lrm-main");
 
+<<<<<<< HEAD
+			if (!$formModal.length) {
+				LRM.redirect_url = "";
+				if (!event_orig) {
+=======
 			if ( ! $formModal.length ) {
 				LRM.redirect_url = "";
 				if ( !event_orig ) {
+>>>>>>> 77157a6b4927006a5788ce89f08bd5719fbafea8
 					var el = event.target ? event.target : this;
 				} else {
 					var el = event_orig.target;
 				}
+<<<<<<< HEAD
+				if (el && $(el).hasClass("lrm-redirect")) {
+=======
 				if ( el && $(el).hasClass("lrm-redirect") ) {
+>>>>>>> 77157a6b4927006a5788ce89f08bd5719fbafea8
 					LRM.redirect_url = $(el).attr("href");
 				}
 			}
 
+<<<<<<< HEAD
+			if (!$formModal.length) {
+=======
 			if ( ! $formModal.length ) {
+>>>>>>> 77157a6b4927006a5788ce89f08bd5719fbafea8
 				$formModal = $(".lrm-user-modal");
 			}
 
@@ -167,6 +244,15 @@ var LRM = LRM ? LRM : {};
 			$formModal.find('.lrm-switcher').children('li').eq(0).children('a').addClass('selected');
 			$formModal.find('.lrm-switcher').children('li').eq(1).children('a').removeClass('selected');
 
+<<<<<<< HEAD
+			setTimeout(function() {
+				if ( $(window).width() > 600 ) {
+					$formModal.find(".lrm-signin-section input[data-autofocus]").focus();
+				}
+			}, 100);
+
+=======
+>>>>>>> 77157a6b4927006a5788ce89f08bd5719fbafea8
 			if (event) {
 				event.preventDefault();
 			}
@@ -194,19 +280,33 @@ var LRM = LRM ? LRM : {};
 			var $formModal = $(event.target).closest(".lrm-main");
 
 
+<<<<<<< HEAD
+			if (!$formModal.length) {
+				LRM.redirect_url = "";
+				if (!event_orig) {
+=======
 			if ( ! $formModal.length ) {
 				LRM.redirect_url = "";
 				if ( !event_orig ) {
+>>>>>>> 77157a6b4927006a5788ce89f08bd5719fbafea8
 					var el = event.target ? event.target : this;
 				} else {
 					var el = event_orig.target;
 				}
+<<<<<<< HEAD
+				if (el && $(el).hasClass("lrm-redirect")) {
+=======
 				if ( el && $(el).hasClass("lrm-redirect") ) {
+>>>>>>> 77157a6b4927006a5788ce89f08bd5719fbafea8
 					LRM.redirect_url = $(el).attr("href");
 				}
 			}
 
+<<<<<<< HEAD
+			if (!$formModal.length) {
+=======
 			if ( ! $formModal.length ) {
+>>>>>>> 77157a6b4927006a5788ce89f08bd5719fbafea8
 				$formModal = $(".lrm-user-modal");
 			}
 
@@ -217,6 +317,15 @@ var LRM = LRM ? LRM : {};
 			$formModal.find('.lrm-switcher').children('li').eq(0).children('a').removeClass('selected');
 			$formModal.find('.lrm-switcher').children('li').eq(1).children('a').addClass('selected');
 
+<<<<<<< HEAD
+			setTimeout(function() {
+				if ( $(window).width() > 600 ) {
+					$formModal.find(".lrm-signup-section input:first").focus();
+				}
+			}, 100);
+
+=======
+>>>>>>> 77157a6b4927006a5788ce89f08bd5719fbafea8
 			if (event) {
 				event.preventDefault();
 			}
@@ -236,7 +345,11 @@ var LRM = LRM ? LRM : {};
 
 			var $formModal = $(event.target).closest(".lrm-main");
 
+<<<<<<< HEAD
+			if (!$formModal.length) {
+=======
 			if ( ! $formModal.length ) {
+>>>>>>> 77157a6b4927006a5788ce89f08bd5719fbafea8
 				$formModal = $(".lrm-user-modal");
 			}
 
@@ -245,6 +358,15 @@ var LRM = LRM ? LRM : {};
 			$formModal.find('.lrm-signup-section').removeClass('is-selected');
 			$formModal.find('.lrm-reset-password-section').addClass('is-selected');
 
+<<<<<<< HEAD
+			setTimeout(function() {
+				if ( $(window).width() > 600 ) {
+					$formModal.find(".lrm-reset-password-section input[data-autofocus]").focus();
+				}
+			}, 100);
+
+=======
+>>>>>>> 77157a6b4927006a5788ce89f08bd5719fbafea8
 			// $formLogin.removeClass('is-selected');
 			// $formSignup.removeClass('is-selected');
 			// $formForgotPassword.addClass('is-selected');
@@ -253,14 +375,99 @@ var LRM = LRM ? LRM : {};
 
 		$(document).on('submit', '.lrm-form', lrm_submit_form);
 
+<<<<<<< HEAD
+		function lrm_submit_form(event) {
+			if (LRM.is_customize_preview) {
+				alert("Not possible to submit form in Preview Mode!");
+=======
 		function lrm_submit_form (event) {
 			if ( LRM.is_customize_preview ) {
 				alert( "Not possible to submit form in Preview Mode!" );
+>>>>>>> 77157a6b4927006a5788ce89f08bd5719fbafea8
 				return;
 			}
 			var $form = $(event.target);
 
 			event.preventDefault();
+<<<<<<< HEAD
+
+			if ( $form.hasClass("--is-submitting") ) {
+				return false;
+			}
+
+
+			if ($(document).triggerHandler('lrm/do_not_submit_form', $form)) {
+				return false;
+			}
+
+			// Fix for ACF PRO plugin
+			if ($form.data("action") == "registration" && $form.find("#acf-form-data").length > 0 && acf.validation.active) {
+				if ("yes" !== $form.data("lrm-acf-validated")) {
+					return;
+				}
+				// Reset validation flag
+				$form.data("lrm-acf-validated", "no");
+			}
+
+			$form.find(".has-error").removeClass("has-error")
+				  .next("span").removeClass("is-visible");
+
+			$form.find("button[type='submit']").prepend(loader_html);
+
+			$form.find(".lrm-form-message").html("");
+
+			$form.addClass("--is-submitting");
+
+
+			$.ajax({
+				type: 'POST',
+				dataType: 'json',
+				url: LRM.ajax_url,
+				data: $form.serialize(),
+				success: function (response) {
+					$form.find(".lrm-button-loader").remove();
+					$form.removeClass("--is-submitting");
+
+					if (response.data.message) {
+						if (!response.data.for) {
+							LRM_Form.set_message( $form, response.data.message, response.success );
+							//$form.find(".lrm-form-message").html(response.data.message);
+
+							// if (!response.success) {
+							// 	$form.find(".lrm-form-message").addClass("lrm-is-error");
+							// }
+
+							$form.closest(".lrm-user-modal-container").animate({scrollTop: 80}, 400);
+						} else {
+							$form.find('input[name="' + response.data.for + '"]').addClass('has-error')
+								  .next('span').html(response.data.message).addClass('is-visible');
+							$form.find(".lrm-form-message").removeClass("lrm-is-error").html("");
+
+						}
+					}
+
+					// $form.data("action") for get
+					$(document).triggerHandler('lrm/ajax_response', [response, $form, $form.data("action")]);
+
+					console.log(response);
+
+					// If user Logged in After Login or Registration
+					// If Email Verify after Registration enabled - we skip this
+					if (response.success && response.data.logged_in) {
+						LRM.is_user_logged_in = true;
+						$(document).triggerHandler('lrm_user_logged_in', [response, $form, $form.data("action")]);
+
+						if ("reload" == response.data.action) {
+							window.location.reload();
+						}
+					}
+
+					$(document).triggerHandler('lrm_pro/maybe_refresh_recaptcha');
+				},
+				error: function (jqXHR, textStatus, errorThrown) {
+					$form.find(".lrm-button-loader").remove();
+					$form.removeClass("--is-submitting");
+=======
 
 			if ( $(document).triggerHandler('lrm/do_not_submit_form', $form) ) {
 				return false;
@@ -326,6 +533,7 @@ var LRM = LRM ? LRM : {};
 				},
 				error: function(jqXHR, textStatus, errorThrown) {
 					$form.find(".lrm-button-loader").remove();
+>>>>>>> 77157a6b4927006a5788ce89f08bd5719fbafea8
 
 					alert("An error occurred, please contact with administrator... \n\rFor more details look at the console (F12 or Ctrl+Shift+I, Console tab)!");
 
@@ -342,66 +550,169 @@ var LRM = LRM ? LRM : {};
 			return false;
 		}
 
+<<<<<<< HEAD
+		/**
+		 * @since 1.51
+		 */
+		$( 'body' ).on( 'keyup', '#lrm-password1,#lrm-password2', function( event ) {
+			var passwordStrength = checkPasswordStrength(
+				  $( "#lrm-password1" ),         // First password field
+				  null,         // First password field
+				  $( "#lrm-password1" ).parent().parent().find(".lrm-pass-strength-result")           // Strength meter
+			);
+
+			if ( !passwordStrength || passwordStrength == 2 ) {
+				$(".pw-weak").show()
+				$(".pw-checkbox").attr("required", "required");
+			} else {
+				$(".pw-weak").hide()
+				$(".pw-checkbox").attr("required", false);
+			}
+		});
+
+		setTimeout(function () {
+			$('#lrm-password1,#lrm-password2').trigger('keyup');
+		}, 500);
+
+=======
+>>>>>>> 77157a6b4927006a5788ce89f08bd5719fbafea8
 	}
 
 	// ajaxSetup is global, but we use it to ensure JSON is valid once returned.
-	$.ajaxSetup( {
-		dataFilter: function( raw_response, dataType ) {
+	$.ajaxSetup({
+		dataFilter: function (raw_response, dataType) {
 			// We only want to work with JSON
-			if ( 'json' !== dataType ) {
+			if ('json' !== dataType) {
 				return raw_response;
 			}
 
-			if ( lrm_is_valid_json( raw_response ) ) {
+			if (lrm_is_valid_json(raw_response)) {
 				return raw_response;
 			} else {
 				// Attempt to fix the malformed JSON
-				var maybe_valid_json = raw_response.match( /{"success.*}/ );
+				var maybe_valid_json = raw_response.match(/{"success.*}/);
 
-				if ( null === maybe_valid_json ) {
-					console.log( 'Unable to fix malformed JSON' );
-				} else if ( lrm_is_valid_json( maybe_valid_json[0] ) ) {
-					console.log( 'Fixed malformed JSON. Original:' );
-					console.log( raw_response );
+				if (null === maybe_valid_json) {
+					console.log('Unable to fix malformed JSON');
+				} else if (lrm_is_valid_json(maybe_valid_json[0])) {
+					console.log('Fixed malformed JSON. Original:');
+					console.log(raw_response);
 					raw_response = maybe_valid_json[0];
 				} else {
-					console.log( 'Unable to fix malformed JSON' );
+					console.log('Unable to fix malformed JSON');
 				}
 			}
 
 			return raw_response;
 		}
-	} );
+	});
 
 
-	function lrm_is_valid_json ( raw_json ) {
+	function lrm_is_valid_json(raw_json) {
 		try {
-			var json = $.parseJSON( raw_json );
+			var json = $.parseJSON(raw_json);
 
-			return ( json && 'object' === typeof json );
-		} catch ( e ) {
+			return (json && 'object' === typeof json);
+		} catch (e) {
 			return false;
 		}
 	}
 
+<<<<<<< HEAD
+	window.LRM_Form = {
+		set_message: function($form, message_html, is_error) {
+			var $message = $form.find(".lrm-form-message");
+
+			$message.html( message_html );
+
+			var modal_is_visible = $(".lrm-user-modal").hasClass('is-visible');
+
+			var element_to_scroll = modal_is_visible ? ".lrm-user-modal" : "html, body";
+
+			$(element_to_scroll).animate({
+				scrollTop: modal_is_visible ? 25 : $message.offset().top - 15
+			}, 1500);
+
+			if ( is_error ) {
+				$message.addClass("lrm-is-error");
+			}
+		}
+	};
+
+	/**
+	 * https://code.tutsplus.com/articles/using-the-included-password-strength-meter-script-in-wordpress--wp-34736
+	 *
+	 * @param $pass1
+	 * @param $strengthResult
+	 * @returns {*}
+	 */
+	function checkPasswordStrength( $pass1, $pass2, $strengthResult ) {
+		var pass1 = $pass1.val();
+		if ( !$pass2 ) {
+			var pass2 = pass1;
+		} else {
+			var pass2 = $pass2.val();
+		}
+
+		$strengthResult.removeClass( 'short bad good strong' );
+
+		// Extend our blacklist array with those from the inputs & site data
+		var blacklistArray = ["querty", "password", "132", "123"].concat( wp.passwordStrength.userInputBlacklist() )
+
+		// Get the password strength
+		var strength = wp.passwordStrength.meter( pass1, blacklistArray, pass2 );
+
+		// Add the strength meter results
+		switch ( strength ) {
+
+			case 2:
+				$strengthResult.addClass( 'bad' ).html( LRM.l10n.password_is_bad );
+				break;
+
+			case 3:
+				$strengthResult.addClass( 'good' ).html( LRM.l10n.password_is_good );
+				break;
+
+			case 4:
+				$strengthResult.addClass( 'strong' ).html( LRM.l10n.password_is_strong );
+				break;
+
+			case 5:
+				if ( $pass2 ) {
+					$strengthResult.addClass( 'short' ).html( LRM.l10n.passwords_is_mismatch );
+					break;
+				}
+
+			default:
+				$strengthResult.addClass( 'short' ).html( LRM.l10n.password_is_short );
+
+		}
+
+		//console.log( "Pass strength: ", strength );
+
+		return strength;
+	}
+
+=======
+>>>>>>> 77157a6b4927006a5788ce89f08bd5719fbafea8
 //});
 })(jQuery);
 
 
 //credits http://css-tricks.com/snippets/jquery/move-cursor-to-end-of-textarea-or-input/
-jQuery.fn.putCursorAtEnd = function() {
-	return this.each(function() {
-    	// If this function exists...
-    	if (this.setSelectionRange) {
-      		// ... then use it (Doesn't work in IE)
-      		// Double the length because Opera is inconsistent about whether a carriage return is one character or two. Sigh.
-      		var len = jQuery(this).val().length * 2;
-      		this.focus();
-      		this.setSelectionRange(len, len);
-    	} else {
-    		// ... otherwise replace the contents with itself
-    		// (Doesn't work in Google Chrome)
+jQuery.fn.putCursorAtEnd = function () {
+	return this.each(function () {
+		// If this function exists...
+		if (this.setSelectionRange) {
+			// ... then use it (Doesn't work in IE)
+			// Double the length because Opera is inconsistent about whether a carriage return is one character or two. Sigh.
+			var len = jQuery(this).val().length * 2;
+			this.focus();
+			this.setSelectionRange(len, len);
+		} else {
+			// ... otherwise replace the contents with itself
+			// (Doesn't work in Google Chrome)
 			jQuery(this).val(jQuery(this).val());
-    	}
+		}
 	});
 };

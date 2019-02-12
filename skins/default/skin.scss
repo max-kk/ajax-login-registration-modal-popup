@@ -1,0 +1,92 @@
+@import "./../../assets/scss/functions";
+
+$bg-color: #d2d8d8;
+$border-radius: .25em;
+
+.lrm-inline .lrm-user-modal-container {
+    border: 2px solid $bg-color;
+}
+
+.lrm-form input {
+
+}
+
+/* TABS */
+.lrm-user-modal-container {
+
+    border-radius: $border-radius;
+
+    .lrm-switcher {
+        a {
+            background: $bg-color;
+            color: #809191;
+        }
+
+        &.-is-not-login-only {
+            a.selected {
+                background: #FFF;
+                color: #505260;
+            }
+
+            li:first-child a {
+                border-radius: $border-radius 0 0 0;
+            }
+
+            li:last-child a {
+                border-radius: 0 $border-radius 0 0;
+            }
+        }
+
+        &.-is-login-only li a {
+            border-radius: $border-radius $border-radius 0 0;
+        }
+    }
+
+}
+
+.lrm-form input.has-border {
+    border: 1px solid $bg-color;
+}
+
+.lrm-form input.has-border:focus {
+
+    //box-shadow: 0 0 5px rgba(52, 54, 66, 0.1);
+
+}
+
+
+.lrm-form a.button,
+.lrm-form button,
+.lrm-form button[type=submit],
+.lrm-form #buddypress input[type=submit],
+.lrm-form input[type=submit] {
+    background: #2f889a;
+    color: #FFF;
+}
+
+.lrm-form .hide-password {
+    border-color: $bg-color;
+    color: #343642;
+}
+
+.lrm-user-modal-container .input-text,
+.lrm-user-modal-container input[type=email],
+.lrm-user-modal-container input[type=password],
+.lrm-user-modal-container input[type=search],
+.lrm-user-modal-container input[type=tel],
+.lrm-user-modal-container input[type=text],
+.lrm-user-modal-container input[type=url],
+.lrm-user-modal-container textarea {
+    background-color: #f7f7f7;
+    color: #000;
+    font-weight: 300;
+    box-shadow: none;
+    border-radius: $border-radius;
+
+    &:focus {
+        border: 1px solid $bg-color;
+        box-shadow: inset 0 1px 1px rgba(0,0,0,.25);
+    }
+}
+
+

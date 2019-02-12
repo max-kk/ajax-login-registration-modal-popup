@@ -1,9 +1,14 @@
-=== AJAX Login and Registration modal popup ===
+=== AJAX Login and Registration modal popup + inline mode ===
 Contributors: kaminskym
 Tags: login, registration, register, modal, popup, ajax
 Requires at least: 4.1
+<<<<<<< HEAD
+Tested up to: 5.0.2
+Requires PHP: 5.5
+=======
 Tested up to: 4.9.6
 Requires PHP: 5.4
+>>>>>>> 77157a6b4927006a5788ce89f08bd5719fbafea8
 Stable tag: trunk
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -18,14 +23,23 @@ Easy to integrate modal with Login and Registration features. Compatible with an
 
 **Features:**
 
-1. Easy to integrate
+1. Easy to integrate (as modal or inline via shortcode)
 2. Well customizable
 3. 100% responsive
 4. Beautiful coded
-5. Compatible with other plugins
+5. Compatible with other plugins (WooCommerce, BuddyPress, Ultimate Member, WPML, etc)
 6. Tested with latest WP version
+<<<<<<< HEAD
+7. Possible to replace wp-login.php pages with a custom "Login", "Registration" and "Reset password" pages
+8. Skins support (1 default skin + 1 new in a PRO version) + possible to customize Skins colors via WP Customizer
+9. Powerful after-login/registration/logout actions (reload, redirects, etc)
+10. Role based redirects (in PRO)
+12. In-build reCaptcha (in PRO)
+13. Developer support (via forums or personal via email for PRO users)
+=======
 7. Developer support (via forums or personal via email for PRO users)
 7. Supports WP Customizer (in PRO)
+>>>>>>> 77157a6b4927006a5788ce89f08bd5719fbafea8
 
 **Customization options:**
 
@@ -39,16 +53,28 @@ Easy to integrate modal with Login and Registration features. Compatible with an
 2. [WP Facebook Login](https://wordpress.org/plugins/wp-facebook-login/)
 3. [WP Foto Vote contests](https://wp-vote.net/wordpress-voting-plugin/) (photo contest plugin from author of this plugin ☺)
 4. [All In One WP Security & Firewall](https://wordpress.org/plugins/all-in-one-wp-security-and-firewall/) (tested with "Renamed Login Page")
+<<<<<<< HEAD
+5. [Eonet Manual User Approve](https://wordpress.org/plugins/eonet-manual-user-approve/): review user before they an sign in - [tutorial](https://docs.maxim-kaminsky.com/lrm/kb/how-to-manually-review-new-users-registrations/)
+6. [WPML](https://wpml.org/): Multi-language support - [tutorial](https://docs.maxim-kaminsky.com/lrm/kb/multi-language-support-via-wpml/)
+=======
 5. [Eonet Manual User Approve](https://wordpress.org/plugins/eonet-manual-user-approve/): review user before they an sign in - [tutorial](https://trello.com/c/72l3LfC7/3-how-to-manually-review-new-users-registrations)
 6. [WPML](https://wpml.org/): Multi-language support - [tutorial](https://trello.com/c/trX6b6xR/4-multi-language-support-via-wpml)
+>>>>>>> 77157a6b4927006a5788ce89f08bd5719fbafea8
 7. [s2member](https://wordpress.org/plugins/s2member/) plugin: tweaks for login process
 
 **Roadmap**
 
+<<<<<<< HEAD
+* Allow include form to page content (without modal) (done in version 1.41)
+* Colors/styles customizer [partially implemented via WP Customizer]
+* Documentation and Videos [done] - https://docs.maxim-kaminsky.com/lrm/
+* WooCommerce Login/Registration form integration (done in PRO version 1.28)
+=======
 * Allow include form to page content (without modal)
 * Colors/styles customizer [partially implemented via WP Customizer]
 * Documentation and Videos
 * ?WooCommerce Login/Registration form integration
+>>>>>>> 77157a6b4927006a5788ce89f08bd5719fbafea8
 * Registration Form builder
 
 = PRO features =
@@ -64,11 +90,35 @@ Easy to integrate modal with Login and Registration features. Compatible with an
 2. Redirect user to specified page after login/registration/logout (for example to the User Profile)
 3. User verification via click on the link in registration email
 4. Email only registration - hide username filed from registration form
+<<<<<<< HEAD
+5. Customize buttons color in [WP Customizer](https://docs.maxim-kaminsky.com/lrm/kb/how-to-customize-form-colors-pro-only/)
+=======
 5. Customize buttons color in [WP Customizer](https://trello.com/c/RXvJzKIQ/7-how-to-customize-form-colors)
+>>>>>>> 77157a6b4927006a5788ce89f08bd5719fbafea8
 6. [Request other feature >>](https://maxim-kaminsky.com/shop/contact-me/)
 
 **The PRO version is 100% tested and are compatible with a following plugins:**
 
+<<<<<<< HEAD
+1. **[WooCommerce](https://wordpress.org/plugins/woocommerce/)** (show modal when clicked "Add to cart" in list or single product or in Cart when click "Process to Checkout", option to replace WC account login/registration form to plugin ajax form)
+2. [WooCommerce Sensei](https://woocommerce.com/products/sensei/) (fix for Login process)
+3. **[WP reCaptcha Integration](https://wordpress.org/plugins/wp-recaptcha-integration/)**
+4. **[Invisible reCaptcha](https://wordpress.org/plugins/invisible-recaptcha/)** - [tutorial](https://docs.maxim-kaminsky.com/lrm/kb/how-to-set-up-invisible-recaptcha/)
+5. **[BuddyPress](https://wordpress.org/plugins/buddypress/)** ([replace default registration form with BuddyPress one >>](https://monosnap.com/file/3RNMa7Wl3EYWidw9znAJbgJ5QVL7oy))
+6. **[UltimateMember](https://wordpress.org/plugins/ultimate-member/)** ([replace default registration form with UltimateMember one >>](https://monosnap.com/file/a2RxnzawR2N9qBdyKJMxh8J5ALuaYs))
+7. [Captcha](https://wordpress.org/plugins/captcha/)
+8. [Really Simple CAPTCHA](https://wordpress.org/plugins/really-simple-captcha/)
+9. [Captcha bank](https://ru.wordpress.org/plugins/captcha-bank/)
+10. [WordPress Social Login](https://wordpress.org/plugins/wordpress-social-login/) (social login buttons below login/register form)
+11. [Social Login WordPress Plugin – AccessPress](https://wordpress.org/plugins/accesspress-social-login-lite/) (social login buttons below login/register form)
+12. [WordPress Social Share, Social Login and Social Comments Plugin – Super Socializer](https://wordpress.org/plugins/super-socializer/) (social login buttons below login/register form, social share, etc)
+13. [Jetpack - SSO login](https://jetpack.com/support/sso/) [Wordpress.com login button >>](https://monosnap.com/file/4Na5FYYONRj79jnLBmQFK3hjnMJQDR)
+14. [WC Vendors & WC Vendors Pro](https://wordpress.org/plugins/wc-vendors/) [Apply to become vendor checkbox >>](https://monosnap.com/file/TmpY4bYTHwF36ouN6fGpdjKZi5k3jz)
+15. [MailChimp for WordPress](https://wordpress.org/plugins/mailchimp-for-wp/) [Subscribe to newsletter checkbox >>](https://monosnap.com/file/sVpsvTnIzQoplRA7ap3IBPfb81kPuV)
+16. Math Captcha - soon
+17. Easy Digital Downloads - soon
+18. [Request other plugin >>](https://maxim-kaminsky.com/shop/contact-me/)
+=======
 1. **[Woocommerce](https://wordpress.org/plugins/woocommerce/)** (show modal when clicked "Add to cart" in list or single product or in Cart when click "Process to Checkout")
 2. [WooCommerce Sensei](https://woocommerce.com/products/sensei/) (fix for Login process)
 3. **[WP reCaptcha Integration](https://wordpress.org/plugins/wp-recaptcha-integration/)**
@@ -84,6 +134,7 @@ Easy to integrate modal with Login and Registration features. Compatible with an
 13. Math Captcha - soon
 14. Easy Digital Downloads - soon
 15. [Request other plugin >>](https://maxim-kaminsky.com/shop/contact-me/)
+>>>>>>> 77157a6b4927006a5788ce89f08bd5719fbafea8
 
 [GET PRO >>](https://maxim-kaminsky.com/shop/product/ajax-login-and-registration-modal-popup-pro/)
 
@@ -98,10 +149,23 @@ Easy to integrate modal with Login and Registration features. Compatible with an
 == Frequently Asked Questions ==
 
 = How to integrate this plugin to my website? =
-
+{{SITE_NAME}}
+**As modal:**
 Just add class `lrm-login` to the `<button>` or `<a>` element for show login tab or `lrm-signup` for registration tab.
 
 Example: `<a href="/wp-login.php" class="lrm-login">Login</a>`
+
+<<<<<<< HEAD
+**Inline mode:**
+
+Use shortcode `[lrm_form default_tab="login" logged_in_message="You have been already logged in!"]`
+You can pass to **default_tab** params: "login", "register" or "lost-password".
+Param **logged_in_message** will be displayed if used is logged in (html is allowed).
+=======
+Just add class `lrm-login` to the `<button>` or `<a>` element for show login tab or `lrm-signup` for registration tab.
+
+Example: `<a href="/wp-login.php" class="lrm-login">Login</a>`
+>>>>>>> 77157a6b4927006a5788ce89f08bd5719fbafea8
 
 = How can I attach modal to menu item? =
 
@@ -181,10 +245,35 @@ If you have login issue with Adminize plugin - go to Adminize plugin settings an
 
 == Changelog ==
 
+<<<<<<< HEAD
+= VER 2.00 - 11/02/2019 =
+
+- Added option to select custom "Login", "Registration" and "Reset password" pages
+- Complete rewritten after-login/registration/logout actions (reload, redirects, etc)
+- Added skins support
+- Added new emails tags: {{EMAIL}}, {{HOME_URL}}, {{FIRST_NAME}}, {{LAST_NAME}}
+
+= VER 1.50 - 05/01/2019 =
+
+- Complete rewritten [https://docs.maxim-kaminsky.com/lrm/kb/multi-language-support-via-wpml/](WPML support), for make compatible with WPML 4.1+
+- Added filter "lrm/users_can_register" to allow override global Wordpress option "users_can_register"
+- Tweaks for Eduma WP theme
+- Fix - do not possible to hide review message on plugin settings page
+- Scroll to the errors text on form submissions errors
+
+=======
+>>>>>>> 77157a6b4927006a5788ce89f08bd5719fbafea8
 = VER 1.41 - 02/11/2018 =
 
 - New option - use WooCommerce emails templates, so your emails will looks the same (useful for WC stores)
 - Tweaks for password managers
+<<<<<<< HEAD
+- Put the cursor in the first field on modal open
+- Restrict submit form if request in process (so a user can't continuously submit it many times)
+- Added new translations from https://translate.wordpress.org/projects/wp-plugins/ajax-login-and-registration-modal-popup
+- Added new option for remove plugin data on deactivation
+=======
+>>>>>>> 77157a6b4927006a5788ce89f08bd5719fbafea8
 
 = VER 1.40 - 10/10/2018 =
 
@@ -195,7 +284,11 @@ If you have login issue with Adminize plugin - go to Adminize plugin settings an
 = VER 1.37 - 06/10/2018 =
 
 - Added new email - for admin about new user registration (please note - in case of using Social login this email will be not triggered)
+<<<<<<< HEAD
+- Added html template field to simplify email templates customization - https://docs.maxim-kaminsky.com/lrm/kb/how-to-style-email-templates/
+=======
 - Added html template field to simplify email templates customization - https://trello.com/c/OX5IIUEr/10-how-to-style-email-templates
+>>>>>>> 77157a6b4927006a5788ce89f08bd5719fbafea8
 
 = VER 1.36 - 05/10/2018 =
 
@@ -208,7 +301,11 @@ If you have login issue with Adminize plugin - go to Adminize plugin settings an
 
 = VER 1.34 - 18/09/2018 =
 
+<<<<<<< HEAD
+- Tweaks for PRO compatibility with the [Invisible reCaptcha](https://wordpress.org/plugins/invisible-recaptcha/) plugin- [tutorial](https://docs.maxim-kaminsky.com/lrm/kb/how-to-set-up-invisible-recaptcha/)
+=======
 - Tweaks for PRO compatibility with the [Invisible reCaptcha](https://wordpress.org/plugins/invisible-recaptcha/) plugin- [tutorial](https://trello.com/c/SYR5pXxn/8-how-to-set-up-invisible-recaptcha)
+>>>>>>> 77157a6b4927006a5788ce89f08bd5719fbafea8
 - Tweaks for CSS & JS selectors for make them working even with prefixes, like "divi-lrm-login", that can be added by some themes in menus
 - Added [predefined list](https://monosnap.com/file/TsOHDJZR4HzlgkmiZVvPmxkkGPpPH1) of menu items
 
@@ -216,7 +313,11 @@ If you have login issue with Adminize plugin - go to Adminize plugin settings an
 
 - Small tweaks for LRM Pro to allow the user create account with email only
 - Return user ID after login/registration to JS
+<<<<<<< HEAD
+- Full compatibility with [WPML](https://wpml.org/) plugin for [multi-language support](https://docs.maxim-kaminsky.com/lrm/kb/multi-language-support-via-wpml/)
+=======
 - Full compatibility with [WPML](https://wpml.org/) plugin for [multi-language support](https://trello.com/c/trX6b6xR/4-multi-language-support-via-wpml)
+>>>>>>> 77157a6b4927006a5788ce89f08bd5719fbafea8
 
 = VER 1.32 - 01/09/2018 =
 

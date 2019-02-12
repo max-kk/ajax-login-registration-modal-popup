@@ -1,0 +1,624 @@
+# Translation of Plugins - AJAX Login and Registration modal popup - Development (trunk) in Greek
+# This file is distributed under the same license as the Plugins - AJAX Login and Registration modal popup - Development (trunk) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2018-12-18 14:10+0200\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Poedit 1.7.7\n"
+"Language: el_GR\n"
+"Project-Id-Version: Plugins - AJAX Login and Registration modal popup - Development (trunk)\n"
+"POT-Creation-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+
+#: includes/class-settings.php:404
+msgid "Put here your custom mail html template + css + tag {{CONTENT}} (required)."
+msgstr ""
+
+#: includes/class-settings.php:402
+msgid "HTML email template"
+msgstr ""
+
+#: includes/class-settings.php:399
+msgid "Template for HTML emails"
+msgstr ""
+
+#: includes/class-settings.php:390
+msgid "View:"
+msgstr ""
+
+#: includes/class-settings.php:389
+msgid "Email:"
+msgstr ""
+
+#: includes/class-settings.php:388
+msgid "Username:"
+msgstr ""
+
+#: includes/class-settings.php:387
+msgid "New user just registered on"
+msgstr ""
+
+#: includes/class-settings.php:378
+msgid "New user registration on your site:"
+msgstr ""
+
+#: includes/class-settings.php:370
+msgid "Send email to admin about new user?"
+msgstr ""
+
+#: includes/class-settings.php:367
+msgid "Admin emails"
+msgstr ""
+
+#: includes/class-core.php:145
+msgid "Some plugin try to redirect during this action to the following url: %s. Please try to disable plugins related to the Security/User Profile/Membership and try again."
+msgstr ""
+
+#: includes/class-admin-menus.php:67
+msgid "Add to menu"
+msgstr ""
+
+#: includes/class-admin-menus.php:64
+msgid "Select All"
+msgstr ""
+
+#: includes/class-admin-menus.php:56
+msgid "Log-out"
+msgstr ""
+
+#: includes/class-admin-menus.php:47
+msgid "Register"
+msgstr ""
+
+#: includes/class-admin-menus.php:21
+msgid "Login & Registration modal"
+msgstr ""
+
+#: includes/plugin-update-checker/Puc/v4p4/Vcs/PluginUpdateChecker.php:98
+msgid "There is no changelog available."
+msgstr "Δεν υπάρχει διαθέσιμο αρχείο καταγραφής αλλαγών."
+
+#: includes/plugin-update-checker/Puc/v4p4/Plugin/UpdateChecker.php:558
+msgid "Unknown update checker status \"%s\""
+msgstr "Άγνωστη κατάσταση ελέγχου \"%s\""
+
+#: includes/plugin-update-checker/Puc/v4p4/Plugin/UpdateChecker.php:552
+msgctxt "the plugin title"
+msgid "Could not determine if updates are available for %s."
+msgstr "Δεν ήταν δυνατός ο προσδιορισμός των διαθέσιμων ενημερώσεων για το %s."
+
+#: includes/plugin-update-checker/Puc/v4p4/Plugin/UpdateChecker.php:550
+msgctxt "the plugin title"
+msgid "A new version of the %s plugin is available."
+msgstr "Μια νέα έκδοση του πρόσθετου %s είναι διαθέσιμη."
+
+#: includes/plugin-update-checker/Puc/v4p4/Plugin/UpdateChecker.php:548
+msgctxt "the plugin title"
+msgid "The %s plugin is up to date."
+msgstr "Το πρόσθετο %s είναι ενημερωμένο."
+
+#: includes/plugin-update-checker/Puc/v4p4/Plugin/UpdateChecker.php:455
+msgid "More information about %s"
+msgstr "Περισσότερες πληροφορίες σχετικά με %s"
+
+#: includes/plugin-update-checker/Puc/v4p4/Plugin/UpdateChecker.php:432
+msgid "View details"
+msgstr "Δείτε λεπτομέρειες"
+
+#: includes/plugin-update-checker/Puc/v4p4/Plugin/UpdateChecker.php:395
+msgid "Check for updates"
+msgstr "Ελεγχος για ενημερώσεις"
+
+#: includes/class-settings.php:273
+msgid "With using \"server\" method you can avoid displaying default browser \"field invalid\" messages and gives more customization options."
+msgstr "Με τη χρήση της μεθόδου \"server\" μπορείτε να αποφύγετε την εμφάνιση των προεπιλεγμένων μηνυμάτων \"μη έγκυρων πεδίων\" του προγράμματος περιήγησης και να δώσετε περισσότερες επιλογές προσαρμογής."
+
+#: includes/class-settings.php:265
+msgid "Data validation method"
+msgstr "Μέθοδος επικύρωσης δεδομένων"
+
+#: includes/class-settings.php:262
+msgid "Data validation"
+msgstr "Επικύρωση δεδομένων"
+
+#: includes/class-settings.php:213
+msgid "He will need to open the email and click verification link. Please add {{VERIFY_ACCOUNT_URL}} tag to Registration Email."
+msgstr "Θα χρειαστεί να ανοίξετε τον σύνδεσμο επαλήθευσης ηλεκτρονικού ταχυδρομείου, και να κανετε κλικ στην ετικέτα {{VERIFY URL ACCOUNT}} στο μήνυμα εγγραφής."
+
+#: includes/class-settings.php:213
+msgid "[If user can set password] "
+msgstr ""
+
+#: includes/class-settings.php:205
+msgid "[If user can't set password] "
+msgstr ""
+
+#: includes/class-settings.php:199 includes/class-settings.php:205
+msgid "He will need to open the email with his login information and enter them on the Log In tab."
+msgstr "Θα χρειαστεί να ανοίξει το μήνυμα ηλεκτρονικού ταχυδρομείου με τα στοιχεία σύνδεσης του και να τα εισαγάγει στην καρτέλα Σύνδεση."
+
+#: includes/class-settings.php:196
+msgid "If this option is enabled - the user won't automatically be logged into his account."
+msgstr "Εάν αυτή η επιλογή είναι ενεργοποιημένη - ο χρήστης δεν θα συνδεθεί αυτόματα στο λογαριασμό του."
+
+#: includes/class-ajax.php:59
+msgid "https://wordpress.org/support/"
+msgstr ""
+
+#: includes/class-ajax.php:59
+msgid "https://codex.wordpress.org/Cookies"
+msgstr ""
+
+#. translators: 1: Browser cookie documentation URL, 2: Support forums URL
+#: includes/class-ajax.php:58
+msgid "<strong>ERROR</strong>: Cookies are blocked due to unexpected output. For help, please see <a href=\"%1$s\">this documentation</a> or try the <a href=\"%2$s\">support forums</a>."
+msgstr "<strong>ΣΦΑΛΜΑ</strong>: Τα cookies είναι αποκλεισμένα λόγω μη αναμενόμενου σφάλματος εξόδου. Για βοήθεια, ανατρέξτε στην  <a href=\"%1$s\">για  τεκμηρίωση</a> ή δοκιμάστε το  <a href=\"%2$s\">φόρουμ υποστήριξης</a>."
+
+#: includes/class-settings.php:567
+msgid "Please enter your First Name!"
+msgstr "Παρακαλώ εισάγετε το όνομα σας!"
+
+#: includes/class-settings.php:566
+msgid "Message: No First Name"
+msgstr "Μήνυμα: Δεν υπάρχει όνομα"
+
+#: includes/class-settings.php:560
+msgid "Please enter your UserName!"
+msgstr "Παρακαλώ εισάγετε το όνομα χρήστη σας!"
+
+#: includes/class-settings.php:559
+msgid "Message: No UserName"
+msgstr "Μήνυμα: Δεν υπάρχει όνομα χρήστη"
+
+#: includes/class-settings.php:500
+msgid "Form: Username"
+msgstr "Διαμόρφωση: Όνομα χρήστη"
+
+#: includes/class-settings.php:483
+msgid "Login successful, you can close this window."
+msgstr "Επιτυχής σύνδεση, μπορείτε να κλείσετε αυτό το παράθυρο."
+
+#: includes/class-settings.php:482
+msgid "Message: Login successful (with \"Reload page after login/registration?\" disabled)"
+msgstr "Μήνυμα: Η σύνδεση ήταν επιτυχής (με απενεργοποιημένο το \"Επαναφόρτωση σελίδας μετά την είσοδο / εγγραφή; \")"
+
+#: includes/class-settings.php:475
+msgid "Message: Login successful (with \"Reload page after login/registration?\" enabled)"
+msgstr "Μήνυμα: Η σύνδεση ήταν επιτυχής (με ενεργοποιημένο το \"Επαναφόρτωση σελίδας μετά την είσοδο / εγγραφή; \")"
+
+#: includes/class-settings.php:362
+msgid "The email Body to user with new password. Allowed tags: {{USERNAME}}, {{CHANGE_PASSWORD_URL}}, {{SITE_URL}}, {{LOGIN_URL}}"
+msgstr "Το σώμα ηλεκτρονικού ταχυδρομείου σε χρήστη με νέο κωδικό πρόσβασης. Επιτρεπόμενες ετικέτες: {{USERNAME}}, {{CHANGE_PASSWORD_URL}}, {{SITE_URL}}, {{LOGIN_URL}}"
+
+#: includes/class-settings.php:357
+msgid "To reset your password, visit the following address:"
+msgstr "Για να επαναφέρετε τον κωδικό πρόσβασής σας, επισκεφθείτε την ακόλουθη διεύθυνση:"
+
+#: includes/class-settings.php:356
+msgid "If this was a mistake, just ignore this email and nothing will happen."
+msgstr "Εάν αυτό έγινε απο λάθος, απλά αγνοήστε αυτό το μήνυμα ηλεκτρονικού ταχυδρομείου και τίποτα δεν θα συμβεί."
+
+#: includes/class-settings.php:235
+msgid "Display First and Last name fields in Registration Form?"
+msgstr "Εμφάνιση πεδίων Ονοματεπώνυμου στη φόρμα εγγραφής;"
+
+#: includes/class-settings.php:310
+msgid "To enable support of html tags - use text/html email format. More - <a href=\"%1$s\" target=\"_blank\">%1$s</a>"
+msgstr "Για να ενεργοποιήσετε την υποστήριξη των html ετικετών - χρησιμοποιήστε τη μορφή e-mail text/html. Περισσότερα - <a href=\"%1$s\" target=\"_blank\">%1$s</a>"
+
+#: includes/class-settings.php:301
+msgid "Email format"
+msgstr ""
+
+#: includes/class-settings.php:298
+msgid "Mails"
+msgstr ""
+
+#: includes/class-settings.php:701
+msgid "Security token is expired! Please refresh the page!"
+msgstr "Το διακριτικό ασφαλείας έχει λήξει! Παρακαλώ ανανεώστε τη σελίδα!"
+
+#: includes/class-settings.php:700
+msgid "Message: Security token is expired"
+msgstr "Μήνυμα: Το διακριτικό ασφαλείας έχει λήξει"
+
+#: includes/class-settings.php:668
+msgid "Check your mailbox to access your new password."
+msgstr "Ελέγξτε το γραμματοκιβώτιό σας για να δείτε τον νέο σας κωδικό πρόσβασης."
+
+#: includes/class-settings.php:632
+msgid "Message: No user registered with that email address"
+msgstr "Μήνυμα: Δεν έχει εγγραφεί χρήστης με τη συγκεκριμένη διεύθυνση ηλεκτρονικού ταχυδρομείου"
+
+#: includes/class-settings.php:625
+msgid "Message: Missing login"
+msgstr ""
+
+#: includes/class-settings.php:588
+msgid "Registration was successful. We have sent you an email with your login information. Please use them to log into your account."
+msgstr ""
+
+#: includes/class-settings.php:469
+msgid "Please enter your password!"
+msgstr ""
+
+#: includes/class-settings.php:462
+msgid "Please enter your Username/email!"
+msgstr ""
+
+#: includes/class-settings.php:461
+msgid "Message: No Username/Email"
+msgstr ""
+
+#: includes/class-settings.php:447
+msgid "Log in"
+msgstr ""
+
+#: includes/class-settings.php:219 includes/class-settings.php:229
+msgid "User must confirm email after registration?"
+msgstr ""
+
+#: includes/class-settings.php:692
+msgid "Hide password"
+msgstr ""
+
+#: includes/class-settings.php:684
+msgid "Show password"
+msgstr ""
+
+#: includes/class-settings.php:260
+msgid "Use your custom selector to find button/link for attach modal."
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://maxim-kaminsky.com/"
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Maxim K"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "Easy to integrate modal with Login and Registration features."
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "https://maxim-kaminsky.com/shop/product/ajax-login-and-registration-modal-popup-pro/"
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "AJAX Login and Registration modal popup"
+msgstr ""
+
+#: includes/class-settings.php:693
+msgid "Hide"
+msgstr ""
+
+#: includes/class-settings.php:685
+msgid "Show"
+msgstr ""
+
+#: vendor/underdev/settings/views/settings-page.php:6
+#: views/admin/settings-page.php:6 views/settings-page.php:6
+msgid "No Settings available at the moment"
+msgstr ""
+
+#: includes/class-settings.php:714
+msgid "PRO features"
+msgstr ""
+
+#: includes/class-settings.php:677
+msgid "close"
+msgstr ""
+
+#: includes/class-settings.php:676
+msgid "Close modal text"
+msgstr ""
+
+#: includes/class-settings.php:673
+msgid "Other"
+msgstr ""
+
+#: includes/class-settings.php:667
+msgid "Message: Reset successful"
+msgstr ""
+
+#: includes/class-settings.php:661
+msgid "Oops! Something went wrong while updating your account."
+msgstr ""
+
+#: includes/class-settings.php:660
+msgid "Message: Something went wrong"
+msgstr ""
+
+#: includes/class-settings.php:654
+msgid "System is unable to send you the mail containing your new password."
+msgstr ""
+
+#: includes/class-settings.php:653
+msgid "Message: Unable to send email"
+msgstr ""
+
+#: includes/class-settings.php:647
+msgid "Invalid username or e-mail address."
+msgstr ""
+
+#: includes/class-settings.php:646
+msgid "Message: Invalid username or e-mail address"
+msgstr ""
+
+#: includes/class-settings.php:640
+msgid "There is no user registered with that username."
+msgstr ""
+
+#: includes/class-settings.php:639
+msgid "Message: No user registered with that username"
+msgstr ""
+
+#: includes/class-settings.php:633
+msgid "There is no user registered with that email address."
+msgstr ""
+
+#: includes/class-settings.php:626
+msgid "Enter an username or email address."
+msgstr ""
+
+#: includes/class-settings.php:618
+msgid "Back to login"
+msgstr ""
+
+#: includes/class-settings.php:617
+msgid "Form button: Back to login"
+msgstr ""
+
+#: includes/class-settings.php:611
+msgid "Reset password"
+msgstr ""
+
+#: includes/class-settings.php:610
+msgid "Form button: Reset password"
+msgstr ""
+
+#: includes/class-settings.php:597
+msgid "Lost your password? Please enter your email address. You will receive mail with link to set new password."
+msgstr ""
+
+#: includes/class-settings.php:596
+msgid "Message"
+msgstr ""
+
+#: includes/class-settings.php:581
+msgid "Registration was successful, reloading page."
+msgstr ""
+
+#: includes/class-settings.php:580 includes/class-settings.php:587
+msgid "Message: Registration successful"
+msgstr ""
+
+#: includes/class-settings.php:574
+msgid "Please enter a correct email!"
+msgstr ""
+
+#: includes/class-settings.php:573
+msgid "Message: Wrong email"
+msgstr ""
+
+#: includes/class-settings.php:553
+msgid "Registration is disabled!"
+msgstr ""
+
+#: includes/class-settings.php:552
+msgid "Message: Registration is disabled"
+msgstr ""
+
+#: includes/class-settings.php:545
+msgid "Create account"
+msgstr ""
+
+#: includes/class-settings.php:544
+msgid "Form button: Create account"
+msgstr ""
+
+#: includes/class-settings.php:537
+msgid "I agree with the <a href='#0'>Terms</a>"
+msgstr ""
+
+#: includes/class-settings.php:536
+msgid "Form: Terms"
+msgstr ""
+
+#: includes/class-settings.php:522
+msgid "Email*"
+msgstr ""
+
+#: includes/class-settings.php:521
+msgid "Form: Email"
+msgstr ""
+
+#: includes/class-settings.php:515
+msgid "Last name"
+msgstr ""
+
+#: includes/class-settings.php:514
+msgid "Form: Last name"
+msgstr ""
+
+#: includes/class-settings.php:508
+msgid "First name*"
+msgstr ""
+
+#: includes/class-settings.php:507
+msgid "Form: First name"
+msgstr ""
+
+#: includes/class-settings.php:494
+msgid "New account"
+msgstr ""
+
+#: includes/class-settings.php:476
+msgid "Login successful, reloading page..."
+msgstr ""
+
+#: includes/class-settings.php:468
+msgid "Message: No Password"
+msgstr ""
+
+#: includes/class-settings.php:454
+msgid "Forgot your password?"
+msgstr ""
+
+#: includes/class-settings.php:453
+msgid "Link: Forgot your password?"
+msgstr ""
+
+#: includes/class-settings.php:446
+msgid "Form button: Login"
+msgstr ""
+
+#: includes/class-settings.php:440
+msgid "Remember me"
+msgstr ""
+
+#: includes/class-settings.php:439
+msgid "Form: Remember me"
+msgstr ""
+
+#: includes/class-settings.php:433
+msgid "Password"
+msgstr ""
+
+#: includes/class-settings.php:432
+msgid "Form: Password"
+msgstr ""
+
+#: includes/class-settings.php:426 includes/class-settings.php:604
+msgid "Email or Username"
+msgstr ""
+
+#: includes/class-settings.php:425 includes/class-settings.php:603
+msgid "Form: Email or Username"
+msgstr ""
+
+#: includes/class-settings.php:419
+msgid "Sign in"
+msgstr ""
+
+#: includes/class-settings.php:418 includes/class-settings.php:493
+msgid "Form heading"
+msgstr ""
+
+#: includes/class-admin-menus.php:38 includes/class-settings.php:415
+msgid "Login"
+msgstr ""
+
+#: includes/class-settings.php:413
+msgid "Expressions"
+msgstr ""
+
+#: includes/class-settings.php:501
+msgid "Username*"
+msgstr ""
+
+#: includes/class-settings.php:348
+msgid "The email Subject to user with new password."
+msgstr ""
+
+#: includes/class-settings.php:346
+msgid "[YOUR BLOG NAME] Your new password"
+msgstr ""
+
+#: includes/class-settings.php:343 includes/class-settings.php:593
+msgid "Lost password"
+msgstr ""
+
+#: includes/class-settings.php:329 includes/class-settings.php:353
+#: includes/class-settings.php:385
+msgid "Body"
+msgstr ""
+
+#: includes/class-settings.php:323 includes/class-settings.php:379
+msgid "The email Subject to user about successful registration."
+msgstr ""
+
+#: includes/class-settings.php:322
+msgid "[YOUR BLOG NAME] Your username and password info"
+msgstr ""
+
+#: includes/class-settings.php:321 includes/class-settings.php:345
+#: includes/class-settings.php:377
+msgid "Subject"
+msgstr ""
+
+#: includes/class-settings.php:318 includes/class-settings.php:490
+msgid "Registration"
+msgstr ""
+
+#: includes/class-settings.php:296
+msgid "Emails"
+msgstr ""
+
+#: includes/class-settings.php:254
+msgid "Extra selectors to handle register modal?"
+msgstr ""
+
+#: includes/class-settings.php:246
+msgid "Extra selectors to handle log in modal?"
+msgstr ""
+
+#: includes/class-settings.php:243
+msgid "Extra selectors (id, classes) to handle modal"
+msgstr ""
+
+#: includes/class-settings.php:241
+msgid "Advanced"
+msgstr ""
+
+#: includes/class-settings.php:227
+msgid "Reload page after login/registration?"
+msgstr ""
+
+#: includes/class-settings.php:189
+msgid "Hide Terms box in Registration Form?"
+msgstr ""
+
+#: includes/class-settings.php:186
+msgid "Terms"
+msgstr ""
+
+#: includes/class-settings.php:179
+msgid "Free version are compatible with:"
+msgstr ""
+
+#: includes/class-settings.php:176
+msgid "Supported plugins"
+msgstr ""
+
+#: includes/class-settings.php:169
+msgid "How to integrate modal on your site:"
+msgstr ""
+
+#: includes/class-settings.php:166
+msgid "Installation steps"
+msgstr ""
+
+#: includes/class-settings.php:164 includes/class-settings.php:216
+msgid "General"
+msgstr ""
+
+#: includes/class-settings.php:140
+msgid "I already reviewed it"
+msgstr ""
+
+#: includes/class-settings.php:137
+msgid "Do you like \"Login and Register Modal\" plugin? Please consider giving it a %1$sreview%2$s"
+msgstr ""
+
+#: includes/class-core.php:82
+#: vendor/underdev/settings/views/settings-page.php:3
+#: views/admin/settings-page.php:3 views/settings-page.php:3
+msgid "Settings"
+msgstr ""

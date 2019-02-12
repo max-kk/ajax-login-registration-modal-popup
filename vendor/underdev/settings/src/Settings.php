@@ -195,6 +195,12 @@ class Settings {
 
 		if ( empty( $this->settings ) ) {
 
+            /**
+             * WPML tweak for Expressions
+             * @since 1.42
+             */
+            \LRM_WPML_Integration::switch_locale();
+
 			foreach ( $this->get_sections() as $section_slug => $section ) {
 
 				$setting = get_option( $this->handle . '_' . $section_slug );
@@ -205,21 +211,39 @@ class Settings {
 
 					$this->settings[ $section_slug ][ $group_slug ] = array();
 
+                    /** @var underDEV\Utils\Settings\Field $field */
 					foreach ( $group->get_fields() as $field_slug => $field ) {
 
 						if ( isset( $setting[ $group_slug ][ $field_slug ] ) ) {
 							$value = $setting[ $group_slug ][ $field_slug ];
 						} else {
 							$value = $field->default_value();
+
+                            /**
+                             * WPML tweak
+                             * @since 1.42
+                             */
+                            if ( $group->can_be_translated() && $value && !\LRM_WPML_Integration::is_default_locale() ) {
+                                $value = __($value, 'ajax-login-and-registration-modal-popup');
+                            }
 						}
 
 						$field->value( $value );
+
 						$this->settings[ $section_slug ][ $group_slug ][ $field_slug ] = $value;
 
 					}
 
 				}
 
+<<<<<<< HEAD
+                /**
+                 * @since 1.42
+                 */
+                \LRM_WPML_Integration::restore_locale();
+
+=======
+>>>>>>> 77157a6b4927006a5788ce89f08bd5719fbafea8
 			}
 			
 		}
@@ -272,6 +296,10 @@ class Settings {
 		wp_enqueue_script( 'underdev/settings/' . $this->handle, $this->uri . 'assets/dist/js/scripts.min.js', array( 'jquery' ), null, false );
 
 		wp_enqueue_style( 'underdev/settings/' . $this->handle, $this->uri . 'assets/dist/css/style.css' );
+
+		// MAX
+
+        do_action( 'underdev/settings/enqueue_scripts' );
 
 	}
 
