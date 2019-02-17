@@ -48,7 +48,6 @@ class LRM_Mailer {
 			add_filter( 'wp_mail_content_type', array( 'LRM_Mailer', 'set_mail_type' ) );
 		}
 
-<<<<<<< HEAD
         // The blogname option is escaped with esc_html on the way into the database in sanitize_option
         // we want to reverse this for the plain text arena of emails.
         $blogname = wp_specialchars_decode(get_option('blogname'), ENT_QUOTES);
@@ -93,8 +92,6 @@ class LRM_Mailer {
             $mail_body
         );
 
-=======
->>>>>>> 77157a6b4927006a5788ce89f08bd5719fbafea8
 		if ( 'text/html' == $email_format ) {
             // Apply custom template
             $mail_body = str_replace('{{CONTENT}}', $mail_body, LRM_Settings::get()->setting('mails/template/code'));

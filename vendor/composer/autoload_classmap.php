@@ -6,7 +6,6 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-<<<<<<< HEAD
     'FV_Admin_Notice_Helper' => $vendorDir . '/max-kk/wp-notice-lib/class-admin-notice-helper.php',
     'LRM_AJAX' => $baseDir . '/includes/class-ajax.php',
     'LRM_Admin_Menus' => $baseDir . '/includes/class-admin-menus.php',
@@ -36,8 +35,6 @@ return array(
     'WP_Skins_Customizer' => $vendorDir . '/max-kk/wp-skins-customizer/includes/class-wp-skins-customizer.php',
     'WP_Skins_Customizer_Abstract' => $vendorDir . '/max-kk/wp-skins-customizer/includes/class-wp-skins-customizer-abstract.php',
     'WP_Skins_Manager_Abstract' => $vendorDir . '/max-kk/wp-skins-customizer/includes/class-wp-skins-manager-abstract.php',
-=======
->>>>>>> 77157a6b4927006a5788ce89f08bd5719fbafea8
     'underDEV\\Utils\\Settings' => $vendorDir . '/underdev/settings/src/Settings.php',
     'underDEV\\Utils\\Settings\\CoreFields\\Checkbox' => $vendorDir . '/underdev/settings/src/Settings/CoreFields/Checkbox.php',
     'underDEV\\Utils\\Settings\\CoreFields\\Editor' => $vendorDir . '/underdev/settings/src/Settings/CoreFields/Editor.php',

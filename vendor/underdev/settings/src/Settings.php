@@ -236,14 +236,11 @@ class Settings {
 
 				}
 
-<<<<<<< HEAD
                 /**
                  * @since 1.42
                  */
                 \LRM_WPML_Integration::restore_locale();
 
-=======
->>>>>>> 77157a6b4927006a5788ce89f08bd5719fbafea8
 			}
 			
 		}

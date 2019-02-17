@@ -21,7 +21,6 @@ class ComposerStaticInitdde607f96faa1b43935af1e9c51b647a
     );
 
     public static $classMap = array (
-<<<<<<< HEAD
         'FV_Admin_Notice_Helper' => __DIR__ . '/..' . '/max-kk/wp-notice-lib/class-admin-notice-helper.php',
         'LRM_AJAX' => __DIR__ . '/../..' . '/includes/class-ajax.php',
         'LRM_Admin_Menus' => __DIR__ . '/../..' . '/includes/class-admin-menus.php',
@@ -51,8 +50,6 @@ class ComposerStaticInitdde607f96faa1b43935af1e9c51b647a
         'WP_Skins_Customizer' => __DIR__ . '/..' . '/max-kk/wp-skins-customizer/includes/class-wp-skins-customizer.php',
         'WP_Skins_Customizer_Abstract' => __DIR__ . '/..' . '/max-kk/wp-skins-customizer/includes/class-wp-skins-customizer-abstract.php',
         'WP_Skins_Manager_Abstract' => __DIR__ . '/..' . '/max-kk/wp-skins-customizer/includes/class-wp-skins-manager-abstract.php',
-=======
->>>>>>> 77157a6b4927006a5788ce89f08bd5719fbafea8
         'underDEV\\Utils\\Settings' => __DIR__ . '/..' . '/underdev/settings/src/Settings.php',
         'underDEV\\Utils\\Settings\\CoreFields\\Checkbox' => __DIR__ . '/..' . '/underdev/settings/src/Settings/CoreFields/Checkbox.php',
         'underDEV\\Utils\\Settings\\CoreFields\\Editor' => __DIR__ . '/..' . '/underdev/settings/src/Settings/CoreFields/Editor.php',
