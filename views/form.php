@@ -59,9 +59,17 @@ $redirect_to = !empty( $_GET['redirect_to'] ) ? urldecode($_GET['redirect_to']) 
 
 
                 <div class="fieldset">
-                    <label>
-                        <input type="checkbox" name="remember-me" checked> <?php echo LRM_Settings::get()->setting('messages/login/remember-me', true); ?>
+	                <?php if ( apply_filters('lrm/form/use_nice_checkbox', true) ): ?>
+                    <label class="lrm-nice-checkbox__label lrm-remember-me-checkbox"><?php echo LRM_Settings::get()->setting('messages/login/remember-me', true); ?>
+                        <input type="checkbox" class="lrm-nice-checkbox lrm-remember-me" name="remember-me" checked>
+                        <div class="lrm-nice-checkbox__indicator"></div>
                     </label>
+                    <?php else: ?>
+                    <label class="lrm-remember-me-checkbox">
+                        <input type="checkbox" class="lrm-remember-me" name="remember-me" checked>
+	                    <?php echo LRM_Settings::get()->setting('messages/login/remember-me', true); ?>
+                    </label>
+                    <?php endif; ?>
                 </div>
 
                 <div class="lrm-integrations lrm-integrations--login">
@@ -145,7 +153,7 @@ $redirect_to = !empty( $_GET['redirect_to'] ) ? urldecode($_GET['redirect_to']) 
                         <div class="fieldset">
                             <div class="lrm-position-relative">
                                 <label class="image-replace lrm-password" for="signup-password"><?php echo esc_attr( LRM_Settings::get()->setting('messages_pro/registration/password', true) ); ?></label>
-                                <input name="password" class="full-width has-padding has-border" id="signup-password" type="password"  placeholder="<?php echo esc_attr( LRM_Settings::get()->setting('messages_pro/registration/password', true) ); ?>" <?= $fields_required; ?> value="" autocomplete="new-password">
+                                <input name="password" class="full-width has-padding has-border" id="signup-password" type="password"  placeholder="<?php echo esc_attr( LRM_Settings::get()->setting('messages/password/password', true) ); ?>" <?= $fields_required; ?> value="" autocomplete="new-password">
                                 <span class="lrm-error-message"></span>
                                 <span class="hide-password" data-show="<?php echo LRM_Settings::get()->setting('messages/other/show_pass'); ?>" data-hide="<?php echo LRM_Settings::get()->setting('messages/other/hide_pass'); ?>"><?php echo LRM_Settings::get()->setting('messages/other/show_pass'); ?></span>
                             </div>
@@ -161,9 +169,19 @@ $redirect_to = !empty( $_GET['redirect_to'] ) ? urldecode($_GET['redirect_to']) 
                     <?php if( ! LRM_Settings::get()->setting('general/terms/off') ): ?>
                         <div class="fieldset fieldset--terms">
 
-                            <label>
-                                <input type="checkbox" class="lrm-accept-terms" required="required"> <?php echo LRM_Settings::get()->setting('messages/registration/terms', true); ?>
-                            </label>
+	                        <?php if ( apply_filters('lrm/form/use_nice_checkbox', true) ): ?>
+                                <label class="lrm-nice-checkbox__label lrm-accept-terms-checkbox"><?php echo LRM_Settings::get()->setting('messages/registration/terms', true); ?>
+                                    <input type="checkbox" class="lrm-nice-checkbox lrm-accept-terms" name="registration_terms" value="yes">
+                                    <div class="lrm-nice-checkbox__indicator"></div>
+                                    <span class="lrm-error-message"></span>
+                                </label>
+	                        <?php else: ?>
+                                <label class="lrm-accept-terms-checkbox">
+                                    <input type="checkbox" class="lrm-accept-terms" name="registration_terms" value="yes">
+			                        <?php echo LRM_Settings::get()->setting('messages/login/remember-me', true); ?>
+                                </label>
+	                        <?php endif; ?>
+
                         </div>
                     <?php endif; ?>
 

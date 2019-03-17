@@ -38,7 +38,7 @@ list($rp_key, $rp_login) = $rp_data;
                     <label class="image-replace lrm-password"><?php echo esc_attr( LRM_Settings::get()->setting('messages_pro/registration/password', true) ); ?></label>
                     <input name="password1" class="full-width has-padding has-border" id="lrm-password1" data-relation="lrm-password2" type="text"  placeholder="<?php echo esc_attr( LRM_Settings::get()->setting('messages_pro/registration/password', true) ); ?>" <?= $fields_required; ?> value="<?php echo esc_attr( wp_generate_password( 16 ) ); ?>" autocomplete="new-password">
                     <span class="lrm-error-message"></span>
-                    <span class="hide-password" data-show="<?php echo LRM_Settings::get()->setting('messages/other/show_pass'); ?>" data-hide="<?php echo LRM_Settings::get()->setting('messages/other/hide_pass'); ?>"><?php echo LRM_Settings::get()->setting('messages/other/hide_pass'); ?></span>
+                    <span class="hide-password hide-password--on" data-show="<?php echo LRM_Settings::get()->setting('messages/other/show_pass'); ?>" data-hide="<?php echo LRM_Settings::get()->setting('messages/other/hide_pass'); ?>"><?php echo LRM_Settings::get()->setting('messages/other/hide_pass'); ?></span>
                 </div>
                 <span class="lrm-pass-strength-result"></span>
             </div>
@@ -64,6 +64,7 @@ list($rp_key, $rp_login) = $rp_data;
              *
              * @param WP_User $user User object of the user whose password is being reset.
              */
+            $user = wp_get_current_user();
             do_action( 'resetpass_form', $user );
             ?>
 

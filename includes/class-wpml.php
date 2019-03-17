@@ -95,6 +95,7 @@ class LRM_WPML_Integration {
         do_action('wpml_multilingual_options', 'lrm_messages');
         do_action('wpml_multilingual_options', 'lrm_mails');
         do_action('wpml_multilingual_options', 'lrm_messages_pro');
+        do_action('wpml_multilingual_options', 'lrm_redirects');
     }
 
     /**

@@ -149,7 +149,8 @@ class LRM_Pages_Manager {
             if (is_multisite()) {
                 $reset_pass_url = network_site_url('wp-login.php', 'login');
             } else {
-                $reset_pass_url = wp_login_url();
+                //$reset_pass_url = wp_login_url();
+                $reset_pass_url = site_url('wp-login.php', 'login');
             }
 
         }
@@ -158,7 +159,6 @@ class LRM_Pages_Manager {
             array('action' => 'rp', 'key' => $password_reset_key, 'login' => rawurlencode($user->user_login)),
             $reset_pass_url
         );
-
 
         return apply_filters( 'lrm/lost_password/link', $reset_pass_url, $password_reset_key, $user );
     }

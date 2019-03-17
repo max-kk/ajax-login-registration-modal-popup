@@ -48,7 +48,7 @@ class LRM_Core {
         }
 
         // RUN PRO UPDATER
-        if ( file_exists(LRM_PATH . 'vendor/plugin-update-checker/plugin-update-checker.php') && is_admin() && lrm_is_pro() ) {
+        if ( file_exists(LRM_PATH . 'vendor/plugin-update-checker/plugin-update-checker.php') && is_admin() && lrm_is_pro() && !lrm_is_pro('1.50') ) {
 
             require LRM_PATH . 'vendor/plugin-update-checker/plugin-update-checker.php';
             $myUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
@@ -63,7 +63,10 @@ class LRM_Core {
         //    $this->process_ajax();
         //}
 
-        add_filter('plugin_action_links_' . LRM_BASENAME, array($this, 'add_settings_link'));
+
+        if ( !defined("LRM_IN_BUILD_FREE") ) {
+            add_filter('plugin_action_links_' . LRM_BASENAME, array($this, 'add_settings_link'));
+        }
 
         new LRM_Admin_Menus();
 
@@ -234,9 +237,9 @@ class LRM_Core {
         $required_scripts = array('jquery');
 
         // For the Password Reset page
-        if ( get_the_ID() == LRM_Pages_Manager::get_page_id('restore-password') ) {
-            $required_scripts[] = 'password-strength-meter';
-        }
+//        if ( get_the_ID() == LRM_Pages_Manager::get_page_id('restore-password') ) {
+//            $required_scripts[] = 'password-strength-meter';
+//        }
 
         wp_enqueue_script('lrm-modal', LRM_URL . 'assets/lrm-core.js', $required_scripts, LRM_ASSETS_VER, true);
 
@@ -252,6 +255,7 @@ class LRM_Core {
         }
 
         $script_params = array(
+            'password_zxcvbn_js_src' => includes_url( '/js/zxcvbn.min.js' ),
             'redirect_url'       => '',
             'ajax_url'           => $ajax_url,
             //'ajax_url'           => add_query_arg( 'lrm', '1', admin_url('admin-ajax.php') ),

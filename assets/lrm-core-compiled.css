@@ -44,9 +44,9 @@ ul.lrm-switcher { list-style: none !important; list-style-type: none !important;
 
 .lrm-form label { font-size: 14px; }
 
-.lrm-form label.image-replace { /* replace text with an icon */ display: inline-block; position: absolute; left: 15px; top: 50%; bottom: auto; -webkit-transform: translateY(-50%); -moz-transform: translateY(-50%); -ms-transform: translateY(-50%); -o-transform: translateY(-50%); transform: translateY(-50%); height: 20px; width: 20px; overflow: hidden; text-indent: 100%; white-space: nowrap; color: transparent; text-shadow: none; background-repeat: no-repeat; background-position: 50% 0; padding: 0 !important; }
+.lrm-form label.image-replace, .lrm-form .lrm-image-replace { /* replace text with an icon */ display: inline-block; position: absolute; left: 15px; top: 50%; bottom: auto; -webkit-transform: translateY(-50%); -moz-transform: translateY(-50%); -ms-transform: translateY(-50%); -o-transform: translateY(-50%); transform: translateY(-50%); height: 20px; width: 20px; overflow: hidden; text-indent: -300px; white-space: nowrap; color: transparent; text-shadow: none; background-repeat: no-repeat; background-position: 50% 0; padding: 0 !important; }
 
-[dir="rtl"] .lrm-form label.image-replace, [lang="ar"] .lrm-form label.image-replace { right: 15px; left: auto; }
+[dir="rtl"] .lrm-form label.image-replace, [lang="ar"] .lrm-form label.image-replace, [dir="rtl"] .lrm-form .lrm-image-replace, [lang="ar"] .lrm-form .lrm-image-replace { right: 15px; left: auto; }
 
 .lrm-form label.lrm-username { background-image: url("img/cd-icon-username.svg"); }
 
@@ -79,9 +79,13 @@ ul.lrm-switcher { list-style: none !important; list-style-type: none !important;
 
 .no-touch .lrm-form input[type=submit]:hover, .no-touch .lrm-form input[type=submit]:focus, .no-touch .lrm-form button[type=submit]:hover, .no-touch .lrm-form button[type=submit]:focus { background: #3599ae; outline: none; }
 
-.lrm-form .hide-password { display: inline-block; position: absolute; right: 0; top: 0; padding: 6px 15px; border-left: 1px solid black; top: 50%; bottom: auto; -webkit-transform: translateY(-50%); -moz-transform: translateY(-50%); -ms-transform: translateY(-50%); -o-transform: translateY(-50%); transform: translateY(-50%); font-size: 14px; font-size: 0.875rem; cursor: pointer; }
+.lrm-form .hide-password { /* replace text with an icon */ display: inline-block; position: absolute; left: 15px; top: 50%; bottom: auto; -webkit-transform: translateY(-50%); -moz-transform: translateY(-50%); -ms-transform: translateY(-50%); -o-transform: translateY(-50%); transform: translateY(-50%); height: 20px; width: 20px; overflow: hidden; text-indent: -300px; white-space: nowrap; color: transparent; text-shadow: none; background-repeat: no-repeat; background-position: 50% 0; left: unset; background-image: url("img/iconmonstr-eye-4.svg"); border-left: 1px solid black; font-size: 14px; font-size: 0.875rem; cursor: pointer; background-position: center; padding: 20px 21px; background-size: 24px; right: 5px; }
 
-[dir="rtl"] .lrm-form .hide-password, [lang="ar"] .lrm-form .hide-password { right: auto; left: 0; border-right: 1px solid black; border-left: none; }
+[dir="rtl"] .lrm-form .hide-password, [lang="ar"] .lrm-form .hide-password { right: 15px; left: auto; }
+
+.lrm-form .hide-password.hide-password--on { background-image: url("img/iconmonstr-eye-8.svg?v3"); }
+
+[dir="rtl"] .lrm-form .hide-password, [lang="ar"] .lrm-form .hide-password { left: 0; right: unset; border-right: 1px solid black; border-left: none; }
 
 .lrm-form .lrm-error-message { display: inline-block; position: absolute; left: -5px; bottom: -35px; background: rgba(215, 102, 102, 0.9); padding: .8em; z-index: 2; color: #FFF; font-size: 13px; font-size: 0.8125rem; border-radius: 0.25em; /* prevent click and touch events */ pointer-events: none; visibility: hidden; opacity: 0; -webkit-transition: opacity 0.2s 0, visibility 0 0.2s; -moz-transition: opacity 0.2s 0, visibility 0 0.2s; transition: opacity 0.2s 0, visibility 0 0.2s; }
 
@@ -218,5 +222,29 @@ a.jetpack-sso { display: block; width: 100%; text-align: center; text-decoration
 @media (min-height: 33.875em) { .um .picker--opened .picker__frame { top: 50%; } }
 
 .lrm-grecaptcha > div { margin: auto; }
+
+.lrm-nice-checkbox { position: absolute; z-index: -1; opacity: 0; /* Hover and focus states */ /* Checked state */ /* Hover state whilst checked */ /* Disabled state */ /* Check mark */ /* Show check mark */ /* Checkbox tick */ }
+
+.lrm-nice-checkbox__label { position: relative; padding-left: 27px; font-size: 14px; vertical-align: middle; margin: 13px 0 3px; display: block; font-weight: 400; line-height: 20px; }
+
+body.rtl .lrm-nice-checkbox__label { padding-right: 27px; padding-left: 0; }
+
+.lrm-nice-checkbox__indicator { position: absolute; top: 0; left: 0; width: 20px; height: 20px; background: #e6e6e6; }
+
+body.rtl .lrm-nice-checkbox__indicator { left: unset; right: 0; }
+
+.lrm-nice-checkbox__label .lrm-nice-checkbox__indicator { background: transparent; border: 2px solid #e8e8eb; border-radius: 3px; }
+
+.lrm-nice-checkbox__label input:checked ~ .lrm-nice-checkbox__indicator { background: #0b76ef; border-color: #0b76ef; }
+
+.lrm-nice-checkbox__label:hover input:not([disabled]):checked ~ .lrm-nice-checkbox__indicator, .lrm-nice-checkbox__label input:checked:focus ~ .lrm-nice-checkbox__indicator { background: #0b76ef; }
+
+.lrm-nice-checkbox__label input:disabled ~ .lrm-nice-checkbox__indicator { pointer-events: none; opacity: .6; background: #e6e6e6; }
+
+.lrm-nice-checkbox__indicator:after { position: absolute; display: none; content: ''; }
+
+.lrm-nice-checkbox__label input:checked ~ .lrm-nice-checkbox__indicator:after { display: block; }
+
+.lrm-nice-checkbox__label .lrm-nice-checkbox__indicator:after { top: 0px; left: 5px; width: 5px; height: 11px; transform: rotate(40deg); border: solid #fff; border-width: 0 2px 2px 0; }
 
 /*# sourceMappingURL=lrm-core-compiled.css.map */

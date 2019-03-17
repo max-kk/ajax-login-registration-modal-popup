@@ -14,11 +14,16 @@
 
 					<?php
 					$class = ( $section_slug == $current_section ) ? 'current' : '';
-					$page_url = remove_query_arg( 'updated' );
-					$url = add_query_arg( 'section', $section_slug, $page_url );
+					//var_dump($section_slug);
+					if ( $section_slug !== 'license' ) {
+                        $page_url = remove_query_arg('updated');
+                        $url = add_query_arg('section', $section_slug, $page_url);
+                    } else {
+                        $url = admin_url('options-general.php?page=lrm_api_manager_dashboard');
+                    }
 					?>
 
-					<li class="<?php echo esc_attr( $class ); ?>"><a href="<?php echo esc_attr( $url ); ?>"><?php echo esc_html( $section->name() ) ?></a></li>
+					<li class="<?php echo esc_attr( $class ); ?>"><a href="<?php echo esc_attr( $url ); ?>"><?php echo $section->name() ?></a></li>
 
 				<?php endforeach ?>
 

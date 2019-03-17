@@ -42,7 +42,7 @@ class LRM_Mailer {
 
 		if ( $is_html_format  ) {
 			// Convert links to html
-			$mail_body = make_clickable($mail_body);
+			//$mail_body = make_clickable($mail_body);
 			// EOR to <BR>
 			$mail_body = nl2br($mail_body);
 			add_filter( 'wp_mail_content_type', array( 'LRM_Mailer', 'set_mail_type' ) );
@@ -92,10 +92,10 @@ class LRM_Mailer {
             $mail_body
         );
 
-		if ( 'text/html' == $email_format ) {
+		if ( 'text/html' === $email_format || ('wc-text/html' === $email_format && !class_exists('WC_Emails')) ) {
             // Apply custom template
             $mail_body = str_replace('{{CONTENT}}', $mail_body, LRM_Settings::get()->setting('mails/template/code'));
-        } elseif ( 'wc-text/html' == $email_format ) {
+        } elseif ( 'wc-text/html' === $email_format ) {
 		    // Use WooCommerce template
             $mail_body = self::set_wc_style( $mail_body, $subject );
         }

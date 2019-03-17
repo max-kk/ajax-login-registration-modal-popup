@@ -62,6 +62,7 @@ class LRM_AJAX
             }
         }
 
+
         if ( is_wp_error($user_signon) ){
 
             do_action('lrm/login_fail', $user_signon);
@@ -129,6 +130,10 @@ class LRM_AJAX
             remove_action( 'register_new_user', 'wp_send_new_user_notifications' );
         } else {
             $password = wp_generate_password(10, true);
+        }
+
+        if ( !isset($_POST['registration_terms']) ) {
+            wp_send_json_error(array('message' => LRM_Settings::get()->setting('messages/registration/must_agree_with_terms'), 'for'=>'registration_terms'));
         }
 
         if ( !$user_login ) {
@@ -411,7 +416,7 @@ class LRM_AJAX
                         $reset_pass_url,
                         wp_login_url(),
                     ),
-                    LRM_Settings::get()->setting('mails/lost_password/body')
+                    LRM_Settings::get()->setting('mails/lost_password/body', true)
                 );
 
                 $mail_sent = LRM_Mailer::send( $to, $subject, $mail_body, 'lost_password' );

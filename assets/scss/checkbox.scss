@@ -1,0 +1,187 @@
+//$nice-checkbox-size: 16;
+//
+//.lrm-nice-checkbox {
+//    display: none;
+//
+//    &__text {
+//        vertical-align: middle;
+//        display: block;
+//    }
+//
+//    &:checked + &__cbx {
+//        border-color: #0b76ef;
+//    }
+//
+//    &:checked + &__cbx &__flip {
+//        transform: rotateY(180deg);
+//    }
+//
+//    &__cbx {
+//        -webkit-perspective: $nice-checkbox-size;
+//        perspective: $nice-checkbox-size;
+//        //position: absolute;
+//        //top: 50%;
+//        //left: 50%;
+//        //margin: -12px;
+//        border: 2px solid #e8e8eb;
+//        background: #e8e8eb;
+//        border-radius: 4px;
+//        transform: translate3d(0, 0, 0);
+//        cursor: pointer;
+//        transition: all 0.3s ease;
+//
+//        //display: inline-block;
+//        position: relative;
+//        //vertical-align: bottom;
+//        margin-right: 5px;
+//        display: block;
+//        float: left;
+//
+//        body.rtl & {
+//            float: right;
+//            margin-right: unset;
+//            margin-left: 5px;
+//        }
+//    }
+//
+//    &__cbx:hover {
+//        border-color: #0b76ef;
+//    }
+//
+//    &__flip {
+//        display: block;
+//        transition: all 0.4s ease;
+//        transform-style: preserve-3d;
+//        position: relative;
+//        width: $nice-checkbox-size+px;
+//        height: $nice-checkbox-size+px;
+//    }
+//
+//
+//    &__front,
+//    &__back {
+//        backface-visibility: hidden;
+//        position: absolute;
+//        top: 0;
+//        left: 0;
+//        width: $nice-checkbox-size+px;
+//        height: $nice-checkbox-size+px;
+//        border-radius: 2px;
+//    }
+//
+//    &__front {
+//        background: #fff;
+//        z-index: 1;
+//    }
+//
+//    &__back {
+//        transform: rotateY(180deg);
+//        background: #0b76ef;
+//        text-align: center;
+//        color: #fff;
+//        line-height: $nice-checkbox-size+px;
+//        box-shadow: 0 0 0 1px #0b76ef;
+//    }
+//
+//    &__back svg {
+//        margin-top: 2px;
+//        fill: none;
+//    }
+//
+//    &__back svg path {
+//        stroke: #fff;
+//        stroke-width: 2.5;
+//        stroke-linecap: round;
+//        stroke-linejoin: round;
+//    }
+//}
+//body {
+//    -webkit-font-smoothing: antialiased;
+//}
+//
+
+
+.lrm-nice-checkbox {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+
+    &__label {
+        position: relative;
+        padding-left: 27px;
+        font-size: 14px;
+        vertical-align: middle;
+        margin: 13px 0 3px;
+        display: block;
+        font-weight: 400;
+        line-height: 20px;
+
+        body.rtl & {
+            padding-right: 27px;
+            padding-left: 0;
+        }
+    }
+
+    &__indicator {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 20px;
+        height: 20px;
+        background: #e6e6e6;
+
+        body.rtl & {
+            left: unset;
+            right: 0;
+        }
+    }
+
+    /* Hover and focus states */
+    &__label &__indicator {
+        background: transparent;
+        border: 2px solid #e8e8eb;
+        border-radius: 3px;
+    }
+
+    /* Checked state */
+    &__label input:checked ~ &__indicator {
+        background: #0b76ef;
+        border-color: #0b76ef;
+    }
+
+    /* Hover state whilst checked */
+    &__label:hover input:not([disabled]):checked ~ &__indicator,
+    &__label input:checked:focus ~ &__indicator {
+        background: #0b76ef;
+    }
+
+    /* Disabled state */
+    &__label input:disabled ~ &__indicator {
+        pointer-events: none;
+        opacity: .6;
+        background: #e6e6e6;
+    }
+
+    /* Check mark */
+    &__indicator:after {
+        position: absolute;
+        display: none;
+        content: '';
+    }
+
+    /* Show check mark */
+    &__label input:checked ~ &__indicator:after {
+        display: block;
+    }
+
+    /* Checkbox tick */
+    &__label &__indicator:after {
+        top: 0px;
+        left: 5px;
+        width: 5px;
+        height: 11px;
+        transform: rotate(40deg);
+        border: solid #fff;
+        border-width: 0 2px 2px 0;
+    }
+}

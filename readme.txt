@@ -195,6 +195,11 @@ If you have login issue with Adminize plugin - go to Adminize plugin settings an
 
 == Changelog ==
 
+= VER 2.01 - 07/03/2019 =
+
+- "Hide Password" text replaced with Icon
+- Lazy load script "zxcvbn.min.js" with 800 kb size
+
 = VER 2.00 - 11/02/2019 =
 
 - Added option to select custom "Login", "Registration" and "Reset password" pages

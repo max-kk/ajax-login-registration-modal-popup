@@ -492,7 +492,7 @@ class LRM_Settings {
                 'name'        => __('HTML email template', 'ajax-login-and-registration-modal-popup' ),
                 'default'     => '{{CONTENT}}',
                 'description' => __('Put here your custom mail html template + css + tag {{CONTENT}} (required).', 'ajax-login-and-registration-modal-popup')
-                    . sprintf('<a href="%s">Tutorial >></a>', 'https://trello.com/c/OX5IIUEr/10-how-to-style-email-templates'),
+                    . sprintf('<a href="%s" target="_blank">Tutorial >></a>', 'https://docs.maxim-kaminsky.com/lrm/kb/how-to-style-email-templates/'),
                 'render'      => array( new LRM_Field_Textarea_With_Html_Extended(), 'input' ),
                 'sanitize'    => array( new LRM_Field_Textarea_With_Html_Extended(), 'sanitize' ),
                 'addons'      => array(
@@ -624,11 +624,18 @@ class LRM_Settings {
             ->add_field( array(
                 'slug'        => 'terms',
                 'name'        => __('Form: Terms', 'ajax-login-and-registration-modal-popup' ),
-                'default'     => 'I agree with the <a href=\'#0\'>Terms</a>',
+                'default'     => 'I agree with the <a href=\'/terms\'>Terms</a>. <i>Edit this in Settings => Ajax Login Modal => Expressions tab => Registration section</i>',
                 'description' => 'sanitized by wp_kses_post',
                 'render'      => array( new LRM_Field_Textarea_With_Html(), 'input' ),
                 'sanitize'    => array( new LRM_Field_Textarea_With_Html(), 'sanitize' ),
             ) )
+	        ->add_field( array(
+		        'slug'        => 'must_agree_with_terms',
+		        'name'        => __('Message: Must agree with the terms', 'ajax-login-and-registration-modal-popup' ),
+		        'default'        => 'Please agree with the terms to continue!',
+		        'render'      => array( new LRM_Field_Text(), 'input' ),
+		        'sanitize'    => array( new LRM_Field_Text(), 'sanitize' ),
+	        ) )
             ->add_field( array(
                 'slug'        => 'button',
                 'name'        => __('Form button: Create account', 'ajax-login-and-registration-modal-popup' ),
@@ -1074,13 +1081,11 @@ class LRM_Settings {
             throw new Exception('Invalid $setting_slug: ' . $setting_slug);
         }
 
-
-
         $res = update_option( 'lrm_' . $setting_path[0] . '[' . $setting_path[1] . ']', $new_value );
 
-        var_dump( 'lrm_' . $setting_path[0] );
-        var_dump( $new_value );
-        var_dump( get_option('lrm_' . $setting_path[0]  ) );
+//        var_dump( 'lrm_' . $setting_path[0] );
+//        var_dump( $new_value );
+//        var_dump( get_option('lrm_' . $setting_path[0]  ) );
 
         return  $res;
     }

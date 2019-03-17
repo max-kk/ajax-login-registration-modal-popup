@@ -29,6 +29,10 @@ class LRM_Deactivator {
             delete_option("lrm_messages_pro");
             delete_option("lrm_pro_version");
 
+            if ( lrm_is_pro('1.60') ) {
+                LRM_API_Manager::instance()->uninstall();
+            }
+
         }
 
     }
