@@ -1,5 +1,73 @@
 +(function ($) {
 
+	jQuery(".lrm-run-export").click(function(event) {
+		event.preventDefault();
+
+		var submitBtn = this;
+		submitBtn.innerHTML += '<span class="spinner is-active"></span>';
+
+		var sectionsToProcess = [];
+		var sectionsCheckbox = document.querySelectorAll(".lrm_export_sections_checkbox");
+		for ( var N=0; N < sectionsCheckbox.length; N++ ) {
+			if ( sectionsCheckbox[N].checked ) {
+				sectionsToProcess.push( sectionsCheckbox[N].value );
+			}
+		}
+
+		jQuery.get(
+			  LRM_ADMIN.ajax_url,
+			  { action: "lrm_export", sections: sectionsToProcess, _nonce: jQuery(submitBtn).data("nonce") },
+			  function(resp){
+				  if ( resp.success ) {
+				  	$(".lrm-export-string-wrap").show();
+				 	$("#lrm-export-string").val( resp.data );
+				  } else {
+					  if ( resp.data ) {
+						  alert(resp.data);
+					  } else {
+						  alert("Export error!");
+					  }
+				  }
+				  jQuery(submitBtn).find(".spinner").remove();
+			  }
+		);
+
+		return false;
+	});
+
+	jQuery(".lrm-run-import").click(function(event) {
+		event.preventDefault();
+
+		var submitBtn = this;
+		submitBtn.innerHTML += '<span class="spinner is-active"></span>';
+
+		var sectionsToProcess = [];
+		var sectionsCheckbox = document.querySelectorAll(".lrm_import_sections_checkbox");
+		for ( var N=0; N < sectionsCheckbox.length; N++ ) {
+			if ( sectionsCheckbox[N].checked ) {
+				sectionsToProcess.push( sectionsCheckbox[N].value );
+			}
+		}
+
+		jQuery.post(
+			  LRM_ADMIN.ajax_url,
+			  { action: "lrm_import", sections: sectionsToProcess, sections_import: $("#lrm-import-string").val(), _nonce: jQuery(submitBtn).data("nonce") },
+			  function(resp){
+				  if ( resp.success ) {
+					  alert("Import complete!");
+				  } else {
+					  if ( resp.data ) {
+						  alert(resp.data);
+					  } else {
+						  alert("Import error!");
+					  }
+				  }
+				  jQuery(submitBtn).find(".spinner").remove();
+			  }
+		);
+
+		return false;
+	});
 
 	/**
 	 * =======================================

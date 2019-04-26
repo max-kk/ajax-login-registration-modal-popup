@@ -17,6 +17,8 @@ class LRM_AJAX
         // First check the nonce, if it fails the function will break
         self::_verify_nonce( 'security-login', 'ajax-login-nonce' );
 
+        self::_maybe_debug();
+
         LRM_Core::get()->call_pro('check_captcha', 'login');
 
         // Nonce is checked, get the POST data and sign user on
@@ -25,6 +27,8 @@ class LRM_AJAX
         $info['user_password'] = sanitize_text_field(trim($_POST['password']));
         $info['remember'] = isset($_POST['remember-me']) ? true : false;
 
+	    do_action('lrm/login_pre_verify', $info);
+
         if ( !$info['user_login'] ) {
             wp_send_json_error(array('message' => LRM_Settings::get()->setting('messages/login/no_login'), 'for'=>'username'));
         }
@@ -32,6 +36,8 @@ class LRM_AJAX
         if ( !$info['user_password'] ) {
             wp_send_json_error(array('message' => LRM_Settings::get()->setting('messages/login/no_pass'), 'for'=>'password'));
         }
+
+	    do_action('lrm/login_pre_signon', $info);
 
         $secure_cookie = is_ssl();
 
@@ -54,6 +60,8 @@ class LRM_AJAX
 
         $user_signon = wp_signon( $info, $secure_cookie );
 
+	    do_action('lrm/login_after_signon', $user_signon, $info);
+
         if ( !is_wp_error($user_signon) && empty( $_COOKIE[ LOGGED_IN_COOKIE ] ) ) {
             if ( headers_sent() ) {
                 /* translators: 1: Browser cookie documentation URL, 2: Support forums URL */
@@ -62,12 +70,16 @@ class LRM_AJAX
             }
         }
 
+	    $end_time = microtime(true) - $start;
 
         if ( is_wp_error($user_signon) ){
 
             do_action('lrm/login_fail', $user_signon);
 
-            wp_send_json_error(array('message'=>implode('<br/>', $user_signon->get_error_messages())));
+            wp_send_json_error(array(
+            	'message'=>implode('<br/>', $user_signon->get_error_messages()),
+	            'exec_time'=>sprintf('Executed for %.5F seconds', $end_time) ,
+            ));
         } else {
 
             do_action('lrm/login_successful', $user_signon);
@@ -77,19 +89,33 @@ class LRM_AJAX
             $action = lrm_setting('redirects/login/action');
             $redirect_url = LRM_Redirects_Manager::get_redirect( 'login', $user_signon->ID );
 
-            wp_send_json_success(array(
+            wp_send_json_success(apply_filters('lrm/login/success_response', array(
                 'logged_in' => true,
                 'user_id'   => $user_signon->ID,
                 'message'   => $message,
                 'action'    => $redirect_url ? 'redirect' : $action,
                 'redirect_url'=> $redirect_url,
-            ));
+                'exec_time'=>sprintf('Executed for %.5F seconds', $end_time)
+            )));
         }
     }
 
     public static function signup() {
+	    $start = microtime(true);
         // Verify nonce
         self::_verify_nonce( 'security-signup', 'ajax-signup-nonce' );
+
+        self::_maybe_debug();
+
+        wp_send_json_success( apply_filters('lrm/registration/success_response', array(
+            'logged_in' => true,
+            'user_id'   => 1,
+            'message'   => lrm_setting( 'messages/registration/success' ),
+
+            'redirect_url' => '',
+            'action'       => 'auto-login',
+        )) );
+
 
         LRM_Core::get()->call_pro('check_captcha', 'signup' );
 
@@ -132,7 +158,7 @@ class LRM_AJAX
             $password = wp_generate_password(10, true);
         }
 
-        if ( !isset($_POST['registration_terms']) ) {
+	    if ( !lrm_setting( 'general/terms/off' ) && !isset($_POST['registration_terms']) ) {
             wp_send_json_error(array('message' => LRM_Settings::get()->setting('messages/registration/must_agree_with_terms'), 'for'=>'registration_terms'));
         }
 
@@ -217,7 +243,19 @@ class LRM_AJAX
 
             if ( apply_filters( "lrm/mails/registration/is_need_send", true, $user_id, $userdata, $user_signon) ) {
 
-                $subject = LRM_Settings::get()->setting('mails/registration/subject');
+                $subject = str_replace(
+	                array(
+		                '{{FIRST_NAME}}',
+		                '{{LAST_NAME}}',
+		                '{{USERNAME}}',
+	                ),
+	                array(
+		                $user->first_name,
+		                $user->last_name,
+		                $user->user_login,
+	                ),
+	                LRM_Settings::get()->setting('mails/registration/subject')
+                );
 
                 $mail_body = str_replace(
                     array(
@@ -314,30 +352,37 @@ class LRM_AJAX
                 do_action('woocommerce_created_customer', $user_id, $userdata, $userdata['user_pass']);
             }
 
+	        $end_time = microtime(true) - $start;
+
             if ( is_wp_error($user_signon) ) {
                 wp_send_json_success( array(
                     'logged_in' => false,
                     'message'   => $user_signon->get_error_message(),
+                    'exec_time' => sprintf('Executed for %.5F seconds', $end_time),
                 ) );
             }
 
             $action = lrm_setting('redirects/registration/action');
             $redirect_url = $user_signon ? LRM_Redirects_Manager::get_redirect( 'registration', $user_signon->ID ) : '';
 
-            wp_send_json_success( array(
+            wp_send_json_success( apply_filters('lrm/registration/success_response', array(
                 'logged_in' => $user_signon ? true : false,
                 'user_id'   => $user_id ? $user_id : false,
                 'message'   => $user_signon ? lrm_setting( 'messages/registration/success' ) : lrm_setting( 'messages/registration/success_please_login' ),
 
                 'redirect_url' => $redirect_url,
                 'action'       => $action,
-            ) );
+                'exec_time' => sprintf('Executed for %.5F seconds', $end_time),
+            )) );
         } else {
 
             do_action('lrm/registration_fail', $user_id);
 
+	        $end_time = microtime(true) - $start;
+
             wp_send_json_error(array(
-                'message'=> implode('<br/>', $user_id->get_error_messages())
+                'message'   => implode('<br/>', $user_id->get_error_messages()),
+                'exec_time' => sprintf('Executed for %.5F seconds', $end_time),
             ));
         }
     }
@@ -345,6 +390,8 @@ class LRM_AJAX
     public static function lostpassword() {
         // First check the nonce, if it fails the function will break
         self::_verify_nonce( 'security-lostpassword', 'ajax-forgot-nonce' );
+
+        self::_maybe_debug();
 
         $errors = new WP_Error();
 
@@ -491,9 +538,9 @@ class LRM_AJAX
             reset_password($user, $new_pass);
             setcookie( $rp_cookie, ' ', time() - YEAR_IN_SECONDS, $rp_path, COOKIE_DOMAIN, is_ssl(), true );
 
-            wp_send_json_success(array(
+            wp_send_json_success( apply_filters('lrm/password_reset/success_response', array(
                 'message'=> __( 'Your password has been reset.' ) . ' <a href="' . esc_url( wp_login_url() ) . '" class="lrm-login">' . __( 'Log in' ) . '</a>'
-            ));
+            )) );
         }
 
         wp_send_json_error(array(
@@ -566,6 +613,18 @@ class LRM_AJAX
 
         if ( !isset($_POST[$post_key]) || !wp_verify_nonce($_POST[$post_key], $nonce_key) ) {
             wp_send_json_error(array('message' => LRM_Settings::get()->setting('messages/other/invalid_nonce')));
+        }
+    }
+
+    /**
+     * Display PHP errors to simplify plugin debug
+     * @since 2.03
+     */
+    public static function _maybe_debug() {
+        if ( lrm_setting('advanced/debug/ajax') ) {
+            ini_set('display_errors',1);
+            ini_set('display_startup_errors',1);
+            error_reporting(-1);
         }
     }
 

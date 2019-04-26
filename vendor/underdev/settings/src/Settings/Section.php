@@ -26,6 +26,12 @@ class Section {
 	private $slug;
 
 	/**
+	 * Neex export this?
+	 * @var string
+	 */
+	private $export;
+
+	/**
 	 * Section groups
 	 * @var array
 	 */
@@ -37,7 +43,7 @@ class Section {
 	 * @param string $name   Section name
 	 * @param string $slug   Section slug
 	 */
-	public function __construct( $handle, $name, $slug ) {
+	public function __construct( $handle, $name, $slug, $export = true ) {
 
 		if ( empty( $handle ) ) {
 			throw new \Exception( 'Setting handle in Section instance cannot be empty' );
@@ -57,6 +63,7 @@ class Section {
 
 		$this->slug( sanitize_title( $slug ) );
 
+		$this->export( $export );
 	}
 
 	/**
@@ -86,6 +93,20 @@ class Section {
 		}
 
 		return apply_filters( $this->handle . '/settings/section/slug', $this->slug, $this );
+
+	}
+
+	/**
+	 * @param  string $export Export this section?. Do not pass anything to get current value
+	 * @return string export
+	 */
+	public function export( $export = null ) {
+
+		if ( $export !== null ) {
+			$this->export = $export;
+		}
+
+		return apply_filters( $this->handle . '/settings/section/export', $this->export, $this );
 
 	}
 

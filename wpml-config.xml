@@ -9,5 +9,9 @@
     <key name="lrm_messages_pro">
 	<key name="*"/>
     </key>
+    <key name="lrm_redirects">
+	<key name="*"/>
+    </key>
+
   </admin-texts>
 </wpml-config>

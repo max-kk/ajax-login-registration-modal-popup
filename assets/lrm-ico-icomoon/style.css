@@ -1,0 +1,122 @@
+@font-face {
+  font-family: 'lrm-ico-icomoon';
+  src:  url('fonts/lrm-ico-icomoon.eot?wbskvd');
+  src:  url('fonts/lrm-ico-icomoon.eot?wbskvd#iefix') format('embedded-opentype'),
+    url('fonts/lrm-ico-icomoon.ttf?wbskvd') format('truetype'),
+    url('fonts/lrm-ico-icomoon.woff?wbskvd') format('woff'),
+    url('fonts/lrm-ico-icomoon.svg?wbskvd#lrm-ico-icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="lrm-ico-icon-"], [class*=" lrm-ico-icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'lrm-ico-icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.lrm-ico-icon-enter:before {
+  content: "\e908";
+}
+.lrm-ico-icon-user-plus:before {
+  content: "\e907";
+}
+.lrm-ico-icon-user:before {
+  content: "\e907";
+}
+.lrm-ico-icon-user-add:before {
+  content: "\e907";
+}
+.lrm-ico-icon-profile:before {
+  content: "\e907";
+}
+.lrm-ico-icon-avatar:before {
+  content: "\e907";
+}
+.lrm-ico-icon-person:before {
+  content: "\e907";
+}
+.lrm-ico-icon-member:before {
+  content: "\e907";
+}
+.lrm-ico-icon-mail:before {
+  content: "\e905";
+}
+.lrm-ico-icon-envelop:before {
+  content: "\e906";
+}
+.lrm-ico-icon-lock:before {
+  content: "\e900";
+}
+.lrm-ico-icon-eye-blocked:before {
+  content: "\e901";
+}
+.lrm-ico-icon-views:before {
+  content: "\e901";
+}
+.lrm-ico-icon-vision:before {
+  content: "\e901";
+}
+.lrm-ico-icon-visit:before {
+  content: "\e901";
+}
+.lrm-ico-icon-banned:before {
+  content: "\e901";
+}
+.lrm-ico-icon-blocked:before {
+  content: "\e901";
+}
+.lrm-ico-icon-forbidden:before {
+  content: "\e901";
+}
+.lrm-ico-icon-private:before {
+  content: "\e901";
+}
+.lrm-ico-icon-eye:before {
+  content: "\e902";
+}
+.lrm-ico-icon-views1:before {
+  content: "\e902";
+}
+.lrm-ico-icon-vision1:before {
+  content: "\e902";
+}
+.lrm-ico-icon-visit1:before {
+  content: "\e902";
+}
+.lrm-ico-icon-key:before {
+  content: "\e903";
+}
+.lrm-ico-icon-password:before {
+  content: "\e903";
+}
+.lrm-ico-icon-login:before {
+  content: "\e903";
+}
+.lrm-ico-icon-signin:before {
+  content: "\e903";
+}
+.lrm-ico-icon-user1:before {
+  content: "\e904";
+}
+.lrm-ico-icon-profile1:before {
+  content: "\e904";
+}
+.lrm-ico-icon-avatar1:before {
+  content: "\e904";
+}
+.lrm-ico-icon-person1:before {
+  content: "\e904";
+}
+.lrm-ico-icon-member1:before {
+  content: "\e904";
+}

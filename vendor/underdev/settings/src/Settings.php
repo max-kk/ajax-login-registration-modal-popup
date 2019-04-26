@@ -104,13 +104,13 @@ class Settings {
 	 *
 	 * @throws \Exception
 	 */
-	public function add_section( $name, $slug ) {
+	public function add_section( $name, $slug, $export = true ) {
 
 		if ( isset( $this->sections[ $slug ] ) ) {
 			throw new \Exception( 'Section with slug `' . $slug . '` already exists' );
 		}
 
-		$this->sections[ $slug ] = new Section( $this->handle, $name, $slug );
+		$this->sections[ $slug ] = new Section( $this->handle, $name, $slug, $export );
 
 		return $this->sections[ $slug ];
 

@@ -1,0 +1,79 @@
+@import "variables";
+
+@font-face {
+  font-family: '#{$icomoon-font-family}';
+  src:  url('#{$icomoon-font-path}/#{$icomoon-font-family}.eot?i8nbsv');
+  src:  url('#{$icomoon-font-path}/#{$icomoon-font-family}.eot?i8nbsv#iefix') format('embedded-opentype'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.ttf?i8nbsv') format('truetype'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff?i8nbsv') format('woff'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.svg?i8nbsv##{$icomoon-font-family}') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="lrm-icon-"], [class*=" lrm-icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: '#{$icomoon-font-family}' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.lrm-icon-exit_to_app {
+  &:before {
+    content: $lrm-icon-exit_to_app; 
+  }
+}
+.lrm-icon-lock {
+  &:before {
+    content: $lrm-icon-lock; 
+  }
+}
+.lrm-icon-mail_outline {
+  &:before {
+    content: $lrm-icon-mail_outline; 
+  }
+}
+.lrm-icon-no_encryption {
+  &:before {
+    content: $lrm-icon-no_encryption; 
+  }
+}
+.lrm-icon-person_add {
+  &:before {
+    content: $lrm-icon-person_add; 
+  }
+}
+.lrm-icon-visibility {
+  &:before {
+    content: $lrm-icon-visibility; 
+  }
+}
+.lrm-icon-visibility_off {
+  &:before {
+    content: $lrm-icon-visibility_off; 
+  }
+}
+.lrm-icon-vpn_key {
+  &:before {
+    content: $lrm-icon-vpn_key; 
+  }
+}
+.lrm-icon-person_outline {
+  &:before {
+    content: $lrm-icon-person_outline; 
+  }
+}
+.lrm-icon-person {
+  &:before {
+    content: $lrm-icon-person; 
+  }
+}
+

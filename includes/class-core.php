@@ -29,6 +29,7 @@ class LRM_Core {
         add_action('wp_footer', array($this, 'wp_footer__action'), 1);
 
         add_action('init', array('LRM_Updater', 'init'));
+        add_action( 'template_redirect', array($this, 'template_redirect'), 99 );
 
         if ( !class_exists('LRM_Pro') ) {
             add_action('lrm_login_form', array($this, 'form_fblogin__action'));
@@ -37,7 +38,7 @@ class LRM_Core {
         }
 
         if ( !empty($_REQUEST['lrm_action']) ) {
-            add_filter( 'wp_redirect', array($this, 'wp_redirect__filter'), 9, 2 );
+            add_filter( 'wp_redirect', array($this, 'wp_redirect__filter'), 9999, 2 );
 
             // Disable redirect after Login
             add_filter( 'ws_plugin__s2member_login_redirect', '__return_false', 99 );
@@ -74,6 +75,8 @@ class LRM_Core {
         LRM_Skins::instance()->load_defaults();
 
         LRM_Pages_Manager::init();
+
+	    LRM_Import_Export_Manager::init();
     }
 
     public function shortcode($atts) {
@@ -139,6 +142,23 @@ class LRM_Core {
 
 
     /**
+     * Redirect the user to the 'redirect_to' param is he's located on the login/registration page
+     *
+     * @since 2.03
+     */
+    public function template_redirect() {
+        if ( ! is_user_logged_in() || ! isset($_GET['redirect_to']) ) {
+            return;
+        }
+
+        $pages = LRM_Pages_Manager::_get_pages_arr();
+
+        if ( isset( $pages[get_the_ID()]) ) {
+            wp_safe_redirect( $_GET['redirect_to'] );
+        }
+    }
+
+    /**
      *
      * @since 1.0
      */
@@ -181,12 +201,14 @@ class LRM_Core {
      * @return mixed
      */
     public function wp_redirect__filter($location, $status) {
-        wp_send_json_error(array(
-            'message' => sprintf(
-                __( 'Some plugin try to redirect during this action to the following url: %s. Please try to disable plugins related to the Security/User Profile/Membership and try again.', 'ajax-login-and-registration-modal-popup' ),
-                $location
-            )
-        ));
+//        wp_send_json_error(array(
+//            'message' => sprintf(
+//                __( 'Some plugin try to redirect during this action to the following url: %s. Please try to disable plugins related to the Security/User Profile/Membership and try again.', 'ajax-login-and-registration-modal-popup' ),
+//                $location
+//            )
+//        ));
+
+        return false;
     }
 
     /**
@@ -206,7 +228,7 @@ class LRM_Core {
      * @param string    $function
      * @return mixed
      */
-    public function call_pro($function, $param1 = false) {
+    public function call_pro( $function, $param1 = false ) {
         if ( class_exists('LRM_Pro') ) {
             return LRM_Pro::get()->$function($param1);
         }

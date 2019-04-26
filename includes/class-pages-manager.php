@@ -23,7 +23,7 @@ class LRM_Pages_Manager {
      */
     public static function register_settings( $settings_class ) {
 
-        $PAGES_SECTION = $settings_class->add_section( __( 'Pages', 'ajax-login-and-registration-modal-popup' ), 'pages' );
+        $PAGES_SECTION = $settings_class->add_section( __( 'Pages', 'ajax-login-and-registration-modal-popup' ), 'pages', false );
 
         $wp_pages_arr = self::_get_pages_arr();
 

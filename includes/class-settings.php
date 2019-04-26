@@ -65,7 +65,6 @@ class LRM_Settings {
             );
         }
 
-
         add_action( 'underdev/settings/enqueue_scripts', array( $this, 'settings_enqueue_scripts' ) );
 
         if ( isset($_GET['action']) && $_GET['action'] === 'dismiss_rem_beg_message' ) {
@@ -351,6 +350,17 @@ class LRM_Settings {
                 'description' => __('With using "server" method you can avoid displaying default browser "field invalid" messages and gives more customization options.', 'ajax-login-and-registration-modal-popup' ),
                 'render'      => array( new CoreFields\Select(), 'input' ),
                 'sanitize'    => array( new CoreFields\Select(), 'sanitize' ),
+            ) );
+
+        $ADVANCED_SECTION->add_group( __( 'Debug', 'ajax-login-and-registration-modal-popup' ), 'debug' )
+            ->add_field( array(
+                'slug'        => 'ajax',
+                'name'        => __('Enable debug mode for public AJAX requests. Required to simply find an error messages.', 'ajax-login-and-registration-modal-popup' ),
+                'description' => __('Please disable it once problem was solved to improve security!', 'ajax-login-and-registration-modal-popup' ),
+                'default'     => false,
+                'addons'      => array('label' => __( 'Yes' )),
+                'render'      => array( new CoreFields\Checkbox(), 'input' ),
+                'sanitize'    => array( new CoreFields\Checkbox(), 'sanitize' ),
             ) );
 
         $ADVANCED_SECTION->add_group( __( 'Uninstall', 'ajax-login-and-registration-modal-popup' ), 'uninstall' )
@@ -942,7 +952,7 @@ class LRM_Settings {
 
         if ( !lrm_is_pro() ) {
 
-            $MESSAGES_SECTION = $this->settings->add_section( 'GET PRO >>',  'get_a_pro' );
+            $MESSAGES_SECTION = $this->settings->add_section( 'GET PRO >>',  'get_a_pro', false );
 
             $MESSAGES_SECTION->add_group( 'Why get PRO version?', 'main' )
                              ->add_field( array(
@@ -959,6 +969,8 @@ class LRM_Settings {
 
         //$this->register_wpml_strings();
         LRM_WPML_Integration::register_strings();
+
+        LRM_Import_Export_Manager::register_settings( $this->settings );
     }
 
 
@@ -975,6 +987,10 @@ class LRM_Settings {
 
     public function settings_enqueue_scripts() {
         wp_enqueue_script( 'lrm-admin', LRM_URL . 'assets/lrm-admin.js', array( 'jquery', 'jquery-ui-sortable' ), LRM_VERSION, true );
+	    wp_localize_script('lrm-admin', 'LRM_ADMIN', array(
+	    	'ajax_url' => admin_url('admin-ajax.php'),
+	    ));
+
         wp_enqueue_style('lrm-admin-css', LRM_URL . '/assets/lrm-core-settings.css', false, LRM_ASSETS_VER);
     }
 
@@ -1209,6 +1225,19 @@ class LRM_Settings {
         }
 
         return $fields;
+    }
+
+    /**
+     * Get all fields from section
+     *
+     * @param string $section_slug
+     *
+     * @since 1.24
+     *
+     * @return \underDEV\Utils\Settings\Field[]
+     */
+    public function get_sections(  ) {
+        return $this->settings->get_sections(  );
     }
 
     private function _reset_translations() {

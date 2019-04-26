@@ -1,0 +1,56 @@
+@font-face {
+  font-family: 'lrm-ma-icomoon';
+  src:  url('fonts/lrm-ma-icomoon.eot?i8nbsv');
+  src:  url('fonts/lrm-ma-icomoon.eot?i8nbsv#iefix') format('embedded-opentype'),
+    url('fonts/lrm-ma-icomoon.ttf?i8nbsv') format('truetype'),
+    url('fonts/lrm-ma-icomoon.woff?i8nbsv') format('woff'),
+    url('fonts/lrm-ma-icomoon.svg?i8nbsv#lrm-ma-icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="lrm-icon-"], [class*=" lrm-icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'lrm-ma-icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.lrm-icon-exit_to_app:before {
+  content: "\e879";
+}
+.lrm-icon-lock:before {
+  content: "\e897";
+}
+.lrm-icon-mail_outline:before {
+  content: "\e0e1";
+}
+.lrm-icon-no_encryption:before {
+  content: "\e641";
+}
+.lrm-icon-person_add:before {
+  content: "\e7fe";
+}
+.lrm-icon-visibility:before {
+  content: "\e8f4";
+}
+.lrm-icon-visibility_off:before {
+  content: "\e8f5";
+}
+.lrm-icon-vpn_key:before {
+  content: "\e0da";
+}
+.lrm-icon-person_outline:before {
+  content: "\e900";
+}
+.lrm-icon-person:before {
+  content: "\e901";
+}

@@ -89,12 +89,14 @@ var LRM = LRM ? LRM : {};
 		$('.lrm-user-modal').on('click', function (event) {
 			if ($(event.target).is('.lrm-user-modal') || $(event.target).is('.lrm-close-form')) {
 				$(this).removeClass('is-visible');
+				$(document).triggerHandler("lrm/close_modal", this, event, "click");
 			}
 		});
 		//close modal when clicking the esc keyboard button
 		$(document).keyup(function (event) {
 			if (event.which == '27') {
 				$(".lrm-user-modal").removeClass('is-visible');
+				$(document).triggerHandler("lrm/close_modal", this, event, "esc");
 			}
 		});
 
@@ -240,6 +242,8 @@ var LRM = LRM ? LRM : {};
 				if ( $(window).width() > 600 ) {
 					$formModal.find(".lrm-signup-section input:first").focus();
 				}
+
+				$("#signup-password").trigger("keyup");
 			}, 100);
 
 			if (event) {
@@ -345,10 +349,15 @@ var LRM = LRM ? LRM : {};
 
 							$form.closest(".lrm-user-modal-container").animate({scrollTop: 80}, 400);
 						} else {
-							$form.find('input[name="' + response.data.for + '"]').addClass('has-error')
-								  .next('.lrm-error-message').html(response.data.message).addClass('is-visible');
-							$form.find(".lrm-form-message").removeClass("lrm-is-error").html("");
+							// Tweak in case this selector is Missing
+							if ( 0 === $form.find('input[name="' + response.data.for + '"]').length ) {
+								alert(response.data.message);
+							} else {
+								$form.find('input[name="' + response.data.for + '"]').addClass('has-error')
+									  .next('.lrm-error-message').html(response.data.message).addClass('is-visible');
+								$form.find(".lrm-form-message").removeClass("lrm-is-error").html("");
 
+							}
 						}
 					}
 
@@ -409,7 +418,9 @@ var LRM = LRM ? LRM : {};
 		});
 
 		setTimeout(function () {
-			$('#lrm-password1,#lrm-password2').trigger('keyup');
+			if ( $('#lrm-password1,#lrm-password2').length > 0 ) {
+				$('#lrm-password1,#lrm-password2').trigger('keyup');
+			}
 		}, 500);
 
 	}
@@ -458,7 +469,12 @@ var LRM = LRM ? LRM : {};
 		set_message: function($form, message_html, is_error) {
 			var $message = $form.find(".lrm-form-message");
 
-			$message.html( message_html );
+			// Tweak in case this selector is Missing
+			if ( 0 !== $message.length ) {
+				$message.html(message_html);
+			} else {
+				alert(message_html);
+			}
 
 			var modal_is_visible = $(".lrm-user-modal").hasClass('is-visible');
 
@@ -592,3 +608,26 @@ jQuery.cachedScript = function( url, options ) {
 	// Return the jqXHR object so we can chain callbacks
 	return jQuery.ajax( options );
 };
+
+var LRM_Helper= {};
+
+LRM_Helper.setCookie = function(name,value,days) {
+	var expires = "";
+	if (days) {
+		var date = new Date();
+		date.setTime(date.getTime() + (days*24*60*60*1000));
+		expires = "; expires=" + date.toUTCString();
+	}
+	document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+}
+
+LRM_Helper.getCookie = function(name) {
+	var nameEQ = name + "=";
+	var ca = document.cookie.split(';');
+	for(var i=0;i < ca.length;i++) {
+		var c = ca[i];
+		while (c.charAt(0)==' ') c = c.substring(1,c.length);
+		if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+	}
+	return null;
+}

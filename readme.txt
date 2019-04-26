@@ -1,6 +1,6 @@
-=== AJAX Login and Registration modal popup + inline mode ===
+=== AJAX Login and Registration modal popup + inline form ===
 Contributors: kaminskym
-Tags: login, registration, register, modal, popup, ajax
+Tags: login, registration, register, lost password, modal, popup, ajax, form
 Requires at least: 4.1
 Tested up to: 5.0.2
 Requires PHP: 5.5
@@ -24,8 +24,8 @@ Easy to integrate modal with Login and Registration features. Compatible with an
 4. Beautiful coded
 5. Compatible with other plugins (WooCommerce, BuddyPress, Ultimate Member, WPML, etc)
 6. Tested with latest WP version
-7. Possible to replace wp-login.php pages with a custom "Login", "Registration" and "Reset password" pages
-8. Skins support (1 default skin + 1 new in a PRO version) + possible to customize Skins colors via WP Customizer
+7. Possible to replace wp-login.php with a custom "Login", "Registration" and "Reset password" pages
+8. Skins support (1 default skin + 2 new in PRO version) + possible to customize Skins colors via WP Customizer
 9. Powerful after-login/registration/logout actions (reload, redirects, etc)
 10. Role based redirects (in PRO)
 12. In-build reCaptcha (in PRO)
@@ -37,7 +37,7 @@ Easy to integrate modal with Login and Registration features. Compatible with an
 2. All texts/messages can be edited/translated in settings
 3. Emails (for registration and lost password) can customized in settings
 
-**Free version compatible with:**
+**Free version compatible with (and maybe other, not tested):**
 
 1. [Login LockDown](https://wordpress.org/plugins/login-lockdown/) (limit login attempts count)
 2. [WP Facebook Login](https://wordpress.org/plugins/wp-facebook-login/)
@@ -50,15 +50,16 @@ Easy to integrate modal with Login and Registration features. Compatible with an
 **Roadmap**
 
 * Allow include form to page content (without modal) (done in version 1.41)
-* Colors/styles customizer [partially implemented via WP Customizer]
+* Colors/styles customizer [implemented via WP Customizer]
 * Documentation and Videos [done] - https://docs.maxim-kaminsky.com/lrm/
 * WooCommerce Login/Registration form integration (done in PRO version 1.28)
 * Registration Form builder
+* Settings Import/Export [in progress]
 
 = PRO features =
 
 * 6 months personal support from developer via Email
-* Troubleshooting problems and conflicts with other plugins/themes (1 site)
+* Troubleshooting problems and conflicts with other plugins/themes
 * Unlimited plugin updates
 * Compatibility with other popular plugins (list below)
 
@@ -137,7 +138,7 @@ Please read this post: https://wordpress.org/support/topic/logout-link-8/#post-1
 
 = How can I call modal from Javascript? =
 
-Look "Developer hooks" section below.
+Look at "Developer hooks" section below.
 
 = Developer hooks =
 
@@ -194,6 +195,16 @@ If you have login issue with Adminize plugin - go to Adminize plugin settings an
 - With Theme my login (TML) plugin (3 Password fields on the Create Account tab, if enable password field in LRM and TML)
 
 == Changelog ==
+
+= VER 2.04 - 26/04/2019 =
+
+- Stop executing wp_redirect during login process instead of showing error
+
+= VER 2.03 - 07/04/2019 =
+
+- Fixed a bug during Registration that happens with disabled "Terms" box
+- Added "Debug" section to the "Advanced" tab to simplify debug AJAX errors
+- Redirect logged in user from the plugin Login/Register pages to the "redirect_to" GET param - useful if user is logged in on the another tab
 
 = VER 2.01 - 07/03/2019 =
 

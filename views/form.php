@@ -172,13 +172,14 @@ $redirect_to = !empty( $_GET['redirect_to'] ) ? urldecode($_GET['redirect_to']) 
 	                        <?php if ( apply_filters('lrm/form/use_nice_checkbox', true) ): ?>
                                 <label class="lrm-nice-checkbox__label lrm-accept-terms-checkbox"><?php echo LRM_Settings::get()->setting('messages/registration/terms', true); ?>
                                     <input type="checkbox" class="lrm-nice-checkbox lrm-accept-terms" name="registration_terms" value="yes">
-                                    <div class="lrm-nice-checkbox__indicator"></div>
                                     <span class="lrm-error-message"></span>
+                                    <div class="lrm-nice-checkbox__indicator"></div>
                                 </label>
 	                        <?php else: ?>
                                 <label class="lrm-accept-terms-checkbox">
                                     <input type="checkbox" class="lrm-accept-terms" name="registration_terms" value="yes">
 			                        <?php echo LRM_Settings::get()->setting('messages/login/remember-me', true); ?>
+                                    <span class="lrm-error-message"></span>
                                 </label>
 	                        <?php endif; ?>
 
