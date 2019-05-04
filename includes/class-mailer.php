@@ -133,15 +133,21 @@ class LRM_Mailer {
         wc_get_template( 'emails/email-styles.php' );
         $css = apply_filters( 'woocommerce_email_styles', ob_get_clean() );
 
+        if ( lrm_wc_version_gte('3.6') ) {
+            $emogrifier_class = '\\Pelago\\Emogrifier';
+        } else {
+            $emogrifier_class = 'Emogrifier';
+        }
 
-        if ( ! class_exists( 'Emogrifier' ) ) {
+        if ( ! class_exists( $emogrifier_class ) ) {
             include_once WC()->plugin_path() . '/includes/libraries/class-emogrifier.php';
         }
         try {
-            $emogrifier = new Emogrifier( $content, $css );
+            $emogrifier = new $emogrifier_class( $content, $css );
             $content    = $emogrifier->emogrify();
         } catch ( Exception $e ) {
             $content = '<style type="text/css">' . $css . '</style>' . $content;
+            lrm_log( 'LRM_Mailer::set_wc_style error', $e->getMessage() );
         }
 
         return $content;

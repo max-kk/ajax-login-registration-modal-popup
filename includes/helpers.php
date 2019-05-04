@@ -67,3 +67,24 @@ if (!function_exists('lrm_dismissible_notice')) {
         WP_Admin_Dismissible_Notice::get()->enqueue($key, $message, $type, $required_capability, $save_state_to);
     }
 }
+
+
+if (!function_exists('lrm_log')) {
+    /**
+     * Check WooCommerce version
+     *
+     * @access public
+     * @param string $version
+     * @return bool
+     */
+    function lrm_wc_version_gte($version)
+    {
+        if (defined('WC_VERSION') && WC_VERSION) {
+            return version_compare(WC_VERSION, $version, '>=');
+        } else if (defined('WOOCOMMERCE_VERSION') && WOOCOMMERCE_VERSION) {
+            return version_compare(WOOCOMMERCE_VERSION, $version, '>=');
+        } else {
+            return false;
+        }
+    }
+}

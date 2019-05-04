@@ -2,7 +2,7 @@
 Contributors: kaminskym
 Tags: login, registration, register, lost password, modal, popup, ajax, form
 Requires at least: 4.1
-Tested up to: 5.0.2
+Tested up to: 5.1.1
 Requires PHP: 5.5
 Stable tag: trunk
 License: GPLv2 or later
@@ -24,10 +24,11 @@ Easy to integrate modal with Login and Registration features. Compatible with an
 4. Beautiful coded
 5. Compatible with other plugins (WooCommerce, BuddyPress, Ultimate Member, WPML, etc)
 6. Tested with latest WP version
-7. Possible to replace wp-login.php with a custom "Login", "Registration" and "Reset password" pages
-8. Skins support (1 default skin + 2 new in PRO version) + possible to customize Skins colors via WP Customizer
-9. Powerful after-login/registration/logout actions (reload, redirects, etc)
-10. Role based redirects (in PRO)
+7. Compatible with the Gutenberg
+8. Possible to replace wp-login.php with a custom "Login", "Registration" and "Reset password" pages
+9. Skins support (1 default skin + 2 new in PRO version) + possible to customize Skins colors via WP Customizer
+10. Powerful after-login/registration/logout actions (reload, redirects, etc)
+11. Role based redirects (in PRO)
 12. In-build reCaptcha (in PRO)
 13. Developer support (via forums or personal via email for PRO users)
 
@@ -199,6 +200,7 @@ If you have login issue with Adminize plugin - go to Adminize plugin settings an
 = VER 2.04 - 26/04/2019 =
 
 - Stop executing wp_redirect during login process instead of showing error
+- Fix for WooCommerce 3.6.2 (WC emails style broke the registration process)
 
 = VER 2.03 - 07/04/2019 =
 

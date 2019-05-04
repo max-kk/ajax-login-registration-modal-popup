@@ -107,16 +107,6 @@ class LRM_AJAX
 
         self::_maybe_debug();
 
-        wp_send_json_success( apply_filters('lrm/registration/success_response', array(
-            'logged_in' => true,
-            'user_id'   => 1,
-            'message'   => lrm_setting( 'messages/registration/success' ),
-
-            'redirect_url' => '',
-            'action'       => 'auto-login',
-        )) );
-
-
         LRM_Core::get()->call_pro('check_captcha', 'signup' );
 
         if ( !apply_filters('lrm/users_can_register', get_option("users_can_register") ) ) :
@@ -625,7 +615,24 @@ class LRM_AJAX
             ini_set('display_errors',1);
             ini_set('display_startup_errors',1);
             error_reporting(-1);
+        } else {
+            set_exception_handler([__CLASS__, '_global_exception_handler']);
         }
+
+    }
+
+    /**
+     * @param Exception $exception
+     * @since 2.04
+     */
+    public static function _global_exception_handler( $exception ) {
+        $file_path = str_replace([ABSPATH, 'wp-content'], '', $exception->getFile());
+        lrm_log( 'LRM AJAX error', $exception->getMessage() . ' in ' . $file_path );
+        wp_send_json_error(array(
+            'message'  => 'Can\'t process this request, the error happens in file ' . $file_path . ' on line ' . $exception->getLine(),
+            'exec_time'=> '',
+        ));
+
     }
 
 }
