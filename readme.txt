@@ -12,7 +12,7 @@ Easy to integrate modal with Login and Registration features.
 
 == Description ==
 
-Easy to integrate modal with Login and Registration features. Compatible with any theme.
+Easy to integrate modal with Login and Registration features + inline form using shortcode. Compatible with any theme.
 
 [DEMO >>](https://demo.maxim-kaminsky.com/lrm/)
 

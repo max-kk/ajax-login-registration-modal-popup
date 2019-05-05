@@ -564,6 +564,13 @@ class LRM_Settings {
                 'sanitize'    => array( new LRM_Field_Text(), 'sanitize' ),
             ) )
             ->add_field( array(
+                'slug'        => 'invalid_login',
+                'name'        => __('Message: Invalid username (not exists)', 'ajax-login-and-registration-modal-popup' ),
+                'default'        => 'Invalid username!',
+                'render'      => array( new LRM_Field_Text(), 'input' ),
+                'sanitize'    => array( new LRM_Field_Text(), 'sanitize' ),
+            ) )
+            ->add_field( array(
                 'slug'        => 'no_pass',
                 'name'        => __('Message: No Password', 'ajax-login-and-registration-modal-popup' ),
                 'default'        => 'Please enter your password!',

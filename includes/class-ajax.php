@@ -10,6 +10,7 @@ defined( 'ABSPATH' ) || exit;
  */
 class LRM_AJAX
 {
+    public static $request_is_processed = false;
 
     public static function login() {
         $start = microtime(true);
@@ -41,20 +42,28 @@ class LRM_AJAX
 
         $secure_cookie = is_ssl();
 
-        // If the user wants ssl but the session is not ssl, force a secure cookie.
-        if ( !$secure_cookie && !empty($info['user_login']) && !force_ssl_admin() ) {
-            $user_name = sanitize_user($info['user_login']);
-            $user = get_user_by( 'login', $user_name );
+        /**
+         * @since 2.04
+         * Verify the "username" locally
+         */
+        $user_name = sanitize_user($info['user_login']);
+        $user = get_user_by( 'login', $user_name );
 
+        if ( !$user ) {
             if ( ! $user && strpos( $user_name, '@' ) ) {
                 $user = get_user_by( 'email', $user_name );
             }
 
-            if ( $user ) {
-                if ( get_user_option('use_ssl', $user->ID) ) {
-                    $secure_cookie = true;
-                    force_ssl_admin(true);
-                }
+            if ( !$user ) {
+                wp_send_json_error(array('message' => LRM_Settings::get()->setting('messages/login/invalid_login'), 'for' => 'username'));
+            }
+        }
+
+        // If the user wants ssl but the session is not ssl, force a secure cookie.
+        if ( !$secure_cookie && $user && !force_ssl_admin() ) {
+            if ( get_user_option('use_ssl', $user->ID) ) {
+                $secure_cookie = true;
+                force_ssl_admin(true);
             }
         }
 
@@ -72,6 +81,8 @@ class LRM_AJAX
 
 	    $end_time = microtime(true) - $start;
 
+        self::$request_is_processed = true;
+
         if ( is_wp_error($user_signon) ){
 
             do_action('lrm/login_fail', $user_signon);
@@ -84,7 +95,8 @@ class LRM_AJAX
 
             do_action('lrm/login_successful', $user_signon);
 
-            $message = LRM_Settings::get()->setting('general/registration/reload_after_login') ? LRM_Settings::get()->setting('messages/login/success') : LRM_Settings::get()->setting('messages/login/success_no_reload');
+            $message = lrm_setting('general/registration/reload_after_login', true) ?
+                lrm_setting('messages/login/success', true) : lrm_setting('messages/login/success_no_reload', true);
 
             $action = lrm_setting('redirects/login/action');
             $redirect_url = LRM_Redirects_Manager::get_redirect( 'login', $user_signon->ID );
@@ -344,6 +356,8 @@ class LRM_AJAX
 
 	        $end_time = microtime(true) - $start;
 
+            self::$request_is_processed = true;
+
             if ( is_wp_error($user_signon) ) {
                 wp_send_json_success( array(
                     'logged_in' => false,
@@ -523,6 +537,8 @@ class LRM_AJAX
          */
         do_action( 'validate_password_reset', $errors, $user );
 
+        self::$request_is_processed = true;
+
 
         if ( ( ! $errors->get_error_code() ) && $new_pass ) {
             reset_password($user, $new_pass);
@@ -611,14 +627,82 @@ class LRM_AJAX
      * @since 2.03
      */
     public static function _maybe_debug() {
+
+        add_filter( 'wp_redirect', array(__CLASS__, 'wp_redirect__filter'), 9999, 2 );
+
+        // Try to remove some actions to avoid redirects
+        remove_all_actions('wp_login');
+        remove_all_actions('swpm_login');   // Simple Membership plugin
+        remove_all_actions('wp_login_failed');
+
+        // Disable redirect after Login
+        add_filter( 'ws_plugin__s2member_login_redirect', '__return_false', 99 );
+
         if ( lrm_setting('advanced/debug/ajax') ) {
             ini_set('display_errors',1);
             ini_set('display_startup_errors',1);
             error_reporting(-1);
-        } else {
-            set_exception_handler([__CLASS__, '_global_exception_handler']);
         }
 
+        set_exception_handler([__CLASS__, '_global_exception_handler']);
+
+    }
+
+    /**
+     * Try to change Hook position to avoid redirect during login/registration
+     * Calls only once
+     *
+     * @param $location
+     * @param $status
+     * @since 1.36
+     *
+     * @return mixed
+     */
+    public static function wp_redirect__filter($location, $status) {
+
+        if ( lrm_setting('advanced/debug/ajax') ) {
+            $debug_backtrace = self::_get_debug_backtrace_arr(wp_debug_backtrace_summary('WP_Hook', 1, false));
+
+            wp_send_json_error(array('message' => '#Debug backtrace for the developer:#<br>' . PHP_EOL . implode('<br>'.PHP_EOL, $debug_backtrace)));
+        } else {
+            wp_send_json_error(array(
+                'message' => sprintf(
+                    'Some plugin try to redirect during this action to the following url: %s. Please try to enable "Debug" option on "ADVANCED" tab in the plugin settings and try again.',
+                    $location
+                )
+            ));
+        }
+
+//        // Also stop executing exit() call
+//        register_shutdown_function(function() {
+//            var_dump(self::$request_is_processed);
+//            if ( ! self::$request_is_processed ) {
+//                return null;
+//            }
+//            return true;
+//        });
+
+        return false;
+    }
+
+    /**
+     * @return array
+     * @since 2.04
+     */
+    public static function _get_debug_backtrace_arr($wp_debug_backtrace) {
+        $wp_debug_backtrace = array_filter($wp_debug_backtrace, function ($arr_val) {
+            if ( in_array($arr_val,
+                ['require_once(\'wp-settings.php\')',
+                    'require_once(\'wp-config.php\')',
+                    'require_once(\'wp-load.php\')',
+                    'require(\'wp-blog-header.php\')'] )
+            ) {
+                return null;
+            }
+            return $arr_val;
+        });
+
+        return $wp_debug_backtrace;
     }
 
     /**
@@ -628,11 +712,17 @@ class LRM_AJAX
     public static function _global_exception_handler( $exception ) {
         $file_path = str_replace([ABSPATH, 'wp-content'], '', $exception->getFile());
         lrm_log( 'LRM AJAX error', $exception->getMessage() . ' in ' . $file_path );
+        $err_message = 'Can\'t process this request, the error happens in file ' . $file_path . ' on line ' . $exception->getLine();
+
+        if ( lrm_setting('advanced/debug/ajax') ) {
+            $err_message .= '<br>'.PHP_EOL . 'Error: ' . $exception->getMessage();
+        } else {
+            $err_message .= '<br><u>Please try to enable "Debug" option on "ADVANCED" tab in the plugin settings to get more details.</u>';
+        }
         wp_send_json_error(array(
-            'message'  => 'Can\'t process this request, the error happens in file ' . $file_path . ' on line ' . $exception->getLine(),
+            'message'  => $err_message,
             'exec_time'=> '',
         ));
-
     }
 
 }
