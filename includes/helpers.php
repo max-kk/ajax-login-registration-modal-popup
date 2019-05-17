@@ -69,7 +69,7 @@ if (!function_exists('lrm_dismissible_notice')) {
 }
 
 
-if (!function_exists('lrm_log')) {
+if (!function_exists('lrm_wc_version_gte')) {
     /**
      * Check WooCommerce version
      *

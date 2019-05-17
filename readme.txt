@@ -197,6 +197,12 @@ If you have login issue with Adminize plugin - go to Adminize plugin settings an
 
 == Changelog ==
 
+= VER 2.05 - 26/04/2019 =
+
+- Fixed issues with "<>" characters in the user password
+- Removed deprecated function screen_icon()
+- Updated WC form template to the WooCommerce 3.6
+
 = VER 2.04 - 26/04/2019 =
 
 - Stop executing wp_redirect during login process instead of showing error

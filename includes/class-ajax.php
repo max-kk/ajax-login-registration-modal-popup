@@ -25,7 +25,7 @@ class LRM_AJAX
         // Nonce is checked, get the POST data and sign user on
         $info = array();
         $info['user_login'] = sanitize_text_field(trim($_POST['username']));
-        $info['user_password'] = sanitize_text_field(trim($_POST['password']));
+        $info['user_password'] = trim($_POST['password']);
         $info['remember'] = isset($_POST['remember-me']) ? true : false;
 
 	    do_action('lrm/login_pre_verify', $info);
@@ -176,6 +176,11 @@ class LRM_AJAX
             wp_send_json_error(array('message' => LRM_Settings::get()->setting('messages/registration/wrong_email'), 'for'=>'email'));
         }
 
+	    /**
+	     * @since 2.05
+	     */
+	    do_action('lrm/pre_register_new_user');
+
 //        $user_login = sanitize_user( sanitize_title_with_dashes($first_name . '_' . $last_name) );
 //
 //        $user_login = rtrim($user_login, '_-');
@@ -277,7 +282,7 @@ class LRM_AJAX
                     LRM_Settings::get()->setting('mails/registration/body')
                 );
 
-                $mail_body = apply_filters("lrm/mails/registration/body", $mail_body, $user->user_login, $userdata);
+                $mail_body = apply_filters("lrm/mails/registration/body", $mail_body, $user->user_login, $userdata, $user);
 
                 $mail_sent = LRM_Mailer::send($email, $subject, $mail_body, 'registration');
 
@@ -330,7 +335,7 @@ class LRM_AJAX
                  * @param WP_User $user User object for new user.
                  * @param string $blogname The site title.
                  */
-                $wp_new_user_notification_email_admin = apply_filters('wp_new_user_notification_email_admin', $wp_new_user_notification_email_admin, $user_id, $blogname);
+                $wp_new_user_notification_email_admin = apply_filters('wp_new_user_notification_email_admin', $wp_new_user_notification_email_admin, $user_id, wp_specialchars_decode(get_option('blogname'), ENT_QUOTES));
 
                 LRM_Mailer::send(
                     $wp_new_user_notification_email_admin['to'],
@@ -661,7 +666,7 @@ class LRM_AJAX
     public static function wp_redirect__filter($location, $status) {
 
         if ( lrm_setting('advanced/debug/ajax') ) {
-            $debug_backtrace = self::_get_debug_backtrace_arr(wp_debug_backtrace_summary('WP_Hook', 1, false));
+            $debug_backtrace = LRM_Debug::_get_backtrace_arr(wp_debug_backtrace_summary('WP_Hook', 1, false));
 
             wp_send_json_error(array('message' => '#Debug backtrace for the developer:#<br>' . PHP_EOL . implode('<br>'.PHP_EOL, $debug_backtrace)));
         } else {
@@ -685,25 +690,6 @@ class LRM_AJAX
         return false;
     }
 
-    /**
-     * @return array
-     * @since 2.04
-     */
-    public static function _get_debug_backtrace_arr($wp_debug_backtrace) {
-        $wp_debug_backtrace = array_filter($wp_debug_backtrace, function ($arr_val) {
-            if ( in_array($arr_val,
-                ['require_once(\'wp-settings.php\')',
-                    'require_once(\'wp-config.php\')',
-                    'require_once(\'wp-load.php\')',
-                    'require(\'wp-blog-header.php\')'] )
-            ) {
-                return null;
-            }
-            return $arr_val;
-        });
-
-        return $wp_debug_backtrace;
-    }
 
     /**
      * @param Exception $exception

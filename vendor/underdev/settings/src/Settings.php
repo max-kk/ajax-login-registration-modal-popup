@@ -82,6 +82,8 @@ class Settings {
 	 */
 	public function settings_page() {
 
+        set_exception_handler(['LRM_Debug', '_admin_global_exception_handler']);
+
 		$sections = $this->get_sections();
 
 		if ( isset( $_GET['section'] ) && ! empty( $_GET['section'] ) ) {

@@ -83,28 +83,31 @@
     width: 100%;
 }
 
-.lrm-pass-strength-result.short {
+.lrm-pass-strength-result[data-status="short"] {
     background-color: #f1adad;
     border-color: #e35b5b;
     opacity: 1
 }
 
-.lrm-pass-strength-result.bad {
+.lrm-pass-strength-result[data-status="bad"] {
     background-color: #fbc5a9;
     border-color: #f78b53;
     opacity: 1
 }
 
-.lrm-pass-strength-result.good {
+.lrm-pass-strength-result[data-status="good"] {
     background-color: #ffe399;
     border-color: #ffc733;
     opacity: 1
 }
 
-.lrm-pass-strength-result.strong {
+.lrm-pass-strength-result[data-status="strong"] {
     background-color: #c1e1b9;
     border-color: #83c373;
     opacity: 1
+}
+.lrm-pass-strength-result[data-status="empty"] {
+    display: none;
 }
 
 /* Catcha PLUGIN */

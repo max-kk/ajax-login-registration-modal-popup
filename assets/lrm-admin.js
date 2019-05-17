@@ -104,9 +104,9 @@
 
 		//var rows_count = $(".lrm-redirects-field__roles-wrap").length;
 		var $new_row = $(
-			  $(".js-lrm-redirects-tpl[data-name='" + $(this).data("name") + "']").html().split('%key%').join( "0" )
+			  $(".js-lrm-repeater-tpl[data-name='" + $(this).data("name") + "']").html().split('%key%').join( "0" )
 		);
-		var $wrap = $(this).parent().find(".lrm-redirects-field__roles-wrap");
+		var $wrap = $(this).parent().find(".lrm-repeater-field__roles-wrap");
 		$wrap.prepend( $new_row );
 
 		$new_row.find( ".pretty-select" ).selectize();
@@ -120,20 +120,20 @@
 	$(document).on("click", ".js-lrm-delete-row",function (e) {
 		e.preventDefault();
 		if ( confirm("Are you sure to delete this row?") ) {
-			var parent = $(this).closest(".lrm-redirects-field__roles");
-			$(this).closest(".lrm-redirects-field__row").fadeOut(500).remove();
+			var parent = $(this).closest(".lrm-repeater-field__roles-wrap");
+			$(this).closest(".lrm-repeater-field__row").fadeOut(500).remove();
 
 			reorder_redirects( parent );
 		}
 	});
 	// 13223444444444444444444
 
-	$( ".lrm-redirects-field__roles-wrap" ).sortable({
+	$( ".lrm-repeater-field__roles-wrap" ).sortable({
 		//containment: ".lrm-redirects-field__row",
 		handle: ".js-lrm-sort-row",
-		items: ".lrm-redirects-field__row",
+		items: ".lrm-repeater-field__row",
 		update: function( evt, ui ) {
-			console.log(ui);
+			//console.log(ui);
 
 			reorder_redirects( ui.item.parent() );
 		},
@@ -141,7 +141,7 @@
 
 	function reorder_redirects( $wrap ) {
 
-		$wrap.find(".lrm-redirects-field__row").each(function(ID, el) {
+		$wrap.find(".lrm-repeater-field__row").each(function(ID, el) {
 			var current_KEY = $(el).data("key");
 			$(el).data("key", ID);
 

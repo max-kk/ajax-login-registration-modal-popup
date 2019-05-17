@@ -630,6 +630,20 @@ class LRM_Settings {
                 'render'      => array( new LRM_Field_Text(), 'input' ),
                 'sanitize'    => array( new LRM_Field_Text(), 'sanitize' ),
             ) )
+            ->add_field( array(
+                'slug'        => 'user_role',
+                'name'        => __('Form: User Role', 'ajax-login-and-registration-modal-popup' ),
+                'default'        => 'Select a Role',
+                'render'      => array( new LRM_Field_Text(), 'input' ),
+                'sanitize'    => array( new LRM_Field_Text(), 'sanitize' ),
+            ) )
+            ->add_field( array(
+                'slug'        => 'no_user_role',
+                'name'        => __('Form: User Role is missing', 'ajax-login-and-registration-modal-popup' ),
+                'default'        => 'Please select a Role',
+                'render'      => array( new LRM_Field_Text(), 'input' ),
+                'sanitize'    => array( new LRM_Field_Text(), 'sanitize' ),
+            ) )
 
 //            ->add_field( array(
 //                'slug'        => 'password_repeat',
@@ -977,6 +991,7 @@ class LRM_Settings {
         //$this->register_wpml_strings();
         LRM_WPML_Integration::register_strings();
 
+	    LRM_Roles_Manager::register_settings( $this->settings );
         LRM_Import_Export_Manager::register_settings( $this->settings );
     }
 

@@ -34,19 +34,19 @@ class LRM_Field_Redirects {
 
         //var_dump($value['roles']);
 
-        echo '<div class="lrm-redirects-field">';
+        echo '<div class="lrm-repeaters-field">';
             if ( $per_role ) {
                 $this->_add_new_tpl($field);
                 echo '<hr>';
 
-                echo '<div class="lrm-redirects-field__roles-wrap">';
+                echo '<div class="lrm-repeater-field__roles-wrap lrm-redirects-field__roles-wrap">';
                     foreach ($value['redirect'] as $key => $redirect) {
 
                         if ('default' === $key) {
                             continue;
                         }
-                        echo '<div class="lrm-redirects-field__row" data-key="' , $key ,'">';
-                            echo '<span class="lrm-redirects-field__row_actions">
+                        echo '<div class="lrm-redirects-field__row lrm-repeater-field__row" data-key="' , $key ,'">';
+                            echo '<span class="lrm-repeater-field__row_actions">
                                     <a href="#0" class="js-lrm-delete-row"><span class="dashicons dashicons-no lrm-redirects-field__row_action"></span></a>                                   
                                 </span>';
                             $this->_roles_tpl($field, $key, $value);
@@ -67,7 +67,7 @@ class LRM_Field_Redirects {
         if ( $per_role ) {
             echo '<script type="text/html" class="js-lrm-redirects-tpl" data-name="', $field->input_name(), '">';
                 echo '<div class="lrm-redirects-field__row" data-key="%key%">';
-                    echo '<span class="lrm-redirects-field__row_actions">
+                    echo '<span class="lrm-repeater-field__row_actions">
                                         <a href="#0" class="js-lrm-delete-row"><span class="dashicons dashicons-no lrm-redirects-field__row_action"></span></a>
                                     </span>';
 
@@ -108,7 +108,7 @@ class LRM_Field_Redirects {
 
 
         echo '<select multiple rows=2 name="' . $field->input_name() . '[roles][' . $key . '][]" class="pretty-select">';
-        foreach (LRM_Redirects_Manager::get_wp_roles_flat() as $role_key => $role_name) {
+        foreach (LRM_Roles_Manager::get_wp_roles_flat() as $role_key => $role_name) {
             printf('<option value="%s" %s>%s</option>', $role_key, selected(!in_array($role_key, $selected_roles), false), $role_name);
         }
         echo '</select>';
