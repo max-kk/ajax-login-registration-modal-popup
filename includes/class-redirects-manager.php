@@ -18,11 +18,6 @@ class LRM_Redirects_Manager {
      */
     public static function register_settings( $settings_class ) {
 
-	    ini_set('display_errors', 1);
-	    ini_set('display_startup_errors', 1);
-	    error_reporting(E_ALL);
-
-
 	    $ACTIONS_SECTION = $settings_class->add_section( __( 'Actions / Redirects', 'ajax-login-and-registration-modal-popup' ), 'redirects' );
 
         //$wp_pages_arr = self::_get_pages_arr();

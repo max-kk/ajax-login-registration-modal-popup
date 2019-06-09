@@ -105,20 +105,7 @@ ul.lrm-switcher {
     content: "";
     display: inline-block;
     overflow: hidden;
-    vertical-align: text-bottom;
+    vertical-align: middle;
     margin-right: 3px;
-}
-
-.lrm-switch-to--login:before {
-    width: 22px;
     height: 24px;
-    background: url(img/login.png) no-repeat center center;
-    background-size: 100%;
-}
-
-.lrm-switch-to--register:before {
-    width: 22px;
-    height: 24px;
-    background: url(img/user.png) no-repeat center center;
-    background-size: 100%;
 }

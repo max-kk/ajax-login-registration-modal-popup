@@ -79,8 +79,12 @@
     text-align: center;
     width: 25em;
     opacity: 0;
-    display: inline-block;
+    display: none;
     width: 100%;
+
+    &[data-status] {
+        display: inline-block;
+    }
 }
 
 .lrm-pass-strength-result[data-status="short"] {

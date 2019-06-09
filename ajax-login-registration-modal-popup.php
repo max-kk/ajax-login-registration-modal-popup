@@ -35,7 +35,7 @@ if ( !defined("LRM_IN_BUILD_FREE") ) {
 
 define("LRM_VERSION", '2.04');
 
-define("LRM_ASSETS_VER", 27);
+define("LRM_ASSETS_VER", 29);
 
 //define("LRM/SETTINGS/TRY_GET_TRANSLATED", 1);
 

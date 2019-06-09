@@ -1,0 +1,147 @@
+@charset "UTF-8";
+// https://dev.maxim-kaminsky.com/wp-content/plugins/ajax-login-and-registration-modal-popup-dev/assets/lrm-fa4-icomoon/demo.html
+@import "../lrm-icomoon/variables";
+@import "../lrm-material/variables";
+@import "../lrm-fa4/variables";
+@import "../lrm-fa5-free/scss/variables";
+
+@mixin lrm-font-icon( $icomoon-font-code, $material-font-code, $fa4-font-code, $fa5-font-code ) {
+    .lrm-font-icomoon & {
+        &:before {
+            content: unquote("\"\\#{$icomoon-font-code}\"");
+        }
+    }
+    .lrm-font-material & {
+        &:before {
+            content: unquote("\"\\#{$material-font-code}\"");
+        }
+    }
+    .lrm-font-fa4 & {
+        &:before {
+            content: unquote("\"\\#{$fa4-font-code}\"");
+        }
+    }
+    .lrm-font-fa5-free & {
+        &:before {
+            content: unquote("\"\\#{$fa5-font-code}\"");
+        }
+    }
+}
+
+.lrm-ficon-user {
+    @include lrm-font-icon($lrm-ico-icon-user1, $lrm-icon-person, $lrm-fa4-icon-user, $fa-var-user);
+}
+.lrm-ficon-eye {
+    @include lrm-font-icon($lrm-ico-icon-eye, $lrm-icon-visibility, $lrm-fa4-icon-eye, $fa-var-eye);
+}
+.lrm-ficon-eye-blocked {
+    @include lrm-font-icon($lrm-ico-icon-eye-blocked, $lrm-icon-visibility-off, $lrm-fa4-icon-eye-slash, $fa-var-eye-slash);
+}
+.lrm-ficon-key {
+    @include lrm-font-icon($lrm-ico-icon-key, $lrm-icon-vpn_key, $lrm-fa4-icon-unlock-alt, $fa-var-key);
+}
+.lrm-ficon-lock {
+    @include lrm-font-icon($lrm-ico-icon-lock, $lrm-icon-lock, $lrm-fa4-icon-lock, $fa-var-lock);
+}
+.lrm-ficon-mail {
+    @include lrm-font-icon($lrm-ico-icon-envelop, $lrm-icon-mail_outline, $lrm-fa4-icon-envelope-o, $fa-var-envelope);
+}
+.lrm-ficon-login {
+    @include lrm-font-icon($lrm-ico-icon-enter, $lrm-icon-exit_to_app, $lrm-fa4-icon-sign-in, $fa-var-sign-in-alt);
+}
+.lrm-ficon-register {
+    @include lrm-font-icon($lrm-ico-icon-member, $lrm-icon-person_add, $lrm-fa4-icon-user-plus, $fa-var-user-plus);
+}
+
+[class^="lrm-ficon-"], [class*=" lrm-ficon-"] {
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    display: inline-block;
+
+    &:before {
+        font-size: 20px;
+
+        .lrm-font-material & {
+            font-size: 22px;
+        }
+
+    }
+    &.lrm-switch-to-link:before {
+        font-size: 24px;
+        margin-top: -2px;
+    }
+
+}
+
+.lrm-font-svg {
+
+    .lrm-switch-to-link:before {
+        width: 22px;
+        vertical-align: text-bottom;
+    }
+
+    .lrm-switch-to--login:before {
+        background: url(img/login.png) no-repeat center center;
+        background-size: 100%;
+    }
+
+    .lrm-switch-to--register:before {
+        background: url(img/user.png) no-repeat center center;
+        background-size: 100%;
+    }
+
+    .lrm-form {
+        label.lrm-username,
+        .lrm-ficon-user {
+            background-image: url("img/cd-icon-username.svg");
+        }
+
+        label.lrm-email,
+        .lrm-ficon-mail {
+            background-image: url("img/cd-icon-email.svg");
+        }
+
+        label.lrm-password,
+        .lrm-ficon-key {
+            background-image: url("img/cd-icon-password.svg");
+        }
+
+        label.lrm-user_role {
+            background-image: url("img/lock.svg?v=2");
+        }
+
+        .hide-password,
+        .lrm-ficon-eye {
+
+            padding: 20px 21px;
+            background-size: 24px;
+            text-indent: -300px;
+
+            background-image: url("img/iconmonstr-eye-4.svg");
+
+            &.hide-password--on,
+            &.lrm-ficon-eye-blocked {
+                background-image: url("img/iconmonstr-eye-8.svg?v3");
+            }
+
+        }
+    }
+}
+
+.lrm-is-font {
+    .hide-password {
+        width: 42px;
+        height: auto;
+    }
+
+    @at-root .hide-password--on {
+        @include lrm-font-icon($lrm-ico-icon-eye-blocked, $lrm-icon-visibility-off, $lrm-fa4-icon-eye-slash, $fa-var-eye-slash);
+    }
+}

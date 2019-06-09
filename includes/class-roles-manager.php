@@ -24,7 +24,7 @@ class LRM_Roles_Manager {
 	        ->add_field( array(
 		        'slug'        => 'on',
 		        'name'        => __( 'Enable User role selector?', 'ajax-login-and-registration-modal-popup' ),
-		        'description' => __( 'Please disable it once problem was solved to improve security!', 'ajax-login-and-registration-modal-popup' ),
+		        'description' => __( 'This will add a roles dropdown to the registration form.', 'ajax-login-and-registration-modal-popup' ),
 		        'default'     => false,
 		        'addons'      => array('label' => __( 'Yes' )),
 		        'render'      => array( new CoreFields\Checkbox(), 'input' ),
@@ -48,9 +48,9 @@ class LRM_Roles_Manager {
 		        'name'        => __( 'Enable silent role assign?', 'ajax-login-and-registration-modal-popup' ),
 		        'description' => __( '<strong>Modal:</strong> With this option you could add a "data" attributes to your registration button for auto-assign user-role and probably hide role selector from the user.', 'ajax-login-and-registration-modal-popup' )
                          . '<br/>'
-                    . __( 'Use <code>data-lrm-role="customer"</code> and <code>data-lrm-role-silent</code> to select specified role and hide role selector', 'ajax-login-and-registration-modal-popup' )
+                    . sprintf(__( 'Use <code>data-lrm-role="Customer"</code> with the label of your role and <code>data-lrm-role-silent</code> to select specified role and hide role selector.<br/>Example: <code>%s</code>', 'ajax-login-and-registration-modal-popup' ), esc_attr('<a href="#register" class="lrm-register" data-lrm-role="Customer" data-lrm-role-silent>Register</a>'))
                          . '<br/>'
-                     . __( '<strong>Inline:</strong> Use the shortcode attributes <code>role="customer"</code> and <code>role-silent="yes"</code> (optional) to select specified role and hide role selector. Example: <code>[lrm_form default_tab="login" logged_in_message="You have been already logged in!" role="customer" role-silent="yes"]</code>', 'ajax-login-and-registration-modal-popup' ),
+                     . __( '<strong>Inline:</strong> Use the shortcode attributes <code>role="Customer"</code> and <code>role-silent="yes"</code> (optional) to select specified role and hide role selector. Example: <code>[lrm_form default_tab="login" logged_in_message="You have been already logged in!" role="customer" role-silent="yes"]</code>', 'ajax-login-and-registration-modal-popup' ),
 		        'default'     => false,
 		        'addons'      => array('label' => __( 'Yes' )),
 		        'render'      => array( new CoreFields\Checkbox(), 'input' ),

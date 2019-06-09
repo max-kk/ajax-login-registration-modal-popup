@@ -408,6 +408,8 @@ class LRM_AJAX
 
         LRM_Core::get()->call_pro('check_captcha', 'lostpassword');
 
+        do_action('lrm/login_pre_lostpassword', $account);
+
         if( empty( $account ) ) {
             $errors->add('invalid_email', LRM_Settings::get()->setting('messages/lost_password/invalid_email'));
         } else {

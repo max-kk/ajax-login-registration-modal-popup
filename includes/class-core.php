@@ -238,6 +238,7 @@ class LRM_Core {
         wp_enqueue_script('lrm-modal', LRM_URL . 'assets/lrm-core.js', $required_scripts, LRM_ASSETS_VER, true);
 
         wp_enqueue_style('lrm-modal', LRM_URL . 'assets/lrm-core-compiled.css', false, LRM_ASSETS_VER);
+        wp_enqueue_style('lrm-fonts', LRM_URL . 'assets/fonts.css', false, LRM_ASSETS_VER);
 
         LRM_Skins::i()->load_current_skin_assets();
         //wp_enqueue_style('lrm-modal-skin', LRM_URL . 'assets/lrm-skin.css', false, LRM_ASSETS_VER);

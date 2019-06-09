@@ -1,0 +1,60 @@
+.lrm-font-icomoon .lrm-ficon-user:before { content: "\e904"; }
+.lrm-font-material .lrm-ficon-user:before { content: "\e901"; }
+.lrm-font-fa4 .lrm-ficon-user:before { content: "\f007"; }
+.lrm-font-fa5-free .lrm-ficon-user:before { content: "\f007"; }
+
+.lrm-font-icomoon .lrm-ficon-eye:before { content: "\e902"; }
+.lrm-font-material .lrm-ficon-eye:before { content: "\e8f4"; }
+.lrm-font-fa4 .lrm-ficon-eye:before { content: "\f06e"; }
+.lrm-font-fa5-free .lrm-ficon-eye:before { content: "\f06e"; }
+
+.lrm-font-icomoon .lrm-ficon-eye-blocked:before { content: "\e901"; }
+.lrm-font-material .lrm-ficon-eye-blocked:before { content: "\e8f5"; }
+.lrm-font-fa4 .lrm-ficon-eye-blocked:before { content: "\f070"; }
+.lrm-font-fa5-free .lrm-ficon-eye-blocked:before { content: "\f070"; }
+
+.lrm-font-icomoon .lrm-ficon-key:before { content: "\e903"; }
+.lrm-font-material .lrm-ficon-key:before { content: "\e0da"; }
+.lrm-font-fa4 .lrm-ficon-key:before { content: "\f13e"; }
+.lrm-font-fa5-free .lrm-ficon-key:before { content: "\f084"; }
+
+.lrm-font-icomoon .lrm-ficon-lock:before { content: "\e900"; }
+.lrm-font-material .lrm-ficon-lock:before { content: "\e897"; }
+.lrm-font-fa4 .lrm-ficon-lock:before { content: "\f023"; }
+.lrm-font-fa5-free .lrm-ficon-lock:before { content: "\f023"; }
+
+.lrm-font-icomoon .lrm-ficon-mail:before { content: "\e906"; }
+.lrm-font-material .lrm-ficon-mail:before { content: "\e0e1"; }
+.lrm-font-fa4 .lrm-ficon-mail:before { content: "\f003"; }
+.lrm-font-fa5-free .lrm-ficon-mail:before { content: "\f0e0"; }
+
+.lrm-font-icomoon .lrm-ficon-login:before { content: "\e908"; }
+.lrm-font-material .lrm-ficon-login:before { content: "\e879"; }
+.lrm-font-fa4 .lrm-ficon-login:before { content: "\f090"; }
+.lrm-font-fa5-free .lrm-ficon-login:before { content: "\f2f6"; }
+
+.lrm-font-icomoon .lrm-ficon-register:before { content: "\e907"; }
+.lrm-font-material .lrm-ficon-register:before { content: "\e7fe"; }
+.lrm-font-fa4 .lrm-ficon-register:before { content: "\f234"; }
+.lrm-font-fa5-free .lrm-ficon-register:before { content: "\f234"; }
+
+[class^="lrm-ficon-"], [class*=" lrm-ficon-"] { speak: none; font-style: normal; font-weight: normal; font-variant: normal; text-transform: none; line-height: 1; /* Better Font Rendering =========== */ -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; display: inline-block; }
+[class^="lrm-ficon-"]:before, [class*=" lrm-ficon-"]:before { font-size: 20px; }
+.lrm-font-material [class^="lrm-ficon-"]:before, .lrm-font-material [class*=" lrm-ficon-"]:before { font-size: 22px; }
+[class^="lrm-ficon-"].lrm-switch-to-link:before, [class*=" lrm-ficon-"].lrm-switch-to-link:before { font-size: 24px; margin-top: -2px; }
+
+.lrm-font-svg .lrm-switch-to-link:before { width: 22px; vertical-align: text-bottom; }
+.lrm-font-svg .lrm-switch-to--login:before { background: url(img/login.png) no-repeat center center; background-size: 100%; }
+.lrm-font-svg .lrm-switch-to--register:before { background: url(img/user.png) no-repeat center center; background-size: 100%; }
+.lrm-font-svg .lrm-form label.lrm-username, .lrm-font-svg .lrm-form .lrm-ficon-user { background-image: url("img/cd-icon-username.svg"); }
+.lrm-font-svg .lrm-form label.lrm-email, .lrm-font-svg .lrm-form .lrm-ficon-mail { background-image: url("img/cd-icon-email.svg"); }
+.lrm-font-svg .lrm-form label.lrm-password, .lrm-font-svg .lrm-form .lrm-ficon-key { background-image: url("img/cd-icon-password.svg"); }
+.lrm-font-svg .lrm-form label.lrm-user_role { background-image: url("img/lock.svg?v=2"); }
+.lrm-font-svg .lrm-form .hide-password, .lrm-font-svg .lrm-form .lrm-ficon-eye { padding: 20px 21px; background-size: 24px; text-indent: -300px; background-image: url("img/iconmonstr-eye-4.svg"); }
+.lrm-font-svg .lrm-form .hide-password.hide-password--on, .lrm-font-svg .lrm-form .hide-password.lrm-ficon-eye-blocked, .lrm-font-svg .lrm-form .lrm-ficon-eye.hide-password--on, .lrm-font-svg .lrm-form .lrm-ficon-eye.lrm-ficon-eye-blocked { background-image: url("img/iconmonstr-eye-8.svg?v3"); }
+
+.lrm-is-font .hide-password { width: 42px; height: auto; }
+.lrm-font-icomoon .hide-password--on:before { content: "\e901"; }
+.lrm-font-material .hide-password--on:before { content: "\e8f5"; }
+.lrm-font-fa4 .hide-password--on:before { content: "\f070"; }
+.lrm-font-fa5-free .hide-password--on:before { content: "\f070"; }

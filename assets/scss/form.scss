@@ -41,21 +41,28 @@ $fieldset-margin-tb: 1.4em;
     -ms-transform: translateY(-50%);
     -o-transform: translateY(-50%);
     transform: translateY(-50%);
-    height: 20px;
-    width: 20px;
+    height: 21px;
+    width: 22px;
     overflow: hidden;
-    text-indent: -300px;
+    //text-indent: -300px;
+    color: rgb(210, 216, 216);
+
     white-space: nowrap;
-    color: transparent;
     text-shadow: none;
     background-repeat: no-repeat;
     background-position: 50% 0;
     @content;
 
+    .lrm-font-svg & {
+        height: 20px;
+        color: transparent;
+    }
+
     @include rtl() {
         right: 15px;
         left: auto;
     }
+
 }
 
 .lrm-form {
@@ -67,19 +74,6 @@ $fieldset-margin-tb: 1.4em;
         padding: 0 !important;
 
     }
-
-    label.lrm-username {
-        background-image: url("img/cd-icon-username.svg");
-    }
-
-    label.lrm-email {
-        background-image: url("img/cd-icon-email.svg");
-    }
-
-    label.lrm-password {
-        background-image: url("img/cd-icon-password.svg");
-    }
-
 
      input, select {
         margin: 0;
@@ -185,19 +179,13 @@ $fieldset-margin-tb: 1.4em;
     @include lrm-image-replace-core();
     left: unset;
 
-    background-image: url("img/iconmonstr-eye-4.svg");
-    &.hide-password--on {
-        background-image: url("img/iconmonstr-eye-8.svg?v3");
-    }
-
     border-left: 1px solid black;
     font-size: 14px;
     font-size: 0.875rem;
     cursor: pointer;
 
     background-position: center;
-    padding: 20px 21px;
-    background-size: 24px;
+    padding: 10px 12px;
     right: 5px;
 
     @include rtl() {

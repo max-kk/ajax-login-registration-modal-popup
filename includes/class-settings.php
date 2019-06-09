@@ -53,6 +53,13 @@ class LRM_Settings {
             );
         }
 
+	    lrm_dismissible_notice( 'font-icons',
+		    sprintf(
+			    '<strong>AJAX Login & registration modal notice:</strong> since the Free version 2.04 you are able to use the Font Icons instead of the default SVG. Find the settings at a <a href="%s">Skins tab</a>!',
+			    admin_url('options-general.php?page=login-and-register-popup&section=skins')
+		    )
+	    );
+
         $latest_pro_version = '1.50';
 
         if ( lrm_is_pro() && ! lrm_is_pro( $latest_pro_version ) && !defined("LRM_HIDE_PRO_UPDATE_NOTICE") ) {
@@ -300,6 +307,23 @@ class LRM_Settings {
                 ),
                 'default'     => 'default',
                 'description' => sprintf( __('In a PRO version you will have <a href="%s" target="_blank">more skins</a>', 'ajax-login-and-registration-modal-popup' ), 'https://maxim-kaminsky.com/shop/product/ajax-login-and-registration-modal-popup-pro/' ),
+                'render'      => array( new CoreFields\Select(), 'input' ),
+                'sanitize'    => array( new CoreFields\Select(), 'sanitize' ),
+            ) )
+            ->add_field( array(
+                'slug'        => 'icons',
+                'name'        => __('Select icons type', 'ajax-login-and-registration-modal-popup'),
+                'addons'      => array(
+                    'options'     => [
+                    	'svg'       => 'Default SVG Icons',
+                    	'icomoon'   => 'Icomoon font icons',
+                    	'material'  => 'Material font icons',
+                    	'fa4'       => 'Font awesome 4 font icons',
+                    	'fa5-free'  => 'Font awesome 5 font icons',
+                    ],
+                ),
+                'default'     => 'svg',
+                'description' => '"Font awesome 5" is loading a full icons pack (bigger size), all other very minimal icons packs',
                 'render'      => array( new CoreFields\Select(), 'input' ),
                 'sanitize'    => array( new CoreFields\Select(), 'sanitize' ),
             ) )
@@ -946,7 +970,7 @@ class LRM_Settings {
                 'addons'      => array(
                     'options'     => array(
                         'inline'        => 'Inline',
-                        'invisible'     => 'Invisible - soon',
+                        'invisible'     => 'Invisible',
                     ),
                 ),
                 'default'     => '',

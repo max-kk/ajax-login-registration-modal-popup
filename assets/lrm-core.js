@@ -89,6 +89,7 @@ var LRM = LRM ? LRM : {};
 		$('.lrm-user-modal').on('click', function (event) {
 			if ($(event.target).is('.lrm-user-modal') || $(event.target).is('.lrm-close-form')) {
 				$(this).removeClass('is-visible');
+				auto_selected_role = false;
 				$(document).triggerHandler("lrm/close_modal", this, event, "click");
 			}
 		});
@@ -96,6 +97,7 @@ var LRM = LRM ? LRM : {};
 		$(document).keyup(function (event) {
 			if (event.which == '27') {
 				$(".lrm-user-modal").removeClass('is-visible');
+				auto_selected_role = false;
 				$(document).triggerHandler("lrm/close_modal", this, event, "esc");
 			}
 		});
@@ -136,6 +138,24 @@ var LRM = LRM ? LRM : {};
 		// 	login_selected(event, true);
 		// });
 
+		var auto_selected_role = false;
+		var hidden_role = false;
+
+		function _save_auto_role(event) {
+			if ( !event.target || $(event.target).hasClass("lrm-switch-to-link") ) {
+			 	return;
+			}
+			var role = $(event.target).data("lrm-role");
+			if ( role !== undefined ) {
+				auto_selected_role = role;
+			}
+
+			hidden_role = false;
+			if ( $(event.target).data("lrm-role-silent") !== undefined ) {
+				hidden_role = true;
+			}
+		}
+
 		function login_selected(event, event_orig) {
 			// if (LRM.is_user_logged_in) {
 			// 	return true;
@@ -146,6 +166,8 @@ var LRM = LRM ? LRM : {};
 			 * this - clicked element
 			 */
 			$(document).triggerHandler("lrm/before_display/login", this, event);
+
+			_save_auto_role(event);
 
 			var $formModal = $(event.target).closest(".lrm-main");
 
@@ -205,6 +227,8 @@ var LRM = LRM ? LRM : {};
 			 */
 			$(document).triggerHandler("lrm/before_display/registration", this, event);
 
+			_save_auto_role(event);
+
 			// $formModal.addClass('is-visible');
 			// $formLogin.removeClass('is-selected');
 			// $formSignup.addClass('is-selected');
@@ -237,6 +261,32 @@ var LRM = LRM ? LRM : {};
 			$formModal.find('.lrm-reset-password-section').removeClass('is-selected');
 			$formModal.find('.lrm-switcher').children('li').eq(0).children('a').removeClass('selected');
 			$formModal.find('.lrm-switcher').children('li').eq(1).children('a').addClass('selected');
+
+			// User Role selector!
+			if ( $formModal.find(".fieldset--user_role") ) {
+				var $user_role_wrap = $formModal.find(".fieldset--user_role");
+				var $role_option = null, role_id;
+
+				if (auto_selected_role) {
+					$role_option = $user_role_wrap.find("option[data-label='" + auto_selected_role + "']");
+					if ( $role_option.length ) {
+						var role_id = $role_option.val();
+					}
+					if ( role_id ) {
+						$user_role_wrap.find("select[name='user_role']").val(role_id); // aa
+					} else {
+						console.warn( "LRM user role selector: no Role was found with a label:", auto_selected_role );
+					}
+				} else {
+					$user_role_wrap.find("select[name='user_role']").val("");
+				}
+
+				if (hidden_role && ( !auto_selected_role || (auto_selected_role && role_id) )) {
+					$user_role_wrap.hide();
+				} else {
+					$user_role_wrap.show();
+				}
+			}
 
 			setTimeout(function() {
 				if ( $(window).width() > 600 ) {
@@ -306,7 +356,8 @@ var LRM = LRM ? LRM : {};
 			}
 
 
-			if ($(document).triggerHandler('lrm/do_not_submit_form', $form)) {
+			// Check reCaptha, etc
+			if ( $(document).triggerHandler('lrm/do_not_submit_form', $form) ) {
 				return false;
 			}
 
@@ -338,6 +389,7 @@ var LRM = LRM ? LRM : {};
 					$form.find(".lrm-button-loader").remove();
 					$form.removeClass("--is-submitting");
 
+
 					if (response.data.message) {
 						if (!response.data.for) {
 							LRM_Form.set_message( $form, response.data.message, !response.success );
@@ -364,6 +416,11 @@ var LRM = LRM ? LRM : {};
 					// $form.data("action") for get
 					$(document).triggerHandler('lrm/ajax_response', [response, $form, $form.data("action")]);
 
+					if ( window.is_lrm_testing ) {
+						window.lrm_response = response;
+						return;
+					}
+
 					//console.log(response);
 
 					// If user Logged in After Login or Registration
@@ -373,7 +430,7 @@ var LRM = LRM ? LRM : {};
 						$(document).triggerHandler('lrm_user_logged_in', [response, $form, $form.data("action")]);
 
 						if ("reload" == response.data.action) {
-							window.location.reload();
+							window.location.reload( true );
 						}
 					}
 
