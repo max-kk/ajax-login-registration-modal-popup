@@ -22,11 +22,15 @@ if ( $errors->get_error_code() ) :
     return;
 endif;
 
+$icons_class = lrm_setting('skins/skin/icons');
+$icons_class = $icons_class === 'svg' ? $icons_class : $icons_class  . ' lrm-is-font';
+
+
 
 list($rp_key, $rp_login) = $rp_data;
 
 ?>
-<div class="lrm-restore-password">
+<div class="lrm-restore-password lrm-font-<?= $icons_class; ?>">
     <div class="lrm-user-modal-container">
 
         <form class="lrm-form" action="#0" data-action="password-reset">
@@ -35,10 +39,10 @@ list($rp_key, $rp_login) = $rp_data;
 
             <div class="fieldset fieldset--password1">
                 <div class="lrm-position-relative">
-                    <label class="image-replace lrm-password"><?php echo esc_attr( LRM_Settings::get()->setting('messages_pro/registration/password', true) ); ?></label>
-                    <input name="password1" class="full-width has-padding has-border" id="lrm-password1" data-relation="lrm-password2" type="text"  placeholder="<?php echo esc_attr( LRM_Settings::get()->setting('messages_pro/registration/password', true) ); ?>" <?= $fields_required; ?> value="<?php echo esc_attr( wp_generate_password( 16 ) ); ?>" autocomplete="new-password">
+                    <label class="image-replace lrm-password"><?php echo esc_attr( lrm_setting('messages_pro/registration/password', true) ); ?></label>
+                    <input name="password1" class="full-width has-padding has-border" id="lrm-password1" data-relation="lrm-password2" type="text"  placeholder="<?php echo esc_attr( lrm_setting('messages_pro/registration/password', true) ); ?>" <?= $fields_required; ?> value="<?php echo esc_attr( wp_generate_password( 16 ) ); ?>" autocomplete="new-password">
                     <span class="lrm-error-message"></span>
-                    <span class="hide-password hide-password--on" data-show="<?php echo LRM_Settings::get()->setting('messages/other/show_pass'); ?>" data-hide="<?php echo LRM_Settings::get()->setting('messages/other/hide_pass'); ?>"><?php echo LRM_Settings::get()->setting('messages/other/hide_pass'); ?></span>
+                    <span class="hide-password lrm-ficon-eye" data-show="<?php echo lrm_setting('messages/other/show_pass'); ?>" data-hide="<?php echo lrm_setting('messages/other/hide_pass'); ?>" aria-label="Show"></span>
                 </div>
                 <span class="lrm-pass-strength-result"></span>
             </div>

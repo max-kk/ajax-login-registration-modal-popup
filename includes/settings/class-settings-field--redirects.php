@@ -65,8 +65,8 @@ class LRM_Field_Redirects {
         echo '</div>';
 
         if ( $per_role ) {
-            echo '<script type="text/html" class="js-lrm-redirects-tpl" data-name="', $field->input_name(), '">';
-                echo '<div class="lrm-redirects-field__row" data-key="%key%">';
+            echo '<script type="text/html" class="js-lrm-repeater-tpl" data-name="', $field->input_name(), '">';
+                echo '<div class="lrm-redirects-field__row lrm-repeater-field__row" data-key="%key%">';
                     echo '<span class="lrm-repeater-field__row_actions">
                                         <a href="#0" class="js-lrm-delete-row"><span class="dashicons dashicons-no lrm-redirects-field__row_action"></span></a>
                                     </span>';

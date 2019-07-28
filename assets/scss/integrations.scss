@@ -224,3 +224,26 @@ a.jetpack-sso {
 .lrm-grecaptcha > div {
     margin: auto;
 }
+
+
+.lrm-math-captcha-wrap {
+    padding: 5px 0;
+    text-align: center;
+
+    input.has-padding.has-border {
+        width: 64px !important;
+        text-align: center;
+    }
+    input.has-padding.has-border[disabled] {
+        color: gray;
+    }
+    .lrm-user-modal-container & input.lrm-match-value {
+        font-weight: bold;
+    }
+
+    .lrm-math-captcha-label{
+        font-weight: bold;
+    }
+}
+
+

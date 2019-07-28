@@ -89,6 +89,7 @@ class LRM_Pages_Manager {
             'suppress_filters' => false,
             'post_status' => 'publish',
             'perm' => 'readable',
+            'posts_per_page' => 500,
             //'fields' => 'ids',
         );
 
@@ -135,7 +136,7 @@ class LRM_Pages_Manager {
     public static function get_password_reset_url ( $password_reset_key, $user ) {
         $reset_pass_url = '';
 
-        if ( class_exists( 'WooCommerce' ) ) {
+        if ( lrm_is_pro() && lrm_setting('integrations/woo/use_wc_reset_page') && class_exists( 'WooCommerce' ) ) {
             $reset_pass_url = add_query_arg( array( 'key' => $password_reset_key, 'login' => rawurlencode( $user->user_login ) ), wc_get_endpoint_url( 'lost-password', '', wc_get_page_permalink( 'myaccount' ) ) );
         } else if ( 'wp-login' !== lrm_setting('pages/restore-password/page') && lrm_setting('pages/restore-password/page') ) {
             $page_id = absint( lrm_setting('pages/restore-password/page') );

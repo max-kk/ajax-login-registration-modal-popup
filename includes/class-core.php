@@ -74,17 +74,20 @@ class LRM_Core {
 
     public function shortcode($atts) {
         $atts = wp_parse_args($atts, array(
-            'default_tab'  => 'login',
+            'default_tab'   => 'login',
             'logged_in_message'  => 'You have been already logged in!',
+            'role'          => '',
+            'role_silent'   => false,
         ));
 
+        $atts['role_silent'] = ($atts['role_silent'] || $atts['role_silent'] === 'yes') ? true : false;
 
         if ( !is_customize_preview() && is_user_logged_in() ) {
             return $atts['logged_in_message'];
         }
 
         ob_start();
-            $this->render_form( true, $atts['default_tab'] );
+            $this->render_form( true, $atts['default_tab'], $atts['role'], $atts['role_silent'] );
         return ob_get_clean(  );
     }
 
@@ -98,6 +101,8 @@ class LRM_Core {
         if ( !is_customize_preview() && is_user_logged_in() ) {
             return $atts['logged_in_message'];
         }
+
+
 
         ob_start();
             require LRM_PATH . 'views/restore-password.php';
@@ -276,8 +281,10 @@ class LRM_Core {
     /**
      * @param bool $is_inline
      * @param string $default_tab array('login', 'register', 'lost-password')
+     * @param string $role
+     * @param bool $role_silent
      */
-    public function render_form($is_inline = false, $default_tab = 'login' ) {
+    public function render_form( $is_inline = false, $default_tab = 'login', $role = '', $role_silent = false ) {
 
         if ( !in_array($default_tab, array('login', 'register', 'lost-password')) ) {
             $default_tab = 'login';

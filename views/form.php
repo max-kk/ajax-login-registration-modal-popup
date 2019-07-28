@@ -3,6 +3,7 @@
 /**
  * @version 1.03
  * Changelog:
+ *  1.05: $role_silent and $role apply
  *  1.04: font icons classes, removed labels text, added "aria-label", fixed registration password placeholder
  *  1.03: added password confirmation field
  *  1.02: added "redirect_url" field
@@ -11,6 +12,8 @@
 defined( 'ABSPATH' ) || exit;
 
 /** @var bool $is_inline */
+/** @var string $role */
+/** @var bool $role_silent */
 
 /** @var string $default_tab "login"/"register"/"lost-password" */
 $fields_required = ('both' === lrm_setting('advanced/validation/type')) ? 'required' : '';
@@ -183,13 +186,16 @@ $redirect_to = !empty( $_GET['redirect_to'] ) ? urldecode($_GET['redirect_to']) 
                         </div>
 	                <?php endif; ?>
                     
-                    <?php if( lrm_is_pro() && lrm_setting('user_role/general/on') ): ?>
-                        <div class="fieldset fieldset--user_role">
+                    <?php if( lrm_is_pro() && lrm_setting('user_role/general/on') ):
+                        $active_roles_list = LRM_PRO_Roles_Manager::get_active_roles_flat();
+                        $role_silent = in_array($role, $active_roles_list) && $role_silent ? true : false;
+                    ?>
+                        <div class="fieldset fieldset--user_role" style="<?= $role_silent ? 'display: none;' : '' ?>">
                             <label class="image-replace lrm-user_role lrm-ficon-lock" for="signup-username" title="<?= esc_attr(lrm_setting('messages/registration/user_role', true)); ?>"></label>
                             <select name="user_role" class="full-width has-padding has-border" id="user_role" required>
                                 <option value=""><?php echo lrm_setting('messages/registration/user_role', true); ?></option>
-                                <?php foreach ( LRM_PRO_Roles_Manager::get_active_roles_flat() as $active_role_key => $active_role_label ) : ?>
-                                    <option value="<?= $active_role_key; ?>" data-label="<?= esc_attr($active_role_label); ?>"><?= $active_role_label; ?></option>
+                                <?php foreach ( $active_roles_list as $active_role_key => $active_role_label ) : ?>
+                                    <option value="<?= $active_role_key; ?>" data-label="<?= esc_attr($active_role_label); ?>" <?php selected($active_role_label, $role) ?>><?= $active_role_label; ?></option>
                                 <?php endforeach; ?>
                             </select>
                             <span class="lrm-error-message"></span>

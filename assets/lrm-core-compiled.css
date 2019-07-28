@@ -178,6 +178,12 @@ a.jetpack-sso { display: block; width: 100%; text-align: center; text-decoration
 @media (min-height: 33.875em) { .um .picker--opened .picker__frame { top: 50%; } }
 .lrm-grecaptcha > div { margin: auto; }
 
+.lrm-math-captcha-wrap { padding: 5px 0; text-align: center; }
+.lrm-math-captcha-wrap input.has-padding.has-border { width: 64px !important; text-align: center; }
+.lrm-math-captcha-wrap input.has-padding.has-border[disabled] { color: gray; }
+.lrm-user-modal-container .lrm-math-captcha-wrap input.lrm-match-value { font-weight: bold; }
+.lrm-math-captcha-wrap .lrm-math-captcha-label { font-weight: bold; }
+
 .lrm-nice-checkbox { position: absolute; z-index: -1; opacity: 0; /* Hover and focus states */ /* Checked state */ /* Hover state whilst checked */ /* Disabled state */ /* Check mark */ /* Show check mark */ /* Checkbox tick */ }
 .lrm-nice-checkbox__label { position: relative; padding-left: 27px; font-size: 14px; vertical-align: middle; margin: 13px 0 3px; display: block; font-weight: 400; line-height: 20px; }
 body.rtl .lrm-nice-checkbox__label { padding-right: 27px; padding-left: 0; }

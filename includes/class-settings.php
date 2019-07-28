@@ -926,7 +926,7 @@ class LRM_Settings {
                     'options'     => array(
                         ''               => '= Please select =',
                         'reCaptcha'      => 'reCaptcha (api keys are required) [PRO]',
-                        'MatchCaptcha'    => 'MatchCaptcha (soon) [PRO]',
+                        'MatchCaptcha'    => 'MatchCaptcha (less secure but faster) [PRO]',
                     ),
                 ),
                 'default'     => '',
@@ -993,6 +993,9 @@ class LRM_Settings {
                 'sanitize'    => array( new LRM_Field_Password(), 'sanitize' ),
             ) )
             ->description( __('Find them here: https://www.google.com/recaptcha/admin', 'ajax-login-and-registration-modal-popup' ) );
+
+	    $SECURITY_SECTION->add_group( __( 'Match Captcha', 'ajax-login-and-registration-modal-popup' ), 'match_captcha' )
+		    ->description('Label/error messages can be changed on the Expressions > PRO tab');
 
 
         if ( !lrm_is_pro() ) {

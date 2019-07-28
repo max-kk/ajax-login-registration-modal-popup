@@ -50,7 +50,7 @@ class LRM_Roles_Manager {
                          . '<br/>'
                     . sprintf(__( 'Use <code>data-lrm-role="Customer"</code> with the label of your role and <code>data-lrm-role-silent</code> to select specified role and hide role selector.<br/>Example: <code>%s</code>', 'ajax-login-and-registration-modal-popup' ), esc_attr('<a href="#register" class="lrm-register" data-lrm-role="Customer" data-lrm-role-silent>Register</a>'))
                          . '<br/>'
-                     . __( '<strong>Inline:</strong> Use the shortcode attributes <code>role="Customer"</code> and <code>role-silent="yes"</code> (optional) to select specified role and hide role selector. Example: <code>[lrm_form default_tab="login" logged_in_message="You have been already logged in!" role="customer" role-silent="yes"]</code>', 'ajax-login-and-registration-modal-popup' ),
+                     . __( '<strong>Inline:</strong> Use the shortcode attributes <code>role="Customer"</code> and <code>role_silent="yes"</code> (optional) to select specified role and hide role selector. Example: <code>[lrm_form default_tab="login" logged_in_message="You have been already logged in!" role="customer" role-silent="yes"]</code>', 'ajax-login-and-registration-modal-popup' ),
 		        'default'     => false,
 		        'addons'      => array('label' => __( 'Yes' )),
 		        'render'      => array( new CoreFields\Checkbox(), 'input' ),

@@ -459,11 +459,15 @@ var LRM = LRM ? LRM : {};
 		 * @since 1.51
 		 */
 		$( 'body' ).on( 'keyup', '#lrm-password1,#lrm-password2', function( event ) {
-			var passwordStrength = checkPasswordStrength(
+			var passwordStrength = LRM.checkPasswordStrength(
 				  $( "#lrm-password1" ),         // First password field
 				  null,         // First password field
 				  $( "#lrm-password1" ).parent().parent().find(".lrm-pass-strength-result")           // Strength meter
 			);
+
+			if ( typeof passwordStrength == "undefined" ) {
+				return;
+			}
 
 			if ( !passwordStrength || passwordStrength == 2 ) {
 				$(".pw-weak").show()
@@ -556,16 +560,21 @@ var LRM = LRM ? LRM : {};
 	 * @param $strengthResult
 	 * @returns {*}
 	 */
-	function checkPasswordStrength( $pass1, $pass2, $strengthResult ) {
-		LRM.loadPasswordMeter(function() {
+	LRM.checkPasswordStrength = function( $pass1, $pass2, $strengthResult ) {
+
+		return LRM.loadPasswordMeter(function() {
 			var pass1 = $pass1.val();
+			if ( !pass1 ) {
+				$strengthResult.data('status','empty');
+				return;
+			}
 			if (!$pass2) {
 				var pass2 = pass1;
 			} else {
 				var pass2 = $pass2.val();
 			}
 
-			$strengthResult.removeClass('short bad good strong');
+			//$strengthResult.removeClass('short bad good strong');
 
 			// Extend our blacklist array with those from the inputs & site data
 			var blacklistArray = ["querty", "password", "132", "123"].concat(wp.passwordStrength.userInputBlacklist())
@@ -577,25 +586,25 @@ var LRM = LRM ? LRM : {};
 			switch (strength) {
 
 				case 2:
-					$strengthResult.addClass('bad').html(LRM.l10n.password_is_bad);
+					$strengthResult.attr('data-status','bad').html(LRM.l10n.password_is_bad);
 					break;
 
 				case 3:
-					$strengthResult.addClass('good').html(LRM.l10n.password_is_good);
+					$strengthResult.attr('data-status','good').html(LRM.l10n.password_is_good);
 					break;
 
 				case 4:
-					$strengthResult.addClass('strong').html(LRM.l10n.password_is_strong);
+					$strengthResult.attr('data-status','strong').html(LRM.l10n.password_is_strong);
 					break;
 
 				case 5:
 					if ($pass2) {
-						$strengthResult.addClass('short').html(LRM.l10n.passwords_is_mismatch);
+						$strengthResult.attr('data-status','short').html(LRM.l10n.passwords_is_mismatch);
 						break;
 					}
 
 				default:
-					$strengthResult.addClass('short').html(LRM.l10n.password_is_short);
+					$strengthResult.attr('data-status','short').html(LRM.l10n.password_is_short);
 
 			}
 
@@ -609,8 +618,7 @@ var LRM = LRM ? LRM : {};
 	LRM.passwordMeterIsLoading = false;
 	LRM.loadPasswordMeter = function ( callback ) {
 		if ( LRM.passwordMeterIsLoaded ) {
-			callback();
-			return;
+			return callback();
 		}
 		// From "wp-admin/js/password-strength-meter.min.js?ver=5.0.4"
 		window.wp=window.wp||{};var passwordStrength;!function(a){wp.passwordStrength={meter:function(b,c,d){if(a.isArray(c)||(c=[c.toString()]),b!=d&&d&&d.length>0)return 5;if("undefined"==typeof window.zxcvbn)return-1;var e=zxcvbn(b,c);return e.score},userInputBlacklist:function(){var b,c,d,e,f=[],g=[],h=["user_login","first_name","last_name","nickname","display_name","email","url","description","weblog_title","admin_email"];for(f.push(document.title),f.push(document.URL),c=h.length,b=0;b<c;b++)e=a("#"+h[b]),0!==e.length&&(f.push(e[0].defaultValue),f.push(e.val()));for(d=f.length,b=0;b<d;b++)f[b]&&(g=g.concat(f[b].replace(/\W/g," ").split(" ")));return g=a.grep(g,function(b,c){return!(""===b||4>b.length)&&a.inArray(b,g)===c})}},passwordStrength=wp.passwordStrength.meter}(jQuery);
