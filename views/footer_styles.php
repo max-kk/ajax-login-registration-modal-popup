@@ -7,8 +7,14 @@ body.logged-in [class*='lrm-hide-if-logged-in'] { display: none !important; }
 body:not(.logged-in) .lrm-show-if-logged-in { display: none !important; }
 body:not(.logged-in) [class*='lrm-show-if-logged-in'] { display: none !important; }
 <?php if ( 'svg' !== $icons_selected ) :
+$icons_map = [
+    'icomoon'   => 'ico-icomoon',
+    'material'  => 'ma-icomoon',
+    'fa4'       => 'fa4-icomoon',
+    'fa5-free'  => 'fa5-free',
+];
 $font_name = 'lrm-' . $icons_selected . '-icomoon';
-$font_path =  LRM_URL . 'assets/lrm-' . $icons_selected . '/fonts/lrm-' . $icons_selected;
+$font_path =  LRM_URL . 'assets/lrm-' . $icons_selected . '/fonts/lrm-' . $icons_map[$icons_selected];
 ?>
 @font-face {
     font-family: '<?= $font_name; ?>'; font-weight: normal; font-style: normal;

@@ -226,15 +226,15 @@ a.jetpack-sso {
 }
 
 
-.lrm-math-captcha-wrap {
+.lrm-form .lrm-math-captcha-wrap {
     padding: 5px 0;
     text-align: center;
 
-    input.has-padding.has-border {
+    input.has-border {
         width: 64px !important;
         text-align: center;
     }
-    input.has-padding.has-border[disabled] {
+    input.has-border[disabled] {
         color: gray;
     }
     .lrm-user-modal-container & input.lrm-match-value {

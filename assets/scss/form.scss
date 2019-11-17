@@ -27,6 +27,12 @@ $fieldset-margin-tb: 1.4em;
         font-size: 14px;
     }
 
+    &.--registration-done {
+        padding-bottom: 1em !important;
+        & > div:not(.lrm-form-message) {
+            display: none;
+        }
+    }
 }
 
 @mixin lrm-image-replace-core() {

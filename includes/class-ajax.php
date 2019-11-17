@@ -30,6 +30,8 @@ class LRM_AJAX
 
 	    do_action('lrm/login_pre_verify', $info);
 
+	    $info = apply_filters('lrm/login_info_filter', $info);
+
         if ( !$info['user_login'] ) {
             wp_send_json_error(array('message' => LRM_Settings::get()->setting('messages/login/no_login'), 'for'=>'username'));
         }
@@ -55,6 +57,11 @@ class LRM_AJAX
             }
 
             if ( !$user ) {
+                if ( class_exists('SimpleUserLogger') ) {
+                    $login_error = new WP_Error();
+                    $login_error->add( 'invalid_username', 'invalid_username' );
+                    SimpleHistory::get_instance()->getInstantiatedLoggerBySlug('SimpleUserLogger')->onAuthenticate($login_error, $user_name, $info['user_password']);
+                }
                 wp_send_json_error(array('message' => LRM_Settings::get()->setting('messages/login/invalid_login'), 'for' => 'username'));
             }
         }
@@ -66,6 +73,8 @@ class LRM_AJAX
                 force_ssl_admin(true);
             }
         }
+
+        do_action('lrm/login_pre_signon/after_user_check', $info, $user);
 
         $user_signon = wp_signon( $info, $secure_cookie );
 
@@ -94,6 +103,11 @@ class LRM_AJAX
         } else {
 
             do_action('lrm/login_successful', $user_signon);
+
+            // WP Last Login plugin compatibility
+            if ( class_exists('Obenland_Wp_Last_Login') ) {
+	            update_user_meta( $user_signon->ID, 'wp-last-login', time() );
+            }
 
             $message = lrm_setting('general/registration/reload_after_login', true) ?
                 lrm_setting('messages/login/success', true) : lrm_setting('messages/login/success_no_reload', true);
@@ -128,7 +142,7 @@ class LRM_AJAX
         $email = sanitize_email($_POST['email']);
 
         // Post values
-        if ( ! LRM_Settings::get()->setting('general_pro/all/hide_username') ) {
+        if ( ! lrm_setting('general_pro/all/hide_username') ) {
             $user_login = sanitize_user(trim($_POST['username']));
         } else {
             $email_arr = explode('@', $email);
@@ -139,7 +153,6 @@ class LRM_AJAX
             if ( $user_exists ) {
                 $user_login .= '_' . rand(99, 999);
             }
-
         }
 
         $display_first_and_last_name = LRM_Settings::get()->setting('general/registration/display_first_and_last_name');
@@ -215,6 +228,7 @@ class LRM_AJAX
             $userdata['first_name'] = $first_name;    
             $userdata['last_name'] = $last_name;
             $userdata['nickname'] = $first_name . ' ' . $last_name;
+            $userdata['display_name'] = $first_name . ' ' . $last_name;
         } else {
             $userdata['nickname'] = $user_login;
         }
@@ -311,8 +325,14 @@ class LRM_AJAX
                     LRM_Settings::get()->setting('mails/admin_new_user/body')
                 );
 
+                $admin_email = lrm_setting('mails/admin_new_user/to');
+
+                if ( !$admin_email || !is_email($admin_email) ) {
+	                $admin_email = get_option('admin_email');
+                }
+
                 $wp_new_user_notification_email_admin = array(
-                    'to' => get_option('admin_email'),
+                    'to' => $admin_email,
                     /* translators: Password change notification email subject. %s: Site title */
                     'subject' => LRM_Settings::get()->setting('mails/admin_new_user/subject'),
                     'message' => $mail_body,
@@ -495,11 +515,30 @@ class LRM_AJAX
         if( $errors->get_error_messages() ) {
             do_action('lrm/lost_password_fail', $errors);
 
+            if ( class_exists('SimpleLogger') ) {
+                SimpleLogger()->warning("Password reset request error for user with login '{user_login}': {message}", [
+                    '_initiator' => SimpleLoggerLogInitiators::WEB_USER,
+                    'message' => implode('# ', $errors->get_error_messages()),
+                    'user_login' => $account,
+                    '_occasionsID' => 'lrm/lost_password_fail',
+                ]);
+            }
+
             wp_send_json_error(array(
                 'message'=> implode('<br/>', $errors->get_error_messages())
             ));
         } else {
             do_action('lrm/lost_password_successful', false);
+
+            if ( class_exists('SimpleLogger') ) {
+                SimpleLogger()->notice("Requested a password reset link for user with login '{user_login}' and email '{user_email}'", [
+                    '_initiator' => SimpleLoggerLogInitiators::WEB_USER,
+                    'message' => $mail_body,
+                    'user_login' => $user->user_login,
+                    'user_email' => $user->user_email,
+                    '_occasionsID' => 'lrm/lost_password_successful',
+                ]);
+            }
 
             wp_send_json_success(array(
                 'message'=>LRM_Settings::get()->setting('messages/lost_password/success')
@@ -568,11 +607,11 @@ class LRM_AJAX
      */
     public static function _validate_password_reset($errors ) {
         if ( ! isset( $_REQUEST['key'] ) || empty( $_REQUEST['key'] ) ) {
-            $errors->add( 'empty_key', __( 'Your password reset link key is missing.' ) );
+            $errors->add( 'empty_key', lrm_setting('messages/password_reset/empty_key', true) );
         }
 
         if ( ! isset( $_REQUEST['login'] ) || empty( $_REQUEST['login'] ) ) {
-            $errors->add( 'empty_login', __( 'Your password reset link login is missing.' ) );
+	        $errors->add( 'empty_login', lrm_setting('messages/password_reset/empty_login', true) );
         }
 
         if ( $errors->get_error_code() ) {

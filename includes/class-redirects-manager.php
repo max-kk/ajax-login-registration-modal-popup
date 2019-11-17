@@ -29,6 +29,7 @@ class LRM_Redirects_Manager {
                 'addons'      => array(
                     'options'     => array(
                         'none' => 'No action',
+                        'hide' => 'Hide the modal and elements with classes ".lrm-hide-if-logged-in"',
                         'reload' => 'Reload (refresh) page',
                         'redirect' => 'Redirect to page [PRO]',
                     ),
@@ -143,7 +144,7 @@ class LRM_Redirects_Manager {
             $redirect_to = LRM_PRO_Redirects_Manager::get_redirect( $action, $user_ID );
         }
 
-        return apply_filters('lrm/redirect_url', $redirect_to, $action);
+        return apply_filters('lrm/redirect_url', $redirect_to, $action, $user_ID);
     }
     
 }

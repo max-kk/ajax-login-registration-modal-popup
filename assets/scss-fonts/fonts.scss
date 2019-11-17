@@ -52,6 +52,35 @@
 .lrm-ficon-register {
     @include lrm-font-icon($lrm-ico-icon-member, $lrm-icon-person_add, $lrm-fa4-icon-user-plus, $fa-var-user-plus);
 }
+// NEW 09.2019
+.lrm-ficon-phone {
+    @include lrm-font-icon($lrm-ico-icon-phone, $lrm-icon-phone, $lrm-fa4-icon-phone, $fa-var-phone);
+}
+.lrm-ficon-mobile-phone {
+    @include lrm-font-icon($lrm-ico-icon-cell-phone, $lrm-icon-phone_android, $lrm-fa4-icon-mobile-phone, $fa-var-mobile-alt);
+    &:before {
+        top: 1px;
+        position: relative;
+    }
+}
+.lrm-ficon-location {
+    @include lrm-font-icon($lrm-ico-icon-location, $lrm-icon-edit_location, $lrm-fa4-icon-map-marker, $fa-var-map-marker-alt);
+    &:before {
+        top: 1px;
+        position: relative;
+    }
+}
+.lrm-ficon-map {
+    @include lrm-font-icon($lrm-ico-icon-map, $lrm-icon-map, $lrm-fa4-icon-map-o, $fa-var-map);
+}
+.lrm-ficon-compass {
+    @include lrm-font-icon($lrm-ico-icon-compass, $lrm-icon-location_city, $lrm-fa4-icon-location-arrow, $fa-var-location-arrow);
+    &:before {
+        top: 1px;
+        position: relative;
+    }
+}
+
 
 [class^="lrm-ficon-"], [class*=" lrm-ficon-"] {
     speak: none;

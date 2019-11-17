@@ -2,7 +2,7 @@
 Contributors: kaminskym
 Tags: login, registration, register, lost password, modal, popup, ajax, form
 Requires at least: 4.1
-Tested up to: 5.1.1
+Tested up to: 5.2.2
 Requires PHP: 5.5
 Stable tag: trunk
 License: GPLv2 or later
@@ -29,7 +29,8 @@ Easy to integrate modal with Login and Registration features + inline form using
 9. Skins support (1 default skin + 2 new in PRO version) + possible to customize Skins colors via WP Customizer
 10. Powerful after-login/registration/logout actions (reload, redirects, etc)
 11. Role based redirects (in PRO)
-12. In-build reCaptcha (in PRO)
+12. In-build reCaptcha & MatchCaptcha (in PRO)
+12. Google Authenticator plugin support (in PRO)
 13. Developer support (via forums or personal via email for PRO users)
 
 **Customization options:**
@@ -90,6 +91,7 @@ Easy to integrate modal with Login and Registration features + inline form using
 13. [Jetpack - SSO login](https://jetpack.com/support/sso/) [Wordpress.com login button >>](https://monosnap.com/file/4Na5FYYONRj79jnLBmQFK3hjnMJQDR)
 14. [WC Vendors & WC Vendors Pro](https://wordpress.org/plugins/wc-vendors/) [Apply to become vendor checkbox >>](https://monosnap.com/file/TmpY4bYTHwF36ouN6fGpdjKZi5k3jz)
 15. [MailChimp for WordPress](https://wordpress.org/plugins/mailchimp-for-wp/) [Subscribe to newsletter checkbox >>](https://monosnap.com/file/sVpsvTnIzQoplRA7ap3IBPfb81kPuV)
+15. [Google Authenticator](https://wordpress.org/plugins/google-authenticator/) [Google Authenticator field during the login](https://docs.maxim-kaminsky.com/lrm/kb/2-factor-login-otp-verification/)
 16. Math Captcha - soon
 17. Easy Digital Downloads - soon
 18. [Request other plugin >>](https://maxim-kaminsky.com/shop/contact-me/)
@@ -115,7 +117,7 @@ Example: `<a href="/wp-login.php" class="lrm-login">Login</a>`
 
 **Inline mode:**
 
-Use shortcode `[lrm_form default_tab="login" logged_in_message="You have been already logged in!"]`
+Use shortcode `[lrm_form default_tab="login" logged_in_message="You are currently logged in!"]`
 You can pass to **default_tab** params: "login", "register" or "lost-password".
 Param **logged_in_message** will be displayed if used is logged in (html is allowed).
 
@@ -178,18 +180,25 @@ If you have login issue with Adminize plugin - go to Adminize plugin settings an
 
 == Screenshots ==
 
-1. Login tab
-2. Registration tab
+1. Login tab + Icomoon Icons
+2. Registration tab + Material Icons
 3. Lost password tab
-4. Admin settings - General
-5. Admin settings - Advanced
-6. Admin settings - Emails
-7. Admin settings - Expressions
-8. Integration link or button element
-9. Integration to menu item
-10. Admin settings - General [PRO]
-11. Admin settings - Expressions [PRO]
-12. Registration with Password field [PRO]
+4. Inline example
+5. Integration link or button element
+6. Integration to menu item
+7. Admin settings - General
+8. Admin settings - Advanced
+9. Admin settings - Emails
+10. Admin settings - Expressions
+11. Admin settings - Skins
+12. Admin settings - Actions/Redirects
+13. Admin settings - Auto-trigger [PRO]
+14. Admin settings - Auto-trigger (post settings) [PRO]
+15. Admin settings - Integrations [PRO]
+16. Admin settings - Pages
+17. Admin settings - Registration user role [PRO]
+18. Admin settings - Security (captcha) [PRO]
+19. Registration with Password field [PRO]
 
 == Known issues ==
 
@@ -197,7 +206,19 @@ If you have login issue with Adminize plugin - go to Adminize plugin settings an
 
 == Changelog ==
 
-= VER 2.05 - 26/04/2019 =
+= VER 2.07 - 10/10/2019 =
+
+- Fixed issue with nickname used and a display name in WooCommerce and Buddypress
+- Added a few password reset missing messages to translations
+- Added option to send admin notify email to the custom email
+- Compatibility with a Simple History plugin
+- Updated the screenshots
+
+= VER 2.06 - 18/08/2019 =
+
+- Match Captcha small tweaks
+
+= VER 2.05 - 10/08/2019 =
 
 - Fixed issues with "<>" characters in the user password
 - Removed deprecated function screen_icon()

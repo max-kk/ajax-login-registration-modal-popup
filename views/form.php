@@ -68,7 +68,6 @@ $redirect_to = !empty( $_GET['redirect_to'] ) ? urldecode($_GET['redirect_to']) 
                     <?php endif; ?>
                 </div>
 
-
                 <div class="fieldset">
 	                <?php if ( apply_filters('lrm/form/use_nice_checkbox', true) ): ?>
                     <label class="lrm-nice-checkbox__label lrm-remember-me-checkbox"><?php echo lrm_setting('messages/login/remember-me', true); ?>
@@ -83,10 +82,12 @@ $redirect_to = !empty( $_GET['redirect_to'] ) ? urldecode($_GET['redirect_to']) 
                     <?php endif; ?>
                 </div>
 
-                <div class="lrm-integrations lrm-integrations--login">
+                <div class="lrm-integrations lrm-integrations--login lrm-integrations-before-btn">
                     <?php do_action( 'lrm_login_form' ); // Deprecated ?>
                     <?php do_action( 'lrm/login_form' ); ?>
                 </div>
+
+                <div class="lrm-integrations-otp"></div>
 
                 <div class="fieldset fieldset--submit">
                     <button class="full-width has-padding" type="submit">
@@ -123,7 +124,7 @@ $redirect_to = !empty( $_GET['redirect_to'] ) ? urldecode($_GET['redirect_to']) 
                 <?php LRM_Pro_BuddyPress::render_registration_form(); ?>
             <?php else: ?>
 
-                <form class="lrm-form" action="#0" data-action="registration">
+                <form class="lrm-form" action="#0" data-action="registration" data-lpignore="true">
 
                     <div class="lrm-integrations lrm-integrations--register">
                         <?php do_action( 'lrm/register_form/before' ); ?>
@@ -135,7 +136,7 @@ $redirect_to = !empty( $_GET['redirect_to'] ) ? urldecode($_GET['redirect_to']) 
                         <div class="fieldset fieldset--username">
 	                        <?php $username_label = esc_attr( lrm_setting('messages/registration/username', true) ); ?>
                             <label class="image-replace lrm-username lrm-ficon-user" for="signup-username" title="<?= $username_label; ?>"></label>
-                            <input name="username" class="full-width has-padding has-border" id="signup-username" type="text" placeholder="<?= $username_label; ?>" <?= $fields_required; ?> aria-label="<?= $username_label; ?>">
+                            <input name="username" class="full-width has-padding has-border" id="signup-username" type="text" placeholder="<?= $username_label; ?>" <?= $fields_required; ?> aria-label="<?= $username_label; ?>" autocomplete="off" data-lpignore="true">
                             <span class="lrm-error-message"></span>
                         </div>
                     <?php endif; ?>
@@ -146,12 +147,12 @@ $redirect_to = !empty( $_GET['redirect_to'] ) ? urldecode($_GET['redirect_to']) 
 	                    <?php $lname_label = esc_attr( lrm_setting('messages/registration/last-name', true) ); ?>
                         <div class="lrm-col-half-width lrm-col-first fieldset--first-name">
                             <label class="image-replace lrm-username lrm-ficon-user" for="signup-first-name" title="<?= $fname_label; ?>"></label>
-                            <input name="first-name" class="full-width has-padding has-border" id="signup-first-name" type="text" placeholder="<?= $fname_label; ?>" <?= $fields_required; ?> aria-label="<?= $fname_label; ?>">
+                            <input name="first-name" class="full-width has-padding has-border" id="signup-first-name" type="text" placeholder="<?= $fname_label; ?>" <?= $fields_required; ?> aria-label="<?= $fname_label; ?>" autocomplete="off" data-lpignore="true">
                             <span class="lrm-error-message"></span>
                         </div>
                         <div class="lrm-col-half-width lrm-col-last fieldset--last-name">
                             <label class="image-replace lrm-username lrm-ficon-user" for="signup-last-name" title="<?= $lname_label; ?>"></label>
-                            <input name="last-name" class="full-width has-padding has-border" id="signup-last-name" type="text" placeholder="<?= $lname_label; ?>" aria-label="<?= $lname_label; ?>">
+                            <input name="last-name" class="full-width has-padding has-border" id="signup-last-name" type="text" placeholder="<?= $lname_label; ?>" aria-label="<?= $lname_label; ?>" autocomplete="off" data-lpignore="true">
                             <span class="lrm-error-message"></span>
                         </div>
                     </div>
@@ -227,7 +228,7 @@ $redirect_to = !empty( $_GET['redirect_to'] ) ? urldecode($_GET['redirect_to']) 
                         </div>
                     <?php endif; ?>
 
-                    <div class="lrm-info lrm-info--register">
+                    <div class="lrm-integrations lrm-integrations--register lrm-info lrm-info--register">
                         <?php do_action( 'lrm/register_form/before_button' ); ?>
                     </div>
 

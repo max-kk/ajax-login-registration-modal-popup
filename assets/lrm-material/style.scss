@@ -2,13 +2,14 @@
 
 @font-face {
   font-family: '#{$icomoon-font-family}';
-  src:  url('#{$icomoon-font-path}/#{$icomoon-font-family}.eot?i8nbsv');
-  src:  url('#{$icomoon-font-path}/#{$icomoon-font-family}.eot?i8nbsv#iefix') format('embedded-opentype'),
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.ttf?i8nbsv') format('truetype'),
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff?i8nbsv') format('woff'),
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.svg?i8nbsv##{$icomoon-font-family}') format('svg');
+  src:  url('#{$icomoon-font-path}/#{$icomoon-font-family}.eot?n4wh8c');
+  src:  url('#{$icomoon-font-path}/#{$icomoon-font-family}.eot?n4wh8c#iefix') format('embedded-opentype'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.ttf?n4wh8c') format('truetype'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff?n4wh8c') format('woff'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.svg?n4wh8c##{$icomoon-font-family}') format('svg');
   font-weight: normal;
   font-style: normal;
+  font-display: block;
 }
 
 [class^="lrm-icon-"], [class*=" lrm-icon-"] {
@@ -26,6 +27,21 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.lrm-icon-add_a_photo {
+  &:before {
+    content: $lrm-icon-add_a_photo; 
+  }
+}
+.lrm-icon-phone {
+  &:before {
+    content: $lrm-icon-phone; 
+  }
+}
+.lrm-icon-edit_location {
+  &:before {
+    content: $lrm-icon-edit_location; 
+  }
+}
 .lrm-icon-exit_to_app {
   &:before {
     content: $lrm-icon-exit_to_app; 
@@ -36,9 +52,19 @@
     content: $lrm-icon-lock; 
   }
 }
+.lrm-icon-location_city {
+  &:before {
+    content: $lrm-icon-location_city; 
+  }
+}
 .lrm-icon-mail_outline {
   &:before {
     content: $lrm-icon-mail_outline; 
+  }
+}
+.lrm-icon-map {
+  &:before {
+    content: $lrm-icon-map; 
   }
 }
 .lrm-icon-no_encryption {
@@ -49,6 +75,11 @@
 .lrm-icon-person_add {
   &:before {
     content: $lrm-icon-person_add; 
+  }
+}
+.lrm-icon-phone_android {
+  &:before {
+    content: $lrm-icon-phone_android; 
   }
 }
 .lrm-icon-visibility {

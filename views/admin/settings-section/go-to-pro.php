@@ -1,6 +1,6 @@
 <ul>
 	<li>6 months of personal support from developer via Email</li>
-	<li>Troubleshooting problems and conflicts with other plugins/themes (1 site)</li>
+	<li>Troubleshooting problems and conflicts with other plugins/themes</li>
 	<li>Unlimited plugin updates</li>
 	<li>Compatibility with other popular plugins (list below)</li>
 </ul>

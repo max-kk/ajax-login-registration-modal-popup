@@ -2,13 +2,14 @@
 
 @font-face {
   font-family: '#{$icomoon-font-family}';
-  src:  url('#{$icomoon-font-path}/#{$icomoon-font-family}.eot?wbskvd');
-  src:  url('#{$icomoon-font-path}/#{$icomoon-font-family}.eot?wbskvd#iefix') format('embedded-opentype'),
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.ttf?wbskvd') format('truetype'),
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff?wbskvd') format('woff'),
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.svg?wbskvd##{$icomoon-font-family}') format('svg');
+  src:  url('#{$icomoon-font-path}/#{$icomoon-font-family}.eot?n131r4');
+  src:  url('#{$icomoon-font-path}/#{$icomoon-font-family}.eot?n131r4#iefix') format('embedded-opentype'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.ttf?n131r4') format('truetype'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff?n131r4') format('woff'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.svg?n131r4##{$icomoon-font-family}') format('svg');
   font-weight: normal;
   font-style: normal;
+  font-display: block;
 }
 
 [class^="lrm-ico-icon-"], [class*=" lrm-ico-icon-"] {
@@ -26,6 +27,61 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.lrm-ico-icon-map {
+  &:before {
+    content: $lrm-ico-icon-map; 
+  }
+}
+.lrm-ico-icon-compass {
+  &:before {
+    content: $lrm-ico-icon-compass; 
+  }
+}
+.lrm-ico-icon-location {
+  &:before {
+    content: $lrm-ico-icon-location; 
+  }
+}
+.lrm-ico-icon-mobile {
+  &:before {
+    content: $lrm-ico-icon-mobile; 
+  }
+}
+.lrm-ico-icon-cell-phone {
+  &:before {
+    content: $lrm-ico-icon-cell-phone; 
+  }
+}
+.lrm-ico-icon-handheld {
+  &:before {
+    content: $lrm-ico-icon-handheld; 
+  }
+}
+.lrm-ico-icon-phone {
+  &:before {
+    content: $lrm-ico-icon-phone; 
+  }
+}
+.lrm-ico-icon-telephone {
+  &:before {
+    content: $lrm-ico-icon-telephone; 
+  }
+}
+.lrm-ico-icon-contact {
+  &:before {
+    content: $lrm-ico-icon-contact; 
+  }
+}
+.lrm-ico-icon-support {
+  &:before {
+    content: $lrm-ico-icon-support; 
+  }
+}
+.lrm-ico-icon-call {
+  &:before {
+    content: $lrm-ico-icon-call; 
+  }
+}
 .lrm-ico-icon-enter {
   &:before {
     content: $lrm-ico-icon-enter; 

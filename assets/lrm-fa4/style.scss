@@ -2,13 +2,14 @@
 
 @font-face {
   font-family: '#{$icomoon-font-family}';
-  src:  url('#{$icomoon-font-path}/#{$icomoon-font-family}.eot?txl2j3');
-  src:  url('#{$icomoon-font-path}/#{$icomoon-font-family}.eot?txl2j3#iefix') format('embedded-opentype'),
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.ttf?txl2j3') format('truetype'),
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff?txl2j3') format('woff'),
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.svg?txl2j3##{$icomoon-font-family}') format('svg');
+  src:  url('#{$icomoon-font-path}/#{$icomoon-font-family}.eot?7oxu9n');
+  src:  url('#{$icomoon-font-path}/#{$icomoon-font-family}.eot?7oxu9n#iefix') format('embedded-opentype'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.ttf?7oxu9n') format('truetype'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff?7oxu9n') format('woff'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.svg?7oxu9n##{$icomoon-font-family}') format('svg');
   font-weight: normal;
   font-style: normal;
+  font-display: block;
 }
 
 [class^="lrm-fa4-icon-"], [class*=" lrm-fa4-icon-"] {
@@ -41,6 +42,16 @@
     content: $lrm-fa4-icon-lock; 
   }
 }
+.lrm-fa4-icon-camera {
+  &:before {
+    content: $lrm-fa4-icon-camera; 
+  }
+}
+.lrm-fa4-icon-map-marker {
+  &:before {
+    content: $lrm-fa4-icon-map-marker; 
+  }
+}
 .lrm-fa4-icon-eye {
   &:before {
     content: $lrm-fa4-icon-eye; 
@@ -56,6 +67,26 @@
     content: $lrm-fa4-icon-sign-in; 
   }
 }
+.lrm-fa4-icon-phone {
+  &:before {
+    content: $lrm-fa4-icon-phone; 
+  }
+}
+.lrm-fa4-icon-mobile {
+  &:before {
+    content: $lrm-fa4-icon-mobile; 
+  }
+}
+.lrm-fa4-icon-mobile-phone {
+  &:before {
+    content: $lrm-fa4-icon-mobile-phone; 
+  }
+}
+.lrm-fa4-icon-location-arrow {
+  &:before {
+    content: $lrm-fa4-icon-location-arrow; 
+  }
+}
 .lrm-fa4-icon-unlock-alt {
   &:before {
     content: $lrm-fa4-icon-unlock-alt; 
@@ -69,6 +100,11 @@
 .lrm-fa4-icon-user-plus {
   &:before {
     content: $lrm-fa4-icon-user-plus; 
+  }
+}
+.lrm-fa4-icon-map-o {
+  &:before {
+    content: $lrm-fa4-icon-map-o; 
   }
 }
 .lrm-fa4-icon-user-o {

@@ -39,8 +39,8 @@ list($rp_key, $rp_login) = $rp_data;
 
             <div class="fieldset fieldset--password1">
                 <div class="lrm-position-relative">
-                    <label class="image-replace lrm-password"><?php echo esc_attr( lrm_setting('messages_pro/registration/password', true) ); ?></label>
-                    <input name="password1" class="full-width has-padding has-border" id="lrm-password1" data-relation="lrm-password2" type="text"  placeholder="<?php echo esc_attr( lrm_setting('messages_pro/registration/password', true) ); ?>" <?= $fields_required; ?> value="<?php echo esc_attr( wp_generate_password( 16 ) ); ?>" autocomplete="new-password">
+                    <label class="image-replace lrm-password lrm-ficon-key"><?php echo esc_attr( lrm_setting('messages_pro/registration/password', true) ); ?></label>
+                    <input name="password1" class="full-width has-padding has-border" id="lrm-password1" data-relation="lrm-password2" type="text"  placeholder="<?php echo esc_attr( lrm_setting('messages/password/password', true) ); ?>" <?= $fields_required; ?> value="<?php echo esc_attr( wp_generate_password( 16 ) ); ?>" autocomplete="new-password">
                     <span class="lrm-error-message"></span>
                     <span class="hide-password lrm-ficon-eye" data-show="<?php echo lrm_setting('messages/other/show_pass'); ?>" data-hide="<?php echo lrm_setting('messages/other/hide_pass'); ?>" aria-label="Show"></span>
                 </div>
@@ -51,7 +51,7 @@ list($rp_key, $rp_login) = $rp_data;
                 <div class="pw-weak" style="display: none;">
                     <label>
                         <input type="checkbox" name="pw_weak" class="pw-checkbox" />
-                        <?php echo lrm_setting('messages/password/use_weak_password'); ?>
+                        <?php echo lrm_setting('messages/password/use_weak_password', true); ?>
                     </label>
                 </div>
             </div>

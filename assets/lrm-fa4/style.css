@@ -1,65 +1,78 @@
 @font-face {
-    font-family: 'lrm-fa4-icomoon';
-    src: url('fonts/lrm-fa4-icomoon.eot?txl2j3');
-    src: url('fonts/lrm-fa4-icomoon.eot?txl2j3#iefix') format('embedded-opentype'),
-    url('fonts/lrm-fa4-icomoon.ttf?txl2j3') format('truetype'),
-    url('fonts/lrm-fa4-icomoon.woff?txl2j3') format('woff'),
-    url('fonts/lrm-fa4-icomoon.svg?txl2j3#lrm-fa4-icomoon') format('svg');
-    font-weight: normal;
-    font-style: normal;
+  font-family: 'lrm-fa4-icomoon';
+  src:  url('fonts/lrm-fa4-icomoon.eot?7oxu9n');
+  src:  url('fonts/lrm-fa4-icomoon.eot?7oxu9n#iefix') format('embedded-opentype'),
+    url('fonts/lrm-fa4-icomoon.ttf?7oxu9n') format('truetype'),
+    url('fonts/lrm-fa4-icomoon.woff?7oxu9n') format('woff'),
+    url('fonts/lrm-fa4-icomoon.svg?7oxu9n#lrm-fa4-icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
 }
 
 [class^="lrm-fa4-icon-"], [class*=" lrm-fa4-icon-"] {
-    /* use !important to prevent issues with browser extensions that change fonts */
-    font-family: 'lrm-fa4-icomoon' !important;
-    speak: none;
-    font-style: normal;
-    font-weight: normal;
-    font-variant: normal;
-    text-transform: none;
-    line-height: 1;
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'lrm-fa4-icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
 
-    /* Better Font Rendering =========== */
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .lrm-fa4-icon-envelope-o:before {
-    content: "\f003";
+  content: "\f003";
 }
-
 .lrm-fa4-icon-user:before {
-    content: "\f007";
+  content: "\f007";
 }
-
 .lrm-fa4-icon-lock:before {
-    content: "\f023";
+  content: "\f023";
 }
-
+.lrm-fa4-icon-camera:before {
+  content: "\f030";
+}
+.lrm-fa4-icon-map-marker:before {
+  content: "\f041";
+}
 .lrm-fa4-icon-eye:before {
-    content: "\f06e";
+  content: "\f06e";
 }
-
 .lrm-fa4-icon-eye-slash:before {
-    content: "\f070";
+  content: "\f070";
 }
-
 .lrm-fa4-icon-sign-in:before {
-    content: "\f090";
+  content: "\f090";
 }
-
+.lrm-fa4-icon-phone:before {
+  content: "\f095";
+}
+.lrm-fa4-icon-mobile:before {
+  content: "\f10b";
+}
+.lrm-fa4-icon-mobile-phone:before {
+  content: "\f10b";
+}
+.lrm-fa4-icon-location-arrow:before {
+  content: "\f124";
+}
 .lrm-fa4-icon-unlock-alt:before {
-    content: "\f13e";
+  content: "\f13e";
 }
-
 .lrm-fa4-icon-envelope-square:before {
-    content: "\f199";
+  content: "\f199";
 }
-
 .lrm-fa4-icon-user-plus:before {
-    content: "\f234";
+  content: "\f234";
 }
-
+.lrm-fa4-icon-map-o:before {
+  content: "\f278";
+}
 .lrm-fa4-icon-user-o:before {
-    content: "\f2c0";
+  content: "\f2c0";
 }

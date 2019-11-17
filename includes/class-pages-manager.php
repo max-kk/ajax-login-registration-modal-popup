@@ -14,7 +14,36 @@ class LRM_Pages_Manager {
     public static function init() {
         add_filter( 'login_url', [__CLASS__, 'custom_login_url'], 99, 3 );
         add_filter( 'register_url', [__CLASS__, 'custom_register_url'], 99, 1 );
+        if ( is_admin() ) {
+	        add_filter( 'wp_new_user_notification_email', [__CLASS__, 'wp_new_user_notification_email__filter'], 99, 3 );
+        }
     }
+
+	static function wp_new_user_notification_email__filter($wp_new_user_notification_email, $user, $blogname) {
+		$re = '/<http?s?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&\/\/=]*)>/m';
+		//$str = '<http://dev.maxim-kaminsky.com/wp-login.php?action=rp&key=gc359IE3QKkAL7cLJQwI&login=cu2>';
+
+		preg_match_all($re, $wp_new_user_notification_email['message'], $matches);
+
+		if ( empty($matches) || empty($matches[0]) ) {
+			return $wp_new_user_notification_email;
+		}
+
+		$parsed_url = parse_url( $matches[0][0] );
+		parse_str( $parsed_url['query'], $parts );
+
+		if ( empty($parts['key']) ) {
+			return $wp_new_user_notification_email;
+		}
+
+		$wp_new_user_notification_email['message'] = str_replace(
+			$matches[0],
+			LRM_Pages_Manager::get_password_reset_url( $parts['key'], $user ),
+			$wp_new_user_notification_email['message']
+		);
+
+		return $wp_new_user_notification_email;
+	}
 
     /**
      * Register settings
@@ -36,11 +65,14 @@ class LRM_Pages_Manager {
                     'options'     => array('wp-login' => 'WP-LOGIN.PHP [default]') + $wp_pages_arr,
                 ),
                 'default'     => 'wp-login',
-                'description' => __('Please make sure that page content contains shortcode:<br> <code>[lrm_form default_tab="login" logged_in_message="You have been already logged in!"]</code>', 'ajax-login-and-registration-modal-popup' ),
+                'description' => __('Please make sure that page content contains shortcode:<br> <code>[lrm_form default_tab="login" logged_in_message="You are currently logged in!"]</code>', 'ajax-login-and-registration-modal-popup' ),
                 'render'      => array( new CoreFields\Select(), 'input' ),
                 'sanitize'    => array( new CoreFields\Select(), 'sanitize' ),
             ) )
-        ->description( __( 'Here you could override default WP pages (login, registration, restore password) to your custom pages.', 'ajax-login-and-registration-modal-popup' ) );
+        ->description(
+            __( 'Here you could override default WP pages (login, registration, restore password) to your custom pages. ', 'ajax-login-and-registration-modal-popup' )
+            . ' <a href="https://docs.maxim-kaminsky.com/lrm/kb/how-to-create-custom-login-registration-pages/" target="_blank">Docs ></a>'
+        );
 
         $PAGES_SECTION->add_group( __( 'Registration', 'ajax-login-and-registration-modal-popup' ), 'registration' )
             ->add_field( array(
@@ -50,7 +82,7 @@ class LRM_Pages_Manager {
                     'options'     => array('wp-login' => 'WP-LOGIN.PHP [default]') + $wp_pages_arr,
                 ),
                 'default'     => 'wp-login',
-                'description' => __('Please make sure that page content contains shortcode:<br> <code>[lrm_form default_tab="register" logged_in_message="You have been already logged in!"]</code>', 'ajax-login-and-registration-modal-popup' ),
+                'description' => __('Please make sure that page content contains shortcode:<br> <code>[lrm_form default_tab="register" logged_in_message="You are currently logged in!"]</code>', 'ajax-login-and-registration-modal-popup' ),
                 'render'      => array( new CoreFields\Select(), 'input' ),
                 'sanitize'    => array( new CoreFields\Select(), 'sanitize' ),
             ) );
@@ -63,7 +95,7 @@ class LRM_Pages_Manager {
                     'options'     => array('wp-login' => 'WP-LOGIN.PHP [default]') + $wp_pages_arr,
                 ),
                 'default'     => 'wp-login',
-                'description' => __('Please make sure that page content contains shortcode:<br> <code>[lrm_lostpassword_form logged_in_message="You have been already logged in!"]</code>', 'ajax-login-and-registration-modal-popup' ),
+                'description' => __('Please make sure that page content contains shortcode:<br> <code>[lrm_lostpassword_form logged_in_message="You are currently logged in!"]</code>', 'ajax-login-and-registration-modal-popup' ),
                 'render'      => array( new CoreFields\Select(), 'input' ),
                 'sanitize'    => array( new CoreFields\Select(), 'sanitize' ),
             ) );

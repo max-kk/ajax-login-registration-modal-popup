@@ -80,7 +80,7 @@ var LRM = LRM ? LRM : {};
 		$(document).on(handle_event, '[class*="lrm-login"]', login_selected);
 		$(document).on('click', '.lrm-switch-to--login', login_selected);
 
-		$(document).on('click', '.lrm-forgot-password,.lrm-login .lrm-form-message a,.lrm-switch-to--reset-password', function (event) {
+		$(document).on('click', '.lrm-forgot-password,[data-action="login"] .lrm-form-message a,.lrm-switch-to--reset-password', function (event) {
 			event.preventDefault();
 			forgot_password_selected(event);
 		});
@@ -109,7 +109,7 @@ var LRM = LRM ? LRM : {};
 		// });
 
 		//hide or show password
-		$('.hide-password').on('click', function () {
+		$(document).on('click', '.lrm-user-modal-container .hide-password', function () {
 			var togglePass = $(this),
 				  passwordField = togglePass.parent().find('input');
 
@@ -157,9 +157,9 @@ var LRM = LRM ? LRM : {};
 		}
 
 		function login_selected(event, event_orig) {
-			// if (LRM.is_user_logged_in) {
-			// 	return true;
-			// }
+			if (LRM.is_user_logged_in) {
+				return true;
+			}
 
 			/**
 			 * @since 1.34
@@ -217,9 +217,9 @@ var LRM = LRM ? LRM : {};
 		}
 
 		function signup_selected(event, event_orig) {
-			// if (LRM.is_user_logged_in) {
-			// 	return true;
-			// }
+			if (LRM.is_user_logged_in) {
+				return true;
+			}
 
 			/**
 			 * @since 1.34
@@ -389,7 +389,6 @@ var LRM = LRM ? LRM : {};
 					$form.find(".lrm-button-loader").remove();
 					$form.removeClass("--is-submitting");
 
-
 					if (response.data.message) {
 						if (!response.data.for) {
 							LRM_Form.set_message( $form, response.data.message, !response.success );
@@ -411,6 +410,10 @@ var LRM = LRM ? LRM : {};
 
 							}
 						}
+
+						if (response.data.custom_html && response.data.custom_html_selector) {
+							$(response.data.custom_html_selector).html(response.data.custom_html);
+						}
 					}
 
 					// $form.data("action") for get
@@ -429,8 +432,11 @@ var LRM = LRM ? LRM : {};
 						LRM.is_user_logged_in = true;
 						$(document).triggerHandler('lrm_user_logged_in', [response, $form, $form.data("action")]);
 
-						if ("reload" == response.data.action) {
+						if ( "reload" == response.data.action ) {
 							window.location.reload( true );
+						} else if ( "hide" == response.data.action ) {
+							$(".lrm-user-modal").removeClass('is-visible');
+							$("body").addClass("logged-in");
 						}
 					}
 
@@ -577,10 +583,16 @@ var LRM = LRM ? LRM : {};
 			//$strengthResult.removeClass('short bad good strong');
 
 			// Extend our blacklist array with those from the inputs & site data
-			var blacklistArray = ["querty", "password", "132", "123"].concat(wp.passwordStrength.userInputBlacklist())
+			var blacklistArray = ["querty", "password", "P@ssword1", "132", "123"]
 
 			// Get the password strength
-			var strength = wp.passwordStrength.meter(pass1, blacklistArray, pass2);
+			var strength = 0;
+			if ( "lrm" === LRM.password_strength_lib ) {
+				strength = LRM_Helper.PasswordMeter(pass1, blacklistArray, pass2);
+			} else {
+				blacklistArray = blacklistArray.concat(wp.passwordStrength.userInputBlacklist());
+				strength = wp.passwordStrength.meter(pass1, blacklistArray, pass2);
+			}
 
 			// Add the strength meter results
 			switch (strength) {
@@ -617,7 +629,7 @@ var LRM = LRM ? LRM : {};
 	LRM.passwordMeterIsLoaded = false;
 	LRM.passwordMeterIsLoading = false;
 	LRM.loadPasswordMeter = function ( callback ) {
-		if ( LRM.passwordMeterIsLoaded ) {
+		if ( "lrm" === LRM.password_strength_lib || LRM.passwordMeterIsLoaded ) {
 			return callback();
 		}
 		// From "wp-admin/js/password-strength-meter.min.js?ver=5.0.4"
@@ -696,3 +708,116 @@ LRM_Helper.getCookie = function(name) {
 	}
 	return null;
 }
+
+LRM_Helper.PasswordMeter = function( pass1, blacklistArr, pass2 ) {
+
+	function PasswordMeter() {
+
+		this.pass1 = pass1;
+		this.pass2 = pass2;
+		this.passLength = this.pass1.length;
+
+		this.tokens = {
+			letters: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ",
+			numbers: "0123456789",
+			specialChars: "!&%/()=?^*+][#><;:,._-|"
+		};
+
+		this.letters = this.tokens.letters.split( "" );
+		this.numbers = this.tokens.numbers.split( "" );
+		this.specialChars = this.tokens.specialChars.split( "" );
+
+	}
+
+	PasswordMeter.prototype = {
+		check: function() {
+			var self = this;
+
+			if ( self.pass2 && self.pass1 !== self.pass2 ) {
+				return 5;
+			}
+
+			var val = self.pass1;
+			var total = self.passLength;
+
+			var totalLetters = 0;
+			var totalNumbers = 0;
+			var totalSpecialChars = 0;
+
+			var tokens = val.split( "" );
+			var len = tokens.length;
+			var i;
+
+			for( i = 0; i < len; ++i ) {
+				var token = tokens[i];
+				if( self._isLetter( token ) ) {
+					totalLetters++;
+				} else if( self._isNumber( token ) ) {
+					totalNumbers++;
+				} else if( self._isSpecialChar( token ) ) {
+					totalSpecialChars++;
+				}
+
+			}
+			
+			var result = self._calculate( total, totalLetters, totalNumbers, totalSpecialChars );
+			return Math.round(result/2.5);
+		},
+		_isLetter: function( token ) {
+			var self = this;
+			if( self.letters.indexOf( token ) == -1 ) {
+				return false;
+			}
+			return true;
+		},
+		_isNumber: function( token ) {
+			var self = this;
+			if( self.numbers.indexOf( token ) == -1 ) {
+				return false;
+			}
+			return true;
+		},
+		_isSpecialChar: function( token ) {
+			var self = this;
+			if( self.specialChars.indexOf( token ) == -1 ) {
+				return false;
+			}
+			return true;
+		},
+		_calculate: function( total, letters, numbers, chars ) {
+			var level = 0;
+			var l = parseInt( letters, 10 );
+			var n = parseInt( numbers, 10 );
+			var c = parseInt( chars, 10 );
+
+			if( total < 8 ) {
+				level += 1;
+			}
+			if( total >= 8 ) {
+				level += 4;
+			}
+
+			if( l > 0 ) {
+				level += 1;
+			}
+
+			if( n > 0 ) {
+				level += 2;
+			}
+
+			if( c > 0 ) {
+				level += 3;
+			}
+
+			if ( jQuery.inArray( pass1, blacklistArr ) > 0 ) {
+				level = 5;
+			}
+
+			return level;
+		}
+	};
+
+	var pwdMeter = new PasswordMeter();
+
+	return pwdMeter.check();
+};

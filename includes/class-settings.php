@@ -497,6 +497,14 @@ class LRM_Settings {
                 'sanitize'    => array( new CoreFields\Checkbox(), 'sanitize' ),
             ) )
             ->add_field( array(
+                'slug'        => 'to',
+                'name'        => __('Send to email', 'ajax-login-and-registration-modal-popup'),
+                'default'     => '',
+                'description' => __( 'Leave empty to use the WP emai: ', 'ajax-login-and-registration-modal-popup' ). '<code>'. get_option('admin_email') . '</code>',
+                'render'      => array( new LRM_Field_Text(), 'input' ),
+                'sanitize'    => array( new LRM_Field_Text(), 'sanitize' ),
+            ) )
+            ->add_field( array(
                 'slug'        => 'subject',
                 'name'        => __('Subject', 'ajax-login-and-registration-modal-popup'),
                 'default'     => '{{SITE_NAME}} ' . __( 'New user registration on your site:', 'ajax-login-and-registration-modal-popup' ),
@@ -738,8 +746,8 @@ class LRM_Settings {
                 'slug'        => 'success_please_login',
                 'name'        => __('Message: Registration successful', 'ajax-login-and-registration-modal-popup' ),
                 'default'        => 'Registration was successful. We have sent you an email with your login information. Please use them to log into your account.',
-                'render'      => array( new LRM_Field_Text(), 'input' ),
-                'sanitize'    => array( new LRM_Field_Text(), 'sanitize' ),
+                'render'      => array( new LRM_Field_Textarea_With_Html(), 'input' ),
+                'sanitize'    => array( new LRM_Field_Textarea_With_Html(), 'sanitize' ),
             ) );
 
         $MESSAGES_SECTION->add_group( __( 'Lost password', 'ajax-login-and-registration-modal-popup' ), 'lost_password', true )
@@ -820,6 +828,22 @@ class LRM_Settings {
                 'default'        => 'Check your mailbox to access your new password.',
                 'render'      => array( new LRM_Field_Text(), 'input' ),
                 'sanitize'    => array( new LRM_Field_Text(), 'sanitize' ),
+            ) );
+
+        $MESSAGES_SECTION->add_group( __( 'Reset Password', 'ajax-login-and-registration-modal-popup' ), 'password_reset', true )
+            ->add_field( array(
+                'slug'        => 'empty_key',
+                'name'        => __('Password reset link key is missing', 'ajax-login-and-registration-modal-popup' ),
+                'default'        => __('Your password reset link key is missing.', 'ajax-login-and-registration-modal-popup'),
+                'render'      => array( new CoreFields\Text(), 'input' ),
+                'sanitize'    => array( new CoreFields\Text(), 'sanitize' ),
+            ) )
+            ->add_field( array(
+                'slug'        => 'empty_login',
+                'name'        => __('Password reset link login is missing', 'ajax-login-and-registration-modal-popup' ),
+                'default'        => __('Your password reset link login is missing.', 'ajax-login-and-registration-modal-popup'),
+                'render'      => array( new CoreFields\Text(), 'input' ),
+                'sanitize'    => array( new CoreFields\Text(), 'sanitize' ),
             ) );
 
         $MESSAGES_SECTION->add_group( __( 'Password (registration/reset password)', 'ajax-login-and-registration-modal-popup' ), 'password', true )

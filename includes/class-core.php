@@ -75,7 +75,7 @@ class LRM_Core {
     public function shortcode($atts) {
         $atts = wp_parse_args($atts, array(
             'default_tab'   => 'login',
-            'logged_in_message'  => 'You have been already logged in!',
+            'logged_in_message'  => 'You are currently logged in!',
             'role'          => '',
             'role_silent'   => false,
         ));
@@ -94,7 +94,7 @@ class LRM_Core {
 
     public function lostpassword_shortcode($atts) {
         $atts = wp_parse_args($atts, array(
-            'logged_in_message'  => 'You have been already logged in!',
+            'logged_in_message'  => 'You are currently logged in!',
         ));
 
 
@@ -182,6 +182,10 @@ class LRM_Core {
 
             define("LRM_IS_AJAX", true);
 
+            // Load the SimpleHistory plugin, to log the events
+            if ( class_exists('SimpleHistory') ) {
+                SimpleHistory::get_instance()->load_loggers();
+            }
 
             do_action( 'wp_ajax_nopriv_lrm_' . $lrm_action );
             die();
@@ -249,6 +253,9 @@ class LRM_Core {
         //wp_enqueue_style('lrm-modal-skin', LRM_URL . 'assets/lrm-skin.css', false, LRM_ASSETS_VER);
 
         $ajax_url = add_query_arg( 'lrm', '1', site_url('/') );
+        if ( defined("LRM_AJAX_URL_USE_ADMIN") ) {
+	        $ajax_url = add_query_arg( 'lrm', '1', admin_url('admin-ajax.php') );
+        }
 
         if ( LRM_WPML_Integration::is_wpml_active() ) {
             $ajax_url = apply_filters( 'wpml_permalink', $ajax_url );
@@ -256,6 +263,7 @@ class LRM_Core {
 
         $script_params = array(
             'password_zxcvbn_js_src' => includes_url( '/js/zxcvbn.min.js' ),
+            'password_strength_lib' => lrm_setting('general_pro/all/password_strength_lib'),
             'redirect_url'       => '',
             'ajax_url'           => $ajax_url,
             //'ajax_url'           => add_query_arg( 'lrm', '1', admin_url('admin-ajax.php') ),

@@ -72,7 +72,7 @@
 
 							<?php foreach ( $group->get_fields() as $field ): ?>
 
-								<tr>
+								<tr class="tr-<?php echo esc_attr( $field->input_id() ); ?>">
 									<th><label for="<?php echo esc_attr( $field->input_id() ); ?>"><?php echo esc_html( $field->name() ); ?></label></th>
 									<td>
 										<?php
