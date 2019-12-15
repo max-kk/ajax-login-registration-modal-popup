@@ -263,6 +263,7 @@ class LRM_Core {
 
         $script_params = array(
             'password_zxcvbn_js_src' => includes_url( '/js/zxcvbn.min.js' ),
+            'allow_weak_password' => apply_filters( 'lrm/js/allow_weak_password', false ),
             'password_strength_lib' => lrm_setting('general_pro/all/password_strength_lib'),
             'redirect_url'       => '',
             'ajax_url'           => $ajax_url,
@@ -280,7 +281,8 @@ class LRM_Core {
                 'password_is_short'  => LRM_Settings::get()->setting('messages/password/password_is_short'),
                 'password_is_bad'  => LRM_Settings::get()->setting('messages/password/password_is_bad'),
                 'passwords_is_mismatch'  => LRM_Settings::get()->setting('messages/password/passwords_is_mismatch'),
-            ),            
+                'passwords_is_weak'  => LRM_Settings::get()->setting('messages/password/password_is_weak'),
+            ),
         );
 
         wp_localize_script('lrm-modal', 'LRM', $script_params);

@@ -206,6 +206,10 @@ If you have login issue with Adminize plugin - go to Adminize plugin settings an
 
 == Changelog ==
 
+= VER 2.08 - 1/12/2019 =
+
+- Options to hide the tabs in modal & full-width submit button style
+
 = VER 2.07 - 10/10/2019 =
 
 - Fixed issue with nickname used and a display name in WooCommerce and Buddypress

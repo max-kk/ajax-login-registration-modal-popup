@@ -327,6 +327,34 @@ class LRM_Settings {
                 'render'      => array( new CoreFields\Select(), 'input' ),
                 'sanitize'    => array( new CoreFields\Select(), 'sanitize' ),
             ) )
+            ->add_field( array(
+                'slug'        => 'hide_tabs',
+                'name'        => __('Hide the tabs (Login/Register)', 'ajax-login-and-registration-modal-popup' ),
+                'description' => 'It\'s useful to add the text like <code>'
+                    . esc_html('Don\'t have an account already? <a href="#0" class="lrm-switch-to--register">Register</a>.')
+                    . '</code> and <code>'
+                    . esc_html('Have an account already? <a href="#0" class="lrm-switch-to--login">Login</a>.')
+                    . '</code> before/after the login/register forms on the EXPRESSIONS > PRO tab'
+                ,
+                'default'     => false,
+                'addons'      => array('label' => __( 'Yes' )),
+                'render'      => array( new CoreFields\Checkbox(), 'input' ),
+                'sanitize'    => array( new CoreFields\Checkbox(), 'sanitize' ),
+            ) )
+            ->add_field( array(
+                'slug'        => 'btn_style',
+                'name'        => __('Submit button style', 'ajax-login-and-registration-modal-popup'),
+                'addons'      => array(
+                    'options'     => [
+                    	'default'       => 'Default',
+                    	'full-width'   => 'Full width',
+                    ],
+                ),
+                'default'     => 'default',
+                'description' => '<a href="https://res.cloudinary.com/dxo61viuo/image/upload/f_auto/v1575114762/docs-lrm/104/img_5de258095de8a_gtppax.png" target="_blank">Full width style example</a>',
+                'render'      => array( new CoreFields\Select(), 'input' ),
+                'sanitize'    => array( new CoreFields\Select(), 'sanitize' ),
+            ) )
             ->description(
                 sprintf(
                     'Skins colors you can customize in <a href="%s" class="button button-secondary">WP Customizer</a> with installed PRO version.',
@@ -856,11 +884,18 @@ class LRM_Settings {
             ) )
             ->add_field( array(
                 'slug'        => 'use_weak_password',
-                'name'        => __('Confirm use of weak password', 'ajax-login-and-registration-modal-popup' ),
+                'name'        => __('Confirm use of weak password (reset password page)', 'ajax-login-and-registration-modal-popup' ),
                 'default'        => __('Confirm use of weak password', 'ajax-login-and-registration-modal-popup'),
                 'render'      => array( new CoreFields\Text(), 'input' ),
                 'sanitize'    => array( new CoreFields\Text(), 'sanitize' ),
             ) )
+	        ->add_field( array(
+		        'slug'        => 'password_is_weak',
+		        'name'        => __('Your password is very weak', 'ajax-login-and-registration-modal-popup' ),
+		        'default'        => __('Error: Your password is very weak!', 'ajax-login-and-registration-modal-popup'),
+		        'render'      => array( new CoreFields\Text(), 'input' ),
+		        'sanitize'    => array( new CoreFields\Text(), 'sanitize' ),
+	        ) )
             ->add_field( array(
                 'slug'        => 'password_is_missing',
                 'name'        => __('Message: Password is missing', 'ajax-login-and-registration-modal-popup' ),

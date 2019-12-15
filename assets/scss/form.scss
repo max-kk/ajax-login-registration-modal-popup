@@ -1,21 +1,43 @@
 $fieldset-margin-tb: 1.4em;
+$fieldset-side-padding: 1.4em;
+$fieldset-side-padding-mobile: 2em;
+
+
 /* form.scss */
 .lrm-form {
-    padding: .5em 1.4em .1em !important;
+    padding: .5em 0 .1em !important;
+    .lrm-btn-style--full-width & {
+        padding-bottom: 0 !important;
+    }
     margin: 0;
 
-    @include respond-to(min-width, 600px) {
-        .lrm-form {
-            padding: .5em 2em .1em 2em !important;
+    //@include respond-to(min-width, 600px) {
+    //    .lrm-form {
+    //        padding: .5em 2em .1em 2em !important;
+    //    }
+    //}
+
+    .lrm-fieldset-wrap,
+    .fieldset--default {
+        padding: 0 $fieldset-side-padding !important;
+
+        @include respond-to(min-width, 600px) {
+            .lrm-form .fieldset {
+                padding: 0 $fieldset-side-padding-mobile !important;
+            }
         }
     }
+
+    .fieldset--full-width {
+        margin-bottom: 0 !important;
+    }
+
 
     .fieldset {
         position: relative;
         margin: $fieldset-margin-tb 0;
         padding: 0 !important;
         clear: both;
-
         @include respond-to(min-width, 600px) {
             .lrm-form .fieldset {
                 margin: 2em 0 !important;
@@ -154,6 +176,10 @@ $fieldset-margin-tb: 1.4em;
         appearance: none;
         height: auto;
         border-radius: 5px;
+
+         .lrm-btn-style--full-width & {
+             border-radius: 0;
+         }
     }
 
      a.button,
@@ -306,6 +332,11 @@ p.lrm-form-bottom-message {
     text-indent: 100%;
     white-space: nowrap;
     overflow: hidden;
+    text-align: center;
+    //.lrm-close-icon:before{
+    //    color: white;
+    //    font-size: 28px !important;
+    //}
 }
 
 /*@media only screen and (min-width: 1170px) {*/

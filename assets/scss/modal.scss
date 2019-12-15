@@ -37,6 +37,10 @@ ul.lrm-switcher {
     margin: 0 !important;
 }
 
+.lrm-user-modal-container-inner {
+    background: #FFF;
+}
+
 .lrm-user-modal-container {
     position: relative;
     width: 98%;
@@ -44,7 +48,6 @@ ul.lrm-switcher {
         width: 90%;
     }
     max-width: 540px;
-    background: #FFF;
     margin: 3em auto 4em;
     cursor: auto;
     -webkit-transform: translateY(-30px);

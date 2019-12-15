@@ -52,6 +52,9 @@
 .lrm-ficon-register {
     @include lrm-font-icon($lrm-ico-icon-member, $lrm-icon-person_add, $lrm-fa4-icon-user-plus, $fa-var-user-plus);
 }
+.lrm-ficon-close {
+    @include lrm-font-icon($lrm-ico-icon-cancel, $lrm-icon-clear, $lrm-fa4-icon-close, $fa-var-times);
+}
 // NEW 09.2019
 .lrm-ficon-phone {
     @include lrm-font-icon($lrm-ico-icon-phone, $lrm-icon-phone, $lrm-fa4-icon-phone, $fa-var-phone);

@@ -11,10 +11,13 @@ $border-radius: .25em;
 
 }
 
+.lrm-user-modal-container-inner {
+    border-radius: $border-radius;
+    overflow: hidden;
+}
+
 /* TABS */
 .lrm-user-modal-container {
-
-    border-radius: $border-radius;
 
     .lrm-switcher {
         a {
