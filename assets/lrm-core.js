@@ -197,7 +197,7 @@ var LRM = LRM ? LRM : {};
 			// 	  $forgotPasswordLink = $formLogin.find('.lrm-form-bottom-message a'),
 			// 	  $backToLoginLink = $formForgotPassword.find('.lrm-form-bottom-message a'),
 			//
-			$formModal.addClass('is-visible');
+			_show_modal($formModal);
 			$formModal.find('.lrm-signin-section').addClass('is-selected');
 			$formModal.find('.lrm-signup-section').removeClass('is-selected');
 			$formModal.find('.lrm-reset-password-section').removeClass('is-selected');
@@ -255,7 +255,7 @@ var LRM = LRM ? LRM : {};
 				$formModal = $(".lrm-user-modal");
 			}
 
-			$formModal.addClass('is-visible');
+			_show_modal($formModal);
 			$formModal.find('.lrm-signin-section').removeClass('is-selected');
 			$formModal.find('.lrm-signup-section').addClass('is-selected');
 			$formModal.find('.lrm-reset-password-section').removeClass('is-selected');
@@ -319,7 +319,7 @@ var LRM = LRM ? LRM : {};
 				$formModal = $(".lrm-user-modal");
 			}
 
-			$formModal.addClass('is-visible');
+			_show_modal($formModal);
 			$formModal.find('.lrm-signin-section').removeClass('is-selected');
 			$formModal.find('.lrm-signup-section').removeClass('is-selected');
 			$formModal.find('.lrm-reset-password-section').addClass('is-selected');
@@ -338,6 +338,16 @@ var LRM = LRM ? LRM : {};
 			// $formSignup.removeClass('is-selected');
 			// $formForgotPassword.addClass('is-selected');
 			return false;
+		}
+
+		/**
+		 * Global function for all actions
+		 * @param $formModal
+		 * @private
+		 */
+		function _show_modal( $formModal ) {
+			LRM_Pro.modal_is_shown = true;
+			$formModal.addClass('is-visible');
 		}
 
 		$(document).on('submit', '.lrm-form', lrm_submit_form);

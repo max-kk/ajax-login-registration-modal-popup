@@ -234,6 +234,7 @@ class LRM_AJAX
         }
 
         $user_id = wp_update_user( $userdata );
+	    update_user_option( $user_id, 'default_password_nag', false, true );
 
         // Return
         if( !is_wp_error($user_id) ) {
@@ -393,6 +394,10 @@ class LRM_AJAX
 
             $action = lrm_setting('redirects/registration/action');
             $redirect_url = $user_signon ? LRM_Redirects_Manager::get_redirect( 'registration', $user_signon->ID ) : '';
+
+            if ( 'email-verification-pro-w-redirect' === $action ) {
+	            $redirect_url = LRM_Redirects_Manager::get_redirect( 'registration', $user_signon->ID );
+            }
 
             wp_send_json_success( apply_filters('lrm/registration/success_response', array(
                 'logged_in' => $user_signon ? true : false,

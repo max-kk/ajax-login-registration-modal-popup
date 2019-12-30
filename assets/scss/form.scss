@@ -51,7 +51,7 @@ $fieldset-side-padding-mobile: 2em;
 
     &.--registration-done {
         padding-bottom: 1em !important;
-        & > div:not(.lrm-form-message) {
+        & > div:not(.lrm-form-message-wrap) {
             display: none;
         }
     }

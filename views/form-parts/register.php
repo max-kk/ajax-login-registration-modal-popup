@@ -9,13 +9,15 @@
 
 			<form class="lrm-form" action="#0" data-action="registration" data-lpignore="true">
 
+                <div class="lrm-fieldset-wrap lrm-form-message-wrap">
+                    <p class="lrm-form-message lrm-form-message--init"></p>
+                </div>
+
                 <div class="lrm-fieldset-wrap">
 
                     <div class="lrm-integrations lrm-integrations--register">
                         <?php do_action( 'lrm/register_form/before' ); ?>
                     </div>
-
-                    <p class="lrm-form-message lrm-form-message--init"></p>
 
                     <?php if( has_action('lrm/register_form/render_fields') ): ?>
                         <?php do_action('lrm/register_form/render_fields'); ?>
@@ -30,15 +32,15 @@
                         <?php endif; ?>
 
                         <?php if( lrm_setting('general/registration/display_first_and_last_name') ): ?>
-                            <div class="fieldset clearfix">
+                            <div class="clearfix lrm-row">
                                 <?php $fname_label = esc_attr( lrm_setting('messages/registration/first-name', true) );; ?>
                                 <?php $lname_label = esc_attr( lrm_setting('messages/registration/last-name', true) ); ?>
-                                <div class="lrm-col-half-width lrm-col-first fieldset--first-name">
+                                <div class="lrm-col-half-width lrm-col-first fieldset--first-name lrm-col">
                                     <label class="image-replace lrm-username lrm-ficon-user" for="signup-first-name" title="<?= $fname_label; ?>"></label>
                                     <input name="first-name" class="full-width has-padding has-border" id="signup-first-name" type="text" placeholder="<?= $fname_label; ?>" <?= $fields_required; ?> aria-label="<?= $fname_label; ?>" autocomplete="off" data-lpignore="true">
                                     <span class="lrm-error-message"></span>
                                 </div>
-                                <div class="lrm-col-half-width lrm-col-last fieldset--last-name">
+                                <div class="lrm-col-half-width lrm-col-last fieldset--last-name lrm-col">
                                     <label class="image-replace lrm-username lrm-ficon-user" for="signup-last-name" title="<?= $lname_label; ?>"></label>
                                     <input name="last-name" class="full-width has-padding has-border" id="signup-last-name" type="text" placeholder="<?= $lname_label; ?>" aria-label="<?= $lname_label; ?>" autocomplete="off" data-lpignore="true">
                                     <span class="lrm-error-message"></span>

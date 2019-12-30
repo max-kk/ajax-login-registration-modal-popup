@@ -64,10 +64,11 @@ class LRM_Redirects_Manager {
                         'redirect' => 'Redirect to a page and auto-login [PRO]',
                         'email-verification' => 'Email verification (send password to the email)',
                         'email-verification-pro' => 'Email verification [PRO] (send a verify link)',
+                        'email-verification-pro-w-redirect' => 'Email verification [PRO] + redirect to page below (send a verify link)',
                     ),
                 ),
                 'default'     => 'none',
-                'description' => __('"Email verification (send password to the email)" is not effective if user can set password during registration (in PRO)', 'ajax-login-and-registration-modal-popup' ),
+                'description' => __('"Email verification (send password to the email)" is not effective if the user can set password during registration (in PRO)', 'ajax-login-and-registration-modal-popup' ),
                 'render'      => array( new LRM_Field_Select_W_PRO(), 'input' ),
                 'sanitize'    => array( new LRM_Field_Select_W_PRO(), 'sanitize' ),
             ) )
@@ -89,7 +90,7 @@ class LRM_Redirects_Manager {
             ) )
             ->add_field( array(
                 'slug'        => 'redirect',
-                'name'        => __('Redirect to (only if "Redirect to a page and auto-login [PRO]" selected)', 'ajax-login-and-registration-modal-popup'),
+                'name'        => __('Redirect to (only if "Redirect to a page and auto-login [PRO]" or "Email verification [PRO] + redirect" selected)', 'ajax-login-and-registration-modal-popup'),
                 'addons'      => array(
                     'per_role' => false,
                 ),
