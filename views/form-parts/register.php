@@ -73,7 +73,7 @@
                         <div class="fieldset">
                             <div class="lrm-position-relative">
                                 <label class="image-replace lrm-password lrm-ficon-key" for="signup-password-confirmation"></label>
-                                <input class="full-width has-padding has-border" id="signup-password-confirmation" type="password"  placeholder="<?= $pass_label; ?>" <?= $fields_required; ?> value="" autocomplete="new-password">
+                                <input name="password-confirmation" class="full-width has-padding has-border" id="signup-password-confirmation" type="password"  placeholder="<?= $pass_label; ?>" <?= $fields_required; ?> value="" autocomplete="new-password">
                                 <span class="hide-password lrm-ficon-eye" data-show="<?php echo lrm_setting('messages/other/show_pass'); ?>" data-hide="<?php echo lrm_setting('messages/other/hide_pass'); ?>"></span>
                             </div>
                         </div>

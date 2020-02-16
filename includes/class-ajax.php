@@ -165,10 +165,14 @@ class LRM_AJAX
         }
         
         if ( !empty( $_POST['password'] ) && LRM_Settings::get()->setting('general_pro/all/allow_user_set_password') ) {
-            $password =  sanitize_text_field($_POST['password']);
+            $password =  $_POST['password'];
 
             // Defined in: "\wp-includes\default-filters.php"
             remove_action( 'register_new_user', 'wp_send_new_user_notifications' );
+
+            if ( lrm_setting('general_pro/all/use_password_confirmation') && $password !== sanitize_text_field($_POST['password-confirmation']) ) {
+	            wp_send_json_error(array('message' => lrm_setting('messages/password/passwords_is_mismatch'), 'for'=>'password-confirmation'));
+            }
         } else {
             $password = wp_generate_password(10, true);
         }

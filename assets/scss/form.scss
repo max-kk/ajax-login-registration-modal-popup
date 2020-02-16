@@ -5,7 +5,8 @@ $fieldset-side-padding-mobile: 2em;
 
 /* form.scss */
 .lrm-form {
-    padding: .5em 0 .1em !important;
+    padding: .5em 0 0 !important;
+    //padding: .5em 0 .1em !important;
     .lrm-btn-style--full-width & {
         padding-bottom: 0 !important;
     }
@@ -43,6 +44,10 @@ $fieldset-side-padding-mobile: 2em;
                 margin: 2em 0 !important;
             }
         }
+    }
+
+    .fieldset--submit {
+        margin-bottom: 0;
     }
 
     label {

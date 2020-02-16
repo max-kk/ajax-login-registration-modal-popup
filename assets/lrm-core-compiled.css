@@ -113,7 +113,7 @@ ul.lrm-switcher {
 
 /* form.scss */
 .lrm-form {
-  padding: 0.5em 0 0.1em !important;
+  padding: 0.5em 0 0 !important;
   margin: 0;
 }
 .lrm-btn-style--full-width .lrm-form {
@@ -142,6 +142,9 @@ ul.lrm-switcher {
   .lrm-form .fieldset .lrm-form .fieldset {
     margin: 2em 0 !important;
   }
+}
+.lrm-form .fieldset--submit {
+  margin-bottom: 0;
 }
 .lrm-form label {
   font-size: 14px;
