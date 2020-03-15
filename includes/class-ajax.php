@@ -494,11 +494,15 @@ class LRM_AJAX
 
                 $mail_body = str_replace(
                     array(
+                        '{{FIRST_NAME}}',
+                        '{{LAST_NAME}}',
                         '{{USERNAME}}',
                         '{{CHANGE_PASSWORD_URL}}',
                         '{{LOGIN_URL}}',
                     ),
                     array(
+                        $user->first_name,
+                        $user->last_name,
                         $user->user_login,
                         $reset_pass_url,
                         wp_login_url(),
@@ -686,7 +690,9 @@ class LRM_AJAX
         add_filter( 'wp_redirect', array(__CLASS__, 'wp_redirect__filter'), 9999, 2 );
 
         // Try to remove some actions to avoid redirects
-        remove_all_actions('wp_login');
+	    if ( ! lrm_setting('advanced/troubleshooting/call_wp_login_action') ) {
+		    remove_all_actions( 'wp_login' );
+	    }
         remove_all_actions('swpm_login');   // Simple Membership plugin
         remove_all_actions('wp_login_failed');
 

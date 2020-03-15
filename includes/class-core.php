@@ -38,7 +38,7 @@ class LRM_Core {
         }
 
         if ( !empty($_REQUEST['lrm_action']) ) {
-            add_action( 'wp_loaded', array($this, 'process_ajax'), 12 );
+            add_action( 'wp_loaded', array($this, 'process_ajax'), 9 );
         }
 
         // RUN PRO UPDATER
@@ -101,8 +101,6 @@ class LRM_Core {
         if ( !is_customize_preview() && is_user_logged_in() ) {
             return $atts['logged_in_message'];
         }
-
-
 
         ob_start();
             require LRM_PATH . 'views/restore-password.php';

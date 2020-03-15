@@ -54,7 +54,7 @@ class LRM_Pages_Manager {
 
         $PAGES_SECTION = $settings_class->add_section( __( 'Pages', 'ajax-login-and-registration-modal-popup' ), 'pages', false );
 
-        $wp_pages_arr = self::_get_pages_arr();
+	    $wp_pages_arr = self::_get_pages_arr();
 
         $PAGES_SECTION->add_group( __( 'Login', 'ajax-login-and-registration-modal-popup' ), 'login' )
 
@@ -107,8 +107,11 @@ class LRM_Pages_Manager {
      * @return array
      */
     public static function _get_pages_arr( $cached = true ) {
+	    if ( ! ( is_admin() && isset($_GET['page']) && 'login-and-register-popup' === $_GET['page'] ) ) {
+			return [];
+	    }
 
-        if ( $cached && $pages_list = wp_cache_get( 'lrm_pages_list', 'lrm' ) ) {
+	    if ( $cached && $pages_list = wp_cache_get( 'lrm_pages_list', 'lrm' ) ) {
             return $pages_list;
         }
 

@@ -157,7 +157,7 @@ var LRM = LRM ? LRM : {};
 		}
 
 		function login_selected(event, event_orig) {
-			if (LRM.is_user_logged_in) {
+			if (LRM.is_user_logged_in && !LRM.is_customize_preview) {
 				return true;
 			}
 
@@ -217,7 +217,7 @@ var LRM = LRM ? LRM : {};
 		}
 
 		function signup_selected(event, event_orig) {
-			if (LRM.is_user_logged_in) {
+			if (LRM.is_user_logged_in && !LRM.is_customize_preview) {
 				return true;
 			}
 
@@ -346,7 +346,9 @@ var LRM = LRM ? LRM : {};
 		 * @private
 		 */
 		function _show_modal( $formModal ) {
-			LRM_Pro.modal_is_shown = true;
+			if ( window.LRM_Pro ) {
+				window.LRM_Pro.modal_is_shown = true;
+			}
 			$formModal.addClass('is-visible');
 		}
 
@@ -831,3 +833,4 @@ LRM_Helper.PasswordMeter = function( pass1, blacklistArr, pass2 ) {
 
 	return pwdMeter.check();
 };
+// END

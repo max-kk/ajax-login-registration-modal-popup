@@ -415,6 +415,17 @@ class LRM_Settings {
                 'sanitize'    => array( new CoreFields\Checkbox(), 'sanitize' ),
             ) );
 
+        $ADVANCED_SECTION->add_group( __( 'Troubleshooting', 'ajax-login-and-registration-modal-popup' ), 'troubleshooting' )
+            ->add_field( array(
+                'slug'        => 'call_wp_login_action',
+                'name'        => __('Enable the "wp_login" action', 'ajax-login-and-registration-modal-popup' ),
+                'description' => __('It\'s disabled to avoid conflicts (unwanted redirects, etc) with some plugins. But this causes that some things like "last login time" doesn\'t work.', 'ajax-login-and-registration-modal-popup' ),
+                'default'     => false,
+                'addons'      => array('label' => __( 'Yes' )),
+                'render'      => array( new CoreFields\Checkbox(), 'input' ),
+                'sanitize'    => array( new CoreFields\Checkbox(), 'sanitize' ),
+            ) );
+
         $ADVANCED_SECTION->add_group( __( 'Uninstall', 'ajax-login-and-registration-modal-popup' ), 'uninstall' )
             ->add_field( array(
                 'slug'        => 'remove_all_data',

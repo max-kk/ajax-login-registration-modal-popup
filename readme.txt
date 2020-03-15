@@ -206,6 +206,15 @@ If you have login issue with Adminize plugin - go to Adminize plugin settings an
 
 == Changelog ==
 
+= VER 2.10 - 04/03/2020 =
+
+- Fixed issue - on any page list of all WP pages is fetched from the Database (thanks to @nexlaa)
+- Fixed issue - tags {{FIRST_NAME}} & {{LAST_NAME}} aren't working in the lostpassword email
+
+= VER 2.09 - 16/02/2020 =
+
+- Do not allow registration with the mismatch passwords
+
 = VER 2.08 - 1/12/2019 =
 
 - Options to hide the tabs in modal & full-width submit button style
