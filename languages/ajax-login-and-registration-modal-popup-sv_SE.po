@@ -1,0 +1,869 @@
+# Translation of Plugins - AJAX Login and Registration modal popup + inline form - Development (trunk) in Swedish
+# This file is distributed under the same license as the Plugins - AJAX Login and Registration modal popup + inline form - Development (trunk) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2020-03-17 13:24+0200\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Poedit 2.3\n"
+"Language: sv_SE\n"
+"Project-Id-Version: Plugins - AJAX Login and Registration modal popup + inline form - Development (trunk)\n"
+"POT-Creation-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+
+#: includes/class-redirects-manager.php:93
+msgid "Redirect to (only if \"Redirect to a page and auto-login [PRO]\" or \"Email verification [PRO] + redirect\" selected)"
+msgstr ""
+
+#: includes/class-settings.php:906
+msgid "Error: Your password is very weak!"
+msgstr ""
+
+#: includes/class-settings.php:905
+msgid "Your password is very weak"
+msgstr ""
+
+#: includes/class-settings.php:898
+msgid "Confirm use of weak password (reset password page)"
+msgstr ""
+
+#: includes/class-settings.php:422
+msgid "It's disabled to avoid conflicts (unwanted redirects, etc) with some plugins. But this causes that some things like \"last login time\" doesn't work."
+msgstr ""
+
+#: includes/class-settings.php:421
+msgid "Enable the \"wp_login\" action"
+msgstr ""
+
+#: includes/class-settings.php:418
+msgid "Troubleshooting"
+msgstr ""
+
+#: includes/class-settings.php:346
+msgid "Submit button style"
+msgstr ""
+
+#: includes/class-settings.php:332
+msgid "Hide the tabs (Login/Register)"
+msgstr ""
+
+#: includes/class-settings.php:882
+msgid "Password reset link login is missing"
+msgstr ""
+
+#: includes/class-settings.php:542
+msgid "Leave empty to use the WP emai: "
+msgstr ""
+
+#: includes/class-settings.php:540
+msgid "Send to email"
+msgstr "Skicka till e-post"
+
+#: includes/class-settings.php:875
+msgid "Password reset link key is missing"
+msgstr ""
+
+#. Description of the plugin
+msgid "Easy to integrate modal with Login and Registration features + inline form using shortcode."
+msgstr ""
+
+#: includes/class-roles-manager.php:53
+msgid "<strong>Inline:</strong> Use the shortcode attributes <code>role=\"Customer\"</code> and <code>role_silent=\"yes\"</code> (optional) to select specified role and hide role selector. Example: <code>[lrm_form default_tab=\"login\" logged_in_message=\"You are currently logged in!\" role=\"customer\" role-silent=\"yes\"]</code>"
+msgstr ""
+
+#: includes/class-roles-manager.php:51
+msgid "Use <code>data-lrm-role=\"Customer\"</code> with the label of your role and <code>data-lrm-role-silent</code> to select specified role and hide role selector.<br/>Example: <code>%s</code>"
+msgstr ""
+
+#: includes/class-roles-manager.php:49
+msgid "<strong>Modal:</strong> With this option you could add a \"data\" attributes to your registration button for auto-assign user-role and probably hide role selector from the user."
+msgstr ""
+
+#: includes/class-roles-manager.php:48
+msgid "Enable silent role assign?"
+msgstr ""
+
+#: includes/class-roles-manager.php:35
+msgid "Active roles:"
+msgstr "Aktiva roller:"
+
+#: includes/class-roles-manager.php:27
+msgid "This will add a roles dropdown to the registration form."
+msgstr ""
+
+#: includes/class-roles-manager.php:26
+msgid "Enable User role selector?"
+msgstr ""
+
+#: includes/class-roles-manager.php:23
+msgid "User role selector during Registration"
+msgstr ""
+
+#: includes/class-roles-manager.php:21
+msgid "Registration User role  > PRO"
+msgstr ""
+
+#: includes/class-import-export.php:44
+msgid "Import following sections:"
+msgstr "Importera följande sektioner:"
+
+#: includes/class-import-export.php:37
+msgid "Here you could simply export and import your plugin settings for backup or migrate to the another website."
+msgstr ""
+
+#: includes/class-import-export.php:31
+msgid "Export following sections:"
+msgstr "Exportera följande sektioner:"
+
+#: includes/class-settings.php:1067
+msgid "Match Captcha"
+msgstr ""
+
+#: includes/class-settings.php:713
+msgid "Form: User Role is missing"
+msgstr ""
+
+#: includes/class-settings.php:706
+msgid "Form: User Role"
+msgstr "Formulär: Användarroll"
+
+#: includes/class-settings.php:639
+msgid "Message: Invalid username (not exists)"
+msgstr "Meddelande: Ogiltigt användarnamn (finns inte)"
+
+#: includes/class-settings.php:315
+msgid "Select icons type"
+msgstr "Välj ikontyp"
+
+#: includes/class-import-export.php:28
+msgid "Export"
+msgstr "Exportera"
+
+#: includes/class-import-export.php:40
+msgid "Import"
+msgstr "Importera"
+
+#: includes/class-import-export.php:26
+msgid "Import/Export"
+msgstr "Importera/exportera"
+
+#: includes/class-settings.php:736
+msgid "Message: Must agree with the terms"
+msgstr ""
+
+#: includes/class-settings.php:411
+msgid "Please disable it once problem was solved to improve security!"
+msgstr "inaktivera det när problemet löser sig för att förbättra säkerheten!"
+
+#: includes/class-settings.php:410
+msgid "Enable debug mode for public AJAX requests. Required to simply find an error messages."
+msgstr ""
+
+#: includes/class-settings.php:407
+msgid "Debug"
+msgstr "Felsök"
+
+#: skins/default/skin.php:28
+msgid "Open modal >>"
+msgstr "Öppna modal >>"
+
+#: skins/default/skin.php:27
+msgid "Display modal for customize"
+msgstr ""
+
+#: skins/add-customizer-panel.php:12
+msgid "Theme palette"
+msgstr ""
+
+#: includes/class-ajax.php:665
+msgid "Your password reset link has expired."
+msgstr "Din länk för återställning av lösenord har löpt ut."
+
+#: includes/class-ajax.php:662
+msgid "Your password reset link appears to be invalid."
+msgstr "Din länk för återställning av lösenord verkar vara ogiltig."
+
+#: includes/class-ajax.php:658
+msgid "Please <a href=\"%s\" class=\"lrm-forgot-password\">request a new link.</a>"
+msgstr ""
+
+#: includes/class-settings.php:883
+msgid "Your password reset link login is missing."
+msgstr ""
+
+#: includes/class-settings.php:876
+msgid "Your password reset link key is missing."
+msgstr ""
+
+#: includes/class-ajax.php:607
+msgid "Your password has been reset."
+msgstr "Ditt lösenord har blivit återställt."
+
+#: includes/class-redirects-manager.php:121
+msgid "Custom page redirect"
+msgstr ""
+
+#: includes/class-redirects-manager.php:106
+msgid "Action after Logout"
+msgstr "Åtgärd efter utloggning"
+
+#: includes/class-redirects-manager.php:103
+msgid "After-Logout actions"
+msgstr "Åtgärder efter utloggning"
+
+#: includes/class-redirects-manager.php:87
+msgid "Select an action"
+msgstr "Välj en åtgärd"
+
+#: includes/class-redirects-manager.php:77
+msgid "Action when the user click a verification link from Email verification [PRO]?"
+msgstr ""
+
+#: includes/class-redirects-manager.php:71
+msgid "\"Email verification (send password to the email)\" is not effective if the user can set password during registration (in PRO)"
+msgstr ""
+
+#: includes/class-redirects-manager.php:58
+msgid "Action after registration"
+msgstr "Åtgärd efter registrering"
+
+#: includes/class-redirects-manager.php:55
+msgid "After-Registration actions"
+msgstr ""
+
+#: includes/class-redirects-manager.php:44
+msgid "Redirect to (if \"Redirect to page [PRO]\" is selected)"
+msgstr ""
+
+#: includes/class-redirects-manager.php:28
+msgid "Action after login"
+msgstr "Åtgärd efter inloggning"
+
+#: includes/class-redirects-manager.php:25
+msgid "After-Login actions"
+msgstr "Åtgärder efter inloggning"
+
+#: includes/class-redirects-manager.php:21
+msgid "Actions / Redirects"
+msgstr "Åtgärder/omdirigeringar"
+
+#: includes/class-settings.php:1065
+msgid "Find them here: https://www.google.com/recaptcha/admin"
+msgstr "Hitta dem här: https://www.google.com/recaptcha/admin"
+
+#: includes/class-settings.php:1060
+msgid "Secret key"
+msgstr "Hemlig nyckel"
+
+#: includes/class-settings.php:1053
+msgid "Site key"
+msgstr "Webbplatsnyckel"
+
+#: includes/class-settings.php:1047
+msgid "Please make sure that keys is created for the selected reCaptcha type!"
+msgstr ""
+
+#: includes/class-settings.php:1039
+msgid "reCaptcha type:"
+msgstr "reCaptcha-typ:"
+
+#: includes/class-settings.php:1036
+msgid "reCaptcha Api Keys"
+msgstr "reCaptcha Api-nycklar"
+
+#: includes/class-settings.php:1026
+msgid "Secure lost password form?"
+msgstr ""
+
+#: includes/class-settings.php:1017
+msgid "Secure register form?"
+msgstr "Säkert registreringsformulär?"
+
+#: includes/class-settings.php:340 includes/class-settings.php:413
+#: includes/class-settings.php:424 includes/class-settings.php:1011
+#: includes/class-settings.php:1019 includes/class-settings.php:1028
+#: includes/class-roles-manager.php:29 includes/class-roles-manager.php:55
+msgid "Yes"
+msgstr "Ja"
+
+#: includes/class-settings.php:1009
+msgid "Secure login form?"
+msgstr "Säkert inloggningsformulär?"
+
+#: includes/class-settings.php:1003
+msgid "Ony if you do not have external Captcha plugins."
+msgstr ""
+
+#: includes/class-settings.php:994
+msgid "How to secure forms?"
+msgstr ""
+
+#: includes/class-settings.php:989
+msgid "Security (captcha)"
+msgstr "Säkerhet (captcha)"
+
+#: includes/class-settings.php:948
+msgid "Too Short Password"
+msgstr "För kort lösenord"
+
+#: includes/class-settings.php:947
+msgid "Message: Too Short Password"
+msgstr "Meddelande: För kort lösenord"
+
+#: includes/class-settings.php:941
+msgid "Strong Password"
+msgstr "Starkt lösenord"
+
+#: includes/class-settings.php:940
+msgid "Message: Strong Password"
+msgstr "Meddelande: Starkt lösenord"
+
+#: includes/class-settings.php:934
+msgid "Passwords is mismatch!"
+msgstr ""
+
+#: includes/class-settings.php:933
+msgid "Message: Mismatch"
+msgstr ""
+
+#: includes/class-settings.php:927
+msgid "Bad Password"
+msgstr "Dåligt lösenord"
+
+#: includes/class-settings.php:926
+msgid "Message: Bad Password"
+msgstr "Meddelande: Dåligt lösenord"
+
+#: includes/class-settings.php:920
+msgid "Good Password"
+msgstr "Bra lösenord"
+
+#: includes/class-settings.php:919
+msgid "Message: Good Password"
+msgstr "Meddelande: Bra lösenord"
+
+#: includes/class-settings.php:913
+msgid "Password is missing!"
+msgstr "Lösenord saknas!"
+
+#: includes/class-settings.php:912
+msgid "Message: Password is missing"
+msgstr "Meddelande: Lösenord saknas"
+
+#: includes/class-settings.php:899
+msgid "Confirm use of weak password"
+msgstr "Bekräfta användning av svagt lösenord"
+
+#: includes/class-settings.php:888
+msgid "Password (registration/reset password)"
+msgstr ""
+
+#: includes/class-settings.php:525
+msgid "The email Body to user with new password. Allowed tags: <code>{{USERNAME}}</code>, <code>{{CHANGE_PASSWORD_URL}}</code>, <code>{{SITE_URL}}</code>, <code>{{HOME_URL}}</code>, <code>{{LOGIN_URL}}</code>, <code>{{EMAIL}}</code>, <code>{{FIRST_NAME}}</code>, <code>{{LAST_NAME}}</code>"
+msgstr ""
+
+#: includes/class-settings.php:309
+msgid "In a PRO version you will have <a href=\"%s\" target=\"_blank\">more skins</a>"
+msgstr ""
+
+#: includes/class-settings.php:304
+msgid "Select skin"
+msgstr ""
+
+#: includes/class-settings.php:301
+msgid "Skins (modal design)"
+msgstr ""
+
+#: includes/class-settings.php:297
+msgid "Skins"
+msgstr ""
+
+#: includes/class-pages-manager.php:98
+msgid "Please make sure that page content contains shortcode:<br> <code>[lrm_lostpassword_form logged_in_message=\"You are currently logged in!\"]</code>"
+msgstr ""
+
+#: includes/class-pages-manager.php:93
+msgid "Restore password page"
+msgstr "Sida för återställning av lösenord"
+
+#: includes/class-pages-manager.php:90
+msgid "Restore password"
+msgstr "Återställ lösenord"
+
+#: includes/class-pages-manager.php:85
+msgid "Please make sure that page content contains shortcode:<br> <code>[lrm_form default_tab=\"register\" logged_in_message=\"You are currently logged in!\"]</code>"
+msgstr ""
+
+#: includes/class-pages-manager.php:80
+msgid "Registration page"
+msgstr "Registreringssida"
+
+#: includes/class-pages-manager.php:73
+msgid "Here you could override default WP pages (login, registration, restore password) to your custom pages. "
+msgstr ""
+
+#: includes/class-pages-manager.php:68
+msgid "Please make sure that page content contains shortcode:<br> <code>[lrm_form default_tab=\"login\" logged_in_message=\"You are currently logged in!\"]</code>"
+msgstr ""
+
+#: includes/class-pages-manager.php:63
+msgid "Login page"
+msgstr "Inloggningssida"
+
+#: includes/class-pages-manager.php:55
+msgid "Pages"
+msgstr "Sidor"
+
+#: includes/class-settings.php:570
+msgid "Template for HTML emails (text/html format only, not WooCommerce!)"
+msgstr "Mall för e-postmeddelanden i HTML-format (endast text/html-format, inte WooCommerce!)"
+
+#: includes/class-settings.php:509
+msgid "{{SITE_NAME}} Your new password"
+msgstr "{{SITE_NAME}} Ditt nya lösenord"
+
+#: includes/class-settings.php:497
+msgid "Your password is:"
+msgstr "Ditt lösenord är:"
+
+#: includes/class-settings.php:494
+msgid "You just registered on"
+msgstr "Du har just registrerat dig på"
+
+#: includes/class-settings.php:485
+msgid "{{SITE_NAME}} Your username and password info"
+msgstr "{{SITE_NAME}} Information om ditt användarnamn och lösenord"
+
+#: includes/class-settings.php:473
+msgid "To enable support of html tags - use text/html email format. More - <a href=\"%1$s\" target=\"_blank\">%1$s</a><br/> Option \"use WooCommerce template\" is experimental feature and could have issues with some WC plugins."
+msgstr ""
+
+#: includes/class-settings.php:434
+msgid "Yes for Free and Pro"
+msgstr "Ja för gratis och Pro"
+
+#: includes/class-settings.php:432
+msgid "Remove all plugin settings on plugin deactivation?"
+msgstr ""
+
+#: includes/class-settings.php:429
+msgid "Uninstall"
+msgstr "Avinstallera"
+
+#: includes/class-settings.php:212
+msgid "If you need support:"
+msgstr "Om du behöver support:"
+
+#: includes/class-settings.php:204
+msgid "How to integrate inline form on your site:"
+msgstr "Så här integrerar du infogat formulär på din webbplats:"
+
+#. Plugin Name of the plugin
+msgid "AJAX Login and Registration modal popup + inline form"
+msgstr ""
+
+#: includes/class-settings.php:575
+msgid "Put here your custom mail html template + css + tag {{CONTENT}} (required)."
+msgstr ""
+
+#: includes/class-settings.php:573
+msgid "HTML email template"
+msgstr "Mall för e-post i HTML-format"
+
+#: includes/class-settings.php:561
+msgid "View:"
+msgstr "Visa:"
+
+#: includes/class-settings.php:560
+msgid "Email:"
+msgstr "E-post:"
+
+#: includes/class-settings.php:496 includes/class-settings.php:559
+msgid "Username:"
+msgstr "Användarnamn:"
+
+#: includes/class-settings.php:558
+msgid "New user just registered on"
+msgstr "En ny användare har nyss registrerat sig på"
+
+#: includes/class-settings.php:549
+msgid "New user registration on your site:"
+msgstr "Ny användarregistrering på din webbplats:"
+
+#: includes/class-settings.php:533
+msgid "Send email to admin about new user?"
+msgstr "Skicka e-post till admin om ny användare?"
+
+#: includes/class-settings.php:530
+msgid "Admin emails"
+msgstr ""
+
+#: includes/class-admin-menus.php:67
+msgid "Add to menu"
+msgstr "Lägg till i menyn"
+
+#: includes/class-admin-menus.php:64
+msgid "Select All"
+msgstr "Välj alla"
+
+#: includes/class-admin-menus.php:56
+msgid "Log-out"
+msgstr "Logga ut"
+
+#: includes/class-admin-menus.php:47
+msgid "Register"
+msgstr "Registrera"
+
+#: includes/class-admin-menus.php:21
+msgid "Login & Registration modal"
+msgstr "Modalfönster för inloggning och registrering"
+
+#: includes/class-settings.php:402
+msgid "With using \"server\" method you can avoid displaying default browser \"field invalid\" messages and gives more customization options."
+msgstr ""
+
+#: includes/class-settings.php:394
+msgid "Data validation method"
+msgstr "Datavalideringsmetod"
+
+#: includes/class-settings.php:391
+msgid "Data validation"
+msgstr "Datavalidering"
+
+#: includes/class-settings.php:256
+msgid "He will need to open the email and click verification link. Please add {{VERIFY_ACCOUNT_URL}} tag to Registration Email."
+msgstr ""
+
+#: includes/class-settings.php:256
+msgid "[If user can set password] "
+msgstr "[Om användaren kan ställa in lösenord]"
+
+#: includes/class-settings.php:248
+msgid "[If user can't set password] "
+msgstr "[Om användaren inte kan ställa in lösenord]"
+
+#: includes/class-settings.php:242 includes/class-settings.php:248
+msgid "He will need to open the email with his login information and enter them on the Log In tab."
+msgstr ""
+
+#: includes/class-settings.php:239
+msgid "If this option is enabled - the user won't automatically be logged into his account."
+msgstr ""
+
+#: includes/class-ajax.php:87
+msgid "https://wordpress.org/support/"
+msgstr "https://wordpress.org/support/"
+
+#: includes/class-ajax.php:87
+msgid "https://codex.wordpress.org/Cookies"
+msgstr "https://codex.wordpress.org/Cookies"
+
+#. translators: 1: Browser cookie documentation URL, 2: Support forums URL
+#: includes/class-ajax.php:86
+msgid "<strong>ERROR</strong>: Cookies are blocked due to unexpected output. For help, please see <a href=\"%1$s\">this documentation</a> or try the <a href=\"%2$s\">support forums</a>."
+msgstr ""
+
+#: includes/class-settings.php:765
+msgid "Message: No First Name"
+msgstr "Meddelande: Inget förnamn"
+
+#: includes/class-settings.php:758
+msgid "Message: No UserName"
+msgstr "Meddelande: Inget användarnamn"
+
+#: includes/class-settings.php:678
+msgid "Form: Username"
+msgstr "Formulär: Användarnamn"
+
+#: includes/class-settings.php:660
+msgid "Message: Login successful (with \"Reload page after login/registration?\" disabled)"
+msgstr ""
+
+#: includes/class-settings.php:653
+msgid "Message: Login successful (with \"Reload page after login/registration?\" enabled)"
+msgstr ""
+
+#: includes/class-settings.php:520
+msgid "To reset your password, visit the following address:"
+msgstr "För att återställa ditt lösenord, besök följande adress:"
+
+#: includes/class-settings.php:519
+msgid "If this was a mistake, just ignore this email and nothing will happen."
+msgstr "Om det här var ett misstag, ignorera bara denna e-post och ingenting kommer att hända."
+
+#: includes/class-settings.php:278
+msgid "Display First and Last name fields in Registration Form?"
+msgstr "Visa fält för för- och efternamn i registreringsformuläret?"
+
+#: includes/class-settings.php:463
+msgid "Email format"
+msgstr "E-postformat"
+
+#: includes/class-settings.php:460
+msgid "Mails"
+msgstr ""
+
+#: includes/class-settings.php:980
+msgid "Message: Security token is expired"
+msgstr "Meddelande: Säkerhetstoken har löpt ut"
+
+#: includes/class-settings.php:831
+msgid "Message: No user registered with that email address"
+msgstr "Meddelande: Ingen användare registrerad med den e-postadressen"
+
+#: includes/class-settings.php:824
+msgid "Message: Missing login"
+msgstr "Meddelande: Saknar inloggning"
+
+#: includes/class-settings.php:632
+msgid "Message: No Username/Email"
+msgstr "Meddelande: Inget användarnamn/e-post"
+
+#: includes/class-ajax.php:607
+msgid "Log in"
+msgstr "Logga in"
+
+#: includes/class-settings.php:972
+msgid "Hide password"
+msgstr "Dölj lösenord"
+
+#: includes/class-settings.php:964
+msgid "Show password"
+msgstr "Visa lösenord"
+
+#: includes/class-settings.php:389
+msgid "Use your custom selector to find button/link for attach modal."
+msgstr ""
+
+#. Author URI of the plugin
+msgid "http://maxim-kaminsky.com/"
+msgstr "http://maxim-kaminsky.com/"
+
+#. Author of the plugin
+msgid "Maxim K"
+msgstr "Maxim K"
+
+#. Plugin URI of the plugin
+msgid "https://maxim-kaminsky.com/shop/product/ajax-login-and-registration-modal-popup-pro/"
+msgstr "https://maxim-kaminsky.com/shop/product/ajax-login-and-registration-modal-popup-pro/"
+
+#: views/admin/settings-page.php:6 views/settings-page.php:6
+msgid "No Settings available at the moment"
+msgstr "Inga inställningar tillgängliga för tillfället"
+
+#: includes/class-settings.php:1078
+msgid "PRO features"
+msgstr "PRO-funktioner"
+
+#: includes/class-settings.php:956
+msgid "Close modal text"
+msgstr ""
+
+#: includes/class-settings.php:953
+msgid "Other"
+msgstr "Annat"
+
+#: includes/class-settings.php:866
+msgid "Message: Reset successful"
+msgstr "Meddelande: Återställning lyckades"
+
+#: includes/class-settings.php:859
+msgid "Message: Something went wrong"
+msgstr "Meddelande: Något gick fel"
+
+#: includes/class-settings.php:852
+msgid "Message: Unable to send email"
+msgstr "Meddelande: Det gick inte att skicka e-post"
+
+#: includes/class-settings.php:845
+msgid "Message: Invalid username or e-mail address"
+msgstr "Meddelande: Ogiltigt användarnamn eller e-postadress"
+
+#: includes/class-settings.php:838
+msgid "Message: No user registered with that username"
+msgstr "Meddelande: Ingen användare registrerad med det användarnamnet"
+
+#: includes/class-settings.php:816
+msgid "Form button: Back to login"
+msgstr "Formulärknapp: Tillbaka till inloggning"
+
+#: includes/class-settings.php:872
+msgid "Reset Password"
+msgstr "Återställ lösenord"
+
+#: includes/class-settings.php:809
+msgid "Form button: Reset password"
+msgstr "Formulärknapp: Återställ lösenord"
+
+#: includes/class-settings.php:795
+msgid "Message"
+msgstr "Meddelande"
+
+#: includes/class-settings.php:779 includes/class-settings.php:786
+msgid "Message: Registration successful"
+msgstr "Meddelande: Registrering lyckades"
+
+#: includes/class-settings.php:772
+msgid "Message: Wrong email"
+msgstr "Meddelande: Fel e-post"
+
+#: includes/class-settings.php:751
+msgid "Message: Registration is disabled"
+msgstr "Meddelande: Registrering är inaktiverad"
+
+#: includes/class-settings.php:743
+msgid "Form button: Create account"
+msgstr "Formulärknapp: Skapa konto"
+
+#: includes/class-settings.php:728
+msgid "Form: Terms"
+msgstr "Formulär: Termer"
+
+#: includes/class-settings.php:699
+msgid "Form: Email"
+msgstr "Formulär: E-post"
+
+#: includes/class-settings.php:692
+msgid "Form: Last name"
+msgstr "Formulär: Efternamn"
+
+#: includes/class-settings.php:685
+msgid "Form: First name"
+msgstr "Formulär: Förnamn"
+
+#: includes/class-settings.php:646
+msgid "Message: No Password"
+msgstr "Meddelande: Inget lösenord"
+
+#: includes/class-settings.php:624
+msgid "Link: Forgot your password?"
+msgstr "Länk: Glömt ditt lösenord?"
+
+#: includes/class-settings.php:617
+msgid "Form button: Login"
+msgstr "Formulärknapp: Logga in"
+
+#: includes/class-settings.php:610
+msgid "Form: Remember me"
+msgstr "Formulär: Kom ihåg mig"
+
+#: includes/class-settings.php:891 includes/class-settings.php:892
+msgid "Password"
+msgstr "Lösenord"
+
+#: includes/class-settings.php:603
+msgid "Form: Password"
+msgstr "Formulär: Lösenord"
+
+#: includes/class-settings.php:596 includes/class-settings.php:802
+msgid "Form: Email or Username"
+msgstr "Formulär: E-post eller användarnamn"
+
+#: includes/class-settings.php:589 includes/class-settings.php:671
+msgid "Form heading"
+msgstr "Formulärrubrik"
+
+#: includes/class-settings.php:586 includes/class-pages-manager.php:59
+#: includes/class-admin-menus.php:38
+msgid "Login"
+msgstr "Logga in"
+
+#: includes/class-settings.php:584
+msgid "Expressions"
+msgstr "Uttryck"
+
+#: includes/class-settings.php:495
+msgid "Url to login:"
+msgstr "Url till inloggning:"
+
+#: includes/class-settings.php:511
+msgid "The email Subject to user with new password."
+msgstr ""
+
+#: includes/class-settings.php:506 includes/class-settings.php:792
+msgid "Lost password"
+msgstr "Glömt lösenord"
+
+#: includes/class-settings.php:492 includes/class-settings.php:516
+#: includes/class-settings.php:556
+msgid "Body"
+msgstr ""
+
+#: includes/class-settings.php:486 includes/class-settings.php:550
+msgid "The email Subject to user about successful registration."
+msgstr ""
+
+#: includes/class-settings.php:484 includes/class-settings.php:508
+#: includes/class-settings.php:548
+msgid "Subject"
+msgstr "Ämne"
+
+#: includes/class-settings.php:481 includes/class-settings.php:668
+#: includes/class-pages-manager.php:77
+msgid "Registration"
+msgstr "Registrering"
+
+#: includes/class-settings.php:458
+msgid "Emails"
+msgstr "E-post"
+
+#: includes/class-settings.php:383
+msgid "Extra selectors to handle register modal?"
+msgstr ""
+
+#: includes/class-settings.php:375
+msgid "Extra selectors to handle log in modal?"
+msgstr ""
+
+#: includes/class-settings.php:372
+msgid "Extra selectors (id, classes) to handle modal"
+msgstr ""
+
+#: includes/class-settings.php:370
+msgid "Advanced"
+msgstr "Avancerad"
+
+#: includes/class-settings.php:232
+msgid "Hide Terms box in Registration Form?"
+msgstr ""
+
+#: includes/class-settings.php:229
+msgid "Terms"
+msgstr "Termer"
+
+#: includes/class-settings.php:222
+msgid "Free version are compatible with:"
+msgstr "Gratisversionen är kompatibel med:"
+
+#: includes/class-settings.php:219
+msgid "Supported plugins"
+msgstr "Tillägg som stöds"
+
+#: includes/class-settings.php:196
+msgid "How to integrate modal on your site:"
+msgstr ""
+
+#: includes/class-settings.php:193
+msgid "Installation steps"
+msgstr "Installationssteg"
+
+#: includes/class-settings.php:190 includes/class-settings.php:259
+#: includes/class-settings.php:991
+msgid "General"
+msgstr "Allmänt"
+
+#: includes/class-settings.php:166
+msgid "I already reviewed it"
+msgstr "Jag har redan recenserat det"
+
+#: includes/class-settings.php:163
+msgid "Do you like \"Login and Register Modal\" plugin? Please consider giving it a %1$sreview%2$s"
+msgstr ""
+
+#: includes/class-core.php:119 views/admin/settings-page.php:3
+#: views/settings-page.php:3
+msgid "Settings"
+msgstr "Inställningar"

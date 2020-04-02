@@ -1,0 +1,131 @@
+# Translation of Plugins - AJAX Login and Registration modal popup + inline form - Development (trunk) in Ukrainian
+# This file is distributed under the same license as the Plugins - AJAX Login and Registration modal popup + inline form - Development (trunk) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2020-03-17 13:23+0200\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Poedit 2.3\n"
+"Language: uk_UA\n"
+"Project-Id-Version: Plugins - AJAX Login and Registration modal popup + inline form - Development (trunk)\n"
+"POT-Creation-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+
+#: includes/class-pages-manager.php:63
+msgid "Login page"
+msgstr "Сторінка авторизації"
+
+#: includes/class-pages-manager.php:55
+msgid "Pages"
+msgstr "Сторінки"
+
+#: includes/class-settings.php:497
+msgid "Your password is:"
+msgstr "Ваш пароль:"
+
+#: includes/class-settings.php:429
+msgid "Uninstall"
+msgstr "Видалити"
+
+#: includes/class-settings.php:432
+msgid "Remove all plugin settings on plugin deactivation?"
+msgstr "Видалити всі налаштування після деактивації плагіну?"
+
+#: includes/class-settings.php:560
+msgid "Email:"
+msgstr "Email:"
+
+#: includes/class-settings.php:496 includes/class-settings.php:559
+msgid "Username:"
+msgstr "Ім'я користувача:"
+
+#: includes/class-settings.php:530
+msgid "Admin emails"
+msgstr "Email адміністратора"
+
+#: includes/class-settings.php:561
+msgid "View:"
+msgstr "Переглянути"
+
+#: includes/class-settings.php:573
+msgid "HTML email template"
+msgstr "HTML шаблон листа"
+
+#: includes/class-admin-menus.php:67
+msgid "Add to menu"
+msgstr "Додати в меню"
+
+#: includes/class-admin-menus.php:64
+msgid "Select All"
+msgstr "Вибрати все"
+
+#: includes/class-admin-menus.php:56
+msgid "Log-out"
+msgstr "Вийти"
+
+#: includes/class-admin-menus.php:47
+msgid "Register"
+msgstr "Зареєструватись"
+
+#: includes/class-admin-menus.php:21
+msgid "Login & Registration modal"
+msgstr ""
+
+#: includes/class-ajax.php:87
+msgid "https://wordpress.org/support/"
+msgstr ""
+
+#: includes/class-ajax.php:87
+msgid "https://codex.wordpress.org/Cookies"
+msgstr ""
+
+#: includes/class-settings.php:972
+msgid "Hide password"
+msgstr "Сховати пароль"
+
+#: includes/class-settings.php:964
+msgid "Show password"
+msgstr "Показати пароль"
+
+#: includes/class-settings.php:795
+msgid "Message"
+msgstr "Повідомлення"
+
+#: includes/class-settings.php:953
+msgid "Other"
+msgstr "Інше"
+
+#: includes/class-core.php:119 views/admin/settings-page.php:3
+#: views/settings-page.php:3
+msgid "Settings"
+msgstr "Налаштування"
+
+#: includes/class-settings.php:484 includes/class-settings.php:508
+#: includes/class-settings.php:548
+msgid "Subject"
+msgstr "Тема"
+
+#: includes/class-settings.php:481 includes/class-settings.php:668
+#: includes/class-pages-manager.php:77
+msgid "Registration"
+msgstr "Реєстрація"
+
+#: includes/class-settings.php:458
+msgid "Emails"
+msgstr "Email"
+
+#: includes/class-settings.php:891 includes/class-settings.php:892
+msgid "Password"
+msgstr "Пароль"
+
+#: includes/class-settings.php:586 includes/class-pages-manager.php:59
+#: includes/class-admin-menus.php:38
+msgid "Login"
+msgstr "Логін"
+
+#: includes/class-settings.php:506 includes/class-settings.php:792
+msgid "Lost password"
+msgstr "Забули пароль?"

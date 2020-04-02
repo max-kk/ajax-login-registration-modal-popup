@@ -1,0 +1,494 @@
+# Translation of Plugins - AJAX Login and Registration modal popup + inline form - Development (trunk) in French (Canada)
+# This file is distributed under the same license as the Plugins - AJAX Login and Registration modal popup + inline form - Development (trunk) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2020-03-17 14:39+0200\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Poedit 2.3\n"
+"Language: fr_CA\n"
+"Project-Id-Version: Plugins - AJAX Login and Registration modal popup + inline form - Development (trunk)\n"
+"POT-Creation-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+
+#: includes/class-ajax.php:665
+msgid "Your password reset link has expired."
+msgstr "Le lien de réinitialisation de votre mot de passe a expiré."
+
+#: skins/add-customizer-panel.php:12
+msgid "Theme palette"
+msgstr "Palette de thème"
+
+#: skins/default/skin.php:28
+msgid "Open modal >>"
+msgstr "Ouvrir un model >>"
+
+#: skins/default/skin.php:27
+msgid "Display modal for customize"
+msgstr "Affichage le model pour personnaliser"
+
+#: includes/class-ajax.php:662
+msgid "Your password reset link appears to be invalid."
+msgstr "Le lien de réinitialisation de votre mot de passe semble invalide."
+
+#: includes/class-redirects-manager.php:103
+msgid "After-Logout actions"
+msgstr "Actions après la déconnexion"
+
+#: includes/class-redirects-manager.php:106
+msgid "Action after Logout"
+msgstr "Actions après la déconnexion"
+
+#: includes/class-redirects-manager.php:121
+msgid "Custom page redirect"
+msgstr "Redirection de page personnalisée"
+
+#: includes/class-settings.php:883
+msgid "Your password reset link login is missing."
+msgstr "Votre identifiant de lien de réinitialisation de mot de passe est manquant."
+
+#: includes/class-settings.php:876
+msgid "Your password reset link key is missing."
+msgstr "Votre clé de lien de réinitialisation de mot de passe est manquante."
+
+#: includes/class-ajax.php:607
+msgid "Your password has been reset."
+msgstr "Votre mot de passe a été réinitialisé."
+
+#: includes/class-redirects-manager.php:58
+msgid "Action after registration"
+msgstr "Action après inscription"
+
+#: includes/class-redirects-manager.php:55
+msgid "After-Registration actions"
+msgstr "Action après inscription"
+
+#: includes/class-redirects-manager.php:28
+msgid "Action after login"
+msgstr "Action après connection"
+
+#: includes/class-redirects-manager.php:25
+msgid "After-Login actions"
+msgstr "Action après connection"
+
+#: includes/class-redirects-manager.php:21
+msgid "Actions / Redirects"
+msgstr "Actions / redirection"
+
+#: includes/class-settings.php:1060
+msgid "Secret key"
+msgstr "Clé secrète"
+
+#: includes/class-settings.php:1053
+msgid "Site key"
+msgstr "Clé du site"
+
+#: includes/class-settings.php:1047
+msgid "Please make sure that keys is created for the selected reCaptcha type!"
+msgstr "Assurez-vous que les clés sont créées pour le type de reCaptcha sélectionné!"
+
+#: includes/class-settings.php:1039
+msgid "reCaptcha type:"
+msgstr "type de reCapcha"
+
+#: includes/class-settings.php:1036
+msgid "reCaptcha Api Keys"
+msgstr "Clé de l'api reCapcha"
+
+#: includes/class-settings.php:1026
+msgid "Secure lost password form?"
+msgstr "Formulaire de mot de passe perdu sécurisé?"
+
+#: includes/class-settings.php:1017
+msgid "Secure register form?"
+msgstr "Formulaire d'inscription sécurisé?"
+
+#: includes/class-settings.php:340 includes/class-settings.php:413
+#: includes/class-settings.php:424 includes/class-settings.php:1011
+#: includes/class-settings.php:1019 includes/class-settings.php:1028
+#: includes/class-roles-manager.php:29 includes/class-roles-manager.php:55
+msgid "Yes"
+msgstr "Oui"
+
+#: includes/class-settings.php:1009
+msgid "Secure login form?"
+msgstr "Formulaire de connexion sécurisé?"
+
+#: includes/class-settings.php:1003
+msgid "Ony if you do not have external Captcha plugins."
+msgstr "Seulement si vous n'avez pas de plugins externes Captcha."
+
+#: includes/class-settings.php:994
+msgid "How to secure forms?"
+msgstr "Comment sécuriser les formulaires?"
+
+#: includes/class-settings.php:989
+msgid "Security (captcha)"
+msgstr "Sécurité (captcha)"
+
+#: includes/class-settings.php:948
+msgid "Too Short Password"
+msgstr "Mot de passe trop court"
+
+#: includes/class-settings.php:947
+msgid "Message: Too Short Password"
+msgstr "Message: Mot de passe trop court"
+
+#: includes/class-settings.php:941
+msgid "Strong Password"
+msgstr "Mot de passe fort"
+
+#: includes/class-settings.php:940
+msgid "Message: Strong Password"
+msgstr "message: Mot de passe fort"
+
+#: includes/class-settings.php:934
+msgid "Passwords is mismatch!"
+msgstr "Les mots de passe ne concorde pas"
+
+#: includes/class-settings.php:933
+msgid "Message: Mismatch"
+msgstr "message : Les mots de passe ne concorde pas"
+
+#: includes/class-settings.php:927
+msgid "Bad Password"
+msgstr "Mauvais mot de passe"
+
+#: includes/class-settings.php:926
+msgid "Message: Bad Password"
+msgstr "message:Mauvais mot de passe"
+
+#: includes/class-settings.php:920
+msgid "Good Password"
+msgstr "Bon mot de passe"
+
+#: includes/class-settings.php:919
+msgid "Message: Good Password"
+msgstr "message : Bon mot de passe"
+
+#: includes/class-settings.php:913
+msgid "Password is missing!"
+msgstr "Le mot de passe est manquant!"
+
+#: includes/class-settings.php:912
+msgid "Message: Password is missing"
+msgstr "message: Le mot de passe est manquant!"
+
+#: includes/class-settings.php:899
+msgid "Confirm use of weak password"
+msgstr "Confirmer l'utilisation d'un mot de passe faible"
+
+#: includes/class-settings.php:888
+msgid "Password (registration/reset password)"
+msgstr "Mot de passe (inscription / réinitialisation du mot de passe)"
+
+#: includes/class-pages-manager.php:93
+msgid "Restore password page"
+msgstr "page de réinitialisation de mot de passe"
+
+#: includes/class-pages-manager.php:90
+msgid "Restore password"
+msgstr "réinitialisé le mot de passe"
+
+#: includes/class-pages-manager.php:80
+msgid "Registration page"
+msgstr "Page d'inscription"
+
+#: includes/class-pages-manager.php:73
+msgid "Here you could override default WP pages (login, registration, restore password) to your custom pages. "
+msgstr "Ici, vous pouvez remplacer les pages WP par défaut (connexion, enregistrement, mot de passe de restauration) sur vos pages personnalisées."
+
+#: includes/class-pages-manager.php:68
+msgid "Please make sure that page content contains shortcode:<br> <code>[lrm_form default_tab=\"login\" logged_in_message=\"You are currently logged in!\"]</code>"
+msgstr "Assurez-vous que le contenu de la page contient un shortcode.<br> <code>[lrm_form default_tab=\"login\" logged_in_message=\"Vous avez déjà été connecté!\"]</code>"
+
+#: includes/class-pages-manager.php:63
+msgid "Login page"
+msgstr "Page de connection"
+
+#: includes/class-pages-manager.php:55
+msgid "Pages"
+msgstr "Page"
+
+#: includes/class-settings.php:509
+msgid "{{SITE_NAME}} Your new password"
+msgstr "{{SITE_NAME}} Votre nouveau mot de passe"
+
+#: includes/class-settings.php:497
+msgid "Your password is:"
+msgstr "Votre mot de passe est:"
+
+#: includes/class-settings.php:494
+msgid "You just registered on"
+msgstr "Vous venez de vous inscrire sur"
+
+#: includes/class-settings.php:485
+msgid "{{SITE_NAME}} Your username and password info"
+msgstr "{{SITE_NAME}} Votre identifiant et mot de passe"
+
+#: includes/class-settings.php:561
+msgid "View:"
+msgstr "Vue:"
+
+#: includes/class-settings.php:560
+msgid "Email:"
+msgstr "Courriel:"
+
+#: includes/class-settings.php:496 includes/class-settings.php:559
+msgid "Username:"
+msgstr "Nom d'utilisateur:"
+
+#: includes/class-settings.php:558
+msgid "New user just registered on"
+msgstr "Nouvel utilisateur vient de s'inscrire sur"
+
+#: includes/class-settings.php:549
+msgid "New user registration on your site:"
+msgstr "Enregistrement d'un nouvel utilisateur sur votre site:"
+
+#: includes/class-admin-menus.php:56
+msgid "Log-out"
+msgstr "Déconnection"
+
+#: includes/class-admin-menus.php:47
+msgid "Register"
+msgstr "S'enregistrer"
+
+#: includes/class-settings.php:402
+msgid "With using \"server\" method you can avoid displaying default browser \"field invalid\" messages and gives more customization options."
+msgstr "En utilisant la méthode \"serveur\", vous pouvez éviter d'afficher les messages \"champ non valide\" du navigateur par défaut et offrir davantage d'options de personnalisation."
+
+#: includes/class-settings.php:394
+msgid "Data validation method"
+msgstr "Méthode de validation des données"
+
+#: includes/class-settings.php:391
+msgid "Data validation"
+msgstr "La validation des données"
+
+#: includes/class-settings.php:256
+msgid "He will need to open the email and click verification link. Please add {{VERIFY_ACCOUNT_URL}} tag to Registration Email."
+msgstr "Il devra ouvrir l'e-mail et cliquer sur le lien de vérification. Veuillez ajouter la balise {{VERIFY_ACCOUNT_URL}} à l'e-mail d'inscription."
+
+#: includes/class-settings.php:256
+msgid "[If user can set password] "
+msgstr "[Si l'utilisateur peut définir un mot de passe]"
+
+#: includes/class-settings.php:248
+msgid "[If user can't set password] "
+msgstr "[Si l'utilisateur ne peut pas définir un mot de passe]"
+
+#: includes/class-settings.php:242 includes/class-settings.php:248
+msgid "He will need to open the email with his login information and enter them on the Log In tab."
+msgstr "Il devra ouvrir le courrier électronique avec ses informations de connexion et les saisir dans l'onglet Connexion."
+
+#: includes/class-settings.php:239
+msgid "If this option is enabled - the user won't automatically be logged into his account."
+msgstr "Si cette option est activée, l'utilisateur ne sera pas automatiquement connecté à son compte."
+
+#: includes/class-settings.php:765
+msgid "Message: No First Name"
+msgstr "Message: Aucun Prénom"
+
+#: includes/class-settings.php:758
+msgid "Message: No UserName"
+msgstr "Message: Aucun Nom d'utilisateur"
+
+#: includes/class-settings.php:678
+msgid "Form: Username"
+msgstr "Formulaire: Nom d'utilisateur"
+
+#: includes/class-settings.php:653
+msgid "Message: Login successful (with \"Reload page after login/registration?\" enabled)"
+msgstr "Message: Connexion réussie (avec l'option \"Recharger la page après la connexion / l'enregistrement?\")"
+
+#: includes/class-settings.php:520
+msgid "To reset your password, visit the following address:"
+msgstr "Pour réinitialiser votre mot de passe, visitez l'adresse suivante:"
+
+#: includes/class-settings.php:519
+msgid "If this was a mistake, just ignore this email and nothing will happen."
+msgstr "Si c'était une erreur, ignorez simplement cet email et rien ne se passera."
+
+#: includes/class-settings.php:278
+msgid "Display First and Last name fields in Registration Form?"
+msgstr "Afficher les champs Prénom et Nom dans le formulaire d’enregistrement?"
+
+#: includes/class-settings.php:463
+msgid "Email format"
+msgstr "Format Email"
+
+#: includes/class-settings.php:460
+msgid "Mails"
+msgstr "Email"
+
+#: includes/class-settings.php:980
+msgid "Message: Security token is expired"
+msgstr "Message: Le jeton de sécurité a expiré"
+
+#: includes/class-settings.php:831
+msgid "Message: No user registered with that email address"
+msgstr "Message: Aucun utilisateur enregistré avec cette adresse email"
+
+#: includes/class-settings.php:824
+msgid "Message: Missing login"
+msgstr "Message: Connexion manquante"
+
+#: includes/class-settings.php:632
+msgid "Message: No Username/Email"
+msgstr "Message: Non Nom d'utilisateur / Email"
+
+#: includes/class-ajax.php:607
+msgid "Log in"
+msgstr "S'identifier"
+
+#: includes/class-settings.php:972
+msgid "Hide password"
+msgstr "Masquer le mot de passe"
+
+#: includes/class-settings.php:964
+msgid "Show password"
+msgstr "afficher le mot de passe"
+
+#: includes/class-settings.php:389
+msgid "Use your custom selector to find button/link for attach modal."
+msgstr "Utilisez votre sélecteur personnalisé pour rechercher un bouton / lien à joindre modal."
+
+#: includes/class-settings.php:866
+msgid "Message: Reset successful"
+msgstr "Message: Réinitialisation réussie"
+
+#: includes/class-settings.php:859
+msgid "Message: Something went wrong"
+msgstr "Message: quelque chose s'est mal passé"
+
+#: includes/class-settings.php:852
+msgid "Message: Unable to send email"
+msgstr "Message: Impossible d'envoyer un courrier électronique"
+
+#: includes/class-settings.php:845
+msgid "Message: Invalid username or e-mail address"
+msgstr "Message: Nom d'utilisateur ou adresse e-mail non valide"
+
+#: includes/class-settings.php:838
+msgid "Message: No user registered with that username"
+msgstr "Message: Aucun utilisateur enregistré avec ce nom d'utilisateur"
+
+#: includes/class-settings.php:816
+msgid "Form button: Back to login"
+msgstr "Bouton de formulaire: Retour à la connexion"
+
+#: includes/class-settings.php:809
+msgid "Form button: Reset password"
+msgstr "Bouton de formulaire: Réinitialiser le mot de passe"
+
+#: includes/class-settings.php:795
+msgid "Message"
+msgstr "Message"
+
+#: includes/class-settings.php:779 includes/class-settings.php:786
+msgid "Message: Registration successful"
+msgstr "Message: inscription réussie"
+
+#: includes/class-settings.php:772
+msgid "Message: Wrong email"
+msgstr "Message: e-mail incorrect"
+
+#: includes/class-settings.php:751
+msgid "Message: Registration is disabled"
+msgstr "Message: l'enregistrement est désactivé"
+
+#: includes/class-settings.php:743
+msgid "Form button: Create account"
+msgstr "Bouton de formulaire: Créer un compte"
+
+#: includes/class-settings.php:699
+msgid "Form: Email"
+msgstr "Forme: Email"
+
+#: includes/class-settings.php:692
+msgid "Form: Last name"
+msgstr "Forme: Nom"
+
+#: includes/class-settings.php:685
+msgid "Form: First name"
+msgstr "Forme: Prénom"
+
+#: includes/class-settings.php:646
+msgid "Message: No Password"
+msgstr "Message: Aucun mot de passe"
+
+#: includes/class-settings.php:624
+msgid "Link: Forgot your password?"
+msgstr "Lien: Mot de passe oublié?"
+
+#: includes/class-settings.php:617
+msgid "Form button: Login"
+msgstr "Form button: Connexion"
+
+#: includes/class-settings.php:610
+msgid "Form: Remember me"
+msgstr "Form: Souviens-toi de moi"
+
+#: includes/class-settings.php:891 includes/class-settings.php:892
+msgid "Password"
+msgstr "Mot de passe"
+
+#: includes/class-settings.php:603
+msgid "Form: Password"
+msgstr "Form: Mot de passe"
+
+#: includes/class-settings.php:596 includes/class-settings.php:802
+msgid "Form: Email or Username"
+msgstr "Form: E-mail ou nom d'utilisateur"
+
+#: includes/class-settings.php:589 includes/class-settings.php:671
+msgid "Form heading"
+msgstr "En-tête de formulaire"
+
+#: includes/class-settings.php:586 includes/class-pages-manager.php:59
+#: includes/class-admin-menus.php:38
+msgid "Login"
+msgstr "Connexion"
+
+#: includes/class-settings.php:584
+msgid "Expressions"
+msgstr "Expressions"
+
+#: includes/class-settings.php:495
+msgid "Url to login:"
+msgstr "Url pour vous connecter:"
+
+#: includes/class-settings.php:511
+msgid "The email Subject to user with new password."
+msgstr "L'email est soumis à l'utilisateur avec un nouveau mot de passe."
+
+#: includes/class-settings.php:506 includes/class-settings.php:792
+msgid "Lost password"
+msgstr "Mot de passe oublié"
+
+#: includes/class-settings.php:492 includes/class-settings.php:516
+#: includes/class-settings.php:556
+msgid "Body"
+msgstr "Body"
+
+#: includes/class-settings.php:486 includes/class-settings.php:550
+msgid "The email Subject to user about successful registration."
+msgstr "L'email Sujet à l'utilisateur sur l'inscription réussie."
+
+#: includes/class-settings.php:484 includes/class-settings.php:508
+#: includes/class-settings.php:548
+msgid "Subject"
+msgstr "Sujet"
+
+#: includes/class-settings.php:481 includes/class-settings.php:668
+#: includes/class-pages-manager.php:77
+msgid "Registration"
+msgstr "enregistrement"
+
+#: includes/class-settings.php:458
+msgid "Emails"
+msgstr "Emails"

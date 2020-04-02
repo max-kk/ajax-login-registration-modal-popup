@@ -10,6 +10,7 @@
 .lrm-form .lrm-integrations input[type="number"],
 .lrm-form .lrm-integrations input[type="url"],
 .lrm-form .lrm-integrations input[type="date"],
+.lrm-form .lrm-integrations input[type="password"],
 .lrm-form .lrm-integrations textarea,
 .lrm-form .lrm-integrations select {
     border: 1px solid #d2d8d8;
@@ -30,6 +31,7 @@
 .lrm-form .lrm-integrations input[type="email"]:focus,
 .lrm-form .lrm-integrations input[type="url"]:focus,
 .lrm-form .lrm-integrations input[type="date"]:focus,
+.lrm-form .lrm-integrations input[type="password"]:focus,
 .lrm-form .lrm-integrations textarea:focus
 .lrm-form .lrm-integrations select:focus {
     border-color: #343642;
@@ -247,3 +249,7 @@ a.jetpack-sso {
 }
 
 
+
+.lrm-form .rcp_form label {
+    text-align: left;
+}

@@ -1,0 +1,417 @@
+# Translation of Plugins - AJAX Login and Registration modal popup + inline form - Development (trunk) in Hebrew
+# This file is distributed under the same license as the Plugins - AJAX Login and Registration modal popup + inline form - Development (trunk) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2020-03-17 14:39+0200\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Poedit 2.3\n"
+"Language: he_IL\n"
+"Project-Id-Version: Plugins - AJAX Login and Registration modal popup + inline form - Development (trunk)\n"
+"POT-Creation-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+
+#: includes/class-settings.php:575
+msgid "Put here your custom mail html template + css + tag {{CONTENT}} (required)."
+msgstr ""
+"הוסף לכאן את תבנית הemail שעיצבת\n"
+"תגים אפשריים\n"
+" html template + css + tag  (required)\n"
+"{{CONTENT}} \n"
+"."
+
+#: includes/class-settings.php:573
+msgid "HTML email template"
+msgstr "תבנית אימייל HTML"
+
+#: includes/class-settings.php:561
+msgid "View:"
+msgstr "צפה"
+
+#: includes/class-settings.php:560
+msgid "Email:"
+msgstr "אימייל"
+
+#: includes/class-settings.php:496 includes/class-settings.php:559
+msgid "Username:"
+msgstr "שם משתמש"
+
+#: includes/class-settings.php:558
+msgid "New user just registered on"
+msgstr "משתמש חדש נרשם כרגע לאתר"
+
+#: includes/class-settings.php:549
+msgid "New user registration on your site:"
+msgstr "משתמש חדש נרשם באתר שלך"
+
+#: includes/class-settings.php:533
+msgid "Send email to admin about new user?"
+msgstr "שלח אימייל למנהל אודות משתמש חדש?"
+
+#: includes/class-settings.php:530
+msgid "Admin emails"
+msgstr "אימיילים של המנהל"
+
+#: includes/class-admin-menus.php:67
+msgid "Add to menu"
+msgstr "הוסף לתפריט"
+
+#: includes/class-admin-menus.php:64
+msgid "Select All"
+msgstr "בחר הכל"
+
+#: includes/class-admin-menus.php:56
+msgid "Log-out"
+msgstr "צא"
+
+#: includes/class-admin-menus.php:47
+msgid "Register"
+msgstr "הרשם"
+
+#: includes/class-admin-menus.php:21
+msgid "Login & Registration modal"
+msgstr "אופן הרשמה וכניסה"
+
+#: includes/class-settings.php:402
+msgid "With using \"server\" method you can avoid displaying default browser \"field invalid\" messages and gives more customization options."
+msgstr ""
+"בבחירת מצב \"Server\" ניתן להמנע מהצגת ההודעה -דפדפן ברירת מחדל \"field invalid\"- \n"
+"ולהציע אפשרויות נוספות להתאמה אישית"
+
+#: includes/class-settings.php:394
+msgid "Data validation method"
+msgstr "שיטת אישרור מידע"
+
+#: includes/class-settings.php:391
+msgid "Data validation"
+msgstr "אישרור מידע"
+
+#: includes/class-settings.php:256
+msgid "He will need to open the email and click verification link. Please add {{VERIFY_ACCOUNT_URL}} tag to Registration Email."
+msgstr ""
+"המשתמש יצטרך לפתוח את הדוא\"ל וללחוץ על הקישור לאישור.\n"
+"נא הוסף תגית {{VERIFY_ACCOUNT_URL}}  לדוא\"ל ההרשמה"
+
+#: includes/class-settings.php:256
+msgid "[If user can set password] "
+msgstr "[אם משתמש יכול לקבוע סיסמא]"
+
+#: includes/class-settings.php:248
+msgid "[If user can't set password] "
+msgstr "[אם משתמש אינו יכול לקבוע סיסמא]"
+
+#: includes/class-settings.php:242 includes/class-settings.php:248
+msgid "He will need to open the email with his login information and enter them on the Log In tab."
+msgstr "המשתמש יצטרך לפתוח את האימייל עם הפרטים ולהזין אותם בתגית הכניסת משתמשים"
+
+#: includes/class-settings.php:239
+msgid "If this option is enabled - the user won't automatically be logged into his account."
+msgstr "אם אפשרות זו פעילה - המשתמש לא יופנה אוטומטית לחשבונו."
+
+#: includes/class-ajax.php:87
+msgid "https://wordpress.org/support/"
+msgstr "https://wordpress.org/תמיכה/"
+
+#. translators: 1: Browser cookie documentation URL, 2: Support forums URL
+#: includes/class-ajax.php:86
+msgid "<strong>ERROR</strong>: Cookies are blocked due to unexpected output. For help, please see <a href=\"%1$s\">this documentation</a> or try the <a href=\"%2$s\">support forums</a>."
+msgstr ""
+"<strong>שגיאה</strong>: Cookies מנוטרלות עקב פלט בלתי-צפוי. \n"
+"לעזרה, ראה קישור <a href=\"%1$s\">דפי עזרה</a> או נסה לפנות ל <a href=\"%2$s\">פורום תמיכה</a>."
+
+#: includes/class-settings.php:765
+msgid "Message: No First Name"
+msgstr "הודעה: שם פרטי ריק"
+
+#: includes/class-settings.php:758
+msgid "Message: No UserName"
+msgstr "הודעה: אין שם משתמש"
+
+#: includes/class-settings.php:678
+msgid "Form: Username"
+msgstr "טופס: שם משתמש"
+
+#: includes/class-settings.php:660
+msgid "Message: Login successful (with \"Reload page after login/registration?\" disabled)"
+msgstr "הודעה: כניסה מוצלחת (עםהאופציה  \"טען מחדש את הדף אחרי הרשמה/כניסה\" מנוטרלת)"
+
+#: includes/class-settings.php:653
+msgid "Message: Login successful (with \"Reload page after login/registration?\" enabled)"
+msgstr "הודעה: כניסה מוצלחת (עם האופציה \"טען מחדש את הדף אחרי הרשמה/כניסה\" פעילה)"
+
+#: includes/class-settings.php:520
+msgid "To reset your password, visit the following address:"
+msgstr "לאיפוס סיסמתך, כנס לקישור הבא: "
+
+#: includes/class-settings.php:519
+msgid "If this was a mistake, just ignore this email and nothing will happen."
+msgstr "אם היתה זו טעות, נא התעלם מאימייל זה ושום שינוי לא יבוצע."
+
+#: includes/class-settings.php:278
+msgid "Display First and Last name fields in Registration Form?"
+msgstr "הצג שדות שם משתמש וסיסמא בטופס הרשמה?"
+
+#: includes/class-settings.php:463
+msgid "Email format"
+msgstr "תבנית אימייל"
+
+#: includes/class-settings.php:460
+msgid "Mails"
+msgstr "מיילים"
+
+#: includes/class-settings.php:980
+msgid "Message: Security token is expired"
+msgstr "הודעה: תוקף קוד אבטחה פג"
+
+#: includes/class-settings.php:831
+msgid "Message: No user registered with that email address"
+msgstr "הודעה: אין שם משתמש רשום לאימייל הזה."
+
+#: includes/class-settings.php:824
+msgid "Message: Missing login"
+msgstr "הודעה: חסרים פרטי כינסה"
+
+#: includes/class-settings.php:632
+msgid "Message: No Username/Email"
+msgstr "הודעה: חסר שם משתמש / סיסמא"
+
+#: includes/class-ajax.php:607
+msgid "Log in"
+msgstr "כניסה למערכת"
+
+#: includes/class-settings.php:972
+msgid "Hide password"
+msgstr "הסתר סיסמא"
+
+#: includes/class-settings.php:964
+msgid "Show password"
+msgstr "הצג סיסמא"
+
+#: includes/class-settings.php:389
+msgid "Use your custom selector to find button/link for attach modal."
+msgstr "השתמש בבורר המעוצב למצוא את כפתור/קישור לצירוף המאפיין "
+
+#. Author of the plugin
+msgid "Maxim K"
+msgstr "מקסים ק"
+
+#. Plugin URI of the plugin
+msgid "https://maxim-kaminsky.com/shop/product/ajax-login-and-registration-modal-popup-pro/"
+msgstr "https://maxim-kaminsky.com/חנות/מוצר/ajax-login-and-registration-modal-popup-pro/"
+
+#: views/admin/settings-page.php:6 views/settings-page.php:6
+msgid "No Settings available at the moment"
+msgstr "אין הגדרות זמינות כרגע"
+
+#: includes/class-settings.php:1078
+msgid "PRO features"
+msgstr "מאפייני גירסת PRO"
+
+#: includes/class-settings.php:956
+msgid "Close modal text"
+msgstr "סגור מאפיין טקסט"
+
+#: includes/class-settings.php:953
+msgid "Other"
+msgstr "אחר"
+
+#: includes/class-settings.php:866
+msgid "Message: Reset successful"
+msgstr "הודעה: איפוס מוצלח"
+
+#: includes/class-settings.php:859
+msgid "Message: Something went wrong"
+msgstr "הודעה: משהו השתבש"
+
+#: includes/class-settings.php:852
+msgid "Message: Unable to send email"
+msgstr "הודעה: אין אפשרות לשלוח אימייל"
+
+#: includes/class-settings.php:845
+msgid "Message: Invalid username or e-mail address"
+msgstr "הודעה: שם משתמש או אימייל לא מתאים"
+
+#: includes/class-settings.php:838
+msgid "Message: No user registered with that username"
+msgstr "הודעה: אין משתמש רשום תחת שם המשתמש הזה. "
+
+#: includes/class-settings.php:816
+msgid "Form button: Back to login"
+msgstr "כפתור טופס: חזור לכניסה"
+
+#: includes/class-settings.php:872
+msgid "Reset Password"
+msgstr "איפוס סיסמא"
+
+#: includes/class-settings.php:809
+msgid "Form button: Reset password"
+msgstr "כפתור טופס: איפוס סיסמא"
+
+#: includes/class-settings.php:795
+msgid "Message"
+msgstr "הודעה"
+
+#: includes/class-settings.php:779 includes/class-settings.php:786
+msgid "Message: Registration successful"
+msgstr "הודעה: הרשמה מוצלחת"
+
+#: includes/class-settings.php:772
+msgid "Message: Wrong email"
+msgstr "הודעה: אימייל שגוי"
+
+#: includes/class-settings.php:751
+msgid "Message: Registration is disabled"
+msgstr "הודעה: הרשמה לא פעילה"
+
+#: includes/class-settings.php:743
+msgid "Form button: Create account"
+msgstr "כפתור טופס: צור חשבון"
+
+#: includes/class-settings.php:728
+msgid "Form: Terms"
+msgstr "טופס: תנאים"
+
+#: includes/class-settings.php:699
+msgid "Form: Email"
+msgstr "טופס: אימייל"
+
+#: includes/class-settings.php:692
+msgid "Form: Last name"
+msgstr "טופס: שם משפחה"
+
+#: includes/class-settings.php:685
+msgid "Form: First name"
+msgstr "טופס: שם פרטי"
+
+#: includes/class-settings.php:646
+msgid "Message: No Password"
+msgstr "הודעה: חסרה סיסמא"
+
+#: includes/class-settings.php:624
+msgid "Link: Forgot your password?"
+msgstr "קישור: שכחת את סיסמתך?"
+
+#: includes/class-settings.php:617
+msgid "Form button: Login"
+msgstr "כפתור טופס: כניסה"
+
+#: includes/class-settings.php:610
+msgid "Form: Remember me"
+msgstr "טופס: זכור אותי"
+
+#: includes/class-settings.php:891 includes/class-settings.php:892
+msgid "Password"
+msgstr "סיסמא"
+
+#: includes/class-settings.php:603
+msgid "Form: Password"
+msgstr "טופס: סיסמא"
+
+#: includes/class-settings.php:596 includes/class-settings.php:802
+msgid "Form: Email or Username"
+msgstr "טופס: אימייל או שם משתמש"
+
+#: includes/class-settings.php:589 includes/class-settings.php:671
+msgid "Form heading"
+msgstr "כותרת טופס"
+
+#: includes/class-settings.php:586 includes/class-pages-manager.php:59
+#: includes/class-admin-menus.php:38
+msgid "Login"
+msgstr "כנס"
+
+#: includes/class-settings.php:584
+msgid "Expressions"
+msgstr "הבעות"
+
+#: includes/class-settings.php:511
+msgid "The email Subject to user with new password."
+msgstr "נושא האימייל למשתמש עם סיסמא חדשה."
+
+#: includes/class-settings.php:506 includes/class-settings.php:792
+msgid "Lost password"
+msgstr "סיסמא שנשכחה"
+
+#: includes/class-settings.php:492 includes/class-settings.php:516
+#: includes/class-settings.php:556
+msgid "Body"
+msgstr "גוף"
+
+#: includes/class-settings.php:486 includes/class-settings.php:550
+msgid "The email Subject to user about successful registration."
+msgstr "נושא האימייל למשתמש על הרשמה מוצלחת. "
+
+#: includes/class-settings.php:484 includes/class-settings.php:508
+#: includes/class-settings.php:548
+msgid "Subject"
+msgstr "נושא"
+
+#: includes/class-settings.php:481 includes/class-settings.php:668
+#: includes/class-pages-manager.php:77
+msgid "Registration"
+msgstr "הרשמה"
+
+#: includes/class-settings.php:458
+msgid "Emails"
+msgstr "אימיילים"
+
+#: includes/class-settings.php:383
+msgid "Extra selectors to handle register modal?"
+msgstr "בוררים נוספים לניהול מאפייני רישום?"
+
+#: includes/class-settings.php:375
+msgid "Extra selectors to handle log in modal?"
+msgstr "בוררים נוספים לניהול מאפייני כניסה? "
+
+#: includes/class-settings.php:372
+msgid "Extra selectors (id, classes) to handle modal"
+msgstr "בוררים נוספים (id, classes) לניהול מאפייi? "
+
+#: includes/class-settings.php:370
+msgid "Advanced"
+msgstr "מתקדם"
+
+#: includes/class-settings.php:232
+msgid "Hide Terms box in Registration Form?"
+msgstr "הסתר תיבת \"תנאים\" בטופס ההרשמה?"
+
+#: includes/class-settings.php:229
+msgid "Terms"
+msgstr "תנאים"
+
+#: includes/class-settings.php:222
+msgid "Free version are compatible with:"
+msgstr "גירסא חינמית תואמת ל:"
+
+#: includes/class-settings.php:219
+msgid "Supported plugins"
+msgstr "תוספים נתמכים"
+
+#: includes/class-settings.php:196
+msgid "How to integrate modal on your site:"
+msgstr "כיצד לשלב מאפיינים באתר שלך?"
+
+#: includes/class-settings.php:193
+msgid "Installation steps"
+msgstr "שלבי התקנה"
+
+#: includes/class-settings.php:190 includes/class-settings.php:259
+#: includes/class-settings.php:991
+msgid "General"
+msgstr "כללי"
+
+#: includes/class-settings.php:166
+msgid "I already reviewed it"
+msgstr "קראתי כבר"
+
+#: includes/class-settings.php:163
+msgid "Do you like \"Login and Register Modal\" plugin? Please consider giving it a %1$sreview%2$s"
+msgstr "האם תרצה \"תוסף מאפייני כניסה והרשמה\"? נא שקול לתת לזה  %1$sסקירה%2$s"
+
+#: includes/class-core.php:119 views/admin/settings-page.php:3
+#: views/settings-page.php:3
+msgid "Settings"
+msgstr "הגדרות"

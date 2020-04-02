@@ -18,6 +18,22 @@ $fieldset-side-padding-mobile: 2em;
     //    }
     //}
 
+    .fieldset {
+        position: relative;
+        margin: $fieldset-margin-tb 0;
+        padding: 0 !important;
+        clear: both;
+        @include respond-to(min-width, 600px) {
+            .lrm-form .fieldset {
+                margin: 2em 0 !important;
+            }
+        }
+    }
+
+    //.fieldset--submit {
+    //    margin-bottom: 0;
+    //}
+
     .lrm-fieldset-wrap,
     .fieldset--default {
         padding: 0 $fieldset-side-padding !important;
@@ -31,23 +47,6 @@ $fieldset-side-padding-mobile: 2em;
 
     .fieldset--full-width {
         margin-bottom: 0 !important;
-    }
-
-
-    .fieldset {
-        position: relative;
-        margin: $fieldset-margin-tb 0;
-        padding: 0 !important;
-        clear: both;
-        @include respond-to(min-width, 600px) {
-            .lrm-form .fieldset {
-                margin: 2em 0 !important;
-            }
-        }
-    }
-
-    .fieldset--submit {
-        margin-bottom: 0;
     }
 
     label {
@@ -181,6 +180,7 @@ $fieldset-side-padding-mobile: 2em;
         appearance: none;
         height: auto;
         border-radius: 5px;
+         width: 100%;
 
          .lrm-btn-style--full-width & {
              border-radius: 0;

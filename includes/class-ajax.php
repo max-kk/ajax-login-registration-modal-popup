@@ -56,7 +56,7 @@ class LRM_AJAX
                 $user = get_user_by( 'email', $user_name );
             }
 
-            if ( !$user ) {
+	        if ( !$user ) {
                 if ( class_exists('SimpleUserLogger') ) {
                     $login_error = new WP_Error();
                     $login_error->add( 'invalid_username', 'invalid_username' );
@@ -64,6 +64,25 @@ class LRM_AJAX
                 }
                 wp_send_json_error(array('message' => LRM_Settings::get()->setting('messages/login/invalid_login'), 'for' => 'username'));
             }
+
+//	        /**
+//	         * Filters whether the given user can be authenticated with the provided $password.
+//	         *
+//	         * @since 2.5.0
+//	         *
+//	         * @param WP_User|WP_Error $user     WP_User or WP_Error object if a previous
+//	         *                                   callback failed authentication.
+//	         * @param string           $password Password to check against the user.
+//	         */
+//	        $user = apply_filters( 'wp_authenticate_user', $user, $info['user_password'] );
+//	        if ( is_wp_error( $user ) ) {
+//		        return $user;
+//	        }
+//
+//	        if ( ! wp_check_password( $info['user_password'], $user->user_pass, $user->ID ) ) {
+//		        wp_send_json_error(array('message' => LRM_Settings::get()->setting('messages/login/invalid_password'), 'for' => 'password'));
+//	        }
+
         }
 
         // If the user wants ssl but the session is not ssl, force a secure cookie.

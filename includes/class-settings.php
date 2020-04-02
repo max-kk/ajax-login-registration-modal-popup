@@ -187,6 +187,14 @@ class LRM_Settings {
 
     public function register_settings() {
 
+//	    switch_to_locale( pll_current_language('locale') );
+//	    LRM_Core::get()->load_plugin_textdomain();
+
+//	    var_dump( get_locale() );
+//	    var_dump( pll_current_language('locale') );
+
+
+
         $general = $this->settings->add_section( __( 'General', 'ajax-login-and-registration-modal-popup' ), 'general' );
 
 
@@ -587,21 +595,21 @@ class LRM_Settings {
             ->add_field( array(
                 'slug'        => 'heading',
                 'name'        => __('Form heading', 'ajax-login-and-registration-modal-popup' ),
-                'default'        => 'Sign in',
+                'default'        => __('Sign in', 'ajax-login-and-registration-modal-popup' ),
                 'render'      => array( new LRM_Field_Text(), 'input' ),
                 'sanitize'    => array( new LRM_Field_Text(), 'sanitize' ),
             ) )
             ->add_field( array(
                 'slug'        => 'username',
                 'name'        => __('Form: Email or Username', 'ajax-login-and-registration-modal-popup' ),
-                'default'        => 'Email or Username',
+                'default'        => __('Email or Username', 'ajax-login-and-registration-modal-popup' ),
                 'render'      => array( new LRM_Field_Text(), 'input' ),
                 'sanitize'    => array( new LRM_Field_Text(), 'sanitize' ),
             ) )
             ->add_field( array(
                 'slug'        => 'password',
                 'name'        => __('Form: Password', 'ajax-login-and-registration-modal-popup' ),
-                'default'        => 'Password',
+                'default'        => __('Password', 'ajax-login-and-registration-modal-popup' ),
                 'render'      => array( new LRM_Field_Text(), 'input' ),
                 'sanitize'    => array( new LRM_Field_Text(), 'sanitize' ),
             ) )
@@ -615,7 +623,7 @@ class LRM_Settings {
             ->add_field( array(
                 'slug'        => 'button',
                 'name'        => __('Form button: Login', 'ajax-login-and-registration-modal-popup' ),
-                'default'        => 'Log in',
+                'default'        => __('Log in', 'ajax-login-and-registration-modal-popup' ),
                 'render'      => array( new LRM_Field_Text(), 'input' ),
                 'sanitize'    => array( new LRM_Field_Text(), 'sanitize' ),
             ) )
@@ -641,6 +649,16 @@ class LRM_Settings {
                 'render'      => array( new LRM_Field_Text(), 'input' ),
                 'sanitize'    => array( new LRM_Field_Text(), 'sanitize' ),
             ) )
+//            ->add_field( array(
+//                'slug'        => 'invalid_password',
+//                'name'        => __('Message: Invalid password', 'ajax-login-and-registration-modal-popup' ),
+//                'default'        => 'The password you entered for the username %s is incorrect.' .
+//                    ' <a href="' . wp_lostpassword_url() . '">' .
+//                        __( 'Lost your password?' ) .
+//                    '</a>',
+//                'render'      => array( new LRM_Field_Textarea_With_Html(), 'input' ),
+//                'sanitize'    => array( new LRM_Field_Text(), 'sanitize' ),
+//            ) )
             ->add_field( array(
                 'slug'        => 'no_pass',
                 'name'        => __('Message: No Password', 'ajax-login-and-registration-modal-popup' ),
@@ -669,7 +687,7 @@ class LRM_Settings {
             ->add_field( array(
                 'slug'        => 'heading',
                 'name'        => __('Form heading', 'ajax-login-and-registration-modal-popup' ),
-                'default'        => 'New account',
+                'default'        => __('New account', 'ajax-login-and-registration-modal-popup' ),
                 'render'      => array( new LRM_Field_Text(), 'input' ),
                 'sanitize'    => array( new LRM_Field_Text(), 'sanitize' ),
             ) )
@@ -1141,8 +1159,11 @@ class LRM_Settings {
 //            return stripslashes($value);
 //        }
 
-        $value = $this->settings->get_setting( $setting_slug );
-        // IF Value is empty and it's message string - try to get translated
+	    $value = $this->settings->get_setting( $setting_slug );
+//	    var_dump( get_locale() );
+//	    var_dump( $value );
+
+	    // IF Value is empty and it's message string - try to get translated
 
 
         if ( $setting_path[0] == 'messages' || $setting_path[0] == 'mails' ) {
@@ -1176,8 +1197,7 @@ class LRM_Settings {
 //
 //        }
 
-
-        if (!$value && $setting_path[0] == 'messages' && defined("LRM/SETTINGS/TRY_GET_TRANSLATED")) {
+        if (!$value && $setting_path[0] === 'messages' && defined("LRM/SETTINGS/TRY_GET_TRANSLATED")) {
             $fields = $this->get_section_settings_fields('messages');
 
             $default_value = $fields[$setting_slug]->default_value();

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<bundle name="AJAX Login and Registration modal popup">
+  <domain name="ajax-login-and-registration-modal-popup">
+    <project name="AJAX Login and Registration modal popup" slug="ajax-login-and-registration-modal-popup">
+      <source>
+        <directory>.</directory>
+      </source>
+      <target>
+        <directory>languages</directory>
+        <exclude>
+          <directory>vendor</directory>
+        </exclude>
+      </target>
+      <template>
+        <file>languages/ajax-login-and-registration-modal-popup.pot</file>
+      </template>
+    </project>
+  </domain>
+  <exclude>
+    <directory>vendor</directory>
+  </exclude>
+</bundle>

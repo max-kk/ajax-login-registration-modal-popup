@@ -37,6 +37,8 @@ define("LRM_VERSION", '2.10');
 
 define("LRM_ASSETS_VER", 32);
 
+//define("LRM/SETTINGS/TRY_GET_TRANSLATED", true);
+
 //define("LRM/SETTINGS/TRY_GET_TRANSLATED", 1);
 
 require_once( LRM_PATH . 'includes/helpers.php' );

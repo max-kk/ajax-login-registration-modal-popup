@@ -12,7 +12,7 @@ use underDEV\Utils\Settings\CoreFields;
 class LRM_Pages_Manager {
 
     public static function init() {
-        add_filter( 'login_url', [__CLASS__, 'custom_login_url'], 99, 3 );
+        add_filter( 'login_url', [__CLASS__, 'custom_login_url'], 99, 2 );
         add_filter( 'register_url', [__CLASS__, 'custom_register_url'], 99, 1 );
         if ( is_admin() ) {
 	        add_filter( 'wp_new_user_notification_email', [__CLASS__, 'wp_new_user_notification_email__filter'], 99, 3 );
@@ -225,11 +225,10 @@ class LRM_Pages_Manager {
      *
      * @param string $login_url    The login URL. Not HTML-encoded.
      * @param string $redirect     The path to redirect to on login, if supplied.
-     * @param bool   $force_reauth DO NOT USED Whether to force reauthorization, even if a cookie is present.
      *
      * @return string
      */
-    static function custom_login_url( $login_url, $redirect, $force_reauth ){
+    static function custom_login_url( $login_url, $redirect ){
         // This will append /custom-login/ to you main site URL as configured in general settings (ie https://domain.com/custom-login/)
 
         $login_page_ID = self::get_page_id( 'login' );

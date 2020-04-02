@@ -8,14 +8,14 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2018-04-02 12:23+0200\n"
-"PO-Revision-Date: 2018-06-09 16:58+0200\n"
-"Language: en\n"
-"X-Generator: Poedit 1.7.7\n"
+"PO-Revision-Date: 2020-03-17 14:41+0200\n"
+"Language: pl_PL\n"
+"X-Generator: Poedit 2.3\n"
 "X-Poedit-Basepath: .\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Poedit-KeywordsList: __;_e\n"
-"X-Poedit-SearchPath-0: D:\\Projects\\Login Registration Modal\ajax-login-registration-modal-popup\\includes\n"
-"X-Poedit-SearchPath-1: D:\\Projects\\Login Registration Modal\ajax-login-registration-modal-popup\views\n"
+"X-Poedit-SearchPath-0: D:/Projects/Login Registration Modal\ajax-login-registration-modal-popup/includes\n"
+"X-Poedit-SearchPath-1: D:/Projects/Login Registration Modal\ajax-login-registration-modal-popup\views\n"
 
 #: D:\Projects\Login Registration
 #: Modal\ajax-login-registration-modal-popup\includes/class-core.php:43
@@ -151,8 +151,9 @@ msgstr ""
 
 #: D:\Projects\Login Registration
 #: Modal\ajax-login-registration-modal-popup\includes/class-settings.php:203
+#: includes/class-settings.php:496 includes/class-settings.php:559
 msgid "Username:"
-msgstr ""
+msgstr "Użytkownik:"
 
 #: D:\Projects\Login Registration
 #: Modal\ajax-login-registration-modal-popup\includes/class-settings.php:204
@@ -276,7 +277,7 @@ msgstr "Nowe konto"
 
 #: D:\Projects\Login Registration
 #: Modal\ajax-login-registration-modal-popup\includes/class-settings.php:294
-#: includes/class-settings.php:339
+#: includes/class-settings.php:339 includes/class-settings.php:685
 msgid "Form: First name"
 msgstr "Formularz: Imię"
 
@@ -288,7 +289,7 @@ msgstr "Imię"
 
 #: D:\Projects\Login Registration
 #: Modal\ajax-login-registration-modal-popup\includes/class-settings.php:301
-#: includes/class-settings.php:346
+#: includes/class-settings.php:346 includes/class-settings.php:692
 msgid "Form: Last name"
 msgstr "Formularz: Nazwisko"
 
@@ -473,7 +474,7 @@ msgstr ""
 
 #: D:\Projects\Login Registration
 #: Modal\ajax-login-registration-modal-popup\includes/class-settings.php:437
-#: includes/class-settings.php:498
+#: includes/class-settings.php:498 includes/class-settings.php:953
 msgid "Other"
 msgstr "Inne"
 

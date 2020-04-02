@@ -1,0 +1,183 @@
+# Translation of Plugins - AJAX Login and Registration modal popup + inline form - Development (trunk) in Dutch
+# This file is distributed under the same license as the Plugins - AJAX Login and Registration modal popup + inline form - Development (trunk) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2020-03-17 14:39+0200\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Poedit 2.3\n"
+"Language: nl\n"
+"Project-Id-Version: Plugins - AJAX Login and Registration modal popup + inline form - Development (trunk)\n"
+"POT-Creation-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+
+#: includes/class-settings.php:882
+msgid "Password reset link login is missing"
+msgstr "Wachtwoord herstellink voor login mist"
+
+#: includes/class-settings.php:542
+msgid "Leave empty to use the WP emai: "
+msgstr "Laat leeg om de standaard WP email te gebruiken:"
+
+#: includes/class-settings.php:540
+msgid "Send to email"
+msgstr "Verstuur naar e-mail"
+
+#: includes/class-settings.php:875
+msgid "Password reset link key is missing"
+msgstr "Wachtwoord herstellink sleutel mist"
+
+#. Description of the plugin
+msgid "Easy to integrate modal with Login and Registration features + inline form using shortcode."
+msgstr "Makkelijk te integreren modal met Login en Registratie functies + inline formulier met shortcode."
+
+#: includes/class-roles-manager.php:53
+msgid "<strong>Inline:</strong> Use the shortcode attributes <code>role=\"Customer\"</code> and <code>role_silent=\"yes\"</code> (optional) to select specified role and hide role selector. Example: <code>[lrm_form default_tab=\"login\" logged_in_message=\"You are currently logged in!\" role=\"customer\" role-silent=\"yes\"]</code>"
+msgstr "<strong>Inline:</strong> Gebruik de shortcode attribubuten <code>role=\"Customer\"</code> en <code>role_silent=\"yes\"</code> (optioneel) om een specifieke rol te selecteren en de rol-keuze te verbergen. Voorbeeld: <code>[lrm_form default_tab=\"login\" logged_in_message=\"Je bent nu ingelogd!\" role=\"customer\" role-silent=\"yes\"]</code>"
+
+#: includes/class-roles-manager.php:51
+msgid "Use <code>data-lrm-role=\"Customer\"</code> with the label of your role and <code>data-lrm-role-silent</code> to select specified role and hide role selector.<br/>Example: <code>%s</code>"
+msgstr "Gebruik <code>data-lrm-role=\"Customer\"</code> met het label van je rol en  <code>data-lrm-role-silent</code> om de gekozen rol te selecteren en de rol-keuze te verbergen.<br/>Voorbeeld: <code>%s</code>"
+
+#: includes/class-roles-manager.php:49
+msgid "<strong>Modal:</strong> With this option you could add a \"data\" attributes to your registration button for auto-assign user-role and probably hide role selector from the user."
+msgstr "<strong>Modal:</strong> Met deze optie kun je \"data\" attributen aan je registratie-knop toevoegen om automatisch de gebruikersrol toe te kennen en waarschijnlijk de rol-keuze te verbergen voor de gebruiker."
+
+#: includes/class-roles-manager.php:48
+msgid "Enable silent role assign?"
+msgstr "Rol-keuze verbergen aanzetten?"
+
+#: includes/class-roles-manager.php:35
+msgid "Active roles:"
+msgstr "Actieve rollen:"
+
+#: includes/class-roles-manager.php:27
+msgid "This will add a roles dropdown to the registration form."
+msgstr "Dit voegt een rol-keuze dropdown aan het registratieformulier toe."
+
+#: includes/class-roles-manager.php:26
+msgid "Enable User role selector?"
+msgstr "Gebruikers rol-keuze aanzetten?"
+
+#: includes/class-roles-manager.php:23
+msgid "User role selector during Registration"
+msgstr "Gebruikers rol-keuze tijdens Registratie"
+
+#: includes/class-roles-manager.php:21
+msgid "Registration User role  > PRO"
+msgstr "Registratie Gebruikers rol > PRO"
+
+#: includes/class-import-export.php:44
+msgid "Import following sections:"
+msgstr "Importeer de volgende secties:"
+
+#: includes/class-import-export.php:37
+msgid "Here you could simply export and import your plugin settings for backup or migrate to the another website."
+msgstr "Hier kun je eenvoudig je plugin settings voor backup of migratie naar een andere website importeren en exporteren."
+
+#: includes/class-import-export.php:31
+msgid "Export following sections:"
+msgstr "Exporteer de volgende secties:"
+
+#: includes/class-settings.php:1067
+msgid "Match Captcha"
+msgstr "Maak hetzelfde als de Captcha"
+
+#: includes/class-settings.php:713
+msgid "Form: User Role is missing"
+msgstr "Formulier: Gebruikers-rol mist"
+
+#: includes/class-settings.php:706
+msgid "Form: User Role"
+msgstr "Formulier: Gebruikers-rol"
+
+#: includes/class-settings.php:639
+msgid "Message: Invalid username (not exists)"
+msgstr "Melding: ongeldige gebruikersnaam (bestaat niet)"
+
+#: includes/class-settings.php:315
+msgid "Select icons type"
+msgstr "Selecteer type voor iconen"
+
+#: includes/class-import-export.php:28
+msgid "Export"
+msgstr "Exporteer"
+
+#: includes/class-import-export.php:40
+msgid "Import"
+msgstr "Importeer"
+
+#: includes/class-import-export.php:26
+msgid "Import/Export"
+msgstr "Importeer/Exporteer"
+
+#: includes/class-settings.php:736
+msgid "Message: Must agree with the terms"
+msgstr "Melding: Verplicht om akkoord te gaan met de voorwaarden "
+
+#: includes/class-settings.php:411
+msgid "Please disable it once problem was solved to improve security!"
+msgstr "Zet vanwege de veiligheid dit ajb weer uit op het moment dat het probleem is verholpen!"
+
+#: includes/class-settings.php:410
+msgid "Enable debug mode for public AJAX requests. Required to simply find an error messages."
+msgstr "Zet debug modus aan voor publieke AJAX requests. Dit is nodig om eenvoudig een foutmelding te kunnen vinden."
+
+#: includes/class-settings.php:407
+msgid "Debug"
+msgstr "Debug"
+
+#: skins/default/skin.php:28
+msgid "Open modal >>"
+msgstr "Open modal >>"
+
+#: skins/default/skin.php:27
+msgid "Display modal for customize"
+msgstr "Laat modal zien voor aanpassing"
+
+#: skins/add-customizer-panel.php:12
+msgid "Theme palette"
+msgstr "Themapalet"
+
+#: includes/class-ajax.php:665
+msgid "Your password reset link has expired."
+msgstr "Je wachtwoord herstellink is verouderd."
+
+#: includes/class-ajax.php:662
+msgid "Your password reset link appears to be invalid."
+msgstr "Je wachtwoord herstellink lijkt fout te zijn."
+
+#: includes/class-ajax.php:658
+msgid "Please <a href=\"%s\" class=\"lrm-forgot-password\">request a new link.</a>"
+msgstr "Vraag alsjeblieft <a href=\"%s\" class=\"lrm-forgot-password\">een nieuwe link</a> aan."
+
+#: includes/class-settings.php:883
+msgid "Your password reset link login is missing."
+msgstr "Je wachtwoord herstellink login mist."
+
+#: includes/class-settings.php:876
+msgid "Your password reset link key is missing."
+msgstr "Je wachtwoord herstellink sleutel mist."
+
+#: includes/class-ajax.php:607
+msgid "Your password has been reset."
+msgstr "Je wachtwoord is aangepast."
+
+#: includes/class-redirects-manager.php:121
+msgid "Custom page redirect"
+msgstr "Custom pagina redirect"
+
+#: includes/class-redirects-manager.php:106
+msgid "Action after Logout"
+msgstr "Actie na uitloggen"
+
+#: includes/class-redirects-manager.php:103
+msgid "After-Logout actions"
+msgstr "Acties na uitloggen"
+
+#: includes/class-redirects-manager.php:87
+msgid "Select an action"
+msgstr "Kies een actie"

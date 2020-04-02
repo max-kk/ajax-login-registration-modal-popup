@@ -30,14 +30,14 @@ Easy to integrate modal with Login and Registration features + inline form using
 10. Powerful after-login/registration/logout actions (reload, redirects, etc)
 11. Role based redirects (in PRO)
 12. In-build reCaptcha & MatchCaptcha (in PRO)
-12. Google Authenticator plugin support (in PRO)
+12. Google Authenticator plugin & Wordfence 2FA support (in PRO)
 13. Developer support (via forums or personal via email for PRO users)
 
 **Customization options:**
 
 1. You can add your custom CSS selectors to attach modal
 2. All texts/messages can be edited/translated in settings
-3. Emails (for registration and lost password) can customized in settings
+3. Emails (for registration and lost password) can customized in settings7
 
 **Free version compatible with (and maybe other, not tested):**
 
@@ -76,25 +76,26 @@ Easy to integrate modal with Login and Registration features + inline form using
 
 **The PRO version is 100% tested and are compatible with a following plugins:**
 
-1. **[WooCommerce](https://wordpress.org/plugins/woocommerce/)** (show modal when clicked "Add to cart" in list or single product or in Cart when click "Process to Checkout", option to replace WC account login/registration form to plugin ajax form)
-2. [WooCommerce Sensei](https://woocommerce.com/products/sensei/) (fix for Login process)
-3. **[WP reCaptcha Integration](https://wordpress.org/plugins/wp-recaptcha-integration/)**
-4. **[Invisible reCaptcha](https://wordpress.org/plugins/invisible-recaptcha/)** - [tutorial](https://docs.maxim-kaminsky.com/lrm/kb/how-to-set-up-invisible-recaptcha/)
-5. **[BuddyPress](https://wordpress.org/plugins/buddypress/)** ([replace default registration form with BuddyPress one >>](https://monosnap.com/file/3RNMa7Wl3EYWidw9znAJbgJ5QVL7oy))
-6. **[UltimateMember](https://wordpress.org/plugins/ultimate-member/)** ([replace default registration form with UltimateMember one >>](https://monosnap.com/file/a2RxnzawR2N9qBdyKJMxh8J5ALuaYs))
-7. [Captcha](https://wordpress.org/plugins/captcha/)
-8. [Really Simple CAPTCHA](https://wordpress.org/plugins/really-simple-captcha/)
-9. [Captcha bank](https://ru.wordpress.org/plugins/captcha-bank/)
-10. [WordPress Social Login](https://wordpress.org/plugins/wordpress-social-login/) (social login buttons below login/register form)
-11. [Social Login WordPress Plugin – AccessPress](https://wordpress.org/plugins/accesspress-social-login-lite/) (social login buttons below login/register form)
-12. [WordPress Social Share, Social Login and Social Comments Plugin – Super Socializer](https://wordpress.org/plugins/super-socializer/) (social login buttons below login/register form, social share, etc)
-13. [Jetpack - SSO login](https://jetpack.com/support/sso/) [Wordpress.com login button >>](https://monosnap.com/file/4Na5FYYONRj79jnLBmQFK3hjnMJQDR)
-14. [WC Vendors & WC Vendors Pro](https://wordpress.org/plugins/wc-vendors/) [Apply to become vendor checkbox >>](https://monosnap.com/file/TmpY4bYTHwF36ouN6fGpdjKZi5k3jz)
-15. [MailChimp for WordPress](https://wordpress.org/plugins/mailchimp-for-wp/) [Subscribe to newsletter checkbox >>](https://monosnap.com/file/sVpsvTnIzQoplRA7ap3IBPfb81kPuV)
-15. [Google Authenticator](https://wordpress.org/plugins/google-authenticator/) [Google Authenticator field during the login](https://docs.maxim-kaminsky.com/lrm/kb/2-factor-login-otp-verification/)
-16. Math Captcha - soon
-17. Easy Digital Downloads - soon
-18. [Request other plugin >>](https://maxim-kaminsky.com/shop/contact-me/)
+1. **[Wordfence & Wordfence Login Security](https://wordpress.org/plugins/wordfence/)** (2 factor login - [example](https://docs.maxim-kaminsky.com/lrm/kb/2-factor-login-otp-verification/))
+2. **[WooCommerce](https://wordpress.org/plugins/woocommerce/)** (show modal when clicked "Add to cart" in list or single product or in Cart when click "Process to Checkout", option to replace WC account login/registration form to plugin ajax form)
+3. [WooCommerce Sensei](https://woocommerce.com/products/sensei/) (fix for Login process)
+4. **[WP reCaptcha Integration](https://wordpress.org/plugins/wp-recaptcha-integration/)**
+5. **[Invisible reCaptcha](https://wordpress.org/plugins/invisible-recaptcha/)** - [tutorial](https://docs.maxim-kaminsky.com/lrm/kb/how-to-set-up-invisible-recaptcha/)
+6. **[BuddyPress](https://wordpress.org/plugins/buddypress/)** ([replace default registration form with BuddyPress one >>](https://monosnap.com/file/3RNMa7Wl3EYWidw9znAJbgJ5QVL7oy))
+7. **[UltimateMember](https://wordpress.org/plugins/ultimate-member/)** ([replace default registration form with UltimateMember one >>](https://monosnap.com/file/a2RxnzawR2N9qBdyKJMxh8J5ALuaYs))
+8. [Captcha](https://wordpress.org/plugins/captcha/)
+9. [Really Simple CAPTCHA](https://wordpress.org/plugins/really-simple-captcha/)
+10. [Captcha bank](https://ru.wordpress.org/plugins/captcha-bank/)
+11. [WordPress Social Login](https://wordpress.org/plugins/wordpress-social-login/) (social login buttons below login/register form)
+12. [Social Login WordPress Plugin – AccessPress](https://wordpress.org/plugins/accesspress-social-login-lite/) (social login buttons below login/register form)
+13. [WordPress Social Share, Social Login and Social Comments Plugin – Super Socializer](https://wordpress.org/plugins/super-socializer/) (social login buttons below login/register form, social share, etc)
+14. [Jetpack - SSO login](https://jetpack.com/support/sso/) [Wordpress.com login button >>](https://monosnap.com/file/4Na5FYYONRj79jnLBmQFK3hjnMJQDR)
+15. [WC Vendors & WC Vendors Pro](https://wordpress.org/plugins/wc-vendors/) [Apply to become vendor checkbox >>](https://monosnap.com/file/TmpY4bYTHwF36ouN6fGpdjKZi5k3jz)
+16. [MailChimp for WordPress](https://wordpress.org/plugins/mailchimp-for-wp/) [Subscribe to newsletter checkbox >>](https://monosnap.com/file/sVpsvTnIzQoplRA7ap3IBPfb81kPuV)
+17. [Google Authenticator](https://wordpress.org/plugins/google-authenticator/) [Google Authenticator field during the login](https://docs.maxim-kaminsky.com/lrm/kb/2-factor-login-otp-verification/)
+18. Math Captcha - soon
+19. Easy Digital Downloads - soon
+20. [Request other plugin >>](https://maxim-kaminsky.com/shop/contact-me/)
 
 [GET PRO >>](https://maxim-kaminsky.com/shop/product/ajax-login-and-registration-modal-popup-pro/)
 
@@ -205,6 +206,10 @@ If you have login issue with Adminize plugin - go to Adminize plugin settings an
 - With Theme my login (TML) plugin (3 Password fields on the Create Account tab, if enable password field in LRM and TML)
 
 == Changelog ==
+
+= VER 2.11 - 23/03/2020 =
+
+- Fixed issue - submit button shows like the Full width even if should have default style
 
 = VER 2.10 - 04/03/2020 =
 

@@ -5,6 +5,12 @@
 			<?php LRM_Pro_UltimateMember::render_registration_form(); ?>
 		<?php elseif ( lrm_is_pro('1.20') && LRM_Pro_BuddyPress::is_buddypress_active() && lrm_setting('integrations/bp/on') ): ?>
 			<?php LRM_Pro_BuddyPress::render_registration_form(); ?>
+		<?php elseif ( function_exists('rcp_registration_form') && lrm_setting('integrations/rcp/on') ): ?>
+        <div class="lrm-form">
+            <div class="lrm-integrations lrm-fieldset-wrap">
+                <?php echo do_shortcode( lrm_setting('integrations/rcp/shortcode') ); ?>
+            </div>
+        </div>
 		<?php else: ?>
 
 			<form class="lrm-form" action="#0" data-action="registration" data-lpignore="true">
