@@ -361,12 +361,15 @@ var LRM = LRM ? LRM : {};
 			}
 			var $form = $(event.target);
 
+			if ( $form.hasClass("rcp_form") ) {
+				return true;
+			}
+
 			event.preventDefault();
 
 			if ( $form.hasClass("--is-submitting") ) {
 				return false;
 			}
-
 
 			// Check reCaptha, etc
 			if ( $(document).triggerHandler('lrm/do_not_submit_form', $form) ) {

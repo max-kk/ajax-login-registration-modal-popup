@@ -31,6 +31,10 @@ class LRM_WPML_Integration {
      */
     public static function switch_locale() {
 
+//    	var_dump( pll_current_language('locale') );
+//	    switch_to_locale( pll_current_language('locale') );
+//	    LRM_Core::get()->load_plugin_textdomain();
+
         if ( ! self::is_wpml_active() ){
             return;
         }
@@ -102,6 +106,9 @@ class LRM_WPML_Integration {
      * Switch Lang for AJAX requests
      */
     public static function pre_AJAX() {
+
+
+
         if ( ! self::is_wpml_active() && empty($_REQUEST['lrm_action']) ){
             return;
         }
