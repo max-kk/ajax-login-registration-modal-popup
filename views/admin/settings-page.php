@@ -57,7 +57,14 @@
 
 					<div class="setting-group">
 
-						<h3><?php echo esc_html( $group->name() ); ?></h3>
+						<h3>
+                            <?php
+                            echo esc_html( $group->name() );
+                            if ( $group->can_be_translated() && LRM_Polylang_Integration::is_active() ) {
+                            	echo ' <code>MultiLanguage</code>';
+                            }
+                            ?>
+						</h3>
 
 						<?php $description = $group->description(); ?>
 

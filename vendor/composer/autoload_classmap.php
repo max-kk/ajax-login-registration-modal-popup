@@ -24,6 +24,7 @@ return array(
     'LRM_Import_Export_Manager' => $baseDir . '/includes/class-import-export.php',
     'LRM_Mailer' => $baseDir . '/includes/class-mailer.php',
     'LRM_Pages_Manager' => $baseDir . '/includes/class-pages-manager.php',
+    'LRM_Polylang_Integration' => $baseDir . '/includes/class-polylang.php',
     'LRM_Redirects_Manager' => $baseDir . '/includes/class-redirects-manager.php',
     'LRM_Roles_Manager' => $baseDir . '/includes/class-roles-manager.php',
     'LRM_Settings' => $baseDir . '/includes/class-settings.php',

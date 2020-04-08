@@ -22,7 +22,7 @@ class LRM_Redirects_Manager {
 
         //$wp_pages_arr = self::_get_pages_arr();
 
-        $ACTIONS_SECTION->add_group( __( 'After-Login actions', 'ajax-login-and-registration-modal-popup' ), 'login' )
+        $ACTIONS_SECTION->add_group( __( 'After-Login actions', 'ajax-login-and-registration-modal-popup' ), 'login', false, true )
             ->add_field( array(
                 'slug'        => 'action',
                 'name'        => __('Action after login', 'ajax-login-and-registration-modal-popup'),
@@ -41,7 +41,9 @@ class LRM_Redirects_Manager {
             ) )
             ->add_field( array(
                 'slug'        => 'redirect',
-                'name'        => __('Redirect to (if "Redirect to page [PRO]" is selected)', 'ajax-login-and-registration-modal-popup'),
+                'name'        =>
+	                __('Redirect to (if "Redirect to page [PRO]" is selected)', 'ajax-login-and-registration-modal-popup') .
+	                ( LRM_Polylang_Integration::is_active() ? '. %%LANG%% can be used to create multi-language redirects.' : '' ),
                 'addons'      => array(
                 ),
                 'default'     => [],
@@ -52,7 +54,7 @@ class LRM_Redirects_Manager {
         ->description('Actions with a [PRO] label will work only with a PRO version installed.');
 
 
-        $ACTIONS_SECTION->add_group( __( 'After-Registration actions', 'ajax-login-and-registration-modal-popup' ), 'registration' )
+        $ACTIONS_SECTION->add_group( __( 'After-Registration actions', 'ajax-login-and-registration-modal-popup' ), 'registration', false, true )
             ->add_field( array(
                 'slug'        => 'action',
                 'name'        => __('Action after registration', 'ajax-login-and-registration-modal-popup'),
@@ -100,7 +102,7 @@ class LRM_Redirects_Manager {
                 'sanitize'    => array( new LRM_Field_Redirects(), 'sanitize' ),
             ) );
 
-        $ACTIONS_SECTION->add_group( __( 'After-Logout actions', 'ajax-login-and-registration-modal-popup' ), 'logout' )
+        $ACTIONS_SECTION->add_group( __( 'After-Logout actions', 'ajax-login-and-registration-modal-popup' ), 'logout', false, true )
             ->add_field( array(
                 'slug'        => 'action',
                 'name'        => __('Action after Logout', 'ajax-login-and-registration-modal-popup'),
@@ -143,6 +145,10 @@ class LRM_Redirects_Manager {
 
         if ( !$redirect_to && lrm_is_pro( '1.50' ) ) {
             $redirect_to = LRM_PRO_Redirects_Manager::get_redirect( $action, $user_ID );
+        }
+
+        if ( LRM_Polylang_Integration::is_active() ) {
+	        $redirect_to = str_replace( '%%LANG%%', pll_current_language(), $redirect_to );
         }
 
         return apply_filters('lrm/redirect_url', $redirect_to, $action, $user_ID);

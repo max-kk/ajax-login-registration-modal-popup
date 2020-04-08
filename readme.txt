@@ -207,6 +207,11 @@ If you have login issue with Adminize plugin - go to Adminize plugin settings an
 
 == Changelog ==
 
+= VER 2.12 - 8/04/2020 =
+
+- Integrated the Polylang plugin - https://docs.maxim-kaminsky.com/lrm/kb/multi-language-set-up-via-polylang/
+- Config files for the Loco Translate plugin
+
 = VER 2.11 - 23/03/2020 =
 
 - Fixed issue - submit button shows like the Full width even if should have default style

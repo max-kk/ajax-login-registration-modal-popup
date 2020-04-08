@@ -187,14 +187,6 @@ class LRM_Settings {
 
     public function register_settings() {
 
-//	    switch_to_locale( pll_current_language('locale') );
-//	    LRM_Core::get()->load_plugin_textdomain();
-
-//	    var_dump( get_locale() );
-//	    var_dump( pll_current_language('locale') );
-
-
-
         $general = $this->settings->add_section( __( 'General', 'ajax-login-and-registration-modal-popup' ), 'general' );
 
 
@@ -465,7 +457,7 @@ class LRM_Settings {
 
         $EMAILS_SECTION = $this->settings->add_section( __( 'Emails', 'ajax-login-and-registration-modal-popup' ), 'mails' );
 
-        $EMAILS_SECTION->add_group( __( 'Mails', 'ajax-login-and-registration-modal-popup' ), 'mail' )
+        $EMAILS_SECTION->add_group( __( 'Mails', 'ajax-login-and-registration-modal-popup' ), 'mail', false, true )
             ->add_field( array(
                 'slug'        => 'format',
                 'name'        => __('Email format', 'ajax-login-and-registration-modal-popup'),
@@ -535,7 +527,7 @@ class LRM_Settings {
                 'sanitize'    => array( new LRM_Field_Editor(), 'sanitize' ),
             ) );
 
-        $EMAILS_SECTION->add_group( __( 'Admin emails', 'ajax-login-and-registration-modal-popup' ), 'admin_new_user', true )
+        $EMAILS_SECTION->add_group( __( 'Admin emails', 'ajax-login-and-registration-modal-popup' ), 'admin_new_user', false, true )
             ->add_field( array(
                 'slug'        => 'on',
                 'name'        => __('Send email to admin about new user?', 'ajax-login-and-registration-modal-popup' ),
