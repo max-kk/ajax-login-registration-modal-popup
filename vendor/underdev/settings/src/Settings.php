@@ -221,6 +221,9 @@ class Settings {
 
 				$this->settings[ $section_slug ] = array();
 
+				// !! Fix for Advanced Cron Manager & Notifications pluigns that uses the same LIB !!
+				$can_be_translated_method_exists = method_exists('underDEV\Utils\Settings\Group','can_be_translated');
+
 				foreach ( $section->get_groups() as $group_slug => $group ) {
 
 					$this->settings[ $section_slug ][ $group_slug ] = array();
@@ -228,7 +231,7 @@ class Settings {
                     /** @var underDEV\Utils\Settings\Field $field */
 					foreach ( $group->get_fields() as $field_slug => $field ) {
 
-						if ( $group->can_be_translated() && isset( $setting_translated[ $group_slug ][ $field_slug ] ) ) {
+						if ( $can_be_translated_method_exists && $group->can_be_translated() && isset( $setting_translated[ $group_slug ][ $field_slug ] ) ) {
 							$value = $setting_translated[ $group_slug ][ $field_slug ];
 						} elseif ( isset( $setting[ $group_slug ][ $field_slug ] ) ) {
 							$value = $setting[ $group_slug ][ $field_slug ];
@@ -239,8 +242,7 @@ class Settings {
                              * WPML tweak
                              * @since 1.42
                              */
-                            // && !\LRM_WPML_Integration::is_default_locale()
-                            if ( $group->can_be_translated() && $value ) {
+                            if ( $can_be_translated_method_exists && $group->can_be_translated() && $value && !\LRM_WPML_Integration::is_default_locale() ) {
                                 $value = __($value, 'ajax-login-and-registration-modal-popup');
                             }
 

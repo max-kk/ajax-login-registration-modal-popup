@@ -37,6 +37,8 @@ define("LRM_VERSION", '2.12');
 
 define("LRM_ASSETS_VER", 32);
 
+//define('LRM_LOAD_ASSETS_ONLY_FOR_INLINE', 1); //- if no modal used - only inline form
+
 //define("LRM/SETTINGS/TRY_GET_TRANSLATED", true);
 
 //define("LRM/SETTINGS/TRY_GET_TRANSLATED", 1);
