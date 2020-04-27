@@ -61,6 +61,11 @@ $fieldset-side-padding-mobile: 2em;
     }
 }
 
+/* It's a Honeypot field! */
+.fieldset--login {
+    display: none;
+}
+
 @mixin lrm-image-replace-core() {
     /* replace text with an icon */
     display: inline-block;

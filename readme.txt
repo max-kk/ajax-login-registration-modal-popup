@@ -207,6 +207,12 @@ If you have login issue with Adminize plugin - go to Adminize plugin settings an
 
 == Changelog ==
 
+= VER 2.13 - 27/04/2020 =
+
+- Login Security Improvements
+- Limit Login Attempts Reloaded - https://wordpress.org/plugins/limit-login-attempts-reloaded/
+- Added the Honeypot as additional login/register forms security method
+
 = VER 2.12 - 8/04/2020 =
 
 - Integrated the Polylang plugin - https://docs.maxim-kaminsky.com/lrm/kb/multi-language-set-up-via-polylang/

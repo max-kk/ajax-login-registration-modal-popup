@@ -37,6 +37,13 @@
                             </div>
                         <?php endif; ?>
 
+			            <?php if( lrm_setting( 'security/general/use_honeypot' )  ): ?>
+                            <div class="fieldset fieldset--login">
+                                <label class="image-replace lrm-username lrm-ficon-user" for="signup-login" title="Login"></label>
+                                <input name="login" class="full-width has-padding has-border" id="signup-login" type="text" autocomplete="off" data-lpignore="true">
+                            </div>
+	                    <?php endif; ?>
+
                         <?php if( lrm_setting('general/registration/display_first_and_last_name') ): ?>
                             <div class="clearfix lrm-row">
                                 <?php $fname_label = esc_attr( lrm_setting('messages/registration/first-name', true) );; ?>

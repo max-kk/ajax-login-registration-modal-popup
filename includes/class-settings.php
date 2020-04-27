@@ -636,8 +636,22 @@ class LRM_Settings {
             ) )
             ->add_field( array(
                 'slug'        => 'invalid_login',
-                'name'        => __('Message: Invalid username (not exists)', 'ajax-login-and-registration-modal-popup' ),
-                'default'        => __('Invalid username!', 'ajax-login-and-registration-modal-popup' ),
+                'name'        => __('Message: Invalid login (NOT IN USE ANYMORE!)', 'ajax-login-and-registration-modal-popup' ),
+                'default'        => __('Unknown username. Check again or try your email address.', 'ajax-login-and-registration-modal-popup' ),
+                'render'      => array( new LRM_Field_Text(), 'input' ),
+                'sanitize'    => array( new LRM_Field_Text(), 'sanitize' ),
+            ) )
+            ->add_field( array(
+                'slug'        => 'invalid_username',
+                'name'        => __('Message: Invalid username', 'ajax-login-and-registration-modal-popup' ),
+                'default'        => __('Unknown username. Check again or try your email address.', 'ajax-login-and-registration-modal-popup' ),
+                'render'      => array( new LRM_Field_Text(), 'input' ),
+                'sanitize'    => array( new LRM_Field_Text(), 'sanitize' ),
+            ) )
+            ->add_field( array(
+                'slug'        => 'invalid_email',
+                'name'        => __('Message: Invalid email address', 'ajax-login-and-registration-modal-popup' ),
+                'default'        => __('Unknown email address. Check again or try your username', 'ajax-login-and-registration-modal-popup' ),
                 'render'      => array( new LRM_Field_Text(), 'input' ),
                 'sanitize'    => array( new LRM_Field_Text(), 'sanitize' ),
             ) )
@@ -999,6 +1013,16 @@ class LRM_Settings {
         $SECURITY_SECTION = $this->settings->add_section( __( 'Security (captcha)' . $pro_label, 'ajax-login-and-registration-modal-popup' ), 'security' );
 
         $SECURITY_SECTION->add_group( __( 'General', 'ajax-login-and-registration-modal-popup' ), 'general' )
+	        ->add_field( array(
+		        'slug'        => 'use_honeypot',
+		        'name'        => __('Secure the form with the Honeypot?', 'ajax-login-and-registration-modal-popup' ),
+		        'default'     => 'true',
+		        'addons'      => array('label' => __( 'Yes' )),
+		        'description' => sprintf( __('Use the <a href="%s" target="_blank" rel="noopener">Honeypot</a> to secure the forms?', 'ajax-login-and-registration-modal-popup' ), 'https://www.smartfile.com/blog/captchas-dont-work-how-to-trick-spam-bots-with-a-smarter-honey-pot/' ),
+		        'render'      => array( new CoreFields\Checkbox(), 'input' ),
+		        'sanitize'    => array( new CoreFields\Checkbox(), 'sanitize' ),
+	        ) )
+
             ->add_field( array(
                 'slug'        => 'type',
                 'name'        => __('How to secure forms?', 'ajax-login-and-registration-modal-popup'),

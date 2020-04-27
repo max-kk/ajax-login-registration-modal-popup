@@ -24,6 +24,9 @@ class LRM_Updater extends LRM_Updater_Abstract{
         '2.00' => array(
             '_update_2_00',
         ),
+        '2.13' => array(
+            '_update_2_13',
+        ),
     );
 
     /**
@@ -36,6 +39,17 @@ class LRM_Updater extends LRM_Updater_Abstract{
     public function __construct()
     {
         parent::__construct('lrm', 'lrm_version', LRM_VERSION);
+    }
+
+    /**
+     * Update to version 2.00
+     */
+    public function _update_2_13() {
+	    $strings_to_migrate = [
+		    'messages/login/invalid_login'  => 'messages/login/invalid_username',
+	    ];
+
+	    self::_update_strings( $strings_to_migrate );
     }
 
     /**
