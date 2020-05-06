@@ -33,9 +33,9 @@ if ( !defined("LRM_IN_BUILD_FREE") ) {
     define("LRM_BASENAME", plugin_basename(__FILE__));
 }
 
-define("LRM_VERSION", '2.14');
+define("LRM_VERSION", '2.13');
 
-define("LRM_ASSETS_VER", 39);
+define("LRM_ASSETS_VER", 40);
 
 //define('LRM_LOAD_ASSETS_ONLY_FOR_INLINE', 1); //- if no modal used - only inline form
 

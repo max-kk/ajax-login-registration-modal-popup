@@ -213,6 +213,7 @@ If you have login issue with Adminize plugin - go to Adminize plugin settings an
 - Login Security Improvements
 - Limit Login Attempts Reloaded - https://wordpress.org/plugins/limit-login-attempts-reloaded/
 - Hash param to trigger modal: https://docs.maxim-kaminsky.com/lrm/kb/hash-param-to-trigger-modal-or-change-the-tabs/
+- Fix for the "Confirm use of weak password" checkbox on the Password reset page
 
 = VER 2.12 - 8/04/2020 =
 
