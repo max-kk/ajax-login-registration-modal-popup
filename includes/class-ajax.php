@@ -762,6 +762,9 @@ class LRM_AJAX
 	    }
         remove_all_actions('swpm_login');   // Simple Membership plugin
 
+	    // WP-Recall plugin fix
+	    remove_filter( 'registration_errors', 'rcl_get_register_user', 90 );
+
         // Disable redirect after Login
         add_filter( 'ws_plugin__s2member_login_redirect', '__return_false', 99 );
 

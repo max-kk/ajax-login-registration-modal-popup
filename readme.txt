@@ -209,9 +209,10 @@ If you have login issue with Adminize plugin - go to Adminize plugin settings an
 
 = VER 2.13 - 27/04/2020 =
 
+- Restored registration with a WP-Recall plugin active
 - Login Security Improvements
 - Limit Login Attempts Reloaded - https://wordpress.org/plugins/limit-login-attempts-reloaded/
-- Added the Honeypot as additional login/register forms security method
+- Hash param to trigger modal: https://docs.maxim-kaminsky.com/lrm/kb/hash-param-to-trigger-modal-or-change-the-tabs/
 
 = VER 2.12 - 8/04/2020 =
 

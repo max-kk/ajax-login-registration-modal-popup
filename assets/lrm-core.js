@@ -64,6 +64,19 @@ var LRM = LRM ? LRM : {};
 						  return false;
 					  });
 			}
+
+			var hash = window.location.hash.substring(1);
+			if ( hash.length > 0 ) {
+				if (hash === "login") {
+					$(document).trigger('lrm_show_login');
+				} else if (hash === "inline-login") {
+					jQuery(".lrm-inline .lrm-switch-to--login").click();
+				} else if (hash == "register") {
+					$(document).trigger('lrm_show_signup');
+				} else if (hash == "inline-register") {
+					jQuery(".lrm-inline .lrm-switch-to--register").click();
+				}
+			}
 		}, 300);
 
 		//$("form.cart").on('submit', signup_selected);
@@ -350,6 +363,7 @@ var LRM = LRM ? LRM : {};
 				window.LRM_Pro.modal_is_shown = true;
 			}
 			$formModal.addClass('is-visible');
+			$(document).triggerHandler("lrm/show_modal", $formModal);
 		}
 
 		$(document).on('submit', '.lrm-form', lrm_submit_form);
@@ -413,7 +427,7 @@ var LRM = LRM ? LRM : {};
 							// 	$form.find(".lrm-form-message").addClass("lrm-is-error");
 							// }
 
-							$form.closest(".lrm-user-modal-container").animate({scrollTop: 80}, 400);
+							//$form.closest(".lrm-user-modal-container").animate({scrollTop: error_scroll_offset}, 400);
 						} else {
 							// Tweak in case this selector is Missing
 							if ( 0 === $form.find('input[name="' + response.data.for + '"]').length ) {
@@ -562,8 +576,13 @@ var LRM = LRM ? LRM : {};
 
 			var element_to_scroll = modal_is_visible ? ".lrm-user-modal" : "html, body";
 
+			var error_scroll_offset = $(document).triggerHandler("lrm/form/set_message_scroll_offset", [$form, modal_is_visible, $message]);
+			if ( error_scroll_offset === undefined ) {
+				error_scroll_offset = modal_is_visible ? 25 : $message.offset().top - 15;
+			}
+
 			$(element_to_scroll).animate({
-				scrollTop: modal_is_visible ? 25 : $message.offset().top - 15
+				scrollTop: error_scroll_offset
 			}, 1500);
 
 			if ( is_error ) {
@@ -737,11 +756,9 @@ LRM_Helper.PasswordMeter = function( pass1, blacklistArr, pass2 ) {
 			numbers: "0123456789",
 			specialChars: "!&%/()=?^*+][#><;:,._-|"
 		};
-
 		this.letters = this.tokens.letters.split( "" );
 		this.numbers = this.tokens.numbers.split( "" );
 		this.specialChars = this.tokens.specialChars.split( "" );
-
 	}
 
 	PasswordMeter.prototype = {
@@ -833,7 +850,6 @@ LRM_Helper.PasswordMeter = function( pass1, blacklistArr, pass2 ) {
 	};
 
 	var pwdMeter = new PasswordMeter();
-
 	return pwdMeter.check();
 };
 // END
