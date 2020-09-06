@@ -101,6 +101,12 @@ var LRM = LRM ? LRM : {};
 		//close modal
 		$('.lrm-user-modal').on('click', function (event) {
 			if ($(event.target).is('.lrm-user-modal') || $(event.target).is('.lrm-close-form')) {
+				// Check reCaptha, etc
+				var can_close = $(document).triggerHandler('lrm/can_close_modal', event);
+				if ( can_close !== undefined && !can_close ) {
+					return false;
+				}
+
 				$(this).removeClass('is-visible');
 				auto_selected_role = false;
 				$(document).triggerHandler("lrm/close_modal", this, event, "click");
@@ -109,6 +115,12 @@ var LRM = LRM ? LRM : {};
 		//close modal when clicking the esc keyboard button
 		$(document).keyup(function (event) {
 			if (event.which == '27') {
+				// Check reCaptha, etc
+				var can_close = $(document).triggerHandler('lrm/can_close_modal', event);
+				if ( can_close !== undefined && !can_close ) {
+					return false;
+				}
+
 				$(".lrm-user-modal").removeClass('is-visible');
 				auto_selected_role = false;
 				$(document).triggerHandler("lrm/close_modal", this, event, "esc");
@@ -475,7 +487,11 @@ var LRM = LRM ? LRM : {};
 					$form.find(".lrm-button-loader").remove();
 					$form.removeClass("--is-submitting");
 
-					alert("An error occurred, please contact with administrator... \n\rFor more details look at the console (F12 or Ctrl+Shift+I, Console tab)!");
+					if ( 503 === jqXHR.status && jqXHR.responseText.indexOf("ERROR") > 0 ) {
+						LRM_Form.set_message( $form, jqXHR.responseText, false );
+					} else {
+						alert("An error occurred, please contact with administrator... \n\rFor more details look at the console (F12 or Ctrl+Shift+I, Console tab)!");
+					}
 
 					if (window.console == undefined) {
 						return;
@@ -504,7 +520,7 @@ var LRM = LRM ? LRM : {};
 				return;
 			}
 
-			if ( !passwordStrength || passwordStrength == 2 ) {
+			if ( !passwordStrength || passwordStrength <= 2 ) {
 				$(".pw-weak").show()
 				$(".pw-checkbox").attr("required", "required");
 			} else {

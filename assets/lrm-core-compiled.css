@@ -131,12 +131,12 @@ ul.lrm-switcher {
     margin: 2em 0 !important;
   }
 }
-.lrm-form .lrm-fieldset-wrap,
+.lrm-form .lrm-fieldset-wrap, .lrm-form #buddypress #register-page, #buddypress .lrm-form #register-page,
 .lrm-form .fieldset--default {
   padding: 0 1.4em !important;
 }
 @media only screen and (min-width: 600px) {
-  .lrm-form .lrm-fieldset-wrap .lrm-form .fieldset,
+  .lrm-form .lrm-fieldset-wrap .lrm-form .fieldset, .lrm-form #buddypress #register-page .lrm-form .fieldset, #buddypress .lrm-form #register-page .lrm-form .fieldset,
 .lrm-form .fieldset--default .lrm-form .fieldset {
     padding: 0 2em !important;
   }
@@ -789,10 +789,58 @@ a.jetpack-sso {
   text-align: left;
 }
 
+.lrm-integrations .mc4wp-checkbox {
+  text-align: left;
+}
+.lrm-integrations .mc4wp-checkbox label span {
+  position: relative;
+  padding-left: 29px;
+  cursor: pointer;
+  font-weight: 400;
+  font-size: 14px;
+  color: grey;
+  line-height: 17px;
+  display: inline-block;
+}
+.lrm-integrations .mc4wp-checkbox label input[type=checkbox] {
+  display: none;
+}
+.lrm-integrations .mc4wp-checkbox label input[type=checkbox]:checked + span:after {
+  border-color: #0b76ef;
+  background: #0b76ef;
+}
+.lrm-integrations .mc4wp-checkbox label input[type=checkbox]:checked + span:before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 50%;
+  margin-top: -8px;
+  left: 9px;
+  width: 5px;
+  height: 11px;
+  transform: rotate(40deg);
+  border: solid #fff;
+  border-width: 0 2px 2px 0;
+  z-index: 1;
+}
+.lrm-integrations .mc4wp-checkbox label span:after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 50%;
+  margin-top: -12px;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #e8e8eb;
+  border-radius: 3px;
+}
+
 .lrm-nice-checkbox {
   position: absolute;
   z-index: -1;
   opacity: 0;
+  -webkit-appearance: none;
   /* Hover and focus states */
   /* Checked state */
   /* Hover state whilst checked */

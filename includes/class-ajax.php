@@ -143,12 +143,6 @@ class LRM_AJAX
 			        $limit_login_attempts_msg = $limit_login_attempts_obj->get_message();
 		        }
 	        }
-	        if ( class_exists('Limit_Login_Attempts') && in_array('incorrect_password', $user_signon->get_error_codes()) ) {
-		        global $limit_login_attempts_obj;
-		        $limit_login_attempts_obj->limit_login_failed($user_name);
-		        $limit_login_attempts_msg = $limit_login_attempts_obj->get_message();
-	        }
-
 
 	        $invalid_login = array_intersect($user_signon->get_error_codes(), ['invalid_username', 'invalid_email']);
 	        if ( $invalid_login ) {

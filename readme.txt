@@ -207,6 +207,11 @@ If you have login issue with Adminize plugin - go to Adminize plugin settings an
 
 == Changelog ==
 
+= VER 2.14 - 15/05/2020 =
+
+- Limit Login Attempts Reloaded tweak (each login attempt decrease limit count to 2)
+- Added some styles for the MailChimp for WordPress checkbox
+
 = VER 2.13 - 27/04/2020 =
 
 - Restored registration with a WP-Recall plugin active

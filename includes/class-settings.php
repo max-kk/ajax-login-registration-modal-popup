@@ -918,6 +918,13 @@ class LRM_Settings {
                 'sanitize'    => array( new CoreFields\Text(), 'sanitize' ),
             ) )
             ->add_field( array(
+                'slug'        => 'password_confirmation',
+                'name'        => __('Password confirmation', 'ajax-login-and-registration-modal-popup' ),
+                'default'        => __('Password confirmation', 'ajax-login-and-registration-modal-popup'),
+                'render'      => array( new CoreFields\Text(), 'input' ),
+                'sanitize'    => array( new CoreFields\Text(), 'sanitize' ),
+            ) )
+            ->add_field( array(
                 'slug'        => 'use_weak_password',
                 'name'        => __('Confirm use of weak password (reset password page)', 'ajax-login-and-registration-modal-popup' ),
                 'default'        => __('Confirm use of weak password', 'ajax-login-and-registration-modal-popup'),
