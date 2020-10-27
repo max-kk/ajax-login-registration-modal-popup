@@ -39,6 +39,7 @@ class ComposerStaticInitdde607f96faa1b43935af1e9c51b647a
         'LRM_Import_Export_Manager' => __DIR__ . '/../..' . '/includes/class-import-export.php',
         'LRM_Mailer' => __DIR__ . '/../..' . '/includes/class-mailer.php',
         'LRM_Pages_Manager' => __DIR__ . '/../..' . '/includes/class-pages-manager.php',
+        'LRM_Polylang_Integration' => __DIR__ . '/../..' . '/includes/class-polylang.php',
         'LRM_Redirects_Manager' => __DIR__ . '/../..' . '/includes/class-redirects-manager.php',
         'LRM_Roles_Manager' => __DIR__ . '/../..' . '/includes/class-roles-manager.php',
         'LRM_Settings' => __DIR__ . '/../..' . '/includes/class-settings.php',

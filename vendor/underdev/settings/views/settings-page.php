@@ -58,7 +58,23 @@
 
 					<div class="setting-group">
 
-						<h3><?php echo esc_html( $group->name() ); ?></h3>
+						<h3>
+							<?php
+							echo esc_html( $group->name() );
+							if ( LRM_Polylang_Integration::is_active() ) {
+								if ( $group->can_be_translated() ) {
+									echo ' <code>MultiLanguage text <a href="https://docs.maxim-kaminsky.com/lrm/kb/multi-language-set-up-via-polylang/#multilanguage-text-translation" target="_blank"><span class="dashicons dashicons-info"></span></a></code>';
+								} elseif ( $group->only_base_language() ) {
+									echo ' <code>No MultiLanguage <a href="https://docs.maxim-kaminsky.com/lrm/kb/multi-language-set-up-via-polylang/#no-multilanguage-group" target="_blank"><span class="dashicons dashicons-info"></span></a> - can be changed only on the base language "' . pll_default_language('name') . '"</code>';
+								}
+							} elseif ( LRM_WPML_Integration::is_wpml_active() ) {
+								if ( $group->can_be_translated() ) {
+									echo ' <code>MultiLanguage text <a href="https://docs.maxim-kaminsky.com/lrm/kb/multi-language-support-via-wpml/" target="_blank"><span class="dashicons dashicons-info"></span></a></code>';
+								}
+							}
+
+							?>
+						</h3>
 
 						<?php $description = $group->description(); ?>
 

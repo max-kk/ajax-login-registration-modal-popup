@@ -181,8 +181,10 @@ class Settings {
 
 		}
 
+		$pll_current_language = \LRM_Polylang_Integration::get_locale_suffix();
+
 		foreach ( $to_save as $section => $value ) {
-			update_option( $this->handle . '_' . $section, $value );
+			update_option( $this->handle . '_' . $section . $pll_current_language, $value );
 		}
 
 		wp_safe_redirect( add_query_arg( 'updated', 'true', $data['_wp_http_referer'] ) );
@@ -202,12 +204,25 @@ class Settings {
              * @since 1.42
              */
             \LRM_WPML_Integration::switch_locale();
+			/**
+			 * @since 2.11
+			 */
+            \LRM_Polylang_Integration::switch_locale();
+
+			$pll_current_language = \LRM_Polylang_Integration::get_locale_suffix();
 
 			foreach ( $this->get_sections() as $section_slug => $section ) {
 
-				$setting = get_option( $this->handle . '_' . $section_slug );
+				$setting = get_option( $this->handle . '_' . $section_slug  );
+				$setting_translated = false;
+				if ( $pll_current_language ) {
+					$setting_translated = get_option( $this->handle . '_' . $section_slug . $pll_current_language );
+				}
 
 				$this->settings[ $section_slug ] = array();
+
+				// !! Fix for Advanced Cron Manager & Notifications pluigns that uses the same LIB !!
+				$can_be_translated_method_exists = method_exists('underDEV\Utils\Settings\Group','can_be_translated');
 
 				foreach ( $section->get_groups() as $group_slug => $group ) {
 
@@ -216,7 +231,9 @@ class Settings {
                     /** @var underDEV\Utils\Settings\Field $field */
 					foreach ( $group->get_fields() as $field_slug => $field ) {
 
-						if ( isset( $setting[ $group_slug ][ $field_slug ] ) ) {
+						if ( $can_be_translated_method_exists && $group->can_be_translated() && isset( $setting_translated[ $group_slug ][ $field_slug ] ) ) {
+							$value = $setting_translated[ $group_slug ][ $field_slug ];
+						} elseif ( isset( $setting[ $group_slug ][ $field_slug ] ) ) {
 							$value = $setting[ $group_slug ][ $field_slug ];
 						} else {
 							$value = $field->default_value();
@@ -225,9 +242,13 @@ class Settings {
                              * WPML tweak
                              * @since 1.42
                              */
-                            if ( $group->can_be_translated() && $value && !\LRM_WPML_Integration::is_default_locale() ) {
+                            if ( $can_be_translated_method_exists && $group->can_be_translated() && $value && !\LRM_WPML_Integration::is_default_locale() ) {
                                 $value = __($value, 'ajax-login-and-registration-modal-popup');
                             }
+
+//                            elseif ( $group->per_language() && !$value && $setting_default && isset( $setting_default[ $group_slug ][ $field_slug ] ) ) {
+//	                            $value = $setting_default[ $group_slug ][ $field_slug ];
+//                            }
 						}
 
 						$field->value( $value );
@@ -238,13 +259,17 @@ class Settings {
 
 				}
 
-                /**
-                 * @since 1.42
-                 */
-                \LRM_WPML_Integration::restore_locale();
-
 			}
-			
+
+			/**
+			 * @since 1.42
+			 */
+			\LRM_WPML_Integration::restore_locale();
+			/**
+			 * @since 2.11
+			 */
+			\LRM_Polylang_Integration::restore_locale();
+
 		}
 
 		return apply_filters( $this->handle . '/settings/saved_settings', $this->settings, $this );

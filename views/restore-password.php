@@ -49,9 +49,9 @@ list($rp_key, $rp_login) = $rp_data;
 
             <div class="fieldset fieldset--pw-weak">
                 <div class="pw-weak" style="display: none;">
-                    <label>
-                        <input type="checkbox" name="pw_weak" class="pw-checkbox" />
-                        <?php echo lrm_setting('messages/password/use_weak_password', true); ?>
+                    <label class="lrm-nice-checkbox__label lrm-remember-me-checkbox"><?php echo lrm_setting('messages/password/use_weak_password', true); ?>
+                        <input type="checkbox" class="lrm-nice-checkbox pw-checkbox" name="pw_weak" checked>
+                        <div class="lrm-nice-checkbox__indicator"></div>
                     </label>
                 </div>
             </div>

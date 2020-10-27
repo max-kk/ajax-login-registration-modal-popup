@@ -118,7 +118,7 @@ class Section {
      *
 	 * @return Group
 	 */
-	public function add_group( $name, $slug, $can_be_translated = false ) {
+	public function add_group( $name, $slug, $can_be_translated = false, $only_base_language = false ) {
 
 		if ( empty( $name ) || empty( $slug ) ) {
 			throw new \Exception( 'Group name and slug cannot be empty' );
@@ -128,7 +128,7 @@ class Section {
 			throw new \Exception( 'Group slug `' . $slug . '` already exists' );
 		}
 
-		$this->groups[ $slug ] = new Group( $this->handle, $name, $slug, $this->slug(), $can_be_translated );
+		$this->groups[ $slug ] = new Group( $this->handle, $name, $slug, $this->slug(), $can_be_translated, $only_base_language );
 
 		do_action( $this->handle . '/settings/group/added', $this->groups[ $slug ], $this );
 

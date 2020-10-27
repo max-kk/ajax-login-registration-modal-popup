@@ -248,8 +248,62 @@ a.jetpack-sso {
     }
 }
 
-
-
 .lrm-form .rcp_form label {
     text-align: left;
+}
+
+.lrm-integrations .mc4wp-checkbox {
+    text-align: left;
+
+    label span {
+        position: relative;
+        padding-left: 29px;
+        cursor: pointer;
+        font-weight: 400;
+        font-size: 14px;
+        color: grey;
+        line-height: 17px;
+        display: inline-block
+    }
+
+    label input[type=checkbox] {
+        display: none
+    }
+
+    label input[type=checkbox]:checked + span:after {
+        border-color: #0b76ef;
+        background: #0b76ef
+    }
+
+    label input[type=checkbox]:checked + span:before {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 50%;
+        margin-top: -8px;
+        left: 9px;
+        width: 5px;
+        height: 11px;
+        transform: rotate(40deg);
+        border: solid #fff;
+        border-width: 0 2px 2px 0;
+        z-index: 1
+    }
+
+    label span:after {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 50%;
+        margin-top: -12px;
+        left: 0;
+        width: 20px;
+        height: 20px;
+        border: 2px solid #e8e8eb;
+        border-radius: 3px
+    }
+}
+
+#buddypress #register-page {
+    @extend .lrm-fieldset-wrap;
 }

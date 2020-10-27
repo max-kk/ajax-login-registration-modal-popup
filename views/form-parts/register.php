@@ -37,6 +37,13 @@
                             </div>
                         <?php endif; ?>
 
+			            <?php if( lrm_setting( 'security/general/use_honeypot' )  ): ?>
+                            <div class="fieldset fieldset--login">
+                                <label class="image-replace lrm-username lrm-ficon-user" for="signup-login" title="Login"></label>
+                                <input name="login" class="full-width has-padding has-border" id="signup-login" type="text" autocomplete="off" data-lpignore="true">
+                            </div>
+	                    <?php endif; ?>
+
                         <?php if( lrm_setting('general/registration/display_first_and_last_name') ): ?>
                             <div class="clearfix lrm-row">
                                 <?php $fname_label = esc_attr( lrm_setting('messages/registration/first-name', true) );; ?>
@@ -63,7 +70,10 @@
 
                     <?php endif; ?>
 
-                    <?php $pass_label = esc_attr( lrm_setting('messages/password/password', true) ); ?>
+                    <?php
+                    $pass_label = esc_attr( lrm_setting('messages/password/password', true) );
+                    $pass_confirmation_label = esc_attr( lrm_setting('messages/password/password_confirmation', true) );
+                    ?>
                     <?php if( lrm_setting('general_pro/all/allow_user_set_password') ): ?>
                         <div class="fieldset">
                             <div class="lrm-position-relative">
@@ -79,7 +89,7 @@
                         <div class="fieldset">
                             <div class="lrm-position-relative">
                                 <label class="image-replace lrm-password lrm-ficon-key" for="signup-password-confirmation"></label>
-                                <input name="password-confirmation" class="full-width has-padding has-border" id="signup-password-confirmation" type="password"  placeholder="<?= $pass_label; ?>" <?= $fields_required; ?> value="" autocomplete="new-password">
+                                <input name="password-confirmation" class="full-width has-padding has-border" id="signup-password-confirmation" type="password"  placeholder="<?= $pass_confirmation_label; ?>" <?= $fields_required; ?> value="" autocomplete="new-password">
                                 <span class="lrm-error-message"></span>
                                 <span class="hide-password lrm-ficon-eye" data-show="<?php echo lrm_setting('messages/other/show_pass'); ?>" data-hide="<?php echo lrm_setting('messages/other/hide_pass'); ?>"></span>
                             </div>

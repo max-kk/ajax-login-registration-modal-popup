@@ -187,14 +187,6 @@ class LRM_Settings {
 
     public function register_settings() {
 
-//	    switch_to_locale( pll_current_language('locale') );
-//	    LRM_Core::get()->load_plugin_textdomain();
-
-//	    var_dump( get_locale() );
-//	    var_dump( pll_current_language('locale') );
-
-
-
         $general = $this->settings->add_section( __( 'General', 'ajax-login-and-registration-modal-popup' ), 'general' );
 
 
@@ -465,7 +457,7 @@ class LRM_Settings {
 
         $EMAILS_SECTION = $this->settings->add_section( __( 'Emails', 'ajax-login-and-registration-modal-popup' ), 'mails' );
 
-        $EMAILS_SECTION->add_group( __( 'Mails', 'ajax-login-and-registration-modal-popup' ), 'mail' )
+        $EMAILS_SECTION->add_group( __( 'Mails', 'ajax-login-and-registration-modal-popup' ), 'mail', false, true )
             ->add_field( array(
                 'slug'        => 'format',
                 'name'        => __('Email format', 'ajax-login-and-registration-modal-popup'),
@@ -535,7 +527,7 @@ class LRM_Settings {
                 'sanitize'    => array( new LRM_Field_Editor(), 'sanitize' ),
             ) );
 
-        $EMAILS_SECTION->add_group( __( 'Admin emails', 'ajax-login-and-registration-modal-popup' ), 'admin_new_user', true )
+        $EMAILS_SECTION->add_group( __( 'Admin emails', 'ajax-login-and-registration-modal-popup' ), 'admin_new_user', false, true )
             ->add_field( array(
                 'slug'        => 'on',
                 'name'        => __('Send email to admin about new user?', 'ajax-login-and-registration-modal-popup' ),
@@ -644,8 +636,22 @@ class LRM_Settings {
             ) )
             ->add_field( array(
                 'slug'        => 'invalid_login',
-                'name'        => __('Message: Invalid username (not exists)', 'ajax-login-and-registration-modal-popup' ),
-                'default'        => __('Invalid username!', 'ajax-login-and-registration-modal-popup' ),
+                'name'        => __('Message: Invalid login (NOT IN USE ANYMORE!)', 'ajax-login-and-registration-modal-popup' ),
+                'default'        => __('Unknown username. Check again or try your email address.', 'ajax-login-and-registration-modal-popup' ),
+                'render'      => array( new LRM_Field_Text(), 'input' ),
+                'sanitize'    => array( new LRM_Field_Text(), 'sanitize' ),
+            ) )
+            ->add_field( array(
+                'slug'        => 'invalid_username',
+                'name'        => __('Message: Invalid username', 'ajax-login-and-registration-modal-popup' ),
+                'default'        => __('Unknown username. Check again or try your email address.', 'ajax-login-and-registration-modal-popup' ),
+                'render'      => array( new LRM_Field_Text(), 'input' ),
+                'sanitize'    => array( new LRM_Field_Text(), 'sanitize' ),
+            ) )
+            ->add_field( array(
+                'slug'        => 'invalid_email',
+                'name'        => __('Message: Invalid email address', 'ajax-login-and-registration-modal-popup' ),
+                'default'        => __('Unknown email address. Check again or try your username', 'ajax-login-and-registration-modal-popup' ),
                 'render'      => array( new LRM_Field_Text(), 'input' ),
                 'sanitize'    => array( new LRM_Field_Text(), 'sanitize' ),
             ) )
@@ -912,6 +918,13 @@ class LRM_Settings {
                 'sanitize'    => array( new CoreFields\Text(), 'sanitize' ),
             ) )
             ->add_field( array(
+                'slug'        => 'password_confirmation',
+                'name'        => __('Password confirmation', 'ajax-login-and-registration-modal-popup' ),
+                'default'        => __('Password confirmation', 'ajax-login-and-registration-modal-popup'),
+                'render'      => array( new CoreFields\Text(), 'input' ),
+                'sanitize'    => array( new CoreFields\Text(), 'sanitize' ),
+            ) )
+            ->add_field( array(
                 'slug'        => 'use_weak_password',
                 'name'        => __('Confirm use of weak password (reset password page)', 'ajax-login-and-registration-modal-popup' ),
                 'default'        => __('Confirm use of weak password', 'ajax-login-and-registration-modal-popup'),
@@ -1007,6 +1020,16 @@ class LRM_Settings {
         $SECURITY_SECTION = $this->settings->add_section( __( 'Security (captcha)' . $pro_label, 'ajax-login-and-registration-modal-popup' ), 'security' );
 
         $SECURITY_SECTION->add_group( __( 'General', 'ajax-login-and-registration-modal-popup' ), 'general' )
+	        ->add_field( array(
+		        'slug'        => 'use_honeypot',
+		        'name'        => __('Secure the form with the Honeypot?', 'ajax-login-and-registration-modal-popup' ),
+		        'default'     => 'true',
+		        'addons'      => array('label' => __( 'Yes' )),
+		        'description' => sprintf( __('Use the <a href="%s" target="_blank" rel="noopener">Honeypot</a> to secure the forms?', 'ajax-login-and-registration-modal-popup' ), 'https://www.smartfile.com/blog/captchas-dont-work-how-to-trick-spam-bots-with-a-smarter-honey-pot/' ),
+		        'render'      => array( new CoreFields\Checkbox(), 'input' ),
+		        'sanitize'    => array( new CoreFields\Checkbox(), 'sanitize' ),
+	        ) )
+
             ->add_field( array(
                 'slug'        => 'type',
                 'name'        => __('How to secure forms?', 'ajax-login-and-registration-modal-popup'),

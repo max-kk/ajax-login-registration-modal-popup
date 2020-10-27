@@ -51,14 +51,23 @@ class Group {
      */
 	private $can_be_translated;
 
+
+    /**
+     * @var bool
+     * @since 2.11 free
+     */
+	private $only_base_language;
+
 	/**
 	 * Group constructor
 	 * @param string $handle  Settings handle
 	 * @param string $name    Group name
 	 * @param string $slug    Group slug
 	 * @param string $section Section slug
+	 * @param string $can_be_translated $can_be_translated bool for strings
+	 * @param string $only_base_language $only_base_language bool for options
 	 */
-	public function __construct( $handle, $name, $slug, $section, $can_be_translated = false ) {
+	public function __construct( $handle, $name, $slug, $section, $can_be_translated = false, $only_base_language = false ) {
 
 		if ( empty( $handle ) ) {
 			throw new \Exception( 'Setting handle in Section instance cannot be empty' );
@@ -85,6 +94,7 @@ class Group {
 		$this->section( $section );
 
 		$this->can_be_translated( $can_be_translated );
+		$this->only_base_language( $only_base_language );
 
 	}
 
@@ -115,6 +125,20 @@ class Group {
 		}
 
 		return apply_filters( $this->handle . '/settings/group/can_be_translated', $this->can_be_translated, $this );
+	}
+
+	/**
+	 * Get or set $can_be_translated option
+	 * @param  bool $can_be_translated
+	 * @return bool
+	 */
+	public function only_base_language( $only_base_language = null ) {
+
+		if ( $only_base_language !== null ) {
+			$this->only_base_language = $only_base_language;
+		}
+
+		return apply_filters( $this->handle . '/settings/group/only_base_language', $this->only_base_language, $this );
 	}
 
 	/**

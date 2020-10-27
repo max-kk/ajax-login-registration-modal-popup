@@ -2,7 +2,7 @@
 Contributors: kaminskym
 Tags: login, registration, register, lost password, modal, popup, ajax, form
 Requires at least: 4.1
-Tested up to: 5.2.2
+Tested up to: 5.5.0
 Requires PHP: 5.5
 Stable tag: trunk
 License: GPLv2 or later
@@ -206,6 +206,24 @@ If you have login issue with Adminize plugin - go to Adminize plugin settings an
 - With Theme my login (TML) plugin (3 Password fields on the Create Account tab, if enable password field in LRM and TML)
 
 == Changelog ==
+
+= VER 2.14 - 15/07/2020 =
+
+- Limit Login Attempts Reloaded tweak (each login attempt decrease limit count to 2)
+- Added some styles for the "MailChimp for WordPress" checkbox
+
+= VER 2.13 - 27/04/2020 =
+
+- Restored registration with a WP-Recall plugin active
+- Login Security Improvements
+- Limit Login Attempts Reloaded - https://wordpress.org/plugins/limit-login-attempts-reloaded/
+- Hash param to trigger modal: https://docs.maxim-kaminsky.com/lrm/kb/hash-param-to-trigger-modal-or-change-the-tabs/
+- Fix for the "Confirm use of weak password" checkbox on the Password reset page
+
+= VER 2.12 - 8/04/2020 =
+
+- Integrated the Polylang plugin - https://docs.maxim-kaminsky.com/lrm/kb/multi-language-set-up-via-polylang/
+- Config files for the Loco Translate plugin
 
 = VER 2.11 - 23/03/2020 =
 

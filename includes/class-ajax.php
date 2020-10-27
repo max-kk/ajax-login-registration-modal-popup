@@ -55,15 +55,15 @@ class LRM_AJAX
             if ( ! $user && strpos( $user_name, '@' ) ) {
                 $user = get_user_by( 'email', $user_name );
             }
-
-	        if ( !$user ) {
-                if ( class_exists('SimpleUserLogger') ) {
-                    $login_error = new WP_Error();
-                    $login_error->add( 'invalid_username', 'invalid_username' );
-                    SimpleHistory::get_instance()->getInstantiatedLoggerBySlug('SimpleUserLogger')->onAuthenticate($login_error, $user_name, $info['user_password']);
-                }
-                wp_send_json_error(array('message' => LRM_Settings::get()->setting('messages/login/invalid_login'), 'for' => 'username'));
-            }
+//
+//	        if ( !$user ) {
+//                if ( class_exists('SimpleUserLogger') ) {
+//                    $login_error = new WP_Error();
+//                    $login_error->add( 'invalid_username', 'invalid_username' );
+//                    SimpleHistory::get_instance()->getInstantiatedLoggerBySlug('SimpleUserLogger')->onAuthenticate($login_error, $user_name, $info['user_password']);
+//                }
+//                wp_send_json_error(array('message' => LRM_Settings::get()->setting('messages/login/invalid_login'), 'for' => 'username'));
+//            }
 
 //	        /**
 //	         * Filters whether the given user can be authenticated with the provided $password.
@@ -93,6 +93,20 @@ class LRM_AJAX
             }
         }
 
+
+	    if ( class_exists('Limit_Login_Attempts') ){
+		    global $limit_login_attempts_obj;
+		    $limit_login_attempts_user = $user ? $user : (object)['user_login'=>$user_name];
+		    $limit_login_attempts_try = $limit_login_attempts_obj->wp_authenticate_user( $limit_login_attempts_user, false );
+		    if ( is_wp_error($limit_login_attempts_try) ) {
+			    wp_send_json_error(array(
+				    'message'=>implode('<br/>', $limit_login_attempts_try->get_error_messages()),
+				    'exec_time'=>sprintf( 'Executed for %.5F seconds', (microtime(true) - $start) )   ,
+			    ));
+
+		    }
+	    }
+
         do_action('lrm/login_pre_signon/after_user_check', $info, $user);
 
         $user_signon = wp_signon( $info, $secure_cookie );
@@ -115,8 +129,35 @@ class LRM_AJAX
 
             do_action('lrm/login_fail', $user_signon);
 
+	        $limit_login_attempts_msg = '';
+
+	        if ( ! lrm_setting( 'advanced/troubleshooting/call_wp_login_action' ) ) {
+		        if ( class_exists( 'SimpleUserLogger' ) ) {
+			        $login_error = new WP_Error();
+			        $login_error->add( 'invalid_username', $user_signon->get_error_message() );
+			        SimpleHistory::get_instance()->getInstantiatedLoggerBySlug( 'SimpleUserLogger' )->onAuthenticate( $login_error, $user_name, $info['user_password'] );
+		        }
+		        if ( class_exists('Limit_Login_Attempts') ){
+			        global $limit_login_attempts_obj;
+			        $limit_login_attempts_obj->limit_login_failed($user_name);
+			        $limit_login_attempts_msg = $limit_login_attempts_obj->get_message();
+		        }
+	        }
+
+	        $invalid_login = array_intersect($user_signon->get_error_codes(), ['invalid_username', 'invalid_email']);
+	        if ( $invalid_login ) {
+		        $invalid_login = $invalid_login[0];
+
+		        wp_send_json_error( array(
+			        'message' => LRM_Settings::get()->setting( 'messages/login/'.$invalid_login ) . $limit_login_attempts_msg,
+			        'for'     => 'username'
+		        ) );
+	        }
+
+	        $limit_login_attempts_msg = $limit_login_attempts_msg ? ' <br>' . $limit_login_attempts_msg : $limit_login_attempts_msg;
+
             wp_send_json_error(array(
-            	'message'=>implode('<br/>', $user_signon->get_error_messages()),
+            	'message'=>implode('<br/>', $user_signon->get_error_messages()) . $limit_login_attempts_msg,
 	            'exec_time'=>sprintf('Executed for %.5F seconds', $end_time) ,
             ));
         } else {
@@ -691,7 +732,7 @@ class LRM_AJAX
     }
 
     public static function _verify_nonce( $post_key, $nonce_key ) {
-        if ( defined("WP_CACHE") ) {
+       if ( defined("WP_CACHE") ) {
             return true;
         }
 
@@ -711,9 +752,12 @@ class LRM_AJAX
         // Try to remove some actions to avoid redirects
 	    if ( ! lrm_setting('advanced/troubleshooting/call_wp_login_action') ) {
 		    remove_all_actions( 'wp_login' );
+		    remove_all_actions('wp_login_failed');
 	    }
         remove_all_actions('swpm_login');   // Simple Membership plugin
-        remove_all_actions('wp_login_failed');
+
+	    // WP-Recall plugin fix
+	    remove_filter( 'registration_errors', 'rcl_get_register_user', 90 );
 
         // Disable redirect after Login
         add_filter( 'ws_plugin__s2member_login_redirect', '__return_false', 99 );

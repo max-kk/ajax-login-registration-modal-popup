@@ -7,6 +7,7 @@ defined( 'ABSPATH' ) || exit;
  */
 class LRM_Core {
     protected static $instance;
+    public $inline_form_rendered = false;
 
     public function __construct()
     {
@@ -215,6 +216,11 @@ class LRM_Core {
 
     public function wp_footer__action() {
         $is_customize_preview = is_customize_preview();
+
+	    if ( defined('LRM_LOAD_ASSETS_ONLY_FOR_INLINE') && !$this->inline_form_rendered ) {
+		    return;
+	    }
+
         /**
          * @since 1.01
          */
@@ -229,26 +235,31 @@ class LRM_Core {
         $this->render_form();
     }
 
-    public function enqueue_assets() {
-
-        if ( ( !is_customize_preview() && is_user_logged_in() ) || is_admin() ) {
-            return;
-        }
-
-        $required_scripts = array('jquery');
+    public function enqueue_assets( $from_inline = false ) {
 
         // For the Password Reset page
 //        if ( get_the_ID() == LRM_Pages_Manager::get_page_id('restore-password') ) {
 //            $required_scripts[] = 'password-strength-meter';
 //        }
 
-        wp_enqueue_script('lrm-modal', LRM_URL . 'assets/lrm-core.js', $required_scripts, LRM_ASSETS_VER, true);
+	    LRM_Skins::i()->load_current_skin_assets();
 
-        wp_enqueue_style('lrm-modal', LRM_URL . 'assets/lrm-core-compiled.css', false, LRM_ASSETS_VER);
-        wp_enqueue_style('lrm-fonts', LRM_URL . 'assets/fonts.css', false, LRM_ASSETS_VER);
+	    if ( defined('LRM_LOAD_ASSETS_ONLY_FOR_INLINE') && !$from_inline ) {
+		    return;
+	    } elseif ( !defined('LRM_LOAD_ASSETS_ONLY_FOR_INLINE') && $from_inline ) {
+		    return;
+	    }
 
-        LRM_Skins::i()->load_current_skin_assets();
-        //wp_enqueue_style('lrm-modal-skin', LRM_URL . 'assets/lrm-skin.css', false, LRM_ASSETS_VER);
+	    if ( ( !is_customize_preview() && is_user_logged_in() ) || is_admin() ) {
+		    return;
+	    }
+
+	    wp_enqueue_style('lrm-modal', LRM_URL . 'assets/lrm-core-compiled.css', false, LRM_ASSETS_VER);
+	    //wp_enqueue_style('lrm-fonts', LRM_URL . 'assets/fonts.css', false, LRM_ASSETS_VER);
+
+	    $required_scripts = array('jquery');
+	    wp_enqueue_script('lrm-modal', LRM_URL . 'assets/lrm-core.js', $required_scripts, LRM_ASSETS_VER, true);
+	    //wp_enqueue_style('lrm-modal-skin', LRM_URL . 'assets/lrm-skin.css', false, LRM_ASSETS_VER);
 
         $ajax_url = add_query_arg( 'lrm', '1', site_url('/') );
         if ( defined("LRM_AJAX_URL_USE_ADMIN") ) {
@@ -284,6 +295,10 @@ class LRM_Core {
         );
 
         wp_localize_script('lrm-modal', 'LRM', $script_params);
+
+        if ( lrm_is_pro('1.92') ) {
+	        LRM_Core::get()->call_pro( 'assets' );
+        }
     }
 
     /**
@@ -296,6 +311,11 @@ class LRM_Core {
 
         if ( !in_array($default_tab, array('login', 'register', 'lost-password')) ) {
             $default_tab = 'login';
+        }
+
+        if ( !$this->inline_form_rendered ) {
+	        $this->enqueue_assets( true );
+	        $this->inline_form_rendered = true;
         }
 
         require LRM_PATH . 'views/form.php';
