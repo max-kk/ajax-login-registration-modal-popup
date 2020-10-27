@@ -1,7 +1,8 @@
 {
   "name": "max-kk/ajax-login-registration-modal-popup",
-  "description": "description_text",
+  "description": "WP Plugin that allows easy too to your website AJAX powered Login & Registration modal.",
   "minimum-stability": "stable",
+  "type": "wordpress-plugin",
   "license": "proprietary",
   "authors": [
     {
@@ -10,6 +11,7 @@
     }
   ],
   "require": {
+    "composer/installers": "1.8.0",
     "underdev/settings": "1.2",
     "max-kk/wp-skins-customizer": "dev-master"
   },

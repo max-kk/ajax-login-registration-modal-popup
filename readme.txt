@@ -207,6 +207,11 @@ If you have login issue with Adminize plugin - go to Adminize plugin settings an
 
 == Changelog ==
 
+= VER 2.15 - 27/10/2020 =
+
+- "redirect_to" param can be passed to the inline shortcode
+- Warning if the WP settings & browser url Scheme or Domain doesn't math
+
 = VER 2.14 - 15/07/2020 =
 
 - Limit Login Attempts Reloaded tweak (each login attempt decrease limit count to 2)
