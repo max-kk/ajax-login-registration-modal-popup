@@ -79,6 +79,7 @@ class LRM_Core {
             'logged_in_message'  => 'You are currently logged in!',
             'role'          => '',
             'role_silent'   => false,
+            'redirect_to'   => false,
         ));
 
         $atts['role_silent'] = ($atts['role_silent'] || $atts['role_silent'] === 'yes') ? true : false;
@@ -87,8 +88,14 @@ class LRM_Core {
             return $atts['logged_in_message'];
         }
 
+	    $redirect_to = !empty( $atts['redirect_to'] ) ? $atts['redirect_to'] : false;
+
+        if ( !$redirect_to && !empty( $_GET['redirect_to'] ) ) {
+	        $redirect_to = urldecode($_GET['redirect_to']);
+        }
+
         ob_start();
-            $this->render_form( true, $atts['default_tab'], $atts['role'], $atts['role_silent'] );
+            $this->render_form( true, $atts['default_tab'], $atts['role'], $atts['role_silent'], $atts['redirect_to'] );
         return ob_get_clean(  );
     }
 
@@ -271,6 +278,8 @@ class LRM_Core {
         }
 
         $script_params = array(
+            'home_url_arr' => parse_url( home_url() ),
+            'home_url' => home_url(),
             'password_zxcvbn_js_src' => includes_url( '/js/zxcvbn.min.js' ),
             'allow_weak_password' => apply_filters( 'lrm/js/allow_weak_password', false ),
             'password_strength_lib' => lrm_setting('general_pro/all/password_strength_lib'),
