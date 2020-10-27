@@ -26,7 +26,7 @@ $extra_main_class = 'lrm-btn-style--' . lrm_setting('skins/skin/btn_style');
 $fieldset_submit_class = 'fieldset--' . lrm_setting('skins/skin/btn_style');
 
 $users_can_register = apply_filters('lrm/users_can_register', get_option("users_can_register") );
-$redirect_to = !empty( $_GET['redirect_to'] ) ? urldecode($_GET['redirect_to']) : '';
+
 ?>
 -->
 <div class="lrm-main lrm-font-<?= $icons_class; ?> <?php echo !$is_inline ? 'lrm-user-modal' : 'lrm-inline is-visible'; ?> <?= esc_attr($extra_main_class); ?>" <?php echo !$is_inline ? 'style="visibility: hidden;"' : ''?>> <!-- this is the entire modal form, including the background -->

@@ -207,6 +207,10 @@ If you have login issue with Adminize plugin - go to Adminize plugin settings an
 
 == Changelog ==
 
+= VER 2.12 - 17/10/2020 =
+
+- New shortcode param "redirect_to"
+
 = VER 2.11 - 23/03/2020 =
 
 - Fixed issue - submit button shows like the Full width even if should have default style

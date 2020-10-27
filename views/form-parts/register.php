@@ -102,6 +102,8 @@
                         </div>
                     <?php endif; ?>
 
+	                <?php do_action( 'lrm/register_form/after_main_fields' ); ?>
+
                     <div class="lrm-integrations lrm-integrations--register">
                         <?php do_action( 'lrm_register_form' ); ?>
                         <?php do_action( 'lrm/register_form' ); ?>
