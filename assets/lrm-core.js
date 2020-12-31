@@ -126,7 +126,7 @@ var LRM = LRM ? LRM : {};
 			}
 		});
 		//close modal when clicking the esc keyboard button
-		$(document).keyup(function (event) {
+		$(document).on( "keyup", function (event) {
 			if (event.which == '27') {
 				// Check reCaptha, etc
 				var can_close = $(document).triggerHandler('lrm/can_close_modal', event);
@@ -391,7 +391,7 @@ var LRM = LRM ? LRM : {};
 			$(document).triggerHandler("lrm/show_modal", $formModal);
 		}
 
-		$(document).on('submit', '.lrm-form', lrm_submit_form);
+		$(document).on('submit', '.js-lrm-form', lrm_submit_form);
 
 		function lrm_submit_form(event) {
 			if (LRM.is_customize_preview) {
@@ -851,10 +851,10 @@ LRM_Helper.PasswordMeter = function( pass1, blacklistArr, pass2 ) {
 			var n = parseInt( numbers, 10 );
 			var c = parseInt( chars, 10 );
 
-			if( total < 8 ) {
+			if( total < 7 ) {
 				level += 1;
 			}
-			if( total >= 8 ) {
+			if( total >= 7 ) {
 				level += 4;
 			}
 

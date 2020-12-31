@@ -34,6 +34,9 @@ $fieldset-side-padding-mobile: 2em;
     //    margin-bottom: 0;
     //}
 
+    .gform_wrapper ul.gform_fields li.gfield,
+    .gform_wrapper .gform_footer,
+    .gform_wrapper .gform_heading,
     .lrm-fieldset-wrap,
     .fieldset--default {
         padding: 0 $fieldset-side-padding !important;
@@ -58,6 +61,13 @@ $fieldset-side-padding-mobile: 2em;
         & > div:not(.lrm-form-message-wrap) {
             display: none;
         }
+    }
+
+    [placeholder]:focus::-webkit-input-placeholder {
+        -webkit-transition: opacity 1s 1s ease;
+        transition: opacity 1s 1s ease;
+        opacity: 0;
+        color: inherit;
     }
 }
 
@@ -169,9 +179,9 @@ $fieldset-side-padding-mobile: 2em;
     }
 
      a.button,
-     button,
      button[type=submit],
      #buddypress input[type=submit],
+     .gform_wrapper input.gform_button[type=submit],
      input[type=submit] {
         cursor: pointer;
         background: #2f889a;
@@ -185,11 +195,11 @@ $fieldset-side-padding-mobile: 2em;
         appearance: none;
         height: auto;
         border-radius: 5px;
-         width: 100%;
+        width: 100% !important;
 
-         .lrm-btn-style--full-width & {
-             border-radius: 0;
-         }
+        .lrm-btn-style--full-width & {
+            border-radius: 0;
+        }
     }
 
      a.button,

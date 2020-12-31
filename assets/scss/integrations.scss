@@ -214,7 +214,7 @@ a.jetpack-sso {
 }
 
 .lrm-signup-section #um-submit-btn {
-    width: 100%;
+    width: 100% !important;
 }
 
 @media (min-height: 33.875em) {
@@ -306,4 +306,29 @@ a.jetpack-sso {
 
 #buddypress #register-page {
     @extend .lrm-fieldset-wrap;
+}
+
+/**
+    !! Gravity Forms !!
+    @since PRO 2.01
+ **/
+.lrm-signup-section {
+    .ginput_container_password button {
+        color: black !important;
+    }
+
+    .gform_wrapper .gform_footer {
+        text-align: center;
+    }
+
+    .gform_wrapper .gform_ajax_spinner {
+        padding: 0;
+        display: inline-block;
+    }
+
+    @media only screen and (min-width: 641px) {
+        .gform_wrapper.gform_validation_error .gform_body ul li.gfield.gfield_error:not(.gf_left_half):not(.gf_right_half) {
+            max-width: 100% !important;
+        }
+    }
 }

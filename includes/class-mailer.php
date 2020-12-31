@@ -92,13 +92,19 @@ class LRM_Mailer {
             $mail_body
         );
 
+		$mail_body_templated = '';
+
 		if ( 'text/html' === $email_format || ('wc-text/html' === $email_format && !class_exists('WC_Emails')) ) {
             // Apply custom template
-            $mail_body = str_replace('{{CONTENT}}', $mail_body, LRM_Settings::get()->setting('mails/template/code'));
+			$mail_body_templated = str_replace('{{CONTENT}}', $mail_body, LRM_Settings::get()->setting('mails/template/code'));
         } elseif ( 'wc-text/html' === $email_format ) {
 		    // Use WooCommerce template
-            $mail_body = self::set_wc_style( $mail_body, $subject );
-        }
+			$mail_body_templated = self::set_wc_style( $mail_body, $subject );
+        } else {
+			$mail_body_templated = $mail_body;
+		}
+
+		$mail_body = apply_filters( 'lrm/mail/mail_body_filter', $mail_body_templated, $mail_body, $subject, $mail_key, $to );
 
 		do_action( "lrm/mail/before_sent", $mail_key );
 

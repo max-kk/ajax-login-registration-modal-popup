@@ -269,6 +269,7 @@ class LRM_AJAX
         // For "wp_update_user"
         add_filter( 'send_password_change_email', '__return_false' );
 
+	    LRM_New_User_Approve_Integration::init();
 
         $user_id = register_new_user( $user_login, $email );
 
@@ -301,7 +302,7 @@ class LRM_AJAX
 	    update_user_option( $user_id, 'default_password_nag', false, true );
 
         // Return
-        if( !is_wp_error($user_id) ) {
+        if( !is_wp_error($user_id) && $user_id ) {
 
             do_action('lrm/registration_successful', $user_id);
 
@@ -457,10 +458,10 @@ class LRM_AJAX
             }
 
             $action = lrm_setting('redirects/registration/action');
-            $redirect_url = $user_signon ? LRM_Redirects_Manager::get_redirect( 'registration', $user_signon->ID ) : '';
+            $redirect_url = $user_signon ? LRM_Redirects_Manager::get_redirect( 'registration', $user_id ) : '';
 
             if ( 'email-verification-pro-w-redirect' === $action ) {
-	            $redirect_url = LRM_Redirects_Manager::get_redirect( 'registration', $user_signon->ID );
+	            $redirect_url = LRM_Redirects_Manager::get_redirect( 'registration', $user_id );
             }
 
             wp_send_json_success( apply_filters('lrm/registration/success_response', array(

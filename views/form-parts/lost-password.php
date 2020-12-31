@@ -1,5 +1,5 @@
 <div class="lrm-reset-password-section <?php echo $users_can_register && $default_tab == 'lost-password' ? 'is-selected' : ''; ?>"> <!-- reset password form -->
-	<form class="lrm-form" action="#0" data-action="lost-password">
+	<form class="lrm-form js-lrm-form" action="#0" data-action="lost-password">
 
         <div class="lrm-fieldset-wrap">
             <p class="lrm-form-message"><?php echo lrm_setting('messages/lost_password/message', true); ?></p>

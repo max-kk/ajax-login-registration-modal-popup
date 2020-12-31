@@ -1,5 +1,5 @@
 <div class="lrm-signin-section <?php echo !$users_can_register || $is_inline && $default_tab == 'login' ? 'is-selected' : ''; ?>"> <!-- log in form -->
-	<form class="lrm-form" action="#0" data-action="login">
+	<form class="lrm-form js-lrm-form" action="#0" data-action="login">
         <div class="lrm-fieldset-wrap">
 
             <div class="lrm-integrations lrm-integrations--login">

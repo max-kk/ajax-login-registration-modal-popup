@@ -23,6 +23,7 @@ return array(
     'LRM_Field_Textarea_With_Html_Extended' => $baseDir . '/includes/settings/class-settings-field--textarea-html-extended.php',
     'LRM_Import_Export_Manager' => $baseDir . '/includes/class-import-export.php',
     'LRM_Mailer' => $baseDir . '/includes/class-mailer.php',
+    'LRM_New_User_Approve_Integration' => $baseDir . '/includes/class-new_user_approve.php',
     'LRM_Pages_Manager' => $baseDir . '/includes/class-pages-manager.php',
     'LRM_Polylang_Integration' => $baseDir . '/includes/class-polylang.php',
     'LRM_Redirects_Manager' => $baseDir . '/includes/class-redirects-manager.php',

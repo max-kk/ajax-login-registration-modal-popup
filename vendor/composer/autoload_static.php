@@ -38,6 +38,7 @@ class ComposerStaticInitdde607f96faa1b43935af1e9c51b647a
         'LRM_Field_Textarea_With_Html_Extended' => __DIR__ . '/../..' . '/includes/settings/class-settings-field--textarea-html-extended.php',
         'LRM_Import_Export_Manager' => __DIR__ . '/../..' . '/includes/class-import-export.php',
         'LRM_Mailer' => __DIR__ . '/../..' . '/includes/class-mailer.php',
+        'LRM_New_User_Approve_Integration' => __DIR__ . '/../..' . '/includes/class-new_user_approve.php',
         'LRM_Pages_Manager' => __DIR__ . '/../..' . '/includes/class-pages-manager.php',
         'LRM_Polylang_Integration' => __DIR__ . '/../..' . '/includes/class-polylang.php',
         'LRM_Redirects_Manager' => __DIR__ . '/../..' . '/includes/class-redirects-manager.php',

@@ -1,19 +1,23 @@
 <?php if ( $users_can_register ): ?>
 
 	<div class="lrm-signup-section <?php echo $users_can_register && $default_tab == 'register' ? 'is-selected' : ''; ?>"> <!-- sign up form -->
-		<?php if ( lrm_is_pro('1.28') && LRM_Pro_UltimateMember::is_ultimatemember_active() && lrm_setting( 'integrations/um/replace_with' ) ): ?>
+		<?php if ( lrm_is_pro('1.28') && LRM_Pro_GravityForms::is_gf_active() && lrm_setting( 'integrations/gf/replace_with' ) ): ?>
+            <div class="lrm-form">
+                <?php LRM_Pro_GravityForms::display_selected_form(); ?>
+            </div>
+		<?php elseif ( lrm_is_pro('1.28') && LRM_Pro_UltimateMember::is_ultimatemember_active() && lrm_setting( 'integrations/um/replace_with' ) ): ?>
 			<?php LRM_Pro_UltimateMember::render_registration_form(); ?>
 		<?php elseif ( lrm_is_pro('1.20') && LRM_Pro_BuddyPress::is_buddypress_active() && lrm_setting('integrations/bp/on') ): ?>
 			<?php LRM_Pro_BuddyPress::render_registration_form(); ?>
 		<?php elseif ( function_exists('rcp_registration_form') && lrm_setting('integrations/rcp/on') ): ?>
-        <div class="lrm-form">
-            <div class="lrm-integrations lrm-fieldset-wrap">
-                <?php echo do_shortcode( lrm_setting('integrations/rcp/shortcode') ); ?>
+            <div class="lrm-form js-lrm-form">
+                <div class="lrm-integrations lrm-fieldset-wrap">
+                    <?php echo do_shortcode( lrm_setting('integrations/rcp/shortcode') ); ?>
+                </div>
             </div>
-        </div>
 		<?php else: ?>
 
-			<form class="lrm-form" action="#0" data-action="registration" data-lpignore="true">
+			<form class="lrm-form js-lrm-form" action="#0" data-action="registration" data-lpignore="true">
 
                 <div class="lrm-fieldset-wrap lrm-form-message-wrap">
                     <p class="lrm-form-message lrm-form-message--init"></p>
@@ -68,75 +72,75 @@
                             <span class="lrm-error-message"></span>
                         </div>
 
-                    <?php endif; ?>
-
-                    <?php
-                    $pass_label = esc_attr( lrm_setting('messages/password/password', true) );
-                    $pass_confirmation_label = esc_attr( lrm_setting('messages/password/password_confirmation', true) );
-                    ?>
-                    <?php if( lrm_setting('general_pro/all/allow_user_set_password') ): ?>
-                        <div class="fieldset">
-                            <div class="lrm-position-relative">
-                                <label class="image-replace lrm-password lrm-ficon-key" for="signup-password" title="<?= $pass_label; ?>"></label>
-                                <input name="password" class="full-width has-padding has-border" id="signup-password" type="password"  placeholder="<?= $pass_label; ?>" <?= $fields_required; ?> value="" autocomplete="new-password" aria-label="<?= $pass_label; ?>">
-                                <span class="lrm-error-message"></span>
-                                <span class="hide-password lrm-ficon-eye" data-show="<?php echo lrm_setting('messages/other/show_pass'); ?>" data-hide="<?php echo lrm_setting('messages/other/hide_pass'); ?>"></span>
-                            </div>
-                            <span class="lrm-pass-strength-result"></span>
-                        </div>
-                    <?php endif; ?>
-                    <?php if( lrm_setting('general_pro/all/allow_user_set_password') && lrm_setting('general_pro/all/use_password_confirmation') ): ?>
-                        <div class="fieldset">
-                            <div class="lrm-position-relative">
-                                <label class="image-replace lrm-password lrm-ficon-key" for="signup-password-confirmation"></label>
-                                <input name="password-confirmation" class="full-width has-padding has-border" id="signup-password-confirmation" type="password"  placeholder="<?= $pass_confirmation_label; ?>" <?= $fields_required; ?> value="" autocomplete="new-password">
-                                <span class="lrm-error-message"></span>
-                                <span class="hide-password lrm-ficon-eye" data-show="<?php echo lrm_setting('messages/other/show_pass'); ?>" data-hide="<?php echo lrm_setting('messages/other/hide_pass'); ?>"></span>
-                            </div>
-                        </div>
-                    <?php endif; ?>
-
-                    <?php if( lrm_is_pro() && lrm_setting('user_role/general/on') ):
-                        $active_roles_list = LRM_PRO_Roles_Manager::get_active_roles_flat();
-                        $role_silent = in_array($role, $active_roles_list) && $role_silent ? true : false;
-                        ?>
-                        <div class="fieldset fieldset--user_role" style="<?= $role_silent ? 'display: none;' : '' ?>">
-                            <label class="image-replace lrm-user_role lrm-ficon-lock" for="signup-username" title="<?= esc_attr(lrm_setting('messages/registration/user_role', true)); ?>"></label>
-                            <select name="user_role" class="full-width has-padding has-border" id="user_role" required>
-                                <option value=""><?php echo lrm_setting('messages/registration/user_role', true); ?></option>
-                                <?php foreach ( $active_roles_list as $active_role_key => $active_role_label ) : ?>
-                                    <option value="<?= $active_role_key; ?>" data-label="<?= esc_attr($active_role_label); ?>" <?php selected($active_role_label, $role) ?>><?= $active_role_label; ?></option>
-                                <?php endforeach; ?>
-                            </select>
-                            <span class="lrm-error-message"></span>
-                        </div>
-                    <?php endif; ?>
-
-	                <?php do_action( 'lrm/register_form/after_main_fields' ); ?>
-
-                    <div class="lrm-integrations lrm-integrations--register">
-                        <?php do_action( 'lrm_register_form' ); ?>
-                        <?php do_action( 'lrm/register_form' ); ?>
-                    </div>
-
-                    <?php if( ! lrm_setting('general/terms/off') ): ?>
-                        <div class="fieldset fieldset--terms">
-
-                            <?php if ( apply_filters('lrm/form/use_nice_checkbox', true) ): ?>
-                                <label class="lrm-nice-checkbox__label lrm-accept-terms-checkbox"><?php echo lrm_setting('messages/registration/terms', true); ?>
-                                    <input type="checkbox" class="lrm-nice-checkbox lrm-accept-terms" name="registration_terms" value="yes">
+	                    <?php
+	                    $pass_label = esc_attr( lrm_setting('messages/password/password', true) );
+	                    $pass_confirmation_label = esc_attr( lrm_setting('messages/password/password_confirmation', true) );
+	                    ?>
+	                    <?php if( lrm_setting('general_pro/all/allow_user_set_password') ): ?>
+                            <div class="fieldset">
+                                <div class="lrm-position-relative">
+                                    <label class="image-replace lrm-password lrm-ficon-key" for="signup-password" title="<?= $pass_label; ?>"></label>
+                                    <input name="password" class="full-width has-padding has-border" id="signup-password" type="password"  placeholder="<?= $pass_label; ?>" <?= $fields_required; ?> value="" autocomplete="new-password" aria-label="<?= $pass_label; ?>">
                                     <span class="lrm-error-message"></span>
-                                    <div class="lrm-nice-checkbox__indicator"></div>
-                                </label>
-                            <?php else: ?>
-                                <label class="lrm-accept-terms-checkbox">
-                                    <input type="checkbox" class="lrm-accept-terms" name="registration_terms" value="yes">
-                                    <?php echo lrm_setting('messages/login/remember-me', true); ?>
+                                    <span class="hide-password lrm-ficon-eye" data-show="<?php echo lrm_setting('messages/other/show_pass'); ?>" data-hide="<?php echo lrm_setting('messages/other/hide_pass'); ?>"></span>
+                                </div>
+                                <span class="lrm-pass-strength-result"></span>
+                            </div>
+	                    <?php endif; ?>
+	                    <?php if( lrm_setting('general_pro/all/allow_user_set_password') && lrm_setting('general_pro/all/use_password_confirmation') ): ?>
+                            <div class="fieldset">
+                                <div class="lrm-position-relative">
+                                    <label class="image-replace lrm-password lrm-ficon-key" for="signup-password-confirmation"></label>
+                                    <input name="password-confirmation" class="full-width has-padding has-border" id="signup-password-confirmation" type="password"  placeholder="<?= $pass_confirmation_label; ?>" <?= $fields_required; ?> value="" autocomplete="new-password">
                                     <span class="lrm-error-message"></span>
-                                </label>
-                            <?php endif; ?>
+                                    <span class="hide-password lrm-ficon-eye" data-show="<?php echo lrm_setting('messages/other/show_pass'); ?>" data-hide="<?php echo lrm_setting('messages/other/hide_pass'); ?>"></span>
+                                </div>
+                            </div>
+	                    <?php endif; ?>
 
+	                    <?php if( lrm_is_pro() && lrm_setting('user_role/general/on') ):
+		                    $active_roles_list = LRM_PRO_Roles_Manager::get_active_roles_flat();
+		                    $role_silent = in_array($role, $active_roles_list) && $role_silent ? true : false;
+		                    ?>
+                            <div class="fieldset fieldset--user_role" style="<?= $role_silent ? 'display: none;' : '' ?>">
+                                <label class="image-replace lrm-user_role lrm-ficon-lock" for="signup-username" title="<?= esc_attr(lrm_setting('messages/registration/user_role', true)); ?>"></label>
+                                <select name="user_role" class="full-width has-padding has-border" id="user_role" required>
+                                    <option value=""><?php echo lrm_setting('messages/registration/user_role', true); ?></option>
+				                    <?php foreach ( $active_roles_list as $active_role_key => $active_role_label ) : ?>
+                                        <option value="<?= $active_role_key; ?>" data-label="<?= esc_attr($active_role_label); ?>" <?php selected($active_role_label, $role) ?>><?= $active_role_label; ?></option>
+				                    <?php endforeach; ?>
+                                </select>
+                                <span class="lrm-error-message"></span>
+                            </div>
+	                    <?php endif; ?>
+
+	                    <?php do_action( 'lrm/register_form/after_main_fields' ); ?>
+
+                        <div class="lrm-integrations lrm-integrations--register">
+		                    <?php do_action( 'lrm_register_form' ); ?>
+		                    <?php do_action( 'lrm/register_form' ); ?>
                         </div>
+
+	                    <?php if( ! lrm_setting('general/terms/off') ): ?>
+                            <div class="fieldset fieldset--terms">
+
+			                    <?php if ( apply_filters('lrm/form/use_nice_checkbox', true) ): ?>
+                                    <label class="lrm-nice-checkbox__label lrm-accept-terms-checkbox"><?php echo lrm_setting('messages/registration/terms', true); ?>
+                                        <input type="checkbox" class="lrm-nice-checkbox lrm-accept-terms" name="registration_terms" value="yes">
+                                        <span class="lrm-error-message"></span>
+                                        <div class="lrm-nice-checkbox__indicator"></div>
+                                    </label>
+			                    <?php else: ?>
+                                    <label class="lrm-accept-terms-checkbox">
+                                        <input type="checkbox" class="lrm-accept-terms" name="registration_terms" value="yes">
+					                    <?php echo lrm_setting('messages/login/remember-me', true); ?>
+                                        <span class="lrm-error-message"></span>
+                                    </label>
+			                    <?php endif; ?>
+
+                            </div>
+	                    <?php endif; ?>
+
                     <?php endif; ?>
 
                     <div class="lrm-integrations lrm-integrations--register lrm-info lrm-info--register">

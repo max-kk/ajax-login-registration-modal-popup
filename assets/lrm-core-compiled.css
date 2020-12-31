@@ -131,12 +131,22 @@ ul.lrm-switcher {
     margin: 2em 0 !important;
   }
 }
-.lrm-form .lrm-fieldset-wrap, .lrm-form #buddypress #register-page, #buddypress .lrm-form #register-page,
+.lrm-form .gform_wrapper ul.gform_fields li.gfield,
+.lrm-form .gform_wrapper .gform_footer,
+.lrm-form .gform_wrapper .gform_heading,
+.lrm-form .lrm-fieldset-wrap,
+.lrm-form #buddypress #register-page,
+#buddypress .lrm-form #register-page,
 .lrm-form .fieldset--default {
   padding: 0 1.4em !important;
 }
 @media only screen and (min-width: 600px) {
-  .lrm-form .lrm-fieldset-wrap .lrm-form .fieldset, .lrm-form #buddypress #register-page .lrm-form .fieldset, #buddypress .lrm-form #register-page .lrm-form .fieldset,
+  .lrm-form .gform_wrapper ul.gform_fields li.gfield .lrm-form .fieldset,
+.lrm-form .gform_wrapper .gform_footer .lrm-form .fieldset,
+.lrm-form .gform_wrapper .gform_heading .lrm-form .fieldset,
+.lrm-form .lrm-fieldset-wrap .lrm-form .fieldset,
+.lrm-form #buddypress #register-page .lrm-form .fieldset,
+#buddypress .lrm-form #register-page .lrm-form .fieldset,
 .lrm-form .fieldset--default .lrm-form .fieldset {
     padding: 0 2em !important;
   }
@@ -152,6 +162,12 @@ ul.lrm-switcher {
 }
 .lrm-form.--registration-done > div:not(.lrm-form-message-wrap) {
   display: none;
+}
+.lrm-form [placeholder]:focus::-webkit-input-placeholder {
+  -webkit-transition: opacity 1s 1s ease;
+  transition: opacity 1s 1s ease;
+  opacity: 0;
+  color: inherit;
 }
 
 /* It's a Honeypot field! */
@@ -256,9 +272,9 @@ ul.lrm-switcher {
   padding-right: 65px;
 }
 .lrm-form a.button,
-.lrm-form button,
 .lrm-form button[type=submit],
 .lrm-form #buddypress input[type=submit],
+.lrm-form .gform_wrapper input.gform_button[type=submit],
 .lrm-form input[type=submit] {
   cursor: pointer;
   background: #2f889a;
@@ -272,12 +288,12 @@ ul.lrm-switcher {
   appearance: none;
   height: auto;
   border-radius: 5px;
-  width: 100%;
+  width: 100% !important;
 }
 .lrm-btn-style--full-width .lrm-form a.button,
-.lrm-btn-style--full-width .lrm-form button,
 .lrm-btn-style--full-width .lrm-form button[type=submit],
 .lrm-btn-style--full-width .lrm-form #buddypress input[type=submit],
+.lrm-btn-style--full-width .lrm-form .gform_wrapper input.gform_button[type=submit],
 .lrm-btn-style--full-width .lrm-form input[type=submit] {
   border-radius: 0;
 }
@@ -755,7 +771,7 @@ a.jetpack-sso {
 }
 
 .lrm-signup-section #um-submit-btn {
-  width: 100%;
+  width: 100% !important;
 }
 
 @media (min-height: 33.875em) {
@@ -834,6 +850,26 @@ a.jetpack-sso {
   height: 20px;
   border: 2px solid #e8e8eb;
   border-radius: 3px;
+}
+
+/**
+    !! Gravity Forms !!
+    @since PRO 2.01
+ **/
+.lrm-signup-section .ginput_container_password button {
+  color: black !important;
+}
+.lrm-signup-section .gform_wrapper .gform_footer {
+  text-align: center;
+}
+.lrm-signup-section .gform_wrapper .gform_ajax_spinner {
+  padding: 0;
+  display: inline-block;
+}
+@media only screen and (min-width: 641px) {
+  .lrm-signup-section .gform_wrapper.gform_validation_error .gform_body ul li.gfield.gfield_error:not(.gf_left_half):not(.gf_right_half) {
+    max-width: 100% !important;
+  }
 }
 
 .lrm-nice-checkbox {

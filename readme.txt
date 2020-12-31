@@ -2,7 +2,7 @@
 Contributors: kaminskym
 Tags: login, registration, register, lost password, modal, popup, ajax, form
 Requires at least: 4.1
-Tested up to: 5.5.0
+Tested up to: 5.6
 Requires PHP: 5.5
 Stable tag: trunk
 License: GPLv2 or later
@@ -39,7 +39,7 @@ Easy to integrate modal with Login and Registration features + inline form using
 2. All texts/messages can be edited/translated in settings
 3. Emails (for registration and lost password) can customized in settings7
 
-**Free version compatible with (and maybe other, not tested):**
+**Free version compatible with (and other, this is 100% tested):**
 
 1. [Login LockDown](https://wordpress.org/plugins/login-lockdown/) (limit login attempts count)
 2. [WP Facebook Login](https://wordpress.org/plugins/wp-facebook-login/)
@@ -48,6 +48,7 @@ Easy to integrate modal with Login and Registration features + inline form using
 5. [Eonet Manual User Approve](https://wordpress.org/plugins/eonet-manual-user-approve/): review user before they an sign in - [tutorial](https://docs.maxim-kaminsky.com/lrm/kb/how-to-manually-review-new-users-registrations/)
 6. [WPML](https://wpml.org/): Multi-language support - [tutorial](https://docs.maxim-kaminsky.com/lrm/kb/multi-language-support-via-wpml/)
 7. [s2member](https://wordpress.org/plugins/s2member/) plugin: tweaks for login process
+8. [New User Approve ](https://wordpress.org/plugins/new-user-approve/) plugin: review approve new users registrations
 
 **Roadmap**
 
@@ -56,7 +57,7 @@ Easy to integrate modal with Login and Registration features + inline form using
 * Documentation and Videos [done] - https://docs.maxim-kaminsky.com/lrm/
 * WooCommerce Login/Registration form integration (done in PRO version 1.28)
 * Registration Form builder
-* Settings Import/Export [in progress]
+* Settings Import/Export [done]
 
 = PRO features =
 
@@ -93,6 +94,7 @@ Easy to integrate modal with Login and Registration features + inline form using
 15. [WC Vendors & WC Vendors Pro](https://wordpress.org/plugins/wc-vendors/) [Apply to become vendor checkbox >>](https://monosnap.com/file/TmpY4bYTHwF36ouN6fGpdjKZi5k3jz)
 16. [MailChimp for WordPress](https://wordpress.org/plugins/mailchimp-for-wp/) [Subscribe to newsletter checkbox >>](https://monosnap.com/file/sVpsvTnIzQoplRA7ap3IBPfb81kPuV)
 17. [Google Authenticator](https://wordpress.org/plugins/google-authenticator/) [Google Authenticator field during the login](https://docs.maxim-kaminsky.com/lrm/kb/2-factor-login-otp-verification/)
+17. [Gravity Forms + Gravity Forms User Registration Add-On](https://www.gravityforms.com/add-ons/user-registration/) [Replace with Gravity Forms registration form](https://docs.maxim-kaminsky.com/lrm/kb/gravity-forms-integration/)
 18. Math Captcha - soon
 19. Easy Digital Downloads - soon
 20. [Request other plugin >>](https://maxim-kaminsky.com/shop/contact-me/)
@@ -206,6 +208,15 @@ If you have login issue with Adminize plugin - go to Adminize plugin settings an
 - With Theme my login (TML) plugin (3 Password fields on the Create Account tab, if enable password field in LRM and TML)
 
 == Changelog ==
+
+= VER 2.17 - 31/12/2020 =
+
+- Small WP 5.6 tweaks
+
+= VER 2.16 - 27/10/2020 =
+
+- Fixes for the New User Approve plugin: https://wordpress.org/plugins/new-user-approve/
+- New filter for the mail body: $mail_body = apply_filters( 'lrm/mail/mail_body_filter', $mail_body_templated, $mail_body, $subject, $mail_key, $to );
 
 = VER 2.15 - 27/10/2020 =
 

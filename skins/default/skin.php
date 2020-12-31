@@ -39,7 +39,7 @@ class LRM_Skin_Default extends LRM_Skin_Base {
             'label' => 'Buttons color',
             'type' => 'color',
         ), array(
-            '.lrm-form a.button,.lrm-form button,.lrm-form button[type=submit],.lrm-form #buddypress input[type=submit],.lrm-form input[type=submit]' => array('attribute' => 'color','type' => 'css',),
+            '.lrm-form a.button,.lrm-form button,.lrm-form button[type=submit],.lrm-form #buddypress input[type=submit],.lrm-form .gform_wrapper input.gform_button[type=submit],.lrm-form input[type=submit]' => array('attribute' => 'color','type' => 'css',),
         ) );
 
         $this->_register_customizer_setting( "btn_bg", array(
@@ -51,7 +51,7 @@ class LRM_Skin_Default extends LRM_Skin_Base {
             'label' => 'Buttons background color',
             'type' => 'color',
         ), array(
-            '.lrm-form a.button,.lrm-form button,.lrm-form button[type=submit],.lrm-form #buddypress input[type=submit],.lrm-form input[type=submit]' => array('attribute' => 'background-color','type' => 'css',),
+            '.lrm-form a.button,.lrm-form button,.lrm-form button[type=submit],.lrm-form #buddypress input[type=submit],.lrm-form .gform_wrapper input.gform_button[type=submit],.lrm-form input[type=submit]' => array('attribute' => 'background-color','type' => 'css',),
         ) );
 
         $this->_register_customizer_setting( "inactive_tab_bg", array(
