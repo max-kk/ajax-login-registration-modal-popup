@@ -4,6 +4,7 @@
 @import "../lrm-material/variables";
 @import "../lrm-fa4/variables";
 @import "../lrm-fa5-free/scss/variables";
+$use_SVG_icons: true;
 
 @mixin lrm-font-icon( $icomoon-font-code, $material-font-code, $fa4-font-code, $fa5-font-code ) {
     .lrm-font-icomoon & {
@@ -112,61 +113,63 @@
 
 }
 
-.lrm-font-svg {
+@if ( $use_SVG_icons ) {
+    .lrm-font-svg {
 
-    .lrm-switch-to-link:before {
-        width: 22px;
-        vertical-align: text-bottom;
-    }
-
-    .lrm-switch-to--login:before {
-        background: url(img/login.png) no-repeat center center;
-        background-size: 100%;
-    }
-
-    .lrm-switch-to--register:before {
-        background: url(img/user.png) no-repeat center center;
-        background-size: 100%;
-    }
-
-    .lrm-form {
-        label.lrm-username,
-        .lrm-ficon-user {
-            background-image: url("img/cd-icon-username.svg");
+        .lrm-switch-to-link:before {
+            width: 22px;
+            vertical-align: text-bottom;
         }
 
-        label.lrm-email,
-        .lrm-ficon-mail {
-            background-image: url("img/cd-icon-email.svg");
+        .lrm-switch-to--login:before {
+            background: url(./img/login.png) no-repeat center center;
+            background-size: 100%;
         }
 
-        label.lrm-password,
-        .lrm-ficon-key {
-            background-image: url("img/cd-icon-password.svg");
+        .lrm-switch-to--register:before {
+            background: url(img/user.png) no-repeat center center;
+            background-size: 100%;
         }
 
-        label.lrm-user_role {
-            background-image: url("img/lock.svg?v=2");
-        }
-
-        .hide-password,
-        .lrm-ficon-eye {
-
-            padding: 20px 21px;
-            background-size: 24px;
-            text-indent: -300px;
-
-            background-image: url("img/iconmonstr-eye-4.svg");
-
-            &.hide-password--on,
-            &.lrm-ficon-eye-blocked {
-                background-image: url("img/iconmonstr-eye-8.svg?v3");
+        .lrm-form {
+            label.lrm-username,
+            .lrm-ficon-user {
+                background-image: url("img/cd-icon-username.svg");
             }
 
+            label.lrm-email,
+            .lrm-ficon-mail {
+                background-image: url("img/cd-icon-email.svg");
+            }
+
+            label.lrm-password,
+            .lrm-ficon-key {
+                background-image: url("img/cd-icon-password.svg");
+            }
+
+            label.lrm-user_role {
+                background-image: url("img/lock.svg?v=2");
+            }
+
+            .hide-password,
+            .lrm-ficon-eye {
+
+                padding: 20px 21px;
+                background-size: 24px;
+                text-indent: -300px;
+
+                background-image: url("img/iconmonstr-eye-4.svg");
+
+                &.hide-password--on,
+                &.lrm-ficon-eye-blocked {
+                    background-image: url("img/iconmonstr-eye-8.svg?v3");
+                }
+
+            }
         }
     }
-}
 
+}
 .lrm-is-font {
     .hide-password {
         width: 42px;
