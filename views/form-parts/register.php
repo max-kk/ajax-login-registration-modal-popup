@@ -2,7 +2,7 @@
 
 	<div class="lrm-signup-section <?php echo $users_can_register && $default_tab == 'register' ? 'is-selected' : ''; ?>"> <!-- sign up form -->
 		<?php if ( lrm_is_pro('1.28') && LRM_Pro_GravityForms::is_gf_active() && lrm_setting( 'integrations/gf/replace_with' ) ): ?>
-            <div class="lrm-form">
+            <div class="lrm-form js-lrm-form">
                 <?php LRM_Pro_GravityForms::display_selected_form(); ?>
             </div>
 		<?php elseif ( lrm_is_pro('1.28') && LRM_Pro_UltimateMember::is_ultimatemember_active() && lrm_setting( 'integrations/um/replace_with' ) ): ?>

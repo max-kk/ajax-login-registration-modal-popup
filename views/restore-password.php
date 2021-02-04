@@ -33,7 +33,7 @@ list($rp_key, $rp_login) = $rp_data;
 <div class="lrm-restore-password lrm-font-<?= $icons_class; ?>">
     <div class="lrm-user-modal-container">
 
-        <form class="lrm-form" action="#0" data-action="password-reset">
+        <form class="lrm-form js-lrm-form" action="#0" data-action="password-reset">
 
             <p class="lrm-form-message lrm-form-message--init"></p>
 

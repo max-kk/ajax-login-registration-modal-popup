@@ -209,6 +209,10 @@ If you have login issue with Adminize plugin - go to Adminize plugin settings an
 
 == Changelog ==
 
+= VER 2.18 - 02/02/2021 =
+
+- Fxi for password reset
+
 = VER 2.17 - 31/12/2020 =
 
 - Small WP 5.6 tweaks

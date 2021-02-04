@@ -289,8 +289,8 @@ class LRM_Core {
             'is_user_logged_in'  => is_user_logged_in(),
             'reload_after_login' => LRM_Settings::get()->setting('general/registration/reload_after_login'),
             'selectors_mapping'  => array(
-                'login'     => LRM_Settings::get()->setting('advanced/selectors_mapping/login'),
-                'register'  => LRM_Settings::get()->setting('advanced/selectors_mapping/register'),
+                'login'     => stripcslashes( LRM_Settings::get()->setting('advanced/selectors_mapping/login') ),
+                'register'  => stripcslashes( LRM_Settings::get()->setting('advanced/selectors_mapping/register') ),
             ),
             'is_customize_preview' => is_customize_preview(),
             'l10n'  => array(

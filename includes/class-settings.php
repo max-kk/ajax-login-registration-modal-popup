@@ -374,7 +374,7 @@ class LRM_Settings {
                 'slug'        => 'login',
                 'name'        => __('Extra selectors to handle log in modal?', 'ajax-login-and-registration-modal-popup' ),
                 'description' => 'Comma separated values for jQuery, example: <code>.popup_login, #popup_login</code> or <code>.popup_login_show</code>.',
-                'default'     => '',
+                'default'     => "a[href*='wp-login']",
                 'render'      => array( new LRM_Field_Text(), 'input' ),
                 'sanitize'    => array( new LRM_Field_Text(), 'sanitize' ),
             ) )
@@ -1220,7 +1220,9 @@ class LRM_Settings {
 //
 //        }
 
-        if (!$value && $setting_path[0] === 'messages' && defined("LRM/SETTINGS/TRY_GET_TRANSLATED")) {
+	    // FOR PO/MO - call always
+	    // !$value &&
+        if ($setting_path[0] === 'messages' && defined("LRM/SETTINGS/TRY_GET_TRANSLATED")) {
             $fields = $this->get_section_settings_fields('messages');
 
             $default_value = $fields[$setting_slug]->default_value();
