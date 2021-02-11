@@ -762,16 +762,26 @@ a.jetpack-sso {
   width: 100%;
 }
 
-.um-register.um {
+.lrm-signup-section .um-register.um {
   max-width: unset !important;
-}
-
-.lrm-signup-section .um-col-alt {
-  padding-bottom: 0.9em;
+  margin-bottom: 0;
 }
 
 .lrm-signup-section #um-submit-btn {
   width: 100% !important;
+}
+
+.lrm-signup-section .um-form {
+  padding: 0 1.4em !important;
+}
+@media only screen and (min-width: 600px) {
+  .lrm-signup-section .um-form {
+    padding: 0 2em !important;
+  }
+}
+
+.lrm-signup-section .um-field {
+  margin-top: 15px;
 }
 
 @media (min-height: 33.875em) {
@@ -1168,7 +1178,7 @@ body.rtl .lrm-nice-checkbox__indicator {
   vertical-align: text-bottom;
 }
 .lrm-font-svg .lrm-switch-to--login:before {
-  background: url(img/login.png) no-repeat center center;
+  background: url(./img/login.png) no-repeat center center;
   background-size: 100%;
 }
 .lrm-font-svg .lrm-switch-to--register:before {

@@ -209,7 +209,7 @@ If you have login issue with Adminize plugin - go to Adminize plugin settings an
 
 == Changelog ==
 
-= VER 2.18 - 02/02/2021 =
+= VER 2.18 and 2.19 - 02/02/2021 =
 
 - Fxi for password reset
 

@@ -205,17 +205,27 @@ a.jetpack-sso {
     width: 100%;
 }
 
-.um-register.um {
+.lrm-signup-section .um-register.um {
     max-width: unset !important;
-}
-
-.lrm-signup-section .um-col-alt {
-    padding-bottom: .9em;
+    margin-bottom: 0;
 }
 
 .lrm-signup-section #um-submit-btn {
     width: 100% !important;
 }
+
+.lrm-signup-section .um-form {
+    padding: 0 $fieldset-side-padding !important;
+
+    @include respond-to(min-width, 600px) {
+        padding: 0 $fieldset-side-padding-mobile !important;
+    }
+}
+
+.lrm-signup-section .um-field {
+    margin-top: 15px;
+}
+
 
 @media (min-height: 33.875em) {
     .um .picker--opened .picker__frame {
