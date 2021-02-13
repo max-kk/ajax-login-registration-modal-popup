@@ -43,7 +43,7 @@ class LRM_Redirects_Manager {
                 'slug'        => 'redirect',
                 'name'        =>
 	                __('Redirect to (if "Redirect to page [PRO]" is selected)', 'ajax-login-and-registration-modal-popup') .
-	                ( LRM_Polylang_Integration::is_active() ? '. %%LANG%% can be used to create multi-language redirects.' : '' ),
+	                ( LRM_Polylang_Integration::is_active() || LRM_Weglot_Integration::is_active() ? '. %%LANG%% can be used to create multi-language redirects.' : '' ),
                 'addons'      => array(
                 ),
                 'default'     => [],
@@ -150,6 +150,9 @@ class LRM_Redirects_Manager {
         if ( LRM_Polylang_Integration::is_active() ) {
 	        $redirect_to = str_replace( '%%LANG%%', pll_current_language(), $redirect_to );
         }
+	    if ( LRM_Weglot_Integration::is_active() ) {
+		    $redirect_to = LRM_Weglot_Integration::get_redirect_url($redirect_to);
+	    }
 
         return apply_filters('lrm/redirect_url', $redirect_to, $action, $user_ID);
     }

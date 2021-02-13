@@ -275,7 +275,9 @@ class LRM_Core {
 
         if ( LRM_WPML_Integration::is_wpml_active() ) {
             $ajax_url = apply_filters( 'wpml_permalink', $ajax_url );
-        }
+        } elseif ( LRM_Weglot_Integration::is_active() ) {
+	        $ajax_url = LRM_Weglot_Integration::get_ajax_url($ajax_url);
+	    }
 
         $script_params = array(
             'home_url_arr' => parse_url( home_url() ),

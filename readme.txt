@@ -47,17 +47,18 @@ Easy to integrate modal with Login and Registration features + inline form using
 4. [All In One WP Security & Firewall](https://wordpress.org/plugins/all-in-one-wp-security-and-firewall/) (tested with "Renamed Login Page")
 5. [Eonet Manual User Approve](https://wordpress.org/plugins/eonet-manual-user-approve/): review user before they an sign in - [tutorial](https://docs.maxim-kaminsky.com/lrm/kb/how-to-manually-review-new-users-registrations/)
 6. [WPML](https://wpml.org/): Multi-language support - [tutorial](https://docs.maxim-kaminsky.com/lrm/kb/multi-language-support-via-wpml/)
-7. [s2member](https://wordpress.org/plugins/s2member/) plugin: tweaks for login process
-8. [New User Approve ](https://wordpress.org/plugins/new-user-approve/) plugin: review approve new users registrations
+7. [Weglot translation plugin](https://wordpress.org/plugins/weglot/) - [tutorial](https://docs.maxim-kaminsky.com/lrm/kb/weglot-support/)
+8. [s2member](https://wordpress.org/plugins/s2member/) plugin: tweaks for login process
+9. [New User Approve ](https://wordpress.org/plugins/new-user-approve/) plugin: review approve new users registrations
 
 **Roadmap**
 
-* Allow include form to page content (without modal) (done in version 1.41)
-* Colors/styles customizer [implemented via WP Customizer]
-* Documentation and Videos [done] - https://docs.maxim-kaminsky.com/lrm/
-* WooCommerce Login/Registration form integration (done in PRO version 1.28)
+* +Allow include form to page content (without modal) (done in version 1.41)
+* +Colors/styles customizer [implemented via WP Customizer]
+* +Documentation and Videos [done] - https://docs.maxim-kaminsky.com/lrm/
+* +WooCommerce Login/Registration form integration (done in PRO version 1.28)
 * Registration Form builder
-* Settings Import/Export [done]
+* +Settings Import/Export [done]
 
 = PRO features =
 
@@ -90,14 +91,14 @@ Easy to integrate modal with Login and Registration features + inline form using
 11. [WordPress Social Login](https://wordpress.org/plugins/wordpress-social-login/) (social login buttons below login/register form)
 12. [Social Login WordPress Plugin – AccessPress](https://wordpress.org/plugins/accesspress-social-login-lite/) (social login buttons below login/register form)
 13. [WordPress Social Share, Social Login and Social Comments Plugin – Super Socializer](https://wordpress.org/plugins/super-socializer/) (social login buttons below login/register form, social share, etc)
+13. [WordPress Social Share, Social Login and Social Comments Plugin – Super Socializer](https://wordpress.org/plugins/super-socializer/) (social login buttons below login/register form, social share, etc)
 14. [Jetpack - SSO login](https://jetpack.com/support/sso/) [Wordpress.com login button >>](https://monosnap.com/file/4Na5FYYONRj79jnLBmQFK3hjnMJQDR)
 15. [WC Vendors & WC Vendors Pro](https://wordpress.org/plugins/wc-vendors/) [Apply to become vendor checkbox >>](https://monosnap.com/file/TmpY4bYTHwF36ouN6fGpdjKZi5k3jz)
 16. [MailChimp for WordPress](https://wordpress.org/plugins/mailchimp-for-wp/) [Subscribe to newsletter checkbox >>](https://monosnap.com/file/sVpsvTnIzQoplRA7ap3IBPfb81kPuV)
 17. [Google Authenticator](https://wordpress.org/plugins/google-authenticator/) [Google Authenticator field during the login](https://docs.maxim-kaminsky.com/lrm/kb/2-factor-login-otp-verification/)
 17. [Gravity Forms + Gravity Forms User Registration Add-On](https://www.gravityforms.com/add-ons/user-registration/) [Replace with Gravity Forms registration form](https://docs.maxim-kaminsky.com/lrm/kb/gravity-forms-integration/)
-18. Math Captcha - soon
-19. Easy Digital Downloads - soon
-20. [Request other plugin >>](https://maxim-kaminsky.com/shop/contact-me/)
+18. Easy Digital Downloads - soon
+19. [Request other plugin >>](https://maxim-kaminsky.com/shop/contact-me/)
 
 [GET PRO >>](https://maxim-kaminsky.com/shop/product/ajax-login-and-registration-modal-popup-pro/)
 
@@ -208,6 +209,10 @@ If you have login issue with Adminize plugin - go to Adminize plugin settings an
 - With Theme my login (TML) plugin (3 Password fields on the Create Account tab, if enable password field in LRM and TML)
 
 == Changelog ==
+
+= VER 2.20 - 13/02/2021 =
+
+- Added support for multi-language redirect for Weglot plugin
 
 = VER 2.18 and 2.19 - 02/02/2021 =
 

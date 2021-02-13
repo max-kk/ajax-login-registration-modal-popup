@@ -50,6 +50,7 @@ class ComposerStaticInitdde607f96faa1b43935af1e9c51b647a
         'LRM_Updater' => __DIR__ . '/../..' . '/includes/class-updater.php',
         'LRM_Updater_Abstract' => __DIR__ . '/../..' . '/includes/abstracts/class-updater-abstract.php',
         'LRM_WPML_Integration' => __DIR__ . '/../..' . '/includes/class-wpml.php',
+        'LRM_Weglot_Integration' => __DIR__ . '/../..' . '/includes/class-weglot.php',
         'SPC_Block_Content' => __DIR__ . '/../..' . '/skins/content-block.php',
         'SPC_Block_Footer' => __DIR__ . '/../..' . '/skins/footer-block.php',
         'WP_Admin_Dismissible_Notice' => __DIR__ . '/..' . '/max-kk/wp-notice-lib/class-admin-dismissible-notice.php',

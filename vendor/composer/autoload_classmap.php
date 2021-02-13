@@ -35,6 +35,7 @@ return array(
     'LRM_Updater' => $baseDir . '/includes/class-updater.php',
     'LRM_Updater_Abstract' => $baseDir . '/includes/abstracts/class-updater-abstract.php',
     'LRM_WPML_Integration' => $baseDir . '/includes/class-wpml.php',
+    'LRM_Weglot_Integration' => $baseDir . '/includes/class-weglot.php',
     'SPC_Block_Content' => $baseDir . '/skins/content-block.php',
     'SPC_Block_Footer' => $baseDir . '/skins/footer-block.php',
     'WP_Admin_Dismissible_Notice' => $vendorDir . '/max-kk/wp-notice-lib/class-admin-dismissible-notice.php',
