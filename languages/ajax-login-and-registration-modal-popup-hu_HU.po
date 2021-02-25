@@ -1,0 +1,950 @@
+# Translation of Plugins - AJAX Login and Registration modal popup + inline form - Development (trunk) in Hungarian
+# This file is distributed under the same license as the Plugins - AJAX Login and Registration modal popup + inline form - Development (trunk) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2021-02-25 17:06+0200\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Poedit 2.4.2\n"
+"Language: hu\n"
+"Project-Id-Version: Plugins - AJAX Login and Registration modal popup + inline form - Development (trunk)\n"
+"POT-Creation-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+
+#: includes/class-settings.php:653
+msgid "Message: Invalid email address"
+msgstr "Üzenet: Érvénytelen e-mail cím"
+
+#: includes/class-settings.php:639
+msgid "Message: Invalid login (NOT IN USE ANYMORE!)"
+msgstr "Üzenet: Érvénytelen bejelentkezés (MÁR NINCS HASZNÁLATBAN!)"
+
+#: includes/class-settings.php:646
+msgid "Message: Invalid username"
+msgstr "Üzenet: Érvénytelen felhasználónév"
+
+#: includes/class-settings.php:922 includes/class-settings.php:923
+msgid "Password confirmation"
+msgstr "Jelszó megerősítése"
+
+#: includes/class-settings.php:761
+msgid "Please agree with the terms to continue!"
+msgstr "Kérlek,fogadd el a feltételeket a folytatáshoz!"
+
+#: includes/class-settings.php:738
+msgid "Please select a Role"
+msgstr "Válasszon egy szerepkört"
+
+#: includes/class-settings.php:834
+msgid "Reset password"
+msgstr "Új jelszó létrehozása"
+
+#: includes/class-settings.php:1025
+msgid "Secure the form with the Honeypot?"
+msgstr "Bekapcsoljuk a Honeypotot?"
+
+#: includes/class-settings.php:731
+msgid "Select a Role"
+msgstr "Szerepkör kiválasztása"
+
+#: includes/class-settings.php:654
+msgid "Unknown email address. Check again or try your username"
+msgstr "Ismeretlen e-mail cím. Kérlek, ellenőrizd, hogy jól írtad-e be vagy próbáld meg a felhasználóneveddel!"
+
+#: includes/class-settings.php:640 includes/class-settings.php:647
+msgid "Unknown username. Check again or try your email address."
+msgstr "Ismeretlen felhasználónév. Kérlek, ellenőrizd, hogy jól írtad-e be vagy próbáld meg az e-mail címeddel!"
+
+#: includes/class-settings.php:1028
+msgid "Use the <a href=\"%s\" target=\"_blank\" rel=\"noopener\">Honeypot</a> to secure the forms?"
+msgstr "Bekapcsolod a <a href=\"%s\" target=\"_blank\" rel=\"noopener\">Honeypotot</a> az űrlapok biztonságosabbá tételére?"
+
+#: includes/class-settings.php:929
+msgid "Confirm use of weak password (reset password page)"
+msgstr "Gyenge jelszó használatának megerősítése (jelszó alaphelyzetbállítása oldal)"
+
+#: includes/class-settings.php:421
+msgid "Enable the \"wp_login\" action"
+msgstr "A \"wp_login\" művelet engedélyezése"
+
+#: includes/class-settings.php:937
+msgid "Error: Your password is very weak!"
+msgstr "Hiba: A jelszó nagyon gyenge!"
+
+#: includes/class-settings.php:332
+msgid "Hide the tabs (Login/Register)"
+msgstr "A tabok elrejtése (Bejelentkezés/Regisztráció)"
+
+#: includes/class-settings.php:422
+msgid "It's disabled to avoid conflicts (unwanted redirects, etc) with some plugins. But this causes that some things like \"last login time\" doesn't work."
+msgstr "Ez le van tiltva, hogy elkerüljük a konfliktusokat (nem kívánt átirányítások, stb) néhány pluginnel. De emiatt néhány dolog, mint a \"utolsó bejelentkezési idő\" nem működik."
+
+#: includes/class-settings.php:346
+msgid "Submit button style"
+msgstr "Gombsítlus elmentése"
+
+#: includes/class-settings.php:418
+msgid "Troubleshooting"
+msgstr "Hibaelhárítás"
+
+#: includes/class-settings.php:936
+msgid "Your password is very weak"
+msgstr "A jelszavad nagyon gyenge."
+
+#: includes/class-settings.php:542
+msgid "Leave empty to use the WP emai: "
+msgstr "Hagyjd üresen a WP email használatához: "
+
+#: includes/class-settings.php:540
+msgid "Send to email"
+msgstr "Küldés e-mailbe"
+
+#: includes/class-roles-manager.php:35
+msgid "Active roles:"
+msgstr "Aktív szerepkörök:"
+
+#: includes/class-roles-manager.php:26
+msgid "Enable User role selector?"
+msgstr "Engedélyezi a felhasználói szerepkör-választót?"
+
+#: includes/class-roles-manager.php:48
+msgid "Enable silent role assign?"
+msgstr "Engedélyezi a csendes szerepkör-hozzárendelést?"
+
+#: includes/class-import-export.php:31
+msgid "Export following sections:"
+msgstr "Exportálás a következő szakaszokból:"
+
+#: includes/class-settings.php:730
+msgid "Form: User Role"
+msgstr "Űrlap: Felhasználói szerepkör"
+
+#: includes/class-settings.php:737
+msgid "Form: User Role is missing"
+msgstr "Űrlap: Hiányzik a felhasználói szerepkör"
+
+#: includes/class-import-export.php:37
+msgid "Here you could simply export and import your plugin settings for backup or migrate to the another website."
+msgstr "Itt egyszerűen exportálhatja és importálhatja a plugin beállításait a biztonsági mentéshez, vagy áttelepítheti a másik webhelyre."
+
+#: includes/class-import-export.php:44
+msgid "Import following sections:"
+msgstr "Importáld a következő szakaszokat:"
+
+#: includes/class-settings.php:1108
+msgid "Match Captcha"
+msgstr "Match Captcha"
+
+#: includes/class-roles-manager.php:21
+msgid "Registration User role  > PRO"
+msgstr "Regisztrációs felhasználói szerepkör > PRO"
+
+#: includes/class-settings.php:315
+msgid "Select icons type"
+msgstr "Ikontípus kiválasztása"
+
+#: includes/class-roles-manager.php:27
+msgid "This will add a roles dropdown to the registration form."
+msgstr "Ezzel egy szerepkör-legördülő lista kerül a regisztrációs űrlapra."
+
+#: includes/class-roles-manager.php:23
+msgid "User role selector during Registration"
+msgstr "Felhasználói szerepkör-választás a regisztráció során"
+
+#: includes/class-settings.php:407
+msgid "Debug"
+msgstr "Hibakeresés"
+
+#: includes/class-settings.php:410
+msgid "Enable debug mode for public AJAX requests. Required to simply find an error messages."
+msgstr "Hibakeresési mód engedélyezése nyilvános AJAX-kérések esetén. Egyszerűen meg kell találnia egy hibaüzenetet."
+
+#: includes/class-import-export.php:28
+msgid "Export"
+msgstr "Exportálás"
+
+#: includes/class-import-export.php:40
+msgid "Import"
+msgstr "Importálás"
+
+#: includes/class-import-export.php:26
+msgid "Import/Export"
+msgstr "Import/Export"
+
+#: includes/class-settings.php:760
+msgid "Message: Must agree with the terms"
+msgstr "Üzenet: El kell fogadnia a szabályzatot és a feltételeket!"
+
+#: includes/class-settings.php:411
+msgid "Please disable it once problem was solved to improve security!"
+msgstr "Kérjük, tiltsa le, ha a probléma megoldódott, hogy javítsa a biztonságot!"
+
+#: includes/class-redirects-manager.php:108
+msgid "Action after Logout"
+msgstr "Művelet kijelentkezés után"
+
+#: includes/class-redirects-manager.php:28
+msgid "Action after login"
+msgstr "Művelet bejelentkezés után"
+
+#: includes/class-redirects-manager.php:60
+msgid "Action after registration"
+msgstr "A regisztráció utáni művelet"
+
+#: includes/class-redirects-manager.php:79
+msgid "Action when the user click a verification link from Email verification [PRO]?"
+msgstr "Művelet, amikor a felhasználó az E-mail ellenőrzés [PRO] ellenőrző hivatkozásra kattint?"
+
+#: includes/class-redirects-manager.php:21
+msgid "Actions / Redirects"
+msgstr "Műveletek / Átirányítások"
+
+#: includes/class-redirects-manager.php:25
+msgid "After-Login actions"
+msgstr "Bejelentkezés utáni műveletek"
+
+#: includes/class-redirects-manager.php:105
+msgid "After-Logout actions"
+msgstr "Kijelentkezés utáni műveletek"
+
+#: includes/class-redirects-manager.php:57
+msgid "After-Registration actions"
+msgstr "Regisztráció utáni műveletek"
+
+#: includes/class-settings.php:958
+msgid "Bad Password"
+msgstr "Rossz jelszó"
+
+#: includes/class-settings.php:930
+msgid "Confirm use of weak password"
+msgstr "Gyenge jelszó jóváhagyása"
+
+#: includes/class-redirects-manager.php:123
+msgid "Custom page redirect"
+msgstr "Egyéni oldalátirányítás"
+
+#: includes/class-settings.php:1106
+msgid "Find them here: https://www.google.com/recaptcha/admin"
+msgstr "Keresse meg őket itt: https://www.google.com/recaptcha/admin"
+
+#: includes/class-settings.php:951
+msgid "Good Password"
+msgstr "Jó jelszó"
+
+#: includes/class-pages-manager.php:73
+msgid "Here you could override default WP pages (login, registration, restore password) to your custom pages. "
+msgstr "Itt felülbírálhatja az alapértelmezett WP oldalakat (bejelentkezés, regisztráció, jelszó visszaállítása) az egyéni oldalakon. "
+
+#: includes/class-settings.php:1035
+msgid "How to secure forms?"
+msgstr "Hogyan biztosítjuk az űrlapokat?"
+
+#: includes/class-settings.php:309
+msgid "In a PRO version you will have <a href=\"%s\" target=\"_blank\">more skins</a>"
+msgstr "A PRO verzióban több <a href=\"%s\" target=\"_blank\">skin is lesz</a>"
+
+#: includes/class-pages-manager.php:63
+msgid "Login page"
+msgstr "Bejelentkező oldal"
+
+#: includes/class-settings.php:957
+msgid "Message: Bad Password"
+msgstr "Üzenet: Rossz jelszó"
+
+#: includes/class-settings.php:950
+msgid "Message: Good Password"
+msgstr "Üzenet: Jó jelszó"
+
+#: includes/class-settings.php:964
+msgid "Message: Mismatch"
+msgstr "Üzenet: Nem egyezik"
+
+#: includes/class-settings.php:943
+msgid "Message: Password is missing"
+msgstr "Üzenet: Hiányzik a jelszó"
+
+#: includes/class-settings.php:971
+msgid "Message: Strong Password"
+msgstr "Üzenet: Erős jelszó"
+
+#: includes/class-settings.php:978
+msgid "Message: Too Short Password"
+msgstr "Üzenet: Túl rövid jelszó"
+
+#: includes/class-settings.php:1044
+msgid "Ony if you do not have external Captcha plugins."
+msgstr "Csak ha nem használsz külső Captcha plugint."
+
+#: includes/class-pages-manager.php:55
+msgid "Pages"
+msgstr "Oldalak"
+
+#: includes/class-settings.php:912
+msgid "Password (registration/reset password)"
+msgstr "Jelszó (regisztrációs/visszaállítási jelszó)"
+
+#: includes/class-settings.php:944
+msgid "Password is missing!"
+msgstr "A jelszó hiányzik!"
+
+#: includes/class-settings.php:965
+msgid "Passwords is mismatch!"
+msgstr "A jelszavak nem egyeznek!"
+
+#: includes/class-ajax.php:719
+msgid "Please <a href=\"%s\" class=\"lrm-forgot-password\">request a new link.</a>"
+msgstr "Kérj egy új hivatkozást <a href=\"%s\" class=\"lrm-forgot-password\">ide kattintva</a>!"
+
+#: includes/class-settings.php:1088
+msgid "Please make sure that keys is created for the selected reCaptcha type!"
+msgstr "Győződjön meg arról, hogy a kiválasztott reCaptcha típushoz kulcsok létrejöttek!"
+
+#: includes/class-pages-manager.php:68
+msgid "Please make sure that page content contains shortcode:<br> <code>[lrm_form default_tab=\"login\" logged_in_message=\"You are currently logged in!\"]</code>"
+msgstr "Győződjön meg arról, hogy az oldal tartalmazza a következő shortcodeot:<br><code>[lrm_form default_tab=\"login\" logged_in_message=\"Be vagy jelentkezve!\"]</code>"
+
+#: includes/class-pages-manager.php:85
+msgid "Please make sure that page content contains shortcode:<br> <code>[lrm_form default_tab=\"register\" logged_in_message=\"You are currently logged in!\"]</code>"
+msgstr "Győződj meg arról, hogy az oldal tartalmazza az következő shortcodeot:<br><code>[lrm_form default_tab=\"register\" logged_in_message=\"Be vagy jelentkezve!\"]</code>"
+
+#: includes/class-pages-manager.php:98
+msgid "Please make sure that page content contains shortcode:<br> <code>[lrm_lostpassword_form logged_in_message=\"You are currently logged in!\"]</code>"
+msgstr "Győződj meg arról, hogy az oldal szövege tartalmazza ezt a shortcodeot:<br><code>[lrm_lostpassword_form logged_in_message=\"Be vagy jelentkezve!\"]</code>"
+
+#: includes/class-redirects-manager.php:45
+msgid "Redirect to (if \"Redirect to page [PRO]\" is selected)"
+msgstr "Átirányítás (ha az \"Átirányítás az oldalra [PRO]\" beállítás van kiválasztva)"
+
+#: includes/class-pages-manager.php:80
+msgid "Registration page"
+msgstr "Regisztrációs oldal"
+
+#: includes/class-pages-manager.php:90
+msgid "Restore password"
+msgstr "Jelszó visszaállítása"
+
+#: includes/class-pages-manager.php:93
+msgid "Restore password page"
+msgstr "Jelszó oldal visszaállítása"
+
+#: includes/class-settings.php:1101
+msgid "Secret key"
+msgstr "Titkos kulcs"
+
+#: includes/class-settings.php:1050
+msgid "Secure login form?"
+msgstr "Biztosítod a bejelentkezési űrlapot?"
+
+#: includes/class-settings.php:1067
+msgid "Secure lost password form?"
+msgstr "Biztosítod az elveszett jelszó űrlapot?"
+
+#: includes/class-settings.php:1058
+msgid "Secure register form?"
+msgstr "Biztosítod a regisztrációs űrlapot?"
+
+#: includes/class-settings.php:1020
+msgid "Security (captcha)"
+msgstr "Biztonság (captcha)"
+
+#: includes/class-redirects-manager.php:89
+msgid "Select an action"
+msgstr "Művelet kijelölése"
+
+#: includes/class-settings.php:304
+msgid "Select skin"
+msgstr "Skin kiválasztása"
+
+#: includes/class-settings.php:1094
+msgid "Site key"
+msgstr "Webhelykulcs"
+
+#: includes/class-settings.php:297
+msgid "Skins"
+msgstr "Skinek"
+
+#: includes/class-settings.php:301
+msgid "Skins (modal design)"
+msgstr "Skinek (modális design)"
+
+#: includes/class-settings.php:972
+msgid "Strong Password"
+msgstr "Erős jelszó"
+
+#: skins/add-customizer-panel.php:12
+msgid "Theme palette"
+msgstr "Téma paletta"
+
+#: includes/class-settings.php:979
+msgid "Too Short Password"
+msgstr "Túl rövid jelszó"
+
+#: includes/class-roles-manager.php:29 includes/class-roles-manager.php:55
+#: includes/class-settings.php:340 includes/class-settings.php:413
+#: includes/class-settings.php:424 includes/class-settings.php:1027
+#: includes/class-settings.php:1052 includes/class-settings.php:1060
+#: includes/class-settings.php:1069
+msgid "Yes"
+msgstr "Igen"
+
+#: includes/class-ajax.php:668
+msgid "Your password has been reset."
+msgstr "A jelszó alaphelyzetbe lett állítva."
+
+#: includes/class-ajax.php:723
+msgid "Your password reset link appears to be invalid."
+msgstr "A jelszó-visszaállítási hivatkozásod sajnos érvénytelen."
+
+#: includes/class-ajax.php:726
+msgid "Your password reset link has expired."
+msgstr "A jelszó-visszaállítási hivatkozásod érvényessége lejárt."
+
+#: includes/class-settings.php:1077
+msgid "reCaptcha Api Keys"
+msgstr "reCaptcha Api kulcsok"
+
+#: includes/class-settings.php:1080
+msgid "reCaptcha type:"
+msgstr "reCaptcha típus:"
+
+#: includes/class-settings.php:525
+msgid "The email Body to user with new password. Allowed tags: <code>{{USERNAME}}</code>, <code>{{CHANGE_PASSWORD_URL}}</code>, <code>{{SITE_URL}}</code>, <code>{{HOME_URL}}</code>, <code>{{LOGIN_URL}}</code>, <code>{{EMAIL}}</code>, <code>{{FIRST_NAME}}</code>, <code>{{LAST_NAME}}</code>"
+msgstr "Ezt az e-mail body-t küldjük a felhasználónak az új jelszóval. Engedélyezett címkék:  <code>{{USERNAME}}</code>, <code>{{CHANGE_PASSWORD_URL}}</code>, <code>{{SITE_URL}}</code>, <code>{{HOME_URL}}</code>, <code>{{LOGIN_URL}}</code>, <code>{{EMAIL}}</code>, <code>{{FIRST_NAME}}</code>, <code>{{LAST_NAME}}</code>"
+
+#: includes/class-settings.php:204
+msgid "How to integrate inline form on your site:"
+msgstr "Hogyan lehet integrálni a inline űrlapot a webhelyen:"
+
+#: includes/class-settings.php:212
+msgid "If you need support:"
+msgstr "Ha támogatásra van szükséged:"
+
+#: includes/class-settings.php:570
+msgid "Template for HTML emails (text/html format only, not WooCommerce!)"
+msgstr "Sablon HTML e-mailekhez (csak szöveges/html formátumban, woocommerce nem!)"
+
+#: includes/class-settings.php:429
+msgid "Uninstall"
+msgstr "Eltávolítás"
+
+#: includes/class-settings.php:434
+msgid "Yes for Free and Pro"
+msgstr "Igen, az ingyenest és a prot is"
+
+#: includes/class-settings.php:494
+msgid "You just registered on"
+msgstr "Most regisztráltál itt:"
+
+#: includes/class-settings.php:497
+msgid "Your password is:"
+msgstr "A jelszavad:"
+
+#: includes/class-settings.php:509
+msgid "{{SITE_NAME}} Your new password"
+msgstr "{{SITE_NAME}} az új jelszavad"
+
+#: includes/class-settings.php:485
+msgid "{{SITE_NAME}} Your username and password info"
+msgstr "{{SITE_NAME}} Felhasználónév és jelszó adataid"
+
+#: includes/class-settings.php:530
+msgid "Admin emails"
+msgstr "Rendszergazdai e-mailek"
+
+#: includes/class-settings.php:560
+msgid "Email:"
+msgstr "Email:"
+
+#: includes/class-settings.php:573
+msgid "HTML email template"
+msgstr "HTML e-mail sablon"
+
+#: includes/class-settings.php:558
+msgid "New user just registered on"
+msgstr "Új felhasználó most regisztrált"
+
+#: includes/class-settings.php:549
+msgid "New user registration on your site:"
+msgstr "Új felhasználó regisztrált a webhelyen:"
+
+#: includes/class-settings.php:533
+msgid "Send email to admin about new user?"
+msgstr "Küldjünk e-mailt a rendszergazdának az új felhasználókról?"
+
+#: includes/class-settings.php:496 includes/class-settings.php:559
+msgid "Username:"
+msgstr "Felhasználónév:"
+
+#: includes/class-settings.php:561
+msgid "View:"
+msgstr "Nézet:"
+
+#: includes/class-admin-menus.php:67
+msgid "Add to menu"
+msgstr "Hozzáadás a menühöz"
+
+#: includes/class-admin-menus.php:56
+msgid "Log-out"
+msgstr "Kijelentkezés"
+
+#: includes/class-admin-menus.php:21
+msgid "Login & Registration modal"
+msgstr "Bejelentkezés & Regisztrációs modal"
+
+#: includes/class-admin-menus.php:47
+msgid "Register"
+msgstr "Regisztráció"
+
+#: includes/class-admin-menus.php:64
+msgid "Select All"
+msgstr "Összes kiválasztása"
+
+#: includes/class-settings.php:256
+msgid "He will need to open the email and click verification link. Please add {{VERIFY_ACCOUNT_URL}} tag to Registration Email."
+msgstr "Meg kell nyitnia az e-mailt és rákattintani az ellenőrző linkre. Kérjük, add hozzá a {{VERIFY_ACCOUNT_URL}} kódot a regisztrációs e-mailhez."
+
+#: includes/class-settings.php:242 includes/class-settings.php:248
+msgid "He will need to open the email with his login information and enter them on the Log In tab."
+msgstr "Meg kell nyitnia az e-mailt a bejelentkezési adataival, és meg kell adnia őket a Bejelentkezés lapon."
+
+#: includes/class-settings.php:239
+msgid "If this option is enabled - the user won't automatically be logged into his account."
+msgstr "Ha ez a beállítás engedélyezve van - a felhasználó nem lesz automatikusan bejelentkezve a fiókjába."
+
+#: includes/class-settings.php:256
+msgid "[If user can set password] "
+msgstr "[Ha a felhasználó betudja állítani a jelszót] "
+
+#: includes/class-settings.php:248
+msgid "[If user can't set password] "
+msgstr "[Ha a felhasználó nem tudja beállítani a jelszót] "
+
+#. translators: 1: Browser cookie documentation URL, 2: Support forums URL
+#: includes/class-ajax.php:119
+msgid "<strong>ERROR</strong>: Cookies are blocked due to unexpected output. For help, please see <a href=\"%1$s\">this documentation</a> or try the <a href=\"%2$s\">support forums</a>."
+msgstr "<strong>HIBA</strong>: A cookie-k váratlan kimenet miatt le vannak tiltva. Ha segítségre van szükséged, olvasd <a href=\"%1$s\">el ezt a dokumentációt,</a> vagy próbáld <a href=\"%2$s\">ki a támogatási fórumokat.</a>"
+
+#: includes/class-ajax.php:120
+msgid "https://codex.wordpress.org/Cookies"
+msgstr "https://codex.wordpress.org/Cookies"
+
+#: includes/class-ajax.php:120
+msgid "https://wordpress.org/support/"
+msgstr "https://wordpress.org/support/"
+
+#: includes/class-settings.php:278
+msgid "Display First and Last name fields in Registration Form?"
+msgstr "Megjeleníted a Vezeték- és Keresztnév mezőket a regisztrációs űrlapon?"
+
+#: includes/class-settings.php:702
+msgid "Form: Username"
+msgstr "Űrlap: Felhasználónév"
+
+#: includes/class-settings.php:519
+msgid "If this was a mistake, just ignore this email and nothing will happen."
+msgstr "Ha ez egy tévedés volt, kérjük, mellőzd ezt a levelet, és semmi sem fog történni."
+
+#: includes/class-settings.php:685
+msgid "Login successful, you can close this window."
+msgstr "Sikeresen bejelentkeztél, bezárhatod ezt az ablakot."
+
+#: includes/class-settings.php:684
+msgid "Message: Login successful (with \"Reload page after login/registration?\" disabled)"
+msgstr "Üzenet: A bejelentkezés sikeres (az \"oldal újratöltése bejelentkezés/regisztráció után?\" le van tiltva)"
+
+#: includes/class-settings.php:677
+msgid "Message: Login successful (with \"Reload page after login/registration?\" enabled)"
+msgstr "Üzenet: A bejelentkezés sikeres (az \"oldal újratöltése bejelentkezés/regisztráció után?\" engedélyezve van)"
+
+#: includes/class-settings.php:789
+msgid "Message: No First Name"
+msgstr "Üzenet: Nem adtál meg keresztnevet"
+
+#: includes/class-settings.php:782
+msgid "Message: No UserName"
+msgstr "Üzenet: Nem adtál meg felhasználónevet"
+
+#: includes/class-settings.php:790
+msgid "Please enter your First Name!"
+msgstr "Kérlek, add meg keresztnevedet!"
+
+#: includes/class-settings.php:783
+msgid "Please enter your UserName!"
+msgstr "Kérlek, add meg Felhasználónevedet!"
+
+#: includes/class-settings.php:520
+msgid "To reset your password, visit the following address:"
+msgstr "A jelszó megváltoztatásához látogass el a következő címre:"
+
+#: includes/class-settings.php:463
+msgid "Email format"
+msgstr "E-mail formátum"
+
+#: includes/class-settings.php:460
+msgid "Mails"
+msgstr "emails"
+
+#: includes/class-settings.php:891
+msgid "Check your mailbox to access your new password."
+msgstr "Az új jelszavad elküldtük, kérlek, ellenőrizd a postaládádat (a SPAM  - és ha van -  a PROMÓCIÓK mappát is)!"
+
+#: includes/class-ajax.php:668 includes/class-settings.php:618
+msgid "Log in"
+msgstr "Bejelentkezés"
+
+#: includes/class-settings.php:848
+msgid "Message: Missing login"
+msgstr "Üzenet: Nem jelentkeztél be"
+
+#: includes/class-settings.php:632
+msgid "Message: No Username/Email"
+msgstr "Üzenet: Nincs felhasználónév/e-mail megadva"
+
+#: includes/class-settings.php:855
+msgid "Message: No user registered with that email address"
+msgstr "Üzenet: Nincs felhasználó regisztrálva ezzel az e-mail címmel"
+
+#: includes/class-settings.php:1011
+msgid "Message: Security token is expired"
+msgstr "Üzenet: A biztonsági token lejárt"
+
+#: includes/class-settings.php:633
+msgid "Please enter your Username/email!"
+msgstr "Kérlek, add meg a felhasználónevedet/e-mail címedet!"
+
+#: includes/class-settings.php:671
+msgid "Please enter your password!"
+msgstr "Kérlek, add meg a jelszavad!"
+
+#: includes/class-settings.php:811
+msgid "Registration was successful. We have sent you an email with your login information. Please use them to log into your account."
+msgstr "A regisztráció sikeres volt. Küldtünk neked egy e-mailt a bejelentkezési adataiddal. Ezzel fogsz tudni bejelentkezni a fiókodba."
+
+#: includes/class-settings.php:1012
+msgid "Security token is expired! Please refresh the page!"
+msgstr "A biztonsági token lejárt! Kérlek, frissítsd az oldalt!"
+
+#: includes/class-settings.php:1003
+msgid "Hide password"
+msgstr "Jelszó elrejtése"
+
+#: includes/class-settings.php:995
+msgid "Show password"
+msgstr "Mutasd a jelszót"
+
+#: includes/class-settings.php:841
+msgid "Back to login"
+msgstr "Vissza a belépéshez"
+
+#: includes/class-settings.php:987
+msgid "Close modal text"
+msgstr "Modális szöveg bezárása"
+
+#: includes/class-settings.php:768
+msgid "Create account"
+msgstr "Felhasználói fiók létrehozása"
+
+#: includes/class-settings.php:724
+msgid "Email*"
+msgstr "E-mail cím"
+
+#: includes/class-settings.php:849
+msgid "Enter an username or email address."
+msgstr "Add meg egy felhasználóneved vagy az e-mail címedet."
+
+#: includes/class-settings.php:710
+msgid "First name*"
+msgstr "Keresztnév*"
+
+#: includes/class-settings.php:625
+msgid "Forgot your password?"
+msgstr "Elfelejtetted a jelszavad?"
+
+#: includes/class-settings.php:840
+msgid "Form button: Back to login"
+msgstr "Űrlap gomb: Vissza a bejelentkezéshez"
+
+#: includes/class-settings.php:767
+msgid "Form button: Create account"
+msgstr "Űrlap gomb: Fiók létrehozása"
+
+#: includes/class-settings.php:833
+msgid "Form button: Reset password"
+msgstr "Űrlap gomb: Jelszó visszaállítása"
+
+#: includes/class-settings.php:723
+msgid "Form: Email"
+msgstr "Űrlap: E-mail"
+
+#: includes/class-settings.php:709
+msgid "Form: First name"
+msgstr "Űrlap: Keresztnév"
+
+#: includes/class-settings.php:716
+msgid "Form: Last name"
+msgstr "Űrlap: Vezetéknév"
+
+#: includes/class-settings.php:752
+msgid "Form: Terms"
+msgstr "Forma: Feltételek"
+
+#: includes/class-settings.php:1004
+msgid "Hide"
+msgstr "Elrejtés"
+
+#: includes/class-settings.php:870
+msgid "Invalid username or e-mail address."
+msgstr "Érvénytelen felhasználónév vagy e-mail cím."
+
+#: includes/class-settings.php:717
+msgid "Last name"
+msgstr "Vezetéknév"
+
+#: includes/class-settings.php:678
+msgid "Login successful, reloading page..."
+msgstr "A bejelentkezés sikeres , az oldal újratöltése..."
+
+#: includes/class-settings.php:820
+msgid "Lost your password? Please enter your email address. You will receive mail with link to set new password."
+msgstr "Elfelejtetted a jelszavadat? Kérlek, add meg az e-mail címedet. Erre fogunk egy  linket küldeni, ahol beállíthatod majd az új jelszavadat!"
+
+#. Author of the plugin
+msgid "Maxim K"
+msgstr "Maxim K"
+
+#: includes/class-settings.php:819
+msgid "Message"
+msgstr "Üzenet"
+
+#: includes/class-settings.php:869
+msgid "Message: Invalid username or e-mail address"
+msgstr "Üzenet: Érvénytelen felhasználónév vagy e-mail cím"
+
+#: includes/class-settings.php:670
+msgid "Message: No Password"
+msgstr "Üzenet: Nincs jelszó"
+
+#: includes/class-settings.php:862
+msgid "Message: No user registered with that username"
+msgstr "Üzenet: Nincs felhasználó regisztrálva ezzel a felhasználónévvel"
+
+#: includes/class-settings.php:775
+msgid "Message: Registration is disabled"
+msgstr "Üzenet: A regisztráció le van tiltva"
+
+#: includes/class-settings.php:803 includes/class-settings.php:810
+msgid "Message: Registration successful"
+msgstr "Üzenet: Sikeres regisztráció"
+
+#: includes/class-settings.php:890
+msgid "Message: Reset successful"
+msgstr "Üzenet: Sikeres visszaállítás"
+
+#: includes/class-settings.php:883
+msgid "Message: Something went wrong"
+msgstr "Üzenet: Valami hiba történt"
+
+#: includes/class-settings.php:876
+msgid "Message: Unable to send email"
+msgstr "Üzenet: Nem lehet e-mailt küldeni"
+
+#: includes/class-settings.php:796
+msgid "Message: Wrong email"
+msgstr "Üzenet: Rossz e-mail"
+
+#: includes/class-settings.php:696
+msgid "New account"
+msgstr "Új fiók"
+
+#: views/admin/settings-page.php:6 views/settings-page.php:6
+msgid "No Settings available at the moment"
+msgstr "Jelenleg nincs elérhető beállítás"
+
+#: includes/class-settings.php:884
+msgid "Oops! Something went wrong while updating your account."
+msgstr "Hoppá! Valami rosszul sült el a fiókod frissítése közben."
+
+#: includes/class-settings.php:984
+msgid "Other"
+msgstr "Egyéb"
+
+#: includes/class-settings.php:1119
+msgid "PRO features"
+msgstr "PRO funkciók"
+
+#: includes/class-settings.php:797
+msgid "Please enter a correct email!"
+msgstr "Kérlek, valós e-mail címet adj meg!"
+
+#: includes/class-settings.php:776
+msgid "Registration is disabled!"
+msgstr "A regisztráció kikapcsolva!"
+
+#: includes/class-settings.php:804
+msgid "Registration was successful, reloading page."
+msgstr "A regisztráció sikeres volt, újratöltjük az oldalt."
+
+#: includes/class-settings.php:896
+msgid "Reset Password"
+msgstr "Jelszó visszaállítása"
+
+#: includes/class-settings.php:996
+msgid "Show"
+msgstr "Megjelenítés"
+
+#: includes/class-settings.php:877
+msgid "System is unable to send you the mail containing your new password."
+msgstr "A rendszer nem tudta elküldeni neked az új jelszót tartalmazó e-mailt."
+
+#: includes/class-settings.php:856
+msgid "There is no user registered with that email address."
+msgstr "Nincs ilyen felhasználó regisztrálva ezzel az e-mail címmel."
+
+#: includes/class-settings.php:863
+msgid "There is no user registered with that username."
+msgstr "Nincs felhasználó regisztrálva ezzel a felhasználónévvel."
+
+#: includes/class-settings.php:988
+msgid "close"
+msgstr "bezárás"
+
+#. Author URI of the plugin
+msgid "http://maxim-kaminsky.com/"
+msgstr "http://maxim-kaminsky.com/"
+
+#. Plugin URI of the plugin
+msgid "https://maxim-kaminsky.com/shop/product/ajax-login-and-registration-modal-popup-pro/"
+msgstr "https://maxim-kaminsky.com/shop/product/ajax-login-and-registration-modal-popup-pro/"
+
+#: includes/class-settings.php:370
+msgid "Advanced"
+msgstr "Haladó"
+
+#: includes/class-settings.php:163
+msgid "Do you like \"Login and Register Modal\" plugin? Please consider giving it a %1$sreview%2$s"
+msgstr "Tetszik a \"Login and Register Modal\" plugin? Kérjük, fontolja meg, hogy ez egy  %1$sreview%2$s adását!"
+
+#: includes/class-settings.php:597 includes/class-settings.php:827
+msgid "Email or Username"
+msgstr "Email vagy felhasználónév"
+
+#: includes/class-settings.php:458
+msgid "Emails"
+msgstr "Emailek"
+
+#: includes/class-settings.php:584
+msgid "Expressions"
+msgstr "Fordítások"
+
+#: includes/class-settings.php:617
+msgid "Form button: Login"
+msgstr "Űrlap gomb: Bejelentkezés"
+
+#: includes/class-settings.php:589 includes/class-settings.php:695
+msgid "Form heading"
+msgstr "Űrlapfejléc"
+
+#: includes/class-settings.php:596 includes/class-settings.php:826
+msgid "Form: Email or Username"
+msgstr "Űrlap: Email vagy felhasználónév"
+
+#: includes/class-settings.php:603
+msgid "Form: Password"
+msgstr "Űrlap: Jelszó"
+
+#: includes/class-settings.php:610
+msgid "Form: Remember me"
+msgstr "Űrlap: Emlékezz rám"
+
+#: includes/class-settings.php:222
+msgid "Free version are compatible with:"
+msgstr "Az ingyenes verzió kompatibilis a következőkkel:"
+
+#: includes/class-settings.php:190 includes/class-settings.php:259
+#: includes/class-settings.php:1022
+msgid "General"
+msgstr "Általános"
+
+#: includes/class-settings.php:232
+msgid "Hide Terms box in Registration Form?"
+msgstr "A Feltételek mező elrejtése a regisztrációs űrlapon?"
+
+#: includes/class-settings.php:196
+msgid "How to integrate modal on your site:"
+msgstr "Hogyan lehet integrálni a modált a webhelyen:"
+
+#: includes/class-settings.php:166
+msgid "I already reviewed it"
+msgstr "Már átnéztem."
+
+#: includes/class-settings.php:193
+msgid "Installation steps"
+msgstr "Telepítési lépések"
+
+#: includes/class-settings.php:624
+msgid "Link: Forgot your password?"
+msgstr "Link: Elfelejtetted a jelszavad?"
+
+#: includes/class-admin-menus.php:38 includes/class-pages-manager.php:59
+#: includes/class-settings.php:586
+msgid "Login"
+msgstr "Belépés"
+
+#: includes/class-settings.php:506 includes/class-settings.php:816
+msgid "Lost password"
+msgstr "Elfelejtett jelszó"
+
+#: includes/class-settings.php:604 includes/class-settings.php:915
+#: includes/class-settings.php:916
+msgid "Password"
+msgstr "Jelszó"
+
+#: includes/class-pages-manager.php:77 includes/class-settings.php:481
+#: includes/class-settings.php:692
+msgid "Registration"
+msgstr "Regisztráció"
+
+#: includes/class-settings.php:611
+msgid "Remember me"
+msgstr "Emlékezz rám"
+
+#: includes/class-core.php:127 views/admin/settings-page.php:3
+#: views/settings-page.php:3
+msgid "Settings"
+msgstr "Beállítások"
+
+#: includes/class-settings.php:590
+msgid "Sign in"
+msgstr "Bejelentkezés"
+
+#: includes/class-settings.php:484 includes/class-settings.php:508
+#: includes/class-settings.php:548
+msgid "Subject"
+msgstr "Tárgy"
+
+#: includes/class-settings.php:219
+msgid "Supported plugins"
+msgstr "Támogatott bővítmények"
+
+#: includes/class-settings.php:229
+msgid "Terms"
+msgstr "Feltételek"
+
+#: includes/class-settings.php:486 includes/class-settings.php:550
+msgid "The email Subject to user about successful registration."
+msgstr "A felhasználónak küldött e-mail a sikeres regisztrációról"
+
+#: includes/class-settings.php:511
+msgid "The email Subject to user with new password."
+msgstr "Az új jelszóról a felhasználónak küldött e-mail tárgya"
+
+#: includes/class-settings.php:495
+msgid "Url to login:"
+msgstr "Bejelentkezési URL:"
+
+#: includes/class-settings.php:703
+msgid "Username*"
+msgstr "Felhasználónév*"
