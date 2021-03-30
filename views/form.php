@@ -15,6 +15,7 @@ defined( 'ABSPATH' ) || exit;
 /** @var bool $is_inline */
 /** @var string $role */
 /** @var bool $role_silent */
+/** @var string $redirect_to */
 
 /** @var string $default_tab "login"/"register"/"lost-password" */
 $fields_required = ('both' === lrm_setting('advanced/validation/type')) ? 'required' : '';

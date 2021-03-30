@@ -32,7 +32,7 @@ class WP_Admin_Dismissible_Notice
         $this->option_prefix = $this->slug . $this->option_prefix;
 
         if (is_admin()) {
-            add_action('admin_notices', array($this, 'print_notices'));
+            add_action('admin_notices', array($this, 'print_notices'), 11);
         }
         add_action('wp_ajax_' . $this->slug .'_dismiss_notice', [$this, 'AJAX_dismiss_notice']);
 

@@ -72,6 +72,15 @@ class LRM_Settings {
             );
         }
 
+	    if ( ! get_option("users_can_register") ) {
+
+		    lrm_dismissible_notice( 'lrm_no_users_can_register_warning', sprintf(
+			    '"AJAX Login and Register Modal" warning: registration is disabled in your Wordpress settings. Please go to <a href="%s">Settings => General</a> and enable option "Anyone can register".',
+			    admin_url('options-general.php')
+		    ), 'warning' );
+
+	    }
+
         add_action( 'underdev/settings/enqueue_scripts', array( $this, 'settings_enqueue_scripts' ) );
 
         if ( isset($_GET['action']) && $_GET['action'] === 'dismiss_rem_beg_message' ) {
@@ -144,18 +153,6 @@ class LRM_Settings {
         }
 
         // Update notice for 1.18 > 1.20
-        if ( ! get_option("users_can_register") ) {
-
-            echo '<div class="notice notice-error notification-notice"><p>';
-
-            printf(
-                '"AJAX Login and Register Modal" warning: registration is disabled in your Wordpress settings. Please go to <a href="%s">Settings => General</a> and enable option "Anyone can register".',
-                admin_url('options-general.php')
-            );
-
-            echo '</p></div>';
-
-        }
 
         if ( ! get_option( 'lrm_beg_message' ) ) {
             echo '<div class="notice notice-info notification-notice"><p>';
@@ -813,13 +810,18 @@ class LRM_Settings {
                 'sanitize'    => array( new LRM_Field_Textarea_With_Html(), 'sanitize' ),
             ) );
 
+	    // Compatibility with LRM free < 1.37
+	    $html_field_class = class_exists('LRM_Field_Textarea_With_Html_Extended') ? 'LRM_Field_Textarea_With_Html_Extended' : 'LRM_Field_Textarea_With_Html';
+
         $MESSAGES_SECTION->add_group( __( 'Lost password', 'ajax-login-and-registration-modal-popup' ), 'lost_password', true )
             ->add_field( array(
                 'slug'        => 'message',
                 'name'        => __('Message', 'ajax-login-and-registration-modal-popup' ),
                 'default'     => __('Lost your password? Please enter your email address. You will receive mail with link to set new password.', 'ajax-login-and-registration-modal-popup' ),
-                'render'      => array( new LRM_Field_Text(), 'input' ),
-                'sanitize'    => array( new LRM_Field_Text(), 'sanitize' ),
+                'description' => 'Basic html supported',
+                'render'      => array( $html_field_class, 'input' ),
+                'sanitize'    => array( $html_field_class, 'sanitize' ),
+                'addons'      => array('rows'=>2),
             ) )
             ->add_field( array(
                 'slug'        => 'email',
@@ -839,12 +841,14 @@ class LRM_Settings {
                 'slug'        => 'to_login',
                 'name'        => __('Form button: Back to login', 'ajax-login-and-registration-modal-popup' ),
                 'default'     => __('Back to login', 'ajax-login-and-registration-modal-popup' ),
-                'render'      => array( new LRM_Field_Text(), 'input' ),
-                'sanitize'    => array( new LRM_Field_Text(), 'sanitize' ),
+                'description' => 'Basic html supported',
+                'render'      => array( $html_field_class, 'input' ),
+                'sanitize'    => array( $html_field_class, 'sanitize' ),
+                'addons'      => array('rows'=>2),
             ) )
             // Errors!
             ->add_field( array(
-                'slug'        => 'invalid_email',
+                 'slug'        => 'invalid_email',
                 'name'        => __('Message: Missing login', 'ajax-login-and-registration-modal-popup' ),
                 'default'     => __('Enter an username or email address.', 'ajax-login-and-registration-modal-popup' ),
                 'render'      => array( new LRM_Field_Text(), 'input' ),

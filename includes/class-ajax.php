@@ -96,14 +96,16 @@ class LRM_AJAX
 
 	    if ( class_exists('Limit_Login_Attempts') ){
 		    global $limit_login_attempts_obj;
-		    $limit_login_attempts_user = $user ? $user : (object)['user_login'=>$user_name];
-		    $limit_login_attempts_try = $limit_login_attempts_obj->wp_authenticate_user( $limit_login_attempts_user, false );
-		    if ( is_wp_error($limit_login_attempts_try) ) {
-			    wp_send_json_error(array(
-				    'message'=>implode('<br/>', $limit_login_attempts_try->get_error_messages()),
-				    'exec_time'=>sprintf( 'Executed for %.5F seconds', (microtime(true) - $start) )   ,
-			    ));
+		    if ( !empty($limit_login_attempts_obj) ) {
+			    $limit_login_attempts_user = $user ? $user : (object) [ 'user_login' => $user_name ];
+			    $limit_login_attempts_try  = $limit_login_attempts_obj->wp_authenticate_user( $limit_login_attempts_user, false );
+			    if ( is_wp_error( $limit_login_attempts_try ) ) {
+				    wp_send_json_error( array(
+					    'message'   => implode( '<br/>', $limit_login_attempts_try->get_error_messages() ),
+					    'exec_time' => sprintf( 'Executed for %.5F seconds', ( microtime( true ) - $start ) ),
+				    ) );
 
+			    }
 		    }
 	    }
 
@@ -396,6 +398,8 @@ class LRM_AJAX
                 if ( !$admin_email || !is_email($admin_email) ) {
 	                $admin_email = get_option('admin_email');
                 }
+
+	            $mail_body = apply_filters("lrm/mails/registration_to_admin/body", $mail_body, $user->user_login, $userdata, $user);
 
                 $wp_new_user_notification_email_admin = array(
                     'to' => $admin_email,

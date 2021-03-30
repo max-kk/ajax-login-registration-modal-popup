@@ -249,8 +249,6 @@ class LRM_Core {
 //            $required_scripts[] = 'password-strength-meter';
 //        }
 
-	    LRM_Skins::i()->load_current_skin_assets();
-
 	    if ( defined('LRM_LOAD_ASSETS_ONLY_FOR_INLINE') && !$from_inline ) {
 		    return;
 	    } elseif ( !defined('LRM_LOAD_ASSETS_ONLY_FOR_INLINE') && $from_inline ) {
@@ -262,6 +260,8 @@ class LRM_Core {
 	    }
 
 	    wp_enqueue_style('lrm-modal', LRM_URL . 'assets/lrm-core-compiled.css', false, LRM_ASSETS_VER);
+
+	    LRM_Skins::i()->load_current_skin_assets();
 	    //wp_enqueue_style('lrm-fonts', LRM_URL . 'assets/fonts.css', false, LRM_ASSETS_VER);
 
 	    $required_scripts = array('jquery');
@@ -317,8 +317,9 @@ class LRM_Core {
      * @param string $default_tab array('login', 'register', 'lost-password')
      * @param string $role
      * @param bool $role_silent
+     * @param string $redirect_to
      */
-    public function render_form( $is_inline = false, $default_tab = 'login', $role = '', $role_silent = false ) {
+    public function render_form( $is_inline = false, $default_tab = 'login', $role = '', $role_silent = false, $redirect_to = '' ) {
 
         if ( !in_array($default_tab, array('login', 'register', 'lost-password')) ) {
             $default_tab = 'login';
