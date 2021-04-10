@@ -318,7 +318,7 @@ class LRM_Core {
      * @param string $role
      * @param bool $role_silent
      */
-    public function render_form( $is_inline = false, $default_tab = 'login', $role = '', $role_silent = false ) {
+    public function render_form( $is_inline = false, $default_tab = 'login', $role = '', $role_silent = false, $redirect_to = '' ) {
 
         if ( !in_array($default_tab, array('login', 'register', 'lost-password')) ) {
             $default_tab = 'login';
