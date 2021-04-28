@@ -88,6 +88,8 @@ var LRM = LRM ? LRM : {};
 					$(document).trigger('lrm_show_signup');
 				} else if (hash == "inline-register") {
 					jQuery(".lrm-inline .lrm-switch-to--register").click();
+				} else if (hash == "reset-password") {
+					jQuery(".lrm-inline .lrm-switch-to--reset-password").click();
 				}
 			}
 		}, 300);
@@ -216,7 +218,7 @@ var LRM = LRM ? LRM : {};
 				} else {
 					var el = event_orig.target;
 				}
-				if (el && $(el).hasClass("lrm-redirect")) {
+				if (el && ($(el).hasClass("lrm-redirect") || $(el).parent().hasClass("lrm-redirect"))) {
 					LRM.redirect_url = $(el).attr("href");
 				}
 			}
@@ -284,7 +286,7 @@ var LRM = LRM ? LRM : {};
 				} else {
 					var el = event_orig.target;
 				}
-				if (el && $(el).hasClass("lrm-redirect")) {
+				if (el && ($(el).hasClass("lrm-redirect") || $(el).parent().hasClass("lrm-redirect"))) {
 					LRM.redirect_url = $(el).attr("href");
 				}
 			}
@@ -529,7 +531,7 @@ var LRM = LRM ? LRM : {};
 				  $( "#lrm-password1" ).parent().parent().find(".lrm-pass-strength-result")           // Strength meter
 			);
 
-			if ( typeof passwordStrength == "undefined" ) {
+			if (typeof passwordStrength === "undefined" || passwordStrength === null) {
 				return;
 			}
 
@@ -637,6 +639,16 @@ var LRM = LRM ? LRM : {};
 				$strengthResult.data('status','empty');
 				return;
 			}
+
+			if ( "no" === LRM.validate_password_strength ) {
+				if ( $pass2 && $pass2.val().trim() && $pass2.val() !== $pass1.val() ) {
+					$strengthResult.attr('data-status','short').html(LRM.l10n.passwords_is_mismatch);
+				} else {
+					$strengthResult.attr('data-status', null);
+				}
+				return null;
+			}
+
 			if (!$pass2) {
 				var pass2 = pass1;
 			} else {

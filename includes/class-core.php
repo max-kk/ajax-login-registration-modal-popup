@@ -279,11 +279,21 @@ class LRM_Core {
 	        $ajax_url = LRM_Weglot_Integration::get_ajax_url($ajax_url);
 	    }
 
+	    $validate_password_strength = lrm_setting('general_pro/all/use_password_strength');
+
+        if ( !$validate_password_strength ) {
+	        $validate_password_strength = 'yes';
+        }
+
+	    if ( apply_filters( 'lrm/js/allow_weak_password', false ) ) {
+		    $validate_password_strength = 'yes_allow_weak';
+	    }
+
         $script_params = array(
             'home_url_arr' => parse_url( home_url() ),
             'home_url' => home_url(),
             'password_zxcvbn_js_src' => includes_url( '/js/zxcvbn.min.js' ),
-            'allow_weak_password' => apply_filters( 'lrm/js/allow_weak_password', false ),
+            'validate_password_strength' => $validate_password_strength,
             'password_strength_lib' => lrm_setting('general_pro/all/password_strength_lib'),
             'redirect_url'       => '',
             'ajax_url'           => $ajax_url,

@@ -35,7 +35,7 @@ if ( !defined("LRM_IN_BUILD_FREE") ) {
 
 define("LRM_VERSION", '2.20');
 
-define("LRM_ASSETS_VER", 50);
+define("LRM_ASSETS_VER", 55);
 
 //define('LRM_LOAD_ASSETS_ONLY_FOR_INLINE', 1); //- if no modal used - only inline form
 
