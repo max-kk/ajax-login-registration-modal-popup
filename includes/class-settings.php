@@ -811,7 +811,9 @@ class LRM_Settings {
             ) );
 
 	    // Compatibility with LRM free < 1.37
-	    $html_field_class = class_exists('LRM_Field_Textarea_With_Html_Extended') ? 'LRM_Field_Textarea_With_Html_Extended' : 'LRM_Field_Textarea_With_Html';
+	    $html_field_class_name = class_exists('LRM_Field_Textarea_With_Html_Extended') ? 'LRM_Field_Textarea_With_Html_Extended' : 'LRM_Field_Textarea_With_Html';
+
+	    $html_field_class = new $html_field_class_name();
 
         $MESSAGES_SECTION->add_group( __( 'Lost password', 'ajax-login-and-registration-modal-popup' ), 'lost_password', true )
             ->add_field( array(

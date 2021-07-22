@@ -139,7 +139,7 @@ class LRM_Redirects_Manager {
      *
      * @return integer
      */
-    public static function get_redirect ( $action = 'login', $user_ID )
+    public static function get_redirect ( $action, $user_ID )
     {
         $redirect_to = !empty( $_REQUEST['redirect_to'] ) ? urldecode($_REQUEST['redirect_to']) : '';
 

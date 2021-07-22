@@ -66,7 +66,7 @@ class LRM_Roles_Manager {
      *
      * @return integer
      */
-    public static function get_redirect ( $action = 'login', $user_ID )
+    public static function get_redirect ( $action, $user_ID )
     {
         $redirect_to = !empty( $_REQUEST['redirect_to'] ) ? urldecode($_REQUEST['redirect_to']) : '';
 
@@ -75,20 +75,6 @@ class LRM_Roles_Manager {
         }
 
         return apply_filters('lrm/redirect_url', $redirect_to, $action);
-    }
-
-    /**
-     * @return array
-     */
-    public static function get_active_allowed_roles_flat (  )
-    {
-		$allowed_roles = [];
-
-        if ( lrm_is_pro( '1.65' ) ) {
-            $redirect_to = LRM_PRO_Roles_Manager::get_redirect();
-        }
-
-        return apply_filters('lrm/active_allowed_roles ', $allowed_roles);
     }
 
     public static function get_wp_roles_flat() {

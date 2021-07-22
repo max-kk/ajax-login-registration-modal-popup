@@ -10,7 +10,7 @@ class LRM_Field_Textarea_With_Html_Extended {
 	 * @param  underDEV\Utils\Settings\Field $field Field instance
 	 * @return void
 	 */
-	public function input( $field ) {
+	public static function input( $field ) {
 
         $rows = (int)$field->addon( 'rows' ) ? $field->addon( 'rows' ) : 3;
 

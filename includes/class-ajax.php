@@ -141,8 +141,10 @@ class LRM_AJAX
 		        }
 		        if ( class_exists('Limit_Login_Attempts') ){
 			        global $limit_login_attempts_obj;
-			        $limit_login_attempts_obj->limit_login_failed($user_name);
-			        $limit_login_attempts_msg = $limit_login_attempts_obj->get_message();
+			        if ( $limit_login_attempts_obj && is_object($limit_login_attempts_obj) && method_exists($limit_login_attempts_obj, 'limit_login_failed') ) {
+				        $limit_login_attempts_obj->limit_login_failed( $user_name );
+				        $limit_login_attempts_msg = $limit_login_attempts_obj->get_message();
+			        }
 		        }
 	        }
 
