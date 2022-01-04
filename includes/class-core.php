@@ -292,6 +292,7 @@ class LRM_Core {
         $script_params = array(
             'home_url_arr' => parse_url( home_url() ),
             'home_url' => home_url(),
+            'validate_domain' => apply_filters('lrm/need_validate_domain', true),
             'password_zxcvbn_js_src' => includes_url( '/js/zxcvbn.min.js' ),
             'validate_password_strength' => $validate_password_strength,
             'password_strength_lib' => lrm_setting('general_pro/all/password_strength_lib'),

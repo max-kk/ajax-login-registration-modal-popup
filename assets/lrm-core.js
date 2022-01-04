@@ -12,7 +12,7 @@ var LRM = LRM ? LRM : {};
 			  "Usually this happens when SSL (HTTPS) were added to the site, but HTTP version still accessible. How to set up HTTP to HTTPS redirect: https://websitesetup.org/http-to-https-wordpress/" );
 	}
 
-	if ( LRM.home_url_arr.host !== window.location.host ) {
+	if ( LRM.validate_domain && LRM.home_url_arr.host !== window.location.host ) {
 		alert( "AJAX Login and Registration Popup warning: the WP settings site Domain and current url Domain doesn't math. " + "\n\r" +
 			  "WP settings domain: " + LRM.home_url_arr.host + "\n" + "Browser domain: " + window.location.host + "\n\r" +
 			  "This could cause a login/registration issues! ");
