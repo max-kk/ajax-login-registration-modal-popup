@@ -86,11 +86,14 @@
 
 						<table class="form-table">
 
-							<?php foreach ( $group->get_fields() as $field ): ?>
+							<?php foreach ( $group->get_fields() as $field ):
+								/** @var \underDEV\Utils\Settings\Field $field */ ?>
 
 								<tr class="tr-<?php echo esc_attr( $field->input_id() ); ?>">
-									<th><label for="<?php echo esc_attr( $field->input_id() ); ?>"><?php echo esc_html( $field->name() ); ?></label></th>
-									<td>
+									<?php if ( !$field->addon('no-heading') ) : ?>
+										<th><label for="<?php echo esc_attr( $field->input_id() ); ?>"><?php echo esc_html( $field->name() ); ?></label></th>
+									<?php endif; ?>
+									<td <?= $field->addon('no-heading') ? 'colspan=2' : '' ?>>
 										<?php
 										$field->render();
 										$field_description = $field->description();

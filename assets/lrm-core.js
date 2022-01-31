@@ -612,9 +612,11 @@ var LRM = LRM ? LRM : {};
 				error_scroll_offset = modal_is_visible ? 25 : $message.offset().top - 15;
 			}
 
-			$(element_to_scroll).animate({
-				scrollTop: error_scroll_offset
-			}, 1500);
+			if ( "no" !== error_scroll_offset ) {
+				$(element_to_scroll).animate({
+					scrollTop: error_scroll_offset
+				}, 1500);
+			}
 
 			if ( is_error ) {
 				$message.addClass("lrm-is-error");
