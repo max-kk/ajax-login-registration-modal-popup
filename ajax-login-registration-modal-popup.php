@@ -35,13 +35,15 @@ if ( !defined("LRM_IN_BUILD_FREE") ) {
 
 define("LRM_VERSION", '2.20');
 
-define("LRM_ASSETS_VER", 55);
+define("LRM_ASSETS_VER", 56);
 
 //define('LRM_LOAD_ASSETS_ONLY_FOR_INLINE', 1); //- if no modal used - only inline form
 
 //define("LRM/SETTINGS/TRY_GET_TRANSLATED", true);
 
 //define("LRM/SETTINGS/TRY_GET_TRANSLATED", 1);
+//define("LRM_AJAX_URL_USE_ADMIN", 1);
+
 
 require_once( LRM_PATH . 'includes/helpers.php' );
 require_once( LRM_PATH . 'vendor/autoload.php' );

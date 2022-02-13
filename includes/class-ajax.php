@@ -754,6 +754,8 @@ class LRM_AJAX
      */
     public static function _maybe_debug() {
 
+        //var_dump(pll_current_language('locale'));
+
         add_filter( 'wp_redirect', array(__CLASS__, 'wp_redirect__filter'), 9999, 2 );
 
         // Try to remove some actions to avoid redirects

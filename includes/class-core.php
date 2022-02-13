@@ -269,7 +269,7 @@ class LRM_Core {
 	    //wp_enqueue_style('lrm-modal-skin', LRM_URL . 'assets/lrm-skin.css', false, LRM_ASSETS_VER);
 
         $ajax_url = add_query_arg( 'lrm', '1', site_url('/') );
-        if ( defined("LRM_AJAX_URL_USE_ADMIN") ) {
+        if ( defined("LRM_AJAX_URL_USE_ADMIN") || LRM_Polylang_Integration::is_active() ) {
 	        $ajax_url = add_query_arg( 'lrm', '1', admin_url('admin-ajax.php') );
         }
 
@@ -277,6 +277,8 @@ class LRM_Core {
             $ajax_url = apply_filters( 'wpml_permalink', $ajax_url );
         } elseif ( LRM_Weglot_Integration::is_active() ) {
 	        $ajax_url = LRM_Weglot_Integration::get_ajax_url($ajax_url);
+        } elseif ( LRM_Polylang_Integration::is_active() ) {
+	        $ajax_url = add_query_arg( 'lang', pll_current_language('slug'), $ajax_url );
 	    }
 
 	    $validate_password_strength = lrm_setting('general_pro/all/use_password_strength');

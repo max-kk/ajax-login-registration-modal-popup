@@ -418,7 +418,7 @@ var LRM = LRM ? LRM : {};
 			}
 
 			// Fix for ACF PRO plugin
-			if ($form.data("action") == "registration" && $form.find("#acf-form-data").length > 0 && acf.validation.active) {
+			if ( $form.data("action") == "registration" && $form.find("#acf-form-data").length > 0 && window.acf && window.acf.validation.active ) {
 				if ("yes" !== $form.data("lrm-acf-validated")) {
 					return;
 				}
