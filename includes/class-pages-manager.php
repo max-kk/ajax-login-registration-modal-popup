@@ -122,7 +122,7 @@ class LRM_Pages_Manager {
         $args = array(
             'post_type' => 'page',
             'suppress_filters' => false,
-            'post_status' => 'publish',
+            'post_status' => ['publish', 'private'],
             'perm' => 'readable',
             'posts_per_page' => 500,
             //'fields' => 'ids',

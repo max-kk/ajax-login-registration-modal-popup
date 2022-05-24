@@ -139,21 +139,44 @@ class LRM_Mailer {
         wc_get_template( 'emails/email-styles.php' );
         $css = apply_filters( 'woocommerce_email_styles', ob_get_clean() );
 
-        if ( lrm_wc_version_gte('3.6') ) {
-            $emogrifier_class = '\\Pelago\\Emogrifier';
-        } else {
-            $emogrifier_class = 'Emogrifier';
-        }
+        if ( lrm_wc_version('6.5', '<=') ) {
+            if (lrm_wc_version('3.6', '>=')) {
+                $emogrifier_class = '\\Pelago\\Emogrifier';
+            } else {
+                $emogrifier_class = 'Emogrifier';
+            }
 
-        if ( ! class_exists( $emogrifier_class ) ) {
-            include_once WC()->plugin_path() . '/includes/libraries/class-emogrifier.php';
-        }
-        try {
-            $emogrifier = new $emogrifier_class( $content, $css );
-            $content    = $emogrifier->emogrify();
-        } catch ( Exception $e ) {
-            $content = '<style type="text/css">' . $css . '</style>' . $content;
-            lrm_log( 'LRM_Mailer::set_wc_style error', $e->getMessage() );
+            if (!class_exists($emogrifier_class)) {
+                include_once WC()->plugin_path() . '/includes/libraries/class-emogrifier.php';
+            }
+            try {
+                $emogrifier = new $emogrifier_class($content, $css);
+                $content = $emogrifier->emogrify();
+            } catch (Exception $e) {
+                $content = '<style type="text/css">' . $css . '</style>' . $content;
+                lrm_log('LRM_Mailer::set_wc_style error', $e->getMessage());
+            }
+        } else {
+            $css_inliner_class = Pelago\Emogrifier\CssInliner::class;
+            if ( class_exists( $css_inliner_class ) ) {
+                try {
+                    $css_inliner = Pelago\Emogrifier\CssInliner::fromHtml( $content )->inlineCss( $css );
+
+                    do_action( 'woocommerce_emogrifier', $css_inliner );
+
+                    $dom_document = $css_inliner->getDomDocument();
+
+                    Pelago\Emogrifier\HtmlProcessor\HtmlPruner::fromDomDocument( $dom_document )->removeElementsWithDisplayNone();
+                    $content = Pelago\Emogrifier\HtmlProcessor\CssToAttributeConverter::fromDomDocument( $dom_document )
+                        ->convertCssToVisualAttributes()
+                        ->render();
+                } catch ( Exception $e ) {
+                    $logger = wc_get_logger();
+                    $logger->error( $e->getMessage(), array( 'source' => 'emogrifier' ) );
+                }
+            } else {
+                $content = '<style type="text/css">' . $css . '</style>' . $content;
+            }
         }
 
         return $content;

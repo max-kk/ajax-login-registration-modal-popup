@@ -77,12 +77,12 @@ if (!function_exists('lrm_wc_version_gte')) {
      * @param string $version
      * @return bool
      */
-    function lrm_wc_version_gte($version)
+    function lrm_wc_version($version, $compare = '>=')
     {
         if (defined('WC_VERSION') && WC_VERSION) {
-            return version_compare(WC_VERSION, $version, '>=');
+            return version_compare(WC_VERSION, $version, $compare);
         } else if (defined('WOOCOMMERCE_VERSION') && WOOCOMMERCE_VERSION) {
-            return version_compare(WOOCOMMERCE_VERSION, $version, '>=');
+            return version_compare(WOOCOMMERCE_VERSION, $version, $compare);
         } else {
             return false;
         }

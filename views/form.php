@@ -27,11 +27,16 @@ $extra_main_class = 'lrm-btn-style--' . lrm_setting('skins/skin/btn_style');
 $fieldset_submit_class = 'fieldset--' . lrm_setting('skins/skin/btn_style');
 
 $users_can_register = apply_filters('lrm/users_can_register', get_option("users_can_register") );
+$register_additional_atts_arr = apply_filters( 'lrm/additional_atts', [] );
+$register_additional_atts = '';
+foreach ($register_additional_atts_arr as $att => $value) {
+    $register_additional_atts .= sprintf( ' %s="%s"', $att, esc_attr($value) );
+}
 
 ?>
 -->
-<div class="lrm-main lrm-font-<?= $icons_class; ?> <?php echo !$is_inline ? 'lrm-user-modal' : 'lrm-inline is-visible'; ?> <?= esc_attr($extra_main_class); ?>" <?php echo !$is_inline ? 'style="visibility: hidden;"' : ''?>> <!-- this is the entire modal form, including the background -->
-<!--<div class="lrm-user-modal" style="visibility: hidden;">  this is the entire modal form, including the background -->
+<div class="lrm-main lrm-font-<?= $icons_class; ?> <?php echo !$is_inline ? 'lrm-user-modal' : 'lrm-inline is-visible'; ?> <?= esc_attr($extra_main_class); ?>" <?php echo !$is_inline ? 'style="visibility: hidden;"' : ''?>>
+    <!--<div class="lrm-user-modal" style="visibility: hidden;">  this is the entire modal form, including the background -->
 
     <div class="lrm-user-modal-container"> <!-- this is the container wrapper -->
         <div class="lrm-user-modal-container-inner"> <!-- this is the container wrapper -->

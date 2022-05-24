@@ -28,12 +28,12 @@
             <div class="fieldset">
                 <?php if ( apply_filters('lrm/form/use_nice_checkbox', true) ): ?>
                     <label class="lrm-nice-checkbox__label lrm-remember-me-checkbox"><?php echo lrm_setting('messages/login/remember-me', true); ?>
-                        <input type="checkbox" class="lrm-nice-checkbox lrm-remember-me" name="remember-me" checked>
+                        <input type="checkbox" class="lrm-nice-checkbox lrm-remember-me" name="remember-me" <?php echo apply_filters('lrm/form/remember_me_checked', 'checked'); ?>>
                         <div class="lrm-nice-checkbox__indicator"></div>
                     </label>
                 <?php else: ?>
                     <label class="lrm-remember-me-checkbox">
-                        <input type="checkbox" class="lrm-remember-me" name="remember-me" checked>
+                        <input type="checkbox" class="lrm-remember-me" name="remember-me" <?php echo apply_filters('lrm/form/remember_me_checked', 'checked'); ?>>
                         <?php echo lrm_setting('messages/login/remember-me', true); ?>
                     </label>
                 <?php endif; ?>
