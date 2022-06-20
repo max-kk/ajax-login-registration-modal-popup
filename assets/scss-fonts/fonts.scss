@@ -9,22 +9,22 @@ $use_SVG_icons: true;
 @mixin lrm-font-icon( $icomoon-font-code, $material-font-code, $fa4-font-code, $fa5-font-code ) {
     .lrm-font-icomoon & {
         &:before {
-            content: unquote("\"\\#{$icomoon-font-code}\"");
+            content: unquote('"#{$icomoon-font-code}"');
         }
     }
     .lrm-font-material & {
         &:before {
-            content: unquote("\"\\#{$material-font-code}\"");
+            content: unquote('"#{$material-font-code}"');
         }
     }
     .lrm-font-fa4 & {
         &:before {
-            content: unquote("\"\\#{$fa4-font-code}\"");
+            content: unquote('"#{$fa4-font-code}"');
         }
     }
     .lrm-font-fa5-free & {
         &:before {
-            content: unquote("\"\\#{$fa5-font-code}\"");
+            content: unquote('"\\#{$fa5-font-code}"');
         }
     }
 }

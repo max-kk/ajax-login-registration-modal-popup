@@ -1,4 +1,3 @@
-@charset "UTF-8";
 /*! ====================================
     Public styles for LRM
     Compiled from SCSS
@@ -132,8 +131,7 @@ ul.lrm-switcher {
   }
 }
 .lrm-form .gform_wrapper ul.gform_fields li.gfield,
-.lrm-form .gform_wrapper .gform_footer,
-.lrm-form .gform_wrapper .gform_heading,
+.lrm-form .gform_wrapper,
 .lrm-form .lrm-fieldset-wrap,
 .lrm-form #buddypress #register-page,
 #buddypress .lrm-form #register-page,
@@ -142,8 +140,7 @@ ul.lrm-switcher {
 }
 @media only screen and (min-width: 600px) {
   .lrm-form .gform_wrapper ul.gform_fields li.gfield .lrm-form .fieldset,
-.lrm-form .gform_wrapper .gform_footer .lrm-form .fieldset,
-.lrm-form .gform_wrapper .gform_heading .lrm-form .fieldset,
+.lrm-form .gform_wrapper .lrm-form .fieldset,
 .lrm-form .lrm-fieldset-wrap .lrm-form .fieldset,
 .lrm-form #buddypress #register-page .lrm-form .fieldset,
 #buddypress .lrm-form #register-page .lrm-form .fieldset,
@@ -191,7 +188,7 @@ ul.lrm-switcher {
   height: 21px;
   width: 22px;
   overflow: hidden;
-  color: #d2d8d8;
+  color: rgb(210, 216, 216);
   white-space: nowrap;
   text-shadow: none;
   background-repeat: no-repeat;
@@ -332,7 +329,7 @@ ul.lrm-switcher {
   height: 21px;
   width: 22px;
   overflow: hidden;
-  color: #d2d8d8;
+  color: rgb(210, 216, 216);
   white-space: nowrap;
   text-shadow: none;
   background-repeat: no-repeat;
@@ -537,25 +534,20 @@ html.html-has-lrm {
 .lrm-col-1-2 {
     width: 50%;
   }
-
   .lrm-col-1-3 {
     width: 33.333%;
   }
-
   .lrm-col-2-3 {
     width: 66.666%;
   }
-
   .lrm-col-1-4 {
     width: 25%;
   }
-
   .lrm-col {
     float: left;
     clear: none;
     padding: 0 5px 0 !important;
   }
-
   .lrm-row {
     margin: 1.4em -5px;
   }
@@ -881,6 +873,11 @@ a.jetpack-sso {
     max-width: 100% !important;
   }
 }
+.lrm-signup-section .gform_confirmation_message {
+  font-size: 24px;
+  margin: 20px 0;
+  padding: 0 1.4em !important;
+}
 
 .lrm-nice-checkbox {
   position: absolute;
@@ -957,143 +954,143 @@ body.rtl .lrm-nice-checkbox__indicator {
 }
 
 .lrm-font-icomoon .lrm-ficon-user:before {
-  content: "\";
+  content: "\e904";
 }
 .lrm-font-material .lrm-ficon-user:before {
-  content: "\";
+  content: "\e901";
 }
 .lrm-font-fa4 .lrm-ficon-user:before {
-  content: "\";
+  content: "\f007";
 }
 .lrm-font-fa5-free .lrm-ficon-user:before {
   content: "\f007";
 }
 
 .lrm-font-icomoon .lrm-ficon-eye:before {
-  content: "\";
+  content: "\e902";
 }
 .lrm-font-material .lrm-ficon-eye:before {
-  content: "\";
+  content: "\e8f4";
 }
 .lrm-font-fa4 .lrm-ficon-eye:before {
-  content: "\";
+  content: "\f06e";
 }
 .lrm-font-fa5-free .lrm-ficon-eye:before {
   content: "\f06e";
 }
 
 .lrm-font-icomoon .lrm-ficon-eye-blocked:before {
-  content: "\";
+  content: "\e901";
 }
 .lrm-font-material .lrm-ficon-eye-blocked:before {
-  content: "\";
+  content: "\e8f5";
 }
 .lrm-font-fa4 .lrm-ficon-eye-blocked:before {
-  content: "\";
+  content: "\f070";
 }
 .lrm-font-fa5-free .lrm-ficon-eye-blocked:before {
   content: "\f070";
 }
 
 .lrm-font-icomoon .lrm-ficon-key:before {
-  content: "\";
+  content: "\e903";
 }
 .lrm-font-material .lrm-ficon-key:before {
-  content: "\";
+  content: "\e0da";
 }
 .lrm-font-fa4 .lrm-ficon-key:before {
-  content: "\";
+  content: "\f13e";
 }
 .lrm-font-fa5-free .lrm-ficon-key:before {
   content: "\f084";
 }
 
 .lrm-font-icomoon .lrm-ficon-lock:before {
-  content: "\";
+  content: "\e900";
 }
 .lrm-font-material .lrm-ficon-lock:before {
-  content: "\";
+  content: "\e897";
 }
 .lrm-font-fa4 .lrm-ficon-lock:before {
-  content: "\";
+  content: "\f023";
 }
 .lrm-font-fa5-free .lrm-ficon-lock:before {
   content: "\f023";
 }
 
 .lrm-font-icomoon .lrm-ficon-mail:before {
-  content: "\";
+  content: "\e906";
 }
 .lrm-font-material .lrm-ficon-mail:before {
-  content: "\";
+  content: "\e0e1";
 }
 .lrm-font-fa4 .lrm-ficon-mail:before {
-  content: "\";
+  content: "\f003";
 }
 .lrm-font-fa5-free .lrm-ficon-mail:before {
   content: "\f0e0";
 }
 
 .lrm-font-icomoon .lrm-ficon-login:before {
-  content: "\";
+  content: "\e908";
 }
 .lrm-font-material .lrm-ficon-login:before {
-  content: "\";
+  content: "\e879";
 }
 .lrm-font-fa4 .lrm-ficon-login:before {
-  content: "\";
+  content: "\f090";
 }
 .lrm-font-fa5-free .lrm-ficon-login:before {
   content: "\f2f6";
 }
 
 .lrm-font-icomoon .lrm-ficon-register:before {
-  content: "\";
+  content: "\e907";
 }
 .lrm-font-material .lrm-ficon-register:before {
-  content: "\";
+  content: "\e7fe";
 }
 .lrm-font-fa4 .lrm-ficon-register:before {
-  content: "\";
+  content: "\f234";
 }
 .lrm-font-fa5-free .lrm-ficon-register:before {
   content: "\f234";
 }
 
 .lrm-font-icomoon .lrm-ficon-close:before {
-  content: "\";
+  content: "\e914";
 }
 .lrm-font-material .lrm-ficon-close:before {
-  content: "\";
+  content: "\e902";
 }
 .lrm-font-fa4 .lrm-ficon-close:before {
-  content: "\";
+  content: "\e901";
 }
 .lrm-font-fa5-free .lrm-ficon-close:before {
   content: "\f00d";
 }
 
 .lrm-font-icomoon .lrm-ficon-phone:before {
-  content: "\";
+  content: "\e90a";
 }
 .lrm-font-material .lrm-ficon-phone:before {
-  content: "\";
+  content: "\e0cd";
 }
 .lrm-font-fa4 .lrm-ficon-phone:before {
-  content: "\";
+  content: "\f095";
 }
 .lrm-font-fa5-free .lrm-ficon-phone:before {
   content: "\f095";
 }
 
 .lrm-font-icomoon .lrm-ficon-mobile-phone:before {
-  content: "\";
+  content: "\e909";
 }
 .lrm-font-material .lrm-ficon-mobile-phone:before {
-  content: "\";
+  content: "\e324";
 }
 .lrm-font-fa4 .lrm-ficon-mobile-phone:before {
-  content: "\";
+  content: "\f10b";
 }
 .lrm-font-fa5-free .lrm-ficon-mobile-phone:before {
   content: "\f3cd";
@@ -1104,13 +1101,13 @@ body.rtl .lrm-nice-checkbox__indicator {
 }
 
 .lrm-font-icomoon .lrm-ficon-location:before {
-  content: "\";
+  content: "\e90d";
 }
 .lrm-font-material .lrm-ficon-location:before {
-  content: "\";
+  content: "\e568";
 }
 .lrm-font-fa4 .lrm-ficon-location:before {
-  content: "\";
+  content: "\f041";
 }
 .lrm-font-fa5-free .lrm-ficon-location:before {
   content: "\f3c5";
@@ -1121,26 +1118,26 @@ body.rtl .lrm-nice-checkbox__indicator {
 }
 
 .lrm-font-icomoon .lrm-ficon-map:before {
-  content: "\";
+  content: "\e90b";
 }
 .lrm-font-material .lrm-ficon-map:before {
-  content: "\";
+  content: "\e55b";
 }
 .lrm-font-fa4 .lrm-ficon-map:before {
-  content: "\";
+  content: "\f278";
 }
 .lrm-font-fa5-free .lrm-ficon-map:before {
   content: "\f279";
 }
 
 .lrm-font-icomoon .lrm-ficon-compass:before {
-  content: "\";
+  content: "\e90c";
 }
 .lrm-font-material .lrm-ficon-compass:before {
-  content: "\";
+  content: "\e7f1";
 }
 .lrm-font-fa4 .lrm-ficon-compass:before {
-  content: "\";
+  content: "\f124";
 }
 .lrm-font-fa5-free .lrm-ficon-compass:before {
   content: "\f124";
@@ -1218,13 +1215,13 @@ body.rtl .lrm-nice-checkbox__indicator {
   height: auto;
 }
 .lrm-font-icomoon .hide-password--on:before {
-  content: "\";
+  content: "\e901";
 }
 .lrm-font-material .hide-password--on:before {
-  content: "\";
+  content: "\e8f5";
 }
 .lrm-font-fa4 .hide-password--on:before {
-  content: "\";
+  content: "\f070";
 }
 .lrm-font-fa5-free .hide-password--on:before {
   content: "\f070";

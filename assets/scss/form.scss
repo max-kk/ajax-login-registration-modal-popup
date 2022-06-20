@@ -1,3 +1,5 @@
+@charset "utf-8";
+
 $fieldset-margin-tb: 1.4em;
 $fieldset-side-padding: 1.4em;
 $fieldset-side-padding-mobile: 2em;
@@ -35,8 +37,8 @@ $fieldset-side-padding-mobile: 2em;
     //}
 
     .gform_wrapper ul.gform_fields li.gfield,
-    .gform_wrapper .gform_footer,
-    .gform_wrapper .gform_heading,
+    .gform_wrapper,
+    //.gform_wrapper .gform_heading,
     .lrm-fieldset-wrap,
     .fieldset--default {
         padding: 0 $fieldset-side-padding !important;

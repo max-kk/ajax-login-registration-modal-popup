@@ -259,13 +259,22 @@ class LRM_Core {
 		    return;
 	    }
 
-	    wp_enqueue_style('lrm-modal', LRM_URL . 'assets/lrm-core-compiled.css', false, LRM_ASSETS_VER);
+        $assets_ver = LRM_ASSETS_VER;
+
+        if ( self::is_dev_env() ) {
+            $assets_ver = filemtime(LRM_PATH . 'assets/lrm-core-compiled.css');
+        }
+	    wp_enqueue_style('lrm-modal', LRM_URL . 'assets/lrm-core-compiled.css', false, $assets_ver);
 
 	    LRM_Skins::i()->load_current_skin_assets();
 	    //wp_enqueue_style('lrm-fonts', LRM_URL . 'assets/fonts.css', false, LRM_ASSETS_VER);
 
 	    $required_scripts = array('jquery');
-	    wp_enqueue_script('lrm-modal', LRM_URL . 'assets/lrm-core.js', $required_scripts, LRM_ASSETS_VER, true);
+        if ( self::is_dev_env() ) {
+            $assets_ver = filemtime(LRM_PATH . 'assets/lrm-core.js');
+        }
+
+	    wp_enqueue_script('lrm-modal', LRM_URL . 'assets/lrm-core.js', $required_scripts, $assets_ver, true);
 	    //wp_enqueue_style('lrm-modal-skin', LRM_URL . 'assets/lrm-skin.css', false, LRM_ASSETS_VER);
 
         $ajax_url = add_query_arg( 'lrm', '1', site_url('/') );
@@ -357,5 +366,9 @@ class LRM_Core {
         }
 
         return self::$instance;
+    }
+
+    static function is_dev_env() {
+        return function_exists('wp_get_environment_type') && wp_get_environment_type() === 'development';
     }
 }

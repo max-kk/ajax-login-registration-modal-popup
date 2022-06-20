@@ -393,9 +393,9 @@ var LRM = LRM ? LRM : {};
 			$(document).triggerHandler("lrm/show_modal", $formModal);
 		}
 
-		$(document).on('submit', '.js-lrm-form', lrm_submit_form);
+		$(document).on('submit', '.js-lrm-form', window.lrm_submit_form);
 
-		function lrm_submit_form(event) {
+		window.lrm_submit_form = function(event) {
 			if (LRM.is_customize_preview) {
 				alert("Not possible to submit form in Preview Mode!");
 				return;
@@ -502,6 +502,12 @@ var LRM = LRM ? LRM : {};
 					$form.find(".lrm-button-loader").remove();
 					$form.removeClass("--is-submitting");
 
+					if ( jqXHR.responseText.indexOf("GF_AJAX_POSTBACK") > 0 ) {
+						$(document).triggerHandler('lrm_gf_ajax', [jqXHR.responseText, jqXHR.status, $form, $form.data("action")]);
+						console.log('GF_AJAX_POSTBACK found');
+						return;
+					}
+
 					if ( 503 === jqXHR.status && jqXHR.responseText.indexOf("ERROR") > 0 ) {
 						LRM_Form.set_message( $form, jqXHR.responseText, false );
 					} else {
@@ -595,6 +601,11 @@ var LRM = LRM ? LRM : {};
 	window.LRM_Form = {
 		set_message: function($form, message_html, is_error) {
 			var $message = $form.find(".lrm-form-message");
+
+			if ( 0 === $message.length && $form.hasClass("signup-form") ) {
+				$form.prepend( '<div class="lrm-form-message"></div>' );
+				$message = $form.find(".lrm-form-message");
+			}
 
 			// Tweak in case this selector is Missing
 			if ( 0 !== $message.length ) {
