@@ -393,8 +393,6 @@ var LRM = LRM ? LRM : {};
 			$(document).triggerHandler("lrm/show_modal", $formModal);
 		}
 
-		$(document).on('submit', '.js-lrm-form', window.lrm_submit_form);
-
 		window.lrm_submit_form = function(event) {
 			if (LRM.is_customize_preview) {
 				alert("Not possible to submit form in Preview Mode!");
@@ -526,6 +524,8 @@ var LRM = LRM ? LRM : {};
 
 			return false;
 		}
+
+		$(document).on('submit', '.js-lrm-form', window.lrm_submit_form);
 
 		/**
 		 * @since 1.51

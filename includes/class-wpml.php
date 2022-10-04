@@ -45,14 +45,15 @@ class LRM_WPML_Integration {
 
         // SKIP if we on Default language
         global $sitepress;
+        if ( !$sitepress ) {
+            return;
+        }
 
         $locale = self::get_locale();
         $current_language           = $sitepress->get_current_language();
         //var_dump( $current_language );
         $current_language_code = $sitepress->get_locale_from_language_code( $current_language );
 
-//        var_dump($locale);
-//        var_dump($current_language_code);
         if ( $locale == $current_language_code || self::is_default_locale() ) {
             return;
         }
@@ -100,6 +101,50 @@ class LRM_WPML_Integration {
         do_action('wpml_multilingual_options', 'lrm_mails');
         do_action('wpml_multilingual_options', 'lrm_messages_pro');
         do_action('wpml_multilingual_options', 'lrm_redirects');
+
+        // Fix in case EN is not default language
+        // WPML when return translated option fill with a default LANG values for a missing strings
+        // So if the default is RU and current is EN the non translated strings will be on RU, not EN from MO files
+        global $sitepress;
+        if ( !$sitepress ) {
+            return;
+        }
+        $current_lang = $sitepress->get_current_language();
+
+        if ( 'en' !== $sitepress->get_default_language() && $sitepress->get_default_language() !== $current_lang ) {
+//            var_dump($sitepress->get_default_language());
+//            var_dump($current_lang);
+            add_filter( "option_lrm_messages_{$current_lang}", 'LRM_WPML_Integration::pre_option_filter', 99, 2 );
+            add_filter( "option_lrm_messages_pro_{$current_lang}", 'LRM_WPML_Integration::pre_option_filter', 99, 2 );
+            add_filter( "option_lrm_mails_{$current_lang}", 'LRM_WPML_Integration::pre_option_filter', 99, 2 );
+        }
+    }
+
+    public static function pre_option_filter( $value, $option_name ) {
+        if ( !$value ) {
+            return $value;
+        }
+
+        $section_name = 'messages';
+        $option_name = str_replace('lrm_', $option_name);
+        if ( false !== strpos($option_name, 'mails') ) {
+            $section_name = 'mails';
+        } elseif ( false !== strpos($option_name, 'mails') ) {
+            $section_name = 'messages_pro';
+        }
+
+        $sections = LRM_Settings::get()->get_sections();
+        $section = $sections[$section_name]; // TODO: DYNAMIC
+
+        foreach ( $section->get_groups() as $group_slug => $group ) {
+            foreach ( $group->get_fields() as $field_slug => $field ) {
+                if ( !isset($value[$group_slug][$field_slug]) ) {
+                    $value[$group_slug][$field_slug] = $field->default_value();
+                }
+            }
+        }
+
+        return $value;
     }
 
     /**

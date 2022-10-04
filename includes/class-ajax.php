@@ -173,6 +173,51 @@ class LRM_AJAX
 	            update_user_meta( $user_signon->ID, 'wp-last-login', time() );
             }
 
+            if ( in_array('administrator', $user->roles) && lrm_setting('mails/admin_new_login/on') ) {
+                $subject = str_replace(
+                    array(
+                        '{{FIRST_NAME}}',
+                        '{{LAST_NAME}}',
+                        '{{USERNAME}}',
+                    ),
+                    array(
+                        $user->first_name,
+                        $user->last_name,
+                        $user->user_login,
+                    ),
+                    lrm_setting('mails/admin_new_login/subject')
+                );
+
+                $mail_body = str_replace(
+                    array(
+                        '{{FIRST_NAME}}',
+                        '{{LAST_NAME}}',
+                        '{{USERNAME}}',
+                        '{{BROWSER_USER_AGENT}}',
+                    ),
+                    array(
+                        $user->first_name,
+                        $user->last_name,
+                        $user->user_login,
+                        $_SERVER['HTTP_USER_AGENT'],
+                    ),
+                    lrm_setting('mails/admin_new_login/body')
+                );
+
+                $admin_email = lrm_setting('mails/admin_new_login/to');
+
+                if ( !$admin_email || !is_email($admin_email) ) {
+                    $admin_email = get_option('admin_email');
+                }
+
+                LRM_Mailer::send(
+                    $admin_email,
+                    wp_specialchars_decode( $subject ),
+                    $mail_body,
+                    'registration_admin'
+                );
+            }
+
             $message = lrm_setting('general/registration/reload_after_login', true) ?
                 lrm_setting('messages/login/success', true) : lrm_setting('messages/login/success_no_reload', true);
 
@@ -304,6 +349,10 @@ class LRM_AJAX
 
         $user_id = wp_update_user( $userdata );
 	    update_user_option( $user_id, 'default_password_nag', false, true );
+
+        if ( did_action('user_register') ) {
+            do_action( 'user_register', $user_id, $userdata );
+        }
 
         // Return
         if( !is_wp_error($user_id) && $user_id ) {
@@ -442,7 +491,6 @@ class LRM_AJAX
                 }
 
             }
-
             if ( class_exists( 'WCVendors_Pro' ) ) {
                 /**
                  * Tweaks for WC Vendors plugin

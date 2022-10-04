@@ -536,7 +536,7 @@ class LRM_Settings {
                 'slug'        => 'to',
                 'name'        => __('Send to email', 'ajax-login-and-registration-modal-popup'),
                 'default'     => '',
-                'description' => __( 'Leave empty to use the WP emai: ', 'ajax-login-and-registration-modal-popup' ). '<code>'. get_option('admin_email') . '</code>',
+                'description' => __( 'Leave empty to use the WP email: ', 'ajax-login-and-registration-modal-popup' ). '<code>'. get_option('admin_email') . '</code>',
                 'render'      => array( new LRM_Field_Text(), 'input' ),
                 'sanitize'    => array( new LRM_Field_Text(), 'sanitize' ),
             ) )
@@ -544,7 +544,7 @@ class LRM_Settings {
                 'slug'        => 'subject',
                 'name'        => __('Subject', 'ajax-login-and-registration-modal-popup'),
                 'default'     => '{{SITE_NAME}} ' . __( 'New user registration on your site:', 'ajax-login-and-registration-modal-popup' ),
-                'description' => __( 'The email Subject to user about successful registration.', 'ajax-login-and-registration-modal-popup' ),
+                'description' => __( 'The email Subject to Admin about new registration.', 'ajax-login-and-registration-modal-popup' ),
                 'render'      => array( new LRM_Field_Text(), 'input' ),
                 'sanitize'    => array( new LRM_Field_Text(), 'sanitize' ),
             ) )
@@ -560,6 +560,45 @@ class LRM_Settings {
                     'pretty'   => true,
                 ),
                 'description' => 'The email Body to admin about new user. Allowed tags: <code>{{USERNAME}}</code>, <code>{{EMAIL}}</code>, <code>{{USER_ADMIN_URL}}</code>. <br/><b>Please note</b> - in case of using Social login this email will be not triggered, so please check Social Login plugin settings for that.',
+                'render'      => array( new LRM_Field_Editor(), 'input' ),
+                'sanitize'    => array( new LRM_Field_Editor(), 'sanitize' ),
+            ) );
+
+        $EMAILS_SECTION->add_group( __( 'New administrator login notification', 'ajax-login-and-registration-modal-popup' ), 'admin_new_login', false, true )
+            ->add_field( array(
+                'slug'        => 'on',
+                'name'        => __('Send email when an admin is logged-in?', 'ajax-login-and-registration-modal-popup' ),
+                'default'     => false,
+                'render'      => array( new CoreFields\Checkbox(), 'input' ),
+                'sanitize'    => array( new CoreFields\Checkbox(), 'sanitize' ),
+            ) )
+            ->add_field( array(
+                'slug'        => 'to',
+                'name'        => __('Send to email', 'ajax-login-and-registration-modal-popup'),
+                'default'     => '',
+                'description' => __( 'Leave empty to use the WP email: ', 'ajax-login-and-registration-modal-popup' ). '<code>'. get_option('admin_email') . '</code>',
+                'render'      => array( new LRM_Field_Text(), 'input' ),
+                'sanitize'    => array( new LRM_Field_Text(), 'sanitize' ),
+            ) )
+            ->add_field( array(
+                'slug'        => 'subject',
+                'name'        => __('Subject', 'ajax-login-and-registration-modal-popup'),
+                'default'     => '{{SITE_NAME}} ' . __( 'New Admin login on your site', 'ajax-login-and-registration-modal-popup' ),
+                'render'      => array( new LRM_Field_Text(), 'input' ),
+                'sanitize'    => array( new LRM_Field_Text(), 'sanitize' ),
+            ) )
+            ->add_field( array(
+                'slug'        => 'body',
+                'name'        => __('Body', 'ajax-login-and-registration-modal-popup' ),
+                'default'     =>
+                    __('The Admin user just logged-in on the', 'ajax-login-and-registration-modal-popup' ) .' {{SITE_NAME}}.' . "\r\n\r\n" .
+                    __('Username:', 'ajax-login-and-registration-modal-popup' ) . ' {{USERNAME}}' . "\r\n\r\n" .
+                    __('Email:', 'ajax-login-and-registration-modal-popup' ) . ' {{EMAIL}}' . "\r\n\r\n" .
+                    __('Browser user agent:', 'ajax-login-and-registration-modal-popup' ) . ' {{BROWSER_USER_AGENT}}',
+                'addons'      => array(
+                    'pretty'   => true,
+                ),
+                'description' => 'The email Body to admin about new user. Allowed tags: <code>{{USERNAME}}</code>, <code>{{EMAIL}}</code>, <code>{{BROWSER_USER_AGENT}}</code>. <br/><b>Please note</b> - in case of using Social login this email will be not triggered.',
                 'render'      => array( new LRM_Field_Editor(), 'input' ),
                 'sanitize'    => array( new LRM_Field_Editor(), 'sanitize' ),
             ) );

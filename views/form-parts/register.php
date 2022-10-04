@@ -72,6 +72,8 @@
                             <span class="lrm-error-message"></span>
                         </div>
 
+                        <?php do_action( 'lrm/register_form/after_email' ); ?>
+
 	                    <?php
 	                    $pass_label = esc_attr( lrm_setting('messages/password/password', true) );
 	                    $pass_confirmation_label = esc_attr( lrm_setting('messages/password/password_confirmation', true) );
