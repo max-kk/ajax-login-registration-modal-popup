@@ -126,10 +126,10 @@ class LRM_WPML_Integration {
         }
 
         $section_name = 'messages';
-        $option_name = str_replace('lrm_', $option_name);
+        $option_name = str_replace('lrm_', '', $option_name);
         if ( false !== strpos($option_name, 'mails') ) {
             $section_name = 'mails';
-        } elseif ( false !== strpos($option_name, 'mails') ) {
+        } elseif ( false !== strpos($option_name, 'messages_pro') ) {
             $section_name = 'messages_pro';
         }
 

@@ -298,7 +298,6 @@ class LRM_Core {
 	        $validate_password_strength = 'yes';
         }
 
-        var_dump(apply_filters( 'lrm/js/allow_weak_password', false ));
 	    if ( apply_filters( 'lrm/js/allow_weak_password', false ) ) {
 		    $validate_password_strength = 'yes_allow_weak';
 	    }
