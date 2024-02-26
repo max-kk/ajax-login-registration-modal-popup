@@ -89,7 +89,7 @@ class Settings {
 		if ( isset( $_GET['section'] ) && ! empty( $_GET['section'] ) ) {
 			$current_section = $_GET['section'];
 		} else {
-			$current_section = key( $this->get_sections() );
+			$current_section = key( $sections );
 		}
 
 		include( $this->path . '/views/settings-page.php' );

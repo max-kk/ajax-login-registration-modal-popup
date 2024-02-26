@@ -7,7 +7,7 @@ $fieldset-side-padding-mobile: 2em;
 
 /* form.scss */
 .lrm-form {
-    padding: .5em 0 0 !important;
+    padding: $fieldset-margin-tb 0 0 !important;
     //padding: .5em 0 .1em !important;
     .lrm-btn-style--full-width & {
         padding-bottom: 0 !important;
@@ -22,8 +22,8 @@ $fieldset-side-padding-mobile: 2em;
 
     .fieldset {
         position: relative;
-        margin: $fieldset-margin-tb 0;
-        padding: 0 !important;
+        margin: 0 0 $fieldset-margin-tb 0;
+        padding: 0 5px !important;
         clear: both;
         @include respond-to(min-width, 600px) {
             .lrm-form .fieldset {

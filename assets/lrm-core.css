@@ -246,6 +246,9 @@ ul.lrm-switcher {
 .lrm-form .lrm-integrations input[type="tel"],
 .lrm-form .lrm-integrations input[type="email"],
 .lrm-form .lrm-integrations input[type="number"],
+.lrm-form .lrm-integrations input[type="url"],
+.lrm-form .lrm-integrations input[type="date"],
+.lrm-form .lrm-integrations input[type="password"],
 .lrm-form .lrm-integrations select{
     border: 1px solid #d2d8d8;
     -webkit-appearance: none;
@@ -263,6 +266,9 @@ ul.lrm-switcher {
 .lrm-form .lrm-integrations input[type="tel"]:focus,
 .lrm-form .lrm-integrations input[type="number"]:focus,
 .lrm-form .lrm-integrations input[type="email"]:focus,
+.lrm-form .lrm-integrations input[type="url"],
+.lrm-form .lrm-integrations input[type="date"],
+.lrm-form .lrm-integrations input[type="password"]:focus,
 .lrm-form .lrm-integrations select:focus{
     border-color: #343642;
     box-shadow: 0 0 5px rgba(52, 54, 66, 0.1);

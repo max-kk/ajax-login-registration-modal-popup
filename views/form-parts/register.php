@@ -49,7 +49,7 @@
 	                    <?php endif; ?>
 
                         <?php if( lrm_setting('general/registration/display_first_and_last_name') ): ?>
-                            <div class="clearfix lrm-row">
+<!--                            <div class="clearfix lrm-row">-->
                                 <?php $fname_label = esc_attr( lrm_setting('messages/registration/first-name', true) );; ?>
                                 <?php $lname_label = esc_attr( lrm_setting('messages/registration/last-name', true) ); ?>
                                 <div class="lrm-col-half-width lrm-col-first fieldset--first-name lrm-col">
@@ -62,7 +62,7 @@
                                     <input name="last-name" class="full-width has-padding has-border" id="signup-last-name" type="text" placeholder="<?= $lname_label; ?>" aria-label="<?= $lname_label; ?>" autocomplete="off" data-lpignore="true">
                                     <span class="lrm-error-message"></span>
                                 </div>
-                            </div>
+<!--                            </div>-->
                         <?php endif; ?>
 
                         <div class="fieldset fieldset--email">

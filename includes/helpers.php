@@ -88,3 +88,7 @@ if (!function_exists('lrm_wc_version_gte')) {
         }
     }
 }
+
+function lrm_get_random_number() {
+    return rand(999, 9999);
+}

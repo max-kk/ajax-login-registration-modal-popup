@@ -85,7 +85,7 @@ class Group {
 			throw new \Exception( 'Group slug cannot be empty' );
 		}
 
-		$this->slug( sanitize_title( $slug ) );
+		$this->slug( sanitize_key( $slug ) );
 
 		if ( empty( $section ) ) {
 			throw new \Exception( 'Group must belong to Section' );

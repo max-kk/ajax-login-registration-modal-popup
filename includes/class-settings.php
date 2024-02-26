@@ -37,7 +37,7 @@ class LRM_Settings {
 
         add_action( 'admin_notices', array( $this, 'beg_for_review' ) );
 
-        lrm_dismissible_notice( 'v2',
+        lrm_dismissible_notice( 'v21',
             sprintf(
                 '<strong>AJAX Login & registration modal notice:</strong> you have installed version 2.0 that contains a lot of updates and tweaks. Please review your settings and reconfigure <a href="%s">after-login/registration actions</a>!',
                 admin_url('options-general.php?page=login-and-register-popup&section=redirects')
@@ -101,9 +101,24 @@ class LRM_Settings {
             'Login/Register modal',
             'manage_options',
             $this->page_id,
-            array( $this->settings, 'settings_page' )
+            array( $this, 'settings_page' )
         );
 
+    }
+
+    /**
+     * Settings page output
+     * @return void
+     */
+    public function settings_page() {
+        if ( !isset($_GET['lrm_form_ID']) ) {
+            $this->settings->settings_page();
+        } else {
+            $form_ID = $_GET['lrm_form_ID'];
+            $form = get_post( $form_ID );
+
+            require LRM_PRO_PATH . '/formbuilder/views/form.php';
+        }
     }
 
     /**

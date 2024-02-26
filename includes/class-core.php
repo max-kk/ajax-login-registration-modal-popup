@@ -91,11 +91,13 @@ class LRM_Core {
 	    $redirect_to = !empty( $atts['redirect_to'] ) ? $atts['redirect_to'] : false;
 
         if ( !$redirect_to && !empty( $_GET['redirect_to'] ) ) {
-	        $redirect_to = urldecode($_GET['redirect_to']);
+            $redirect_to = urldecode($_GET['redirect_to']);
         }
 
+        $redirect_to = wp_validate_redirect( $redirect_to, apply_filters( 'wp_safe_redirect_fallback', home_url(), 200 ) );
+
         ob_start();
-            $this->render_form( true, $atts['default_tab'], $atts['role'], $atts['role_silent'], $atts['redirect_to'] );
+            $this->render_form( true, $atts['default_tab'], $atts['role'], $atts['role_silent'], $redirect_to );
         return ob_get_clean(  );
     }
 
@@ -296,6 +298,7 @@ class LRM_Core {
 	        $validate_password_strength = 'yes';
         }
 
+        var_dump(apply_filters( 'lrm/js/allow_weak_password', false ));
 	    if ( apply_filters( 'lrm/js/allow_weak_password', false ) ) {
 		    $validate_password_strength = 'yes_allow_weak';
 	    }

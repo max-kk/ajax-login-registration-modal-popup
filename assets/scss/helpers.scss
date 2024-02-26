@@ -16,6 +16,7 @@ html.html-has-lrm {
 
 .lrm-col {
     position: relative;
+    margin: 0 0 $fieldset-margin-tb 0;
 }
 
 .lrm-row {
@@ -44,7 +45,7 @@ html.html-has-lrm {
     }
 
     .lrm-row {
-        margin: $fieldset-margin-tb -5px;
+        margin: $fieldset-margin-tb 0;
     }
 }
 

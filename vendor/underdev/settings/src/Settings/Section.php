@@ -61,7 +61,7 @@ class Section {
 			throw new \Exception( 'Section slug cannot be empty' );
 		}
 
-		$this->slug( sanitize_title( $slug ) );
+		$this->slug( sanitize_key( $slug ) );
 
 		$this->export( $export );
 	}

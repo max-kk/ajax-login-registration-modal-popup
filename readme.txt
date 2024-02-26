@@ -2,7 +2,7 @@
 Contributors: kaminskym
 Tags: login, registration, register, lost password, modal, popup, ajax, form
 Requires at least: 4.1
-Tested up to: 5.9.3
+Tested up to: 6.2
 Requires PHP: 5.5
 Stable tag: trunk
 License: GPLv2 or later
@@ -53,7 +53,7 @@ Easy to integrate modal with Login and Registration features + inline form using
 
 **Roadmap**
 
-* +Allow include form to page content (without modal) (done in version 1.41)
+* +Allow to include form to page content (without modal) (done in version 1.41)
 * +Colors/styles customizer [implemented via WP Customizer]
 * +Documentation and Videos [done] - https://docs.maxim-kaminsky.com/lrm/
 * +WooCommerce Login/Registration form integration (done in PRO version 1.28)
@@ -158,13 +158,13 @@ jQuery(document).on('lrm_user_logged_in', function(response, $form) {
 });
 `
 
-For call from From JS modal with login tab:
+To call from the JS modal with login tab:
 
 `
 jQuery(document).trigger('lrm_show_signup');
 `
 
-For call from From JS modal with registration tab:
+To call from JS modal with registration tab:
 
 `
 jQuery(document).trigger('lrm_show_login');
@@ -209,6 +209,12 @@ If you have login issue with Adminize plugin - go to Adminize plugin settings an
 - With Theme my login (TML) plugin (3 Password fields on the Create Account tab, if enable password field in LRM and TML)
 
 == Changelog ==
+
+= VER 2.23 - 02/03/2023 =
+
+- Tested with WordPress version to 6.2
+- Fix for sanitize_title function
+- JS tweaks to avoid JQMIGRATE warnings
 
 = VER 2.22 - 23/05/2022 =
 

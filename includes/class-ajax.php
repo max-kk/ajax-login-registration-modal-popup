@@ -357,8 +357,8 @@ class LRM_AJAX
         // Return
         if( !is_wp_error($user_id) && $user_id ) {
 
-            do_action('lrm/registration_successful', $user_id);
-
+            do_action('lrm/registration_successful', $user_id, $userdata);
+            
             /**
              * Tweak in case other plugins has changed user login during insert to DB
              * @since 1.41
@@ -774,16 +774,17 @@ class LRM_AJAX
 
             //setcookie( $rp_cookie, ' ', time() - YEAR_IN_SECONDS, $rp_path, COOKIE_DOMAIN, is_ssl(), true );
             if ( $user && $user->get_error_code() === 'expired_key' ) {
-                $errors->add('invalidkey', __('Your password reset link appears to be invalid.') . $request_msg);
+                $errors->add( 'expiredkey', __( '<strong>Error</strong>: Your password reset link has expired. Please request a new link below.' ) );
+                //$errors->add('invalidkey', __('Your password reset link appears to be invalid.') . $request_msg);
                 //wp_redirect( site_url( 'wp-login.php?action=lostpassword&error=expiredkey' ) );
             } else {
-                $errors->add('expiredkey', __('Your password reset link has expired.') . $request_msg);
+                $errors->add( 'invalidkey', __( '<strong>Error</strong>: Your password reset link appears to be invalid. Please request a new link below.' ) );
+                //$errors->add('expiredkey', __('Your password reset link has expired.') . $request_msg);
                 //wp_redirect( site_url( 'wp-login.php?action=lostpassword&error=invalidkey' ) );
             }
         }
 
         return [$rp_key, $rp_login, $rp_path, $user];
-
     }
 
     public static function _verify_nonce( $post_key, $nonce_key ) {

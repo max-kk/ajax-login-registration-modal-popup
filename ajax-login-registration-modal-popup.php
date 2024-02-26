@@ -59,3 +59,4 @@ if (!SHORTINIT && !defined("LRM_IN_BUILD_FREE")) {
      */
     register_deactivation_hook( __FILE__, array( 'LRM_Deactivator', 'deactivate' ) );
 }
+

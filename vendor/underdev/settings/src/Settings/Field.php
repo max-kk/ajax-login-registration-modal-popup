@@ -101,7 +101,7 @@ class Field {
 			throw new \Exception( 'Field slug cannot be empty' );
 		}
 
-		$this->slug( sanitize_title( $slug ) );
+		$this->slug( sanitize_key( $slug ) );
 
 
 		if ( empty( $section ) || empty( $group ) ) {
