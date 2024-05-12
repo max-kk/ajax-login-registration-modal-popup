@@ -60,7 +60,7 @@
             </div>
         </div>
 
-		<input type="hidden" name="redirect_to" value="<?= $redirect_to; ?>">
+		<input type="hidden" name="redirect_to" value="<?= esc_attr($redirect_to); ?>">
 		<input type="hidden" name="lrm_action" value="login">
 		<input type="hidden" name="wp-submit" value="1">
 		<!-- Fix for Eduma WP theme-->

@@ -2,7 +2,7 @@
 Contributors: kaminskym
 Tags: login, registration, register, lost password, modal, popup, ajax, form
 Requires at least: 4.1
-Tested up to: 6.2
+Tested up to: 6.5.3
 Requires PHP: 5.5
 Stable tag: trunk
 License: GPLv2 or later
@@ -209,6 +209,10 @@ If you have login issue with Adminize plugin - go to Adminize plugin settings an
 - With Theme my login (TML) plugin (3 Password fields on the Create Account tab, if enable password field in LRM and TML)
 
 == Changelog ==
+
+= VER 2.23 - 02/03/2023 =
+
+- Tested with WordPress version to 6.2
 
 = VER 2.23 - 02/03/2023 =
 

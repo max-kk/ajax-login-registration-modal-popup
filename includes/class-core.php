@@ -85,7 +85,7 @@ class LRM_Core {
         $atts['role_silent'] = ($atts['role_silent'] || $atts['role_silent'] === 'yes') ? true : false;
 
         if ( !is_customize_preview() && is_user_logged_in() ) {
-            return $atts['logged_in_message'];
+            return esc_html($atts['logged_in_message']);
         }
 
 	    $redirect_to = !empty( $atts['redirect_to'] ) ? $atts['redirect_to'] : false;
@@ -109,7 +109,7 @@ class LRM_Core {
 
 
         if ( !is_customize_preview() && is_user_logged_in() ) {
-            return $atts['logged_in_message'];
+            return esc_html($atts['logged_in_message']);
         }
 
         ob_start();

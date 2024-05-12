@@ -109,7 +109,7 @@
                                 <select name="user_role" class="full-width has-padding has-border" id="user_role" required>
                                     <option value=""><?php echo lrm_setting('messages/registration/user_role', true); ?></option>
 				                    <?php foreach ( $active_roles_list as $active_role_key => $active_role_label ) : ?>
-                                        <option value="<?= $active_role_key; ?>" data-label="<?= esc_attr($active_role_label); ?>" <?php selected($active_role_label, $role) ?>><?= $active_role_label; ?></option>
+                                        <option value="<?= esc_html($active_role_key); ?>" data-label="<?= esc_attr($active_role_label); ?>" <?php selected($active_role_label, $role) ?>><?= $active_role_label; ?></option>
 				                    <?php endforeach; ?>
                                 </select>
                                 <span class="lrm-error-message"></span>
@@ -153,7 +153,7 @@
 
 				<div class="fieldset fieldset--submit <?= esc_attr($fieldset_submit_class); ?>">
 					<button class="full-width has-padding" type="submit">
-						<?php echo lrm_setting('messages/registration/button', true); ?>
+						<?php echo esc_html( lrm_setting('messages/registration/button', true) ); ?>
 					</button>
 				</div>
 
@@ -165,7 +165,7 @@
 
                 </div>
 
-				<input type="hidden" name="redirect_to" value="<?= $redirect_to; ?>">
+				<input type="hidden" name="redirect_to" value="<?= esc_attr($redirect_to); ?>">
 				<input type="hidden" name="lrm_action" value="signup">
 				<input type="hidden" name="wp-submit" value="1">
 

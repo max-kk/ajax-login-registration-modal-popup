@@ -7,7 +7,7 @@
             <div class="fieldset">
                 <?php $email_label = esc_attr( lrm_setting('messages/lost_password/email', true) ); ?>
                 <label class="image-replace lrm-email lrm-ficon-mail" title="<?= $email_label; ?>"></label>
-                <input class="full-width has-padding has-border" name="user_login" type="text" <?= $fields_required; ?> placeholder="<?= $email_label; ?>" data-autofocus="1" aria-label="<?= $email_label; ?>">
+                <input class="full-width has-padding has-border" name="user_login" type="text" <?= $fields_required; ?> placeholder="<?= esc_attr($email_label); ?>" data-autofocus="1" aria-label="<?= esc_attr($email_label); ?>">
                 <span class="lrm-error-message"></span>
             </div>
 

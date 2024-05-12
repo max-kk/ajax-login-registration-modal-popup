@@ -35,7 +35,7 @@ foreach ($register_additional_atts_arr as $att => $value) {
 
 ?>
 -->
-<div class="lrm-main lrm-font-<?= $icons_class; ?> <?php echo !$is_inline ? 'lrm-user-modal' : 'lrm-inline is-visible'; ?> <?= esc_attr($extra_main_class); ?>" <?php echo !$is_inline ? 'style="visibility: hidden;"' : ''?>>
+<div class="lrm-main lrm-font-<?= esc_attr($icons_class); ?> <?php echo !$is_inline ? 'lrm-user-modal' : 'lrm-inline is-visible'; ?> <?= esc_attr($extra_main_class); ?>" <?php echo !$is_inline ? 'style="visibility: hidden;"' : ''?>>
     <!--<div class="lrm-user-modal" style="visibility: hidden;">  this is the entire modal form, including the background -->
 
     <div class="lrm-user-modal-container"> <!-- this is the container wrapper -->
