@@ -169,12 +169,12 @@ class LRM_Settings {
 
         // Update notice for 1.18 > 1.20
 
-        if ( ! get_option( 'lrm_beg_message' ) ) {
+        if ( true || ! get_option( 'lrm_beg_message' ) ) {
             echo '<div class="notice notice-info notification-notice"><p>';
 
             printf( __( 'Do you like "Login and Register Modal" plugin? Please consider giving it a %1$sreview%2$s', 'ajax-login-and-registration-modal-popup' ), '<a href="https://wordpress.org/support/plugin/ajax-login-and-registration-modal-popup/reviews/#new-post" class="button button-secondary" target="_blank">⭐⭐⭐⭐⭐ ', '</a>' );
 
-            echo '<a href="' . add_query_arg( array('action'=>'dismiss_rem_beg_message', '_wpnonce' => wp_create_nonce('lrm-beg-dismiss')) ) . '" class="dismiss-beg-message button" type="submit" style="float: right;">';
+            echo '<a href="' . esc_url( add_query_arg( array('action'=>'dismiss_rem_beg_message', '_wpnonce' => wp_create_nonce('lrm-beg-dismiss')) ) ) . '" class="dismiss-beg-message button" type="submit" style="float: right;">';
             _e( 'I already reviewed it', 'ajax-login-and-registration-modal-popup' );
             echo '</a>';
 

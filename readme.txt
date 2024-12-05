@@ -2,7 +2,7 @@
 Contributors: kaminskym
 Tags: login, registration, register, lost password, modal, popup, ajax, form
 Requires at least: 4.1
-Tested up to: 6.5.3
+Tested up to: 6.7
 Requires PHP: 5.5
 Stable tag: trunk
 License: GPLv2 or later
@@ -210,9 +210,10 @@ If you have login issue with Adminize plugin - go to Adminize plugin settings an
 
 == Changelog ==
 
-= VER 2.23 - 02/03/2023 =
+= VER 2.24 - 12/05/2024 =
 
-- Tested with WordPress version to 6.2
+- XSS Vulnerability fix
+- Tested with WordPress version to 6.5.3
 
 = VER 2.23 - 02/03/2023 =
 
