@@ -158,7 +158,7 @@ abstract class LRM_Updater_Abstract {
                 $setting_path = explode('/', $setting_slug);
 
                 if ( count($setting_path) !== 3 ) {
-                    throw new Exception('Invalid $setting_slug: ' . $setting_slug);
+                    throw new Exception('Invalid $setting_slug: ' . esc_html($setting_slug));
                 }
 
                 $options[$setting_path[0]][$setting_path[1]][$setting_path[2]] = $new_value;

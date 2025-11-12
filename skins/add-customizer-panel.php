@@ -9,7 +9,7 @@ add_action('customize_register', function ($wp_customize ) {
     //		 */
     $wp_customize->add_panel( 'spc_colors',
         array(
-            'title' => __( 'Theme palette' ),
+            'title' => 'Theme palette',
             //'description' => esc_html__( 'Adjust your Header and Navigation sections.' ), // Include html tags such as
 
             'priority' => 30, // Not typically needed. Default is 160

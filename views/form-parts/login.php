@@ -10,18 +10,18 @@
 
             <div class="fieldset">
                 <?php $username_label = esc_attr( lrm_setting('messages/login/username', true) ); ?>
-                <label class="image-replace lrm-email lrm-ficon-mail" title="<?= $username_label; ?>"></label>
-                <input name="username" class="full-width has-padding has-border" type="text" aria-label="<?= $username_label; ?>" placeholder="<?= $username_label; ?>" <?= $fields_required; ?> value="" autocomplete="username" data-autofocus="1">
+                <label class="image-replace lrm-email lrm-ficon-mail" title="<?php echo $username_label; ?>"></label>
+                <input name="username" class="full-width has-padding has-border" type="text" aria-label="<?php echo $username_label; ?>" placeholder="<?php echo $username_label; ?>" <?php echo $fields_required; ?> value="" autocomplete="username" data-autofocus="1">
                 <span class="lrm-error-message"></span>
             </div>
 
             <div class="fieldset">
                 <?php $pass_label = esc_attr( lrm_setting('messages/login/password', true) ); ?>
-                <label class="image-replace lrm-password lrm-ficon-key" title="<?= $pass_label; ?>"></label>
-                <input name="password" class="full-width has-padding has-border" type="password" aria-label="<?= $pass_label; ?>" placeholder="<?= $pass_label; ?>" <?= $fields_required; ?> value="">
+                <label class="image-replace lrm-password lrm-ficon-key" title="<?php echo $pass_label; ?>"></label>
+                <input name="password" class="full-width has-padding has-border" type="password" aria-label="<?php echo $pass_label; ?>" placeholder="<?php echo $pass_label; ?>" <?php echo $fields_required; ?> value="">
                 <span class="lrm-error-message"></span>
                 <?php if ( apply_filters('lrm/login_form/allow_show_pass', true) ): ?>
-                    <span class="hide-password lrm-ficon-eye" data-show="<?php echo lrm_setting('messages/other/show_pass'); ?>" data-hide="<?php echo lrm_setting('messages/other/hide_pass'); ?>" aria-label="<?php echo lrm_setting('messages/other/show_pass'); ?>"></span>
+                    <span class="hide-password lrm-ficon-eye" data-show="<?php echo esc_attr( lrm_setting('messages/other/show_pass') ); ?>" data-hide="<?php echo lrm_setting('messages/other/hide_pass'); ?>" aria-label="<?php echo esc_attr( lrm_setting('messages/other/show_pass') ); ?>"></span>
                 <?php endif; ?>
             </div>
 
@@ -48,7 +48,7 @@
 
         </div>
 
-		<div class="fieldset fieldset--submit <?= esc_attr($fieldset_submit_class); ?>">
+		<div class="fieldset fieldset--submit <?php echo esc_attr($fieldset_submit_class); ?>">
 			<button class="full-width has-padding" type="submit">
 				<?php echo lrm_setting('messages/login/button', true); ?>
 			</button>
@@ -60,7 +60,7 @@
             </div>
         </div>
 
-		<input type="hidden" name="redirect_to" value="<?= esc_attr($redirect_to); ?>">
+		<input type="hidden" name="redirect_to" value="<?php echo esc_url($redirect_to); ?>">
 		<input type="hidden" name="lrm_action" value="login">
 		<input type="hidden" name="wp-submit" value="1">
 		<!-- Fix for Eduma WP theme-->

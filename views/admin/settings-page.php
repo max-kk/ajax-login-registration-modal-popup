@@ -1,6 +1,6 @@
-<div class="wrap underdev-settings <?php echo $this->handle; ?>-settings">
+<div class="wrap underdev-settings <?php echo esc_attr($this->handle); ?>-settings">
 
-	<h1><?php _e( 'Settings', 'ajax-login-and-registration-modal-popup' ) ?><?php echo class_exists('LRM_Pro') ? " :: PRO" : ""; ?></h1>
+	<h1><?php esc_attr_e( 'Settings', 'ajax-login-and-registration-modal-popup' ) ?><?php echo class_exists('LRM_Pro') ? " :: PRO" : ""; ?></h1>
 
 	<?php if ( empty( $sections ) ): ?>
 		<p><?php _e( 'No Settings available at the moment', 'ajax-login-and-registration-modal-popup' ); ?></p>
@@ -37,11 +37,11 @@
 
 			<?php do_action( $this->handle . '/settings/section/' . $section->slug() . '/before' ); ?>
 
-			<form action="<?php echo admin_url( 'admin-post.php' ); ?>" method="post" enctype="multipart/form-data">
+			<form action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" method="post" enctype="multipart/form-data">
 
-				<?php wp_nonce_field( 'save_' . $this->handle . '_settings', 'nonce' ); ?>
+				<?php wp_nonce_field( 'save_' . esc_attr($this->handle) . '_settings', 'nonce' ); ?>
 
-				<input type="hidden" name="action" value="save_<?php echo $this->handle; ?>_settings">
+				<input type="hidden" name="action" value="save_<?php echo esc_attr($this->handle); ?>_settings">
 
 				<?php
 				/**
@@ -49,7 +49,7 @@
 				 * for form handler so it could grab the section name and parse all defined fields
 				 */
 				?>
-				<input type="hidden" name="<?php echo $this->handle . '_settings[' . $section->slug() . ']' ?>" value="section_buster">
+				<input type="hidden" name="<?php echo esc_attr($this->handle) . '_settings[' . esc_attr($section->slug()) . ']' ?>" value="section_buster">
 
 				<?php $groups  = $section->get_groups(); ?>
 

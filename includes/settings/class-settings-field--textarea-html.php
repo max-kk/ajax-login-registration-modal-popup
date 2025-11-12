@@ -14,7 +14,7 @@ class LRM_Field_Textarea_With_Html {
 
         $rows = (int)$field->addon( 'rows' ) ? $field->addon( 'rows' ) : 3;
 
-		echo '<textarea rows="' . $rows . '" id="' . $field->input_id() . '" name="' . $field->input_name() . '" class="large-text">' . stripslashes($field->value()) . '</textarea>';
+		echo '<textarea rows="' . esc_attr($rows) . '" id="' . esc_attr($field->input_id()) . '" name="' . esc_attr($field->input_name()) . '" class="large-text">' . wp_unslash($field->value()) . '</textarea>';
 
 	}
 

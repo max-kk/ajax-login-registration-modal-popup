@@ -12,7 +12,7 @@ class LRM_Field_Text {
 	 */
 	public function input( $field ) {
 
-		echo '<label><input type="text" id="' . $field->input_id() . '" name="' . $field->input_name() . '" value="' . esc_attr( stripslashes($field->value()) ) . '" class="widefat"></label>';
+		echo '<label><input type="text" id="' . esc_attr($field->input_id()) . '" name="' . esc_attr($field->input_name()) . '" value="' . esc_attr( stripslashes($field->value()) ) . '" class="widefat"></label>';
 
 	}
 

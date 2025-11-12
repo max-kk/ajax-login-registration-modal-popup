@@ -461,7 +461,10 @@ var LRM = LRM ? LRM : {};
 								alert(response.data.message);
 							} else {
 								$form.find('input[name="' + response.data.for + '"]').addClass('has-error')
-									  .next('.lrm-error-message').html(response.data.message).addClass('is-visible');
+									// .next('.lrm-error-message') - fix for LastPass Extention
+									.parent()
+									.find('.lrm-error-message')
+									.html(response.data.message).addClass('is-visible');
 								$form.find(".lrm-form-message").removeClass("lrm-is-error").html("");
 
 							}

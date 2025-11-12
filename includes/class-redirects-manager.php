@@ -141,7 +141,7 @@ class LRM_Redirects_Manager {
      */
     public static function get_redirect ( $action, $user_ID )
     {
-        $redirect_to = !empty( $_REQUEST['redirect_to'] ) ? urldecode($_REQUEST['redirect_to']) : '';
+        $redirect_to = !empty( $_REQUEST['redirect_to'] ) ? sanitize_url( wp_unslash(urldecode($_REQUEST['redirect_to'])) ) : '';
 
         if ( !$redirect_to && lrm_is_pro( '1.50' ) ) {
             $redirect_to = LRM_PRO_Redirects_Manager::get_redirect( $action, $user_ID );

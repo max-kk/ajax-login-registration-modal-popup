@@ -152,8 +152,6 @@ class LRM_WPML_Integration {
      */
     public static function pre_AJAX() {
 
-
-
         if ( ! self::is_wpml_active() && empty($_REQUEST['lrm_action']) ){
             return;
         }

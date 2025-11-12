@@ -37,7 +37,7 @@ class LRM_Field_Roles {
             echo '<div class="lrm-repeater-field__roles-wrap">';
                 foreach ($value['label'] as $key => $name) {
 
-                    echo '<div class="lrm-repeater-field__row" data-key="' , $key ,'">';
+                    echo '<div class="lrm-repeater-field__row" data-key="' , esc_attr($key) ,'">';
                         echo '<span class="lrm-repeater-field__row_actions">
                                 <a href="#0" class="js-lrm-delete-row"><span class="dashicons dashicons-no lrm-repeater-field__row_action"></span></a>                                   
                             </span>';
@@ -51,7 +51,7 @@ class LRM_Field_Roles {
         echo '</div>';
 
 
-        echo '<script type="text/html" class="js-lrm-repeater-tpl" data-name="', $field->input_name(), '">';
+        echo '<script type="text/html" class="js-lrm-repeater-tpl" data-name="', esc_attr($field->input_name()), '">';
             echo '<div class="lrm-repeater-field__row" data-key="%key%">';
                 echo '<span class="lrm-repeater-field__row_actions">
                                     <a href="#0" class="js-lrm-delete-row"><span class="dashicons dashicons-no lrm-repeater-field__row_action"></span></a>
@@ -70,7 +70,7 @@ class LRM_Field_Roles {
 	}
 
 	public function _add_new_tpl( $field ) {
-	    echo '<button type="button" class="js-lrm-add-new-redirect-rule button button-primary" data-name="', $field->input_name() , '">Add new role</button>';
+	    echo '<button type="button" class="js-lrm-add-new-redirect-rule button button-primary" data-name="', esc_attr($field->input_name()) , '">Add new role</button>';
     }
 	public function _roles_tpl( $field, $key = '', $value = null ) {
 
@@ -82,14 +82,14 @@ class LRM_Field_Roles {
         echo '<span class="lrm-repeater-field__roles">';
         echo 'Label ';
 
-        echo '<input name="' . $field->input_name() . '[label][' . $key . ']" class="role-label" value="' , esc_attr($value['label'][$key]), '" data-lpignore="true">';
+        echo '<input name="' . esc_attr($field->input_name()) . '[label][' . esc_attr($key) . ']" class="role-label" value="' , esc_attr($value['label'][$key]), '" data-lpignore="true">';
 
 		echo ' assign role(s) ';
 
-        echo '<select multiple rows=2 name="' . $field->input_name() . '[roles][' . $key . '][]" class="pretty-select">';
+        echo '<select multiple rows=2 name="' . esc_attr($field->input_name()) . '[roles][' . esc_attr($key) . '][]" class="pretty-select">';
 
         foreach (LRM_Roles_Manager::get_wp_roles_flat() as $role_key => $role_name) {
-            printf('<option value="%s" %s>%s</option>', $role_key, selected(!in_array($role_key, $selected_roles), false), $role_name);
+            printf('<option value="%s" %s>%s</option>', esc_attr($role_key), selected(!in_array($role_key, $selected_roles), false), esc_html($role_name));
         }
         echo '</select>';
 

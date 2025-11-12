@@ -60,23 +60,6 @@ class LRM_Roles_Manager {
 
     }
 
-    /**
-     * @param string $action One of: 'login', 'registration', 'logout'
-     * @param $user_ID
-     *
-     * @return integer
-     */
-    public static function get_redirect ( $action, $user_ID )
-    {
-        $redirect_to = !empty( $_REQUEST['redirect_to'] ) ? urldecode($_REQUEST['redirect_to']) : '';
-
-        if ( !$redirect_to && lrm_is_pro( '1.50' ) ) {
-            $redirect_to = LRM_PRO_Redirects_Manager::get_redirect( $action, $user_ID );
-        }
-
-        return apply_filters('lrm/redirect_url', $redirect_to, $action);
-    }
-
     public static function get_wp_roles_flat() {
 
     	require_once ABSPATH . 'wp-admin/includes/user.php';

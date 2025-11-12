@@ -52,7 +52,7 @@ class LRM_Import_Export_Manager {
 
     public static function AJAX_process_export(  ) {
 
-    	if ( empty($_GET['_nonce']) || ! wp_verify_nonce($_GET['_nonce'], 'lrm_run_export') ) {
+    	if ( empty($_GET['_nonce']) || ! wp_verify_nonce(sanitize_text_field( wp_unslash($_GET['_nonce']) ), 'lrm_run_export') ) {
     		wp_send_json_error( 'Invalid nonce!' );
 	    }
 
@@ -64,7 +64,7 @@ class LRM_Import_Export_Manager {
 		    wp_send_json_error( 'No sections are selected!' );
 	    }
 
-    	$sections = $_GET['sections'];
+    	$sections = wp_unslash($_GET['sections']);
 	    $export_string = '';
 
 	    $section_data = [];
@@ -80,7 +80,7 @@ class LRM_Import_Export_Manager {
 	    }
 
     	if ( $sections_data ) {
-		    $export_string = json_encode( $sections_data );
+		    $export_string = wp_json_encode( $sections_data );
 	    }
 
     	wp_send_json_success( $export_string );
@@ -88,7 +88,7 @@ class LRM_Import_Export_Manager {
 
     public static function AJAX_process_import(  ) {
 
-    	if ( empty($_POST['_nonce']) || ! wp_verify_nonce($_POST['_nonce'], 'lrm_run_import') ) {
+    	if ( empty($_POST['_nonce']) || ! wp_verify_nonce( sanitize_text_field( wp_unslash($_POST['_nonce']) ), 'lrm_run_import') ) {
     		wp_send_json_error( 'Invalid nonce!' );
 	    }
 
@@ -96,12 +96,12 @@ class LRM_Import_Export_Manager {
 		    wp_send_json_error( 'Not allowed!' );
 	    }
 
-	    if ( empty( trim($_POST['sections_import']) ) || empty($_POST['sections']) ) {
+	    if ( empty( $_POST['sections_import'] ) || empty( trim($_POST['sections_import']) ) || empty($_POST['sections']) ) {
 		    wp_send_json_error( 'Import string is empty or no sections are selected!' );
 	    }
 
-    	$sections = $_POST['sections'];
-	    $sections_import = json_decode( trim(stripslashes($_POST['sections_import'])), true );
+    	$sections = wp_unslash($_POST['sections']);
+	    $sections_import = json_decode( trim(wp_unslash($_POST['sections_import'])), true );
 
 	    if ( JSON_ERROR_NONE !== json_last_error() ) {
 		    wp_send_json_error( 'Json parse error: ' . json_last_error_msg() );

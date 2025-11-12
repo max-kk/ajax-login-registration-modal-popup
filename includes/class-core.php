@@ -115,7 +115,7 @@ class LRM_Core {
      */
     public function add_settings_link($links)
     {
-        $settings_link = sprintf('<a href="admin.php?page=login-and-register-popup">%s</a>', __('Settings', 'lrm'));
+        $settings_link = sprintf('<a href="admin.php?page=login-and-register-popup">%s</a>', __('Settings', 'ajax-login-and-registration-modal-popup'));
         array_push($links, $settings_link);
         return $links;
     }

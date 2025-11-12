@@ -1,11 +1,11 @@
 === AJAX Login and Registration modal popup + inline form ===
 Contributors: kaminskym
-Tags: login, registration, register, lost password, modal, popup, ajax, form
+Tags: login, registration, register, lost password, modal, popup, ajax
 Requires at least: 4.1
-Tested up to: 6.7.1
-Requires PHP: 5.5
+Tested up to: 6.9.0
+Requires PHP: 7.0
 Stable tag: trunk
-License: GPLv2 or later
+License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
 Easy to integrate modal with Login and Registration features.
@@ -19,16 +19,16 @@ Easy to integrate modal with Login and Registration features + inline form using
 **Features:**
 
 1. Easy to integrate (as modal or inline via shortcode)
-2. Well customizable
+2. Well customized
 3. 100% responsive
-4. Beautiful coded
+4. Beautifully coded
 5. Compatible with other plugins (WooCommerce, BuddyPress, Ultimate Member, WPML, etc)
-6. Tested with latest WP version
+6. Tested with the latest WP version
 7. Compatible with the Gutenberg
 8. Possible to replace wp-login.php with a custom "Login", "Registration" and "Reset password" pages
-9. Skins support (1 default skin + 2 new in PRO version) + possible to customize Skins colors via WP Customizer
+9. Skins support (1 default skin + 2 new in a PRO version) + possible to customize Skins colors via WP Customizer
 10. Powerful after-login/registration/logout actions (reload, redirects, etc)
-11. Role based redirects (in PRO)
+11. Role-based redirects (in PRO)
 12. In-build reCaptcha & MatchCaptcha (in PRO)
 12. Google Authenticator plugin & Wordfence 2FA support (in PRO)
 13. Developer support (via forums or personal via email for PRO users)
@@ -53,7 +53,7 @@ Easy to integrate modal with Login and Registration features + inline form using
 
 **Roadmap**
 
-* +Allow to include form to page content (without modal) (done in version 1.41)
+* +Allow including form to page content (without modal) (done in version 1.41)
 * +Colors/styles customizer [implemented via WP Customizer]
 * +Documentation and Videos [done] - https://docs.maxim-kaminsky.com/lrm/
 * +WooCommerce Login/Registration form integration (done in PRO version 1.28)
@@ -62,18 +62,18 @@ Easy to integrate modal with Login and Registration features + inline form using
 
 = PRO features =
 
-* 6 months personal support from developer via Email
+* 6-month personal support from the developer via Email
 * Troubleshooting problems and conflicts with other plugins/themes
 * Unlimited plugin updates
 * Compatibility with other popular plugins (list below)
 
 **The PRO version extra features:**
 
-1. Allow user set custom password (not random generated) during registration
-2. Redirect user to specified page after login/registration/logout (for example to the User Profile)
+1. Allow user to set a custom password (not randomly generated) during registration
+2. Redirect the user to the specified page after login/registration/logout (for example to the User Profile)
 3. User verification via click on the link in registration email
 4. Email only registration - hide username filed from registration form
-5. Customize buttons color in [WP Customizer](https://docs.maxim-kaminsky.com/lrm/kb/how-to-customize-form-colors-pro-only/)
+5. Customize button color in [WP Customizer](https://docs.maxim-kaminsky.com/lrm/kb/how-to-customize-form-colors-pro-only/)
 6. [Request other feature >>](https://maxim-kaminsky.com/shop/contact-me/)
 
 **The PRO version is 100% tested and are compatible with a following plugins:**
@@ -115,7 +115,7 @@ Easy to integrate modal with Login and Registration features + inline form using
 = How to integrate this plugin to my website? =
 {{SITE_NAME}}
 **As modal:**
-Just add class `lrm-login` to the `<button>` or `<a>` element for show login tab or `lrm-signup` for registration tab.
+Add class `lrm-login` to the `<button>` or `<a>` element for show login tab or `lrm-signup` for registration tab.
 
 Example: `<a href="/wp-login.php" class="lrm-login">Login</a>`
 
@@ -139,19 +139,19 @@ body.logged-in li [class*='lrm-hide-if-logged-in'] a { display: none; }
 
 Thanks to Kash Monsefi for a report.
 
-= How can I add log out link/button? =
+= How can I add a log out link / button? =
 
 Please read this post: https://wordpress.org/support/topic/logout-link-8/#post-10180543
 
-= How can I call modal from Javascript? =
+= How can I call modal from JavaScript? =
 
-Look at "Developer hooks" section below.
+Look at the "Developer hooks" section below.
 
 = Developer hooks =
 
 *Javascript*
 
-For add your hook when user successful logged in/registered use action "lrm_user_logged_in"
+To add your hook when user successfully logged in/registered use action "lrm_user_logged_in"
 `
 jQuery(document).on('lrm_user_logged_in', function(response, $form) {
     // Your JS code
@@ -202,7 +202,7 @@ If you have login issue with Adminize plugin - go to Adminize plugin settings an
 16. Admin settings - Pages
 17. Admin settings - Registration user role [PRO]
 18. Admin settings - Security (captcha) [PRO]
-19. Registration with Password field [PRO]
+19. Registration with the Password field [PRO]
 
 == Known issues ==
 
@@ -210,11 +210,17 @@ If you have login issue with Adminize plugin - go to Adminize plugin settings an
 
 == Changelog ==
 
-= VER 2.25 - 05/12/2024 =
+= VER 2.26 - 12/11/2025 =
 
+- Code review to improve overall security
+
+= VER 2.25 - 15/12/2024 =
+
+- Code review to improve overall security
 - Admin XSS Vulnerability fix (thanks to @vgo0 and WordFence)
 - Tested with WordPress version to 6.7.1
 - Removed Plugin update checked (moved to the Pro version)
+- Fix for the LastPass Chrome extension & login errors
 
 = VER 2.24 - 12/05/2024 =
 
@@ -235,7 +241,7 @@ If you have login issue with Adminize plugin - go to Adminize plugin settings an
 
 = VER 2.21 - 08/10/2021 =
 
-- Up WP tested version to 5.8.1
+- Up WP tested a version to 5.8.1
 
 = VER 2.20 - 13/02/2021 =
 

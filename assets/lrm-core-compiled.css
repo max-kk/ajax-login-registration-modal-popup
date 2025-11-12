@@ -378,6 +378,10 @@ ul.lrm-switcher {
   -moz-transition: opacity 0.2s 0, visibility 0 0.2s;
   transition: opacity 0.2s 0, visibility 0 0.2s;
 }
+.lrm-form .lrm-accept-terms-checkbox .lrm-error-message {
+  left: -18px;
+  bottom: -48px;
+}
 .lrm-form .lrm-error-message::after {
   /* triangle */
   content: "";

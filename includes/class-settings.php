@@ -40,23 +40,21 @@ class LRM_Settings {
         lrm_dismissible_notice( 'v21',
             sprintf(
                 '<strong>AJAX Login & registration modal notice:</strong> you have installed version 2.0 that contains a lot of updates and tweaks. Please review your settings and reconfigure <a href="%s">after-login/registration actions</a>!',
-                admin_url('options-general.php?page=login-and-register-popup&section=redirects')
+                esc_url( admin_url('options-general.php?page=login-and-register-popup&section=redirects') )
             )
         );
 
         if ( LRM_WPML_Integration::is_wpml_active() ) {
             lrm_dismissible_notice('wpml',
-                sprintf(
-                    '<strong>AJAX Login & registration modal notice:</strong> since version 2.0 WPML translation process is has been slightly changed: now you should do the translation in a plugin Settings instead of using WPML Strings Translations module. More in <a href="https://docs.maxim-kaminsky.com/lrm/kb/multi-language-support-via-wpml/">docs >></a>',
-                    admin_url('options-general.php?page=login-and-register-popup&section=redirects')
-                )
+
+        '<strong>AJAX Login & registration modal notice:</strong> since version 2.0 WPML translation process is has been slightly changed: now you should do the translation in a plugin Settings instead of using WPML Strings Translations module. More in <a href="https://docs.maxim-kaminsky.com/lrm/kb/multi-language-support-via-wpml/">docs >></a>',
             );
         }
 
 	    lrm_dismissible_notice( 'font-icons',
 		    sprintf(
 			    '<strong>AJAX Login & registration modal notice:</strong> since the Free version 2.04 you are able to use the Font Icons instead of the default SVG. Find the settings at a <a href="%s">Skins tab</a>!',
-			    admin_url('options-general.php?page=login-and-register-popup&section=skins')
+                esc_url( admin_url('options-general.php?page=login-and-register-popup&section=skins') )
 		    )
 	    );
 
@@ -66,7 +64,7 @@ class LRM_Settings {
             lrm_dismissible_notice('lrm_pro_update_1.50',
                 sprintf(
                     'Looks like newer version %s of "AJAX Login and Registration modal popup PRO" plugin is available! Please go to Plugins menu and run the update or open your cabinet and <a href="%s" target="_blank">download it</a>!',
-                    $latest_pro_version,
+                    esc_html($latest_pro_version),
                     'https://maxim-kaminsky.com/shop/my-account/orders/'
                 )
             );
@@ -76,7 +74,7 @@ class LRM_Settings {
 
 		    lrm_dismissible_notice( 'lrm_no_users_can_register_warning', sprintf(
 			    '"AJAX Login and Register Modal" warning: registration is disabled in your Wordpress settings. Please go to <a href="%s">Settings => General</a> and enable option "Anyone can register".',
-			    admin_url('options-general.php')
+                esc_url( admin_url('options-general.php') )
 		    ), 'warning' );
 
 	    }
@@ -114,7 +112,7 @@ class LRM_Settings {
         if ( !isset($_GET['lrm_form_ID']) ) {
             $this->settings->settings_page();
         } else {
-            $form_ID = $_GET['lrm_form_ID'];
+            $form_ID = absint($_GET['lrm_form_ID']);
             $form = get_post( $form_ID );
 
             require LRM_PRO_PATH . '/formbuilder/views/form.php';
@@ -139,7 +137,7 @@ class LRM_Settings {
 
                 printf(
                     '"AJAX Login and Register Modal" warning: please add tag <code>{{VERIFY_ACCOUNT_URL}}</code> to "Registration" mail body in <a href="%s">Emails Section</a>, else user can\'t verify account and login to your site.',
-                    admin_url('options-general.php?page=login-and-register-popup&section=mails')
+                    esc_url( admin_url('options-general.php?page=login-and-register-popup&section=mails') )
                 );
 
                 echo '</p></div>';
@@ -154,7 +152,7 @@ class LRM_Settings {
 
             printf(
                 '"AJAX Login and Register Modal" warning: please update "Lost password" mail body in <a href="%s">Emails Section</a> (replace <code>{{PASSWORD}}</code> with <code>{{CHANGE_PASSWORD_URL}}</code>)',
-                admin_url('options-general.php?page=login-and-register-popup&section=mails')
+                esc_url( admin_url('options-general.php?page=login-and-register-popup&section=mails') )
             );
 
             echo '</p></div>';
@@ -175,7 +173,7 @@ class LRM_Settings {
             printf( __( 'Do you like "Login and Register Modal" plugin? Please consider giving it a %1$sreview%2$s', 'ajax-login-and-registration-modal-popup' ), '<a href="https://wordpress.org/support/plugin/ajax-login-and-registration-modal-popup/reviews/#new-post" class="button button-secondary" target="_blank">⭐⭐⭐⭐⭐ ', '</a>' );
 
             echo '<a href="' . esc_url( add_query_arg( array('action'=>'dismiss_rem_beg_message', '_wpnonce' => wp_create_nonce('lrm-beg-dismiss')) ) ) . '" class="dismiss-beg-message button" type="submit" style="float: right;">';
-            _e( 'I already reviewed it', 'ajax-login-and-registration-modal-popup' );
+            esc_html_e( 'I already reviewed it', 'ajax-login-and-registration-modal-popup' );
             echo '</a>';
 
             echo '</p></div>';
@@ -482,7 +480,7 @@ class LRM_Settings {
                 ),
                 'default'     => 'plain',
                 'description' => sprintf(
-                    __('To enable support of html tags - use text/html email format. More - <a href="%1$s" target="_blank">%1$s</a><br/> Option "use WooCommerce template" is experimental feature and could have issues with some WC plugins.', 'ajax-login-and-registration-modal-popup' ),
+                    __('To enable support of HTML tags - use text/html email format. More - <a href="%1$s" target="_blank">%1$s</a><br/> Option "use WooCommerce template" is experimental feature and could have issues with some WC plugins.', 'ajax-login-and-registration-modal-popup' ),
                     'http://blog.cakemail.com/html-vs-plain-text/'
                 ),
                 'render'      => array( new CoreFields\Select(), 'input' ),
@@ -1162,6 +1160,29 @@ class LRM_Settings {
                 'default'     => '',
                 'render'      => array( new LRM_Field_Password(), 'input' ),
                 'sanitize'    => array( new LRM_Field_Password(), 'sanitize' ),
+            ) )
+            ->add_field( array(
+                'slug'        => 'threshold',
+                'name'        => __('Score threshold ', 'ajax-login-and-registration-modal-popup' ),
+                'default'     => '0.5',
+
+                'addons'      => array(
+                    'options'     => array(
+                        '0.2'        => '0.2',
+                        '0.3'        => '0.3',
+                        '0.4'        => '0.4',
+                        '0.5'        => '0.5',
+                        '0.6'        => '0.6',
+                        '0.7'        => '0.7',
+                        '0.8'        => '0.8',
+                        '0.9'        => '0.9',
+                        '1.0'        => '1.0',
+                    ),
+                ),
+
+                'description' => 'reCAPTCHA v3 returns a score (1.0 is very likely a good interaction, 0.0 is very likely a bot). Based on the score, you can take variable action in the context of your site. <a target="_blank" href="https://developers.google.com/recaptcha/docs/v3#interpreting_the_score">https://developers.google.com/recaptcha/docs/v3#interpreting_the_score</a>',
+                'render'      => array( new CoreFields\Select(), 'input' ),
+                'sanitize'    => array( new CoreFields\Select(), 'sanitize' ),
             ) )
             ->description( __('Find them here: https://www.google.com/recaptcha/admin', 'ajax-login-and-registration-modal-popup' ) );
 

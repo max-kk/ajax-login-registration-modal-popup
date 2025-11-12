@@ -12,7 +12,7 @@ class LRM_Field_Textarea {
 	 */
 	public function input( $field ) {
 
-		echo '<textarea rows="3" id="' . $field->input_id() . '" name="' . $field->input_name() . '" class="large-text">' . stripslashes($field->value()) . '</textarea>';
+		echo '<textarea rows="3" id="' . esc_attr($field->input_id()) . '" name="' . esc_attr($field->input_name()) . '" class="large-text">' . wp_unslash($field->value()) . '</textarea>';
 
 	}
 

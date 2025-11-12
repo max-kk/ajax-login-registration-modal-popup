@@ -7,8 +7,8 @@
 
 $fields_required = ('both' === LRM_Settings::get()->setting('advanced/validation/type')) ? 'required' : '';
 
-$rp_key = isset($_GET['key']) ? wp_unslash( $_GET['key'] ) : '';
-$rp_login = isset($_GET['login']) ? wp_unslash( $_GET['login'] ) : '';
+$rp_key = isset($_GET['key']) ? sanitize_text_field( wp_unslash( $_GET['key'] ) ) : '';
+$rp_login = isset($_GET['login']) ? sanitize_text_field( wp_unslash( $_GET['login'] ) ): '';
 
 $errors = new WP_Error();
 
@@ -30,7 +30,7 @@ $icons_class = $icons_class === 'svg' ? $icons_class : $icons_class  . ' lrm-is-
 list($rp_key, $rp_login) = $rp_data;
 
 ?>
-<div class="lrm-restore-password lrm-font-<?= $icons_class; ?>">
+<div class="lrm-restore-password lrm-font-<?php echo esc_attr($icons_class); ?>">
     <div class="lrm-user-modal-container">
 
         <form class="lrm-form js-lrm-form" action="#0" data-action="password-reset">
@@ -40,9 +40,9 @@ list($rp_key, $rp_login) = $rp_data;
             <div class="fieldset fieldset--password1">
                 <div class="lrm-position-relative">
                     <label class="image-replace lrm-password lrm-ficon-key"><?php echo esc_attr( lrm_setting('messages_pro/registration/password', true) ); ?></label>
-                    <input name="password1" class="full-width has-padding has-border" id="lrm-password1" data-relation="lrm-password2" type="text"  placeholder="<?php echo esc_attr( lrm_setting('messages/password/password', true) ); ?>" <?= $fields_required; ?> value="<?php echo esc_attr( wp_generate_password( 16 ) ); ?>" autocomplete="new-password">
+                    <input name="password1" class="full-width has-padding has-border" id="lrm-password1" data-relation="lrm-password2" type="text"  placeholder="<?php echo esc_attr( lrm_setting('messages/password/password', true) ); ?>" <?php echo $fields_required; ?> value="<?php echo esc_attr( wp_generate_password( 16 ) ); ?>" autocomplete="new-password">
                     <span class="lrm-error-message"></span>
-                    <span class="hide-password lrm-ficon-eye" data-show="<?php echo lrm_setting('messages/other/show_pass'); ?>" data-hide="<?php echo lrm_setting('messages/other/hide_pass'); ?>" aria-label="Show"></span>
+                    <span class="hide-password lrm-ficon-eye" data-show="<?php echo esc_attr(lrm_setting('messages/other/show_pass')); ?>" data-hide="<?php echo esc_attr(lrm_setting('messages/other/hide_pass')); ?>" aria-label="Show"></span>
                 </div>
                 <span class="lrm-pass-strength-result"></span>
             </div>
@@ -57,7 +57,7 @@ list($rp_key, $rp_login) = $rp_data;
             </div>
 
             <div class="fieldset">
-                <p class="description indicator-hint lrm-password-hint"><?php echo wp_get_password_hint(); ?></p>
+                <p class="description indicator-hint lrm-password-hint"><?php echo esc_html(wp_get_password_hint()); ?></p>
             </div>
 
             <?php

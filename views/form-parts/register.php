@@ -35,8 +35,8 @@
                         <?php if( ! lrm_setting('general_pro/all/hide_username') ): ?>
                             <div class="fieldset fieldset--username">
                                 <?php $username_label = esc_attr( lrm_setting('messages/registration/username', true) ); ?>
-                                <label class="image-replace lrm-username lrm-ficon-user" for="signup-username" title="<?= $username_label; ?>"></label>
-                                <input name="username" class="full-width has-padding has-border" id="signup-username" type="text" placeholder="<?= $username_label; ?>" <?= $fields_required; ?> aria-label="<?= $username_label; ?>" autocomplete="off" data-lpignore="true">
+                                <label class="image-replace lrm-username lrm-ficon-user" for="signup-username" title="<?php echo $username_label; ?>"></label>
+                                <input name="username" class="full-width has-padding has-border" id="signup-username" type="text" placeholder="<?php echo $username_label; ?>" <?php echo $fields_required; ?> aria-label="<?php echo $username_label; ?>" autocomplete="off" data-lpignore="true">
                                 <span class="lrm-error-message"></span>
                             </div>
                         <?php endif; ?>
@@ -53,13 +53,13 @@
                                 <?php $fname_label = esc_attr( lrm_setting('messages/registration/first-name', true) );; ?>
                                 <?php $lname_label = esc_attr( lrm_setting('messages/registration/last-name', true) ); ?>
                                 <div class="lrm-col-half-width lrm-col-first fieldset--first-name lrm-col">
-                                    <label class="image-replace lrm-username lrm-ficon-user" for="signup-first-name" title="<?= $fname_label; ?>"></label>
-                                    <input name="first-name" class="full-width has-padding has-border" id="signup-first-name" type="text" placeholder="<?= $fname_label; ?>" <?= $fields_required; ?> aria-label="<?= $fname_label; ?>" autocomplete="off" data-lpignore="true">
+                                    <label class="image-replace lrm-username lrm-ficon-user" for="signup-first-name" title="<?php echo $fname_label; ?>"></label>
+                                    <input name="first-name" class="full-width has-padding has-border" id="signup-first-name" type="text" placeholder="<?php echo $fname_label; ?>" <?php echo $fields_required; ?> aria-label="<?php echo $fname_label; ?>" autocomplete="off" data-lpignore="true">
                                     <span class="lrm-error-message"></span>
                                 </div>
                                 <div class="lrm-col-half-width lrm-col-last fieldset--last-name lrm-col">
-                                    <label class="image-replace lrm-username lrm-ficon-user" for="signup-last-name" title="<?= $lname_label; ?>"></label>
-                                    <input name="last-name" class="full-width has-padding has-border" id="signup-last-name" type="text" placeholder="<?= $lname_label; ?>" aria-label="<?= $lname_label; ?>" autocomplete="off" data-lpignore="true">
+                                    <label class="image-replace lrm-username lrm-ficon-user" for="signup-last-name" title="<?php echo $lname_label; ?>"></label>
+                                    <input name="last-name" class="full-width has-padding has-border" id="signup-last-name" type="text" placeholder="<?php echo $lname_label; ?>" aria-label="<?php echo $lname_label; ?>" autocomplete="off" data-lpignore="true">
                                     <span class="lrm-error-message"></span>
                                 </div>
 <!--                            </div>-->
@@ -67,8 +67,8 @@
 
                         <div class="fieldset fieldset--email">
                             <?php $email_label = esc_attr( lrm_setting('messages/registration/email', true) ); ?>
-                            <label class="image-replace lrm-email lrm-ficon-mail" for="signup-email" title="<?= $email_label; ?>"></label>
-                            <input name="email" class="full-width has-padding has-border" id="signup-email" type="email" placeholder="<?= $email_label; ?>" <?= $fields_required; ?> autocomplete="off" aria-label="<?= $email_label; ?>">
+                            <label class="image-replace lrm-email lrm-ficon-mail" for="signup-email" title="<?php echo $email_label; ?>"></label>
+                            <input name="email" class="full-width has-padding has-border" id="signup-email" type="email" placeholder="<?php echo $email_label; ?>" <?php echo $fields_required; ?> autocomplete="off" aria-label="<?php echo $email_label; ?>">
                             <span class="lrm-error-message"></span>
                         </div>
 
@@ -81,10 +81,10 @@
 	                    <?php if( lrm_setting('general_pro/all/allow_user_set_password') ): ?>
                             <div class="fieldset">
                                 <div class="lrm-position-relative">
-                                    <label class="image-replace lrm-password lrm-ficon-key" for="signup-password" title="<?= $pass_label; ?>"></label>
-                                    <input name="password" class="full-width has-padding has-border" id="signup-password" type="password"  placeholder="<?= $pass_label; ?>" <?= $fields_required; ?> value="" autocomplete="new-password" aria-label="<?= $pass_label; ?>">
+                                    <label class="image-replace lrm-password lrm-ficon-key" for="signup-password" title="<?php echo $pass_label; ?>"></label>
+                                    <input name="password" class="full-width has-padding has-border" id="signup-password" type="password"  placeholder="<?php echo $pass_label; ?>" <?php echo $fields_required; ?> value="" autocomplete="new-password" aria-label="<?php echo $pass_label; ?>">
                                     <span class="lrm-error-message"></span>
-                                    <span class="hide-password lrm-ficon-eye" data-show="<?php echo lrm_setting('messages/other/show_pass'); ?>" data-hide="<?php echo lrm_setting('messages/other/hide_pass'); ?>"></span>
+                                    <span class="hide-password lrm-ficon-eye" data-show="<?php echo esc_attr(lrm_setting('messages/other/show_pass')); ?>" data-hide="<?php echo lrm_setting('messages/other/hide_pass'); ?>"></span>
                                 </div>
                                 <span class="lrm-pass-strength-result"></span>
                             </div>
@@ -93,9 +93,9 @@
                             <div class="fieldset">
                                 <div class="lrm-position-relative">
                                     <label class="image-replace lrm-password lrm-ficon-key" for="signup-password-confirmation"></label>
-                                    <input name="password-confirmation" class="full-width has-padding has-border" id="signup-password-confirmation" type="password"  placeholder="<?= $pass_confirmation_label; ?>" <?= $fields_required; ?> value="" autocomplete="new-password">
+                                    <input name="password-confirmation" class="full-width has-padding has-border" id="signup-password-confirmation" type="password"  placeholder="<?php echo $pass_confirmation_label; ?>" <?php echo $fields_required; ?> value="" autocomplete="new-password">
                                     <span class="lrm-error-message"></span>
-                                    <span class="hide-password lrm-ficon-eye" data-show="<?php echo lrm_setting('messages/other/show_pass'); ?>" data-hide="<?php echo lrm_setting('messages/other/hide_pass'); ?>"></span>
+                                    <span class="hide-password lrm-ficon-eye" data-show="<?php echo esc_attr(lrm_setting('messages/other/show_pass')); ?>" data-hide="<?php echo lrm_setting('messages/other/hide_pass'); ?>"></span>
                                 </div>
                             </div>
 	                    <?php endif; ?>
@@ -104,12 +104,12 @@
 		                    $active_roles_list = LRM_PRO_Roles_Manager::get_active_roles_flat();
 		                    $role_silent = in_array($role, $active_roles_list) && $role_silent ? true : false;
 		                    ?>
-                            <div class="fieldset fieldset--user_role" style="<?= $role_silent ? 'display: none;' : '' ?>">
-                                <label class="image-replace lrm-user_role lrm-ficon-lock" for="signup-username" title="<?= esc_attr(lrm_setting('messages/registration/user_role', true)); ?>"></label>
+                            <div class="fieldset fieldset--user_role" style="<?php echo $role_silent ? 'display: none;' : '' ?>">
+                                <label class="image-replace lrm-user_role lrm-ficon-lock" for="signup-username" title="<?php echo esc_attr(lrm_setting('messages/registration/user_role', true)); ?>"></label>
                                 <select name="user_role" class="full-width has-padding has-border" id="user_role" required>
                                     <option value=""><?php echo lrm_setting('messages/registration/user_role', true); ?></option>
 				                    <?php foreach ( $active_roles_list as $active_role_key => $active_role_label ) : ?>
-                                        <option value="<?= esc_html($active_role_key); ?>" data-label="<?= esc_attr($active_role_label); ?>" <?php selected($active_role_label, $role) ?>><?= $active_role_label; ?></option>
+                                        <option value="<?php echo esc_attr($active_role_key); ?>" data-label="<?php echo esc_attr($active_role_label); ?>" <?php selected($active_role_label, $role) ?>><?php echo $active_role_label; ?></option>
 				                    <?php endforeach; ?>
                                 </select>
                                 <span class="lrm-error-message"></span>
@@ -151,9 +151,9 @@
 
 				</div>
 
-				<div class="fieldset fieldset--submit <?= esc_attr($fieldset_submit_class); ?>">
+				<div class="fieldset fieldset--submit <?php echo esc_attr($fieldset_submit_class); ?>">
 					<button class="full-width has-padding" type="submit">
-						<?php echo esc_html( lrm_setting('messages/registration/button', true) ); ?>
+						<?php echo lrm_setting('messages/registration/button', true); ?>
 					</button>
 				</div>
 
@@ -165,7 +165,7 @@
 
                 </div>
 
-				<input type="hidden" name="redirect_to" value="<?= esc_attr($redirect_to); ?>">
+				<input type="hidden" name="redirect_to" value="<?php echo esc_url($redirect_to); ?>">
 				<input type="hidden" name="lrm_action" value="signup">
 				<input type="hidden" name="wp-submit" value="1">
 

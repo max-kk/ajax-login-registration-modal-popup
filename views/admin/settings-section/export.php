@@ -4,7 +4,7 @@
 		if ( ! $section->export() ) {
 			continue;
 		}
-		printf('<label><input type="checkbox" class="lrm_export_sections_checkbox" name="lrm_export_sections[]" value="%1$s" checked="checked"> %2$s</label><br/>', $section_key, $section->name());
+		printf('<label><input type="checkbox" class="lrm_export_sections_checkbox" name="lrm_export_sections[]" value="%1$s" checked="checked"> %2$s</label><br/>', esc_attr($section_key), $section->name());
 	endforeach;
 	?>
 </p>
@@ -14,7 +14,7 @@
 </p>
 
 <p>
-    <button type="button" class="button button-primary lrm-run-export" data-nonce="<?= wp_create_nonce('lrm_run_export'); ?>">Run export for the selected sections</button>
+    <button type="button" class="button button-primary lrm-run-export" data-nonce="<?php echo esc_attr( wp_create_nonce('lrm_run_export') ); ?>">Run export for the selected sections</button>
 </p>
 <style>
     .submit {

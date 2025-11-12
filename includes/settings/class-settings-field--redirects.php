@@ -65,7 +65,7 @@ class LRM_Field_Redirects {
         echo '</div>';
 
         if ( $per_role ) {
-            echo '<script type="text/html" class="js-lrm-repeater-tpl" data-name="', $field->input_name(), '">';
+            echo '<script type="text/html" class="js-lrm-repeater-tpl" data-name="', esc_attr($field->input_name()), '">';
                 echo '<div class="lrm-redirects-field__row lrm-repeater-field__row" data-key="%key%">';
                     echo '<span class="lrm-repeater-field__row_actions">
                                         <a href="#0" class="js-lrm-delete-row"><span class="dashicons dashicons-no lrm-redirects-field__row_action"></span></a>
@@ -87,7 +87,7 @@ class LRM_Field_Redirects {
 	}
 
 	public function _add_new_tpl( $field ) {
-	    echo '<button type="button" class="js-lrm-add-new-redirect-rule button button-primary" data-name="', $field->input_name() , '">Add new rule</button>';
+	    echo '<button type="button" class="js-lrm-add-new-redirect-rule button button-primary" data-name="', esc_attr($field->input_name()) , '">Add new rule</button>';
     }
 	public function _roles_tpl( $field, $key = '', $value = null ) {
 
@@ -101,15 +101,15 @@ class LRM_Field_Redirects {
         echo '<span class="lrm-redirects-field__roles">';
         echo 'If role match ';
 
-        echo '<select name="' . $field->input_name() . '[role_match][' . $key . ']" class="role-match">';
+        echo '<select name="' . $field->input_name() . '[role_match][' . esc_attr($key) . ']" class="role-match">';
             printf('<option value="%s" %s>%s</option>', 'any_of', selected('any_of', $role_match), 'any of');
             printf('<option value="%s" %s>%s</option>', 'all', selected('all', $role_match), 'all');
         echo '</select>';
 
 
-        echo '<select multiple rows=2 name="' . $field->input_name() . '[roles][' . $key . '][]" class="pretty-select">';
+        echo '<select multiple rows=2 name="' . esc_attr($field->input_name()) . '[roles][' . esc_attr($key) . '][]" class="pretty-select">';
         foreach (LRM_Roles_Manager::get_wp_roles_flat() as $role_key => $role_name) {
-            printf('<option value="%s" %s>%s</option>', $role_key, selected(!in_array($role_key, $selected_roles), false), $role_name);
+            printf('<option value="%s" %s>%s</option>', esc_attr($role_key), selected(!in_array($role_key, $selected_roles), false), esc_html($role_name));
         }
         echo '</select>';
 
@@ -134,7 +134,7 @@ class LRM_Field_Redirects {
 
         echo ' redirect to ';
 
-        echo '<select name="' . $field->input_name() . '[redirect][' . $key . ']" class="redirect-to">';
+        echo '<select name="' . esc_attr($field->input_name()) . '[redirect][' . esc_attr($key) . ']" class="redirect-to">';
             printf('<option value="%s" %s>%s</option>', 'url', selected('url', $redirect), 'Custom URL');
             printf('<option value="%s" %s>%s</option>', 'page', selected('page', $redirect), 'Page');
             printf('<option value="%s" %s>%s</option>', 'bp_profile', selected('bp_profile', $redirect), 'BuddyPress profile');
@@ -142,12 +142,12 @@ class LRM_Field_Redirects {
         echo '</select>';
 
 
-        echo '<input type="text" name="' . $field->input_name() . '[redirect_url][' . $key . ']" value="' . esc_attr($redirect_url) . '" class="redirect-url" placeholder="Enter url">';
+        echo '<input type="text" name="' . esc_attr($field->input_name()) . '[redirect_url][' . esc_attr($key) . ']" value="' . esc_attr($redirect_url) . '" class="redirect-url" placeholder="Enter url">';
 
-        echo '<select name="' . $field->input_name() . '[redirect_page][' . $key . ']" class="redirect-page">';
+        echo '<select name="' . esc_attr($field->input_name()) . '[redirect_page][' . esc_attr($key) . ']" class="redirect-page">';
             echo '<option value="">== Select a page == </option>';
             foreach (LRM_Pages_Manager::_get_pages_arr() as $page_ID => $page_title) {
-                printf('<option value="%s" %s>%s</option>', $page_ID, selected($page_ID, $redirect_page), $page_title);
+                printf('<option value="%s" %s>%s</option>', esc_attr($page_ID), selected($page_ID, $redirect_page), esc_html($page_title));
             }
         echo '</select>';
 

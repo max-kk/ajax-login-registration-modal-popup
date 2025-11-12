@@ -36,7 +36,7 @@ class LRM_Debug {
         $file_path = str_replace([ABSPATH, 'wp-content'], '', $exception->getFile());
         lrm_log( 'LRM AJAX error', $exception->getMessage() . ' in ' . $file_path );
 
-        echo 'Can\'t process this request, the error happens in file <strong>' . $file_path . '</strong> on line ' . $exception->getLine();
+        echo 'Can\'t process this request, the error happens in file <strong>' . esc_html($file_path) . '</strong> on line ' . $exception->getLine();
 
         echo '<br>Error: <strong>' . $exception->getMessage(), '</strong><br><br>';
 

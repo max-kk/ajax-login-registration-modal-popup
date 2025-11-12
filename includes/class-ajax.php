@@ -24,8 +24,8 @@ class LRM_AJAX
 
         // Nonce is checked, get the POST data and sign user on
         $info = array();
-        $info['user_login'] = sanitize_text_field(trim($_POST['username']));
-        $info['user_password'] = trim($_POST['password']);
+        $info['user_login'] = trim(sanitize_text_field(wp_unslash($_POST['username'])));
+        $info['user_password'] = trim(sanitize_text_field(wp_unslash($_POST['password'])));
         $info['remember'] = isset($_POST['remember-me']) ? true : false;
 
 	    do_action('lrm/login_pre_verify', $info);
@@ -199,7 +199,7 @@ class LRM_AJAX
                         $user->first_name,
                         $user->last_name,
                         $user->user_login,
-                        $_SERVER['HTTP_USER_AGENT'],
+                        !empty($_SERVER['HTTP_USER_AGENT']) ? sanitize_text_field($_SERVER['HTTP_USER_AGENT']) : '',
                     ),
                     lrm_setting('mails/admin_new_login/body')
                 );
@@ -248,11 +248,11 @@ class LRM_AJAX
             wp_send_json_error(array('message' => LRM_Settings::get()->setting('messages/registration/disabled')));
         endif;
 
-        $email = sanitize_email($_POST['email']);
+        $email = sanitize_email(wp_unslash($_POST['email']));
 
         // Post values
         if ( ! lrm_setting('general_pro/all/hide_username') ) {
-            $user_login = sanitize_user(trim($_POST['username']));
+            $user_login = trim(sanitize_user(wp_unslash($_POST['username'])));
         } else {
             $email_arr = explode('@', $email);
             $user_login = sanitize_user(trim($email_arr[0]), true);
@@ -260,7 +260,7 @@ class LRM_AJAX
             $user_exists = get_user_by( 'login', $user_login );
 
             if ( $user_exists ) {
-                $user_login .= '_' . rand(99, 999);
+                $user_login .= '_' . wp_rand(99, 999);
             }
         }
 
@@ -269,17 +269,17 @@ class LRM_AJAX
         $first_name = '';
         $last_name = '';
         if ( $display_first_and_last_name ) {
-            $first_name = sanitize_text_field( $_POST['first-name'] );
-            $last_name  = ! empty($_POST['last-name']) ? sanitize_text_field( $_POST['last-name'] ) : '';
+            $first_name = sanitize_text_field( wp_unslash($_POST['first-name']) );
+            $last_name  = ! empty($_POST['last-name']) ? sanitize_text_field( wp_unslash($_POST['last-name']) ) : '';
         }
         
         if ( !empty( $_POST['password'] ) && LRM_Settings::get()->setting('general_pro/all/allow_user_set_password') ) {
-            $password =  $_POST['password'];
+            $password = sanitize_text_field( wp_unslash($_POST['password']));
 
             // Defined in: "\wp-includes\default-filters.php"
             remove_action( 'register_new_user', 'wp_send_new_user_notifications' );
 
-            if ( lrm_setting('general_pro/all/use_password_confirmation') && $password !== sanitize_text_field($_POST['password-confirmation']) ) {
+            if ( lrm_setting('general_pro/all/use_password_confirmation') && $password !== sanitize_text_field( wp_unslash($_POST['password-confirmation'])) ) {
 	            wp_send_json_error(array('message' => lrm_setting('messages/password/passwords_is_mismatch'), 'for'=>'password-confirmation'));
             }
         } else {
@@ -695,7 +695,7 @@ class LRM_AJAX
             ));
         }
 
-        $new_pass = wp_unslash( trim($_POST['password1']) );
+        $new_pass = trim( sanitize_text_field( wp_unslash($_POST['password1']) ) );
 
         list($rp_key, $rp_login, $rp_path, $user) = $rp_data;
 
@@ -792,7 +792,7 @@ class LRM_AJAX
             return true;
         }
 
-        if ( !isset($_POST[$post_key]) || !wp_verify_nonce($_POST[$post_key], $nonce_key) ) {
+        if ( !isset($_POST[$post_key]) || !wp_verify_nonce(sanitize_text_field(wp_unslash($_POST[$post_key])), $nonce_key) ) {
             wp_send_json_error(array('message' => LRM_Settings::get()->setting('messages/other/invalid_nonce')));
         }
     }

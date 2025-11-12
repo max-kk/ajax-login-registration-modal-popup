@@ -42,7 +42,7 @@ class WP_Admin_Dismissible_Notice
         // Process Dismiss
         if ( ! array_diff_key(['dismiss_notice', 'key', 'save_to', 'hash', '_wpnonce2'], array_keys($_GET)) ) {
             // Verify Nonce
-            if ( !wp_verify_nonce($_GET['_wpnonce'], 'dismissible-notice') ) {
+            if ( !isset($_GET['_wpnonce']) || !wp_verify_nonce(sanitize_text_field( wp_unslash ($_GET['_wpnonce'])), 'dismissible-notice') ) {
                 wp_send_json_error();
             }
 

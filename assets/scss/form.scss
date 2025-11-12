@@ -270,6 +270,11 @@ $fieldset-side-padding-mobile: 2em;
     -moz-transition: opacity 0.2s 0, visibility 0 0.2s;
     transition: opacity 0.2s 0, visibility 0 0.2s;
 
+    .lrm-accept-terms-checkbox &{
+      left: -18px;
+      bottom: -48px;
+    }
+
     &::after {
         /* triangle */
         content: '';

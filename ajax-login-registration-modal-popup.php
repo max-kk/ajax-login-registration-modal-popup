@@ -3,10 +3,11 @@
 	Plugin Name:    AJAX Login and Registration modal popup DEV + inline form
 	Plugin URI:     https://maxim-kaminsky.com/shop/product/ajax-login-and-registration-modal-popup-pro/
 	Description:    Easy to integrate modal with Login and Registration features + inline form using shortcode.
-	Version:        2.25
+	Version:        2.26
 	Author URI:     http://maxim-kaminsky.com/
 	Author:         Maxim K
 	Text Domain:    ajax-login-and-registration-modal-popup
+	License:        GPLv3 or later
 	Domain Path:    /languages
 */
 
@@ -15,7 +16,7 @@ if (!class_exists('WP')) {
 	die();
 }
 
-if ( $_SERVER['SCRIPT_FILENAME'] == __FILE__ ) {
+if ( isset($_SERVER['SCRIPT_FILENAME']) && $_SERVER['SCRIPT_FILENAME'] === __FILE__ ) {
 	die( 'Access denied.' );
 }
 //die;

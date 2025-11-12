@@ -17,13 +17,13 @@ $font_name = 'lrm-' . $icons_selected . '-icomoon';
 $font_path =  LRM_URL . 'assets/lrm-' . $icons_selected . '/fonts/lrm-' . $icons_map[$icons_selected];
 ?>
 @font-face {
-    font-family: '<?= $font_name; ?>'; font-weight: normal; font-style: normal;
-    src: url('<?= $font_path; ?>.eot?i8nbsv');
-    src: url('<?= $font_path; ?>.eot?i8nbsv#iefix') format('embedded-opentype'),
-    url('<?= $font_path; ?>.ttf?i8nbsv') format('truetype'),
-    url('<?= $font_path; ?>.woff?i8nbsv') format('woff'),
-    url('<?= $font_path; ?>.svg?i8nbsv#<?= $font_name; ?>') format('svg');
+    font-family: '<?php echo esc_url($font_name); ?>'; font-weight: normal; font-style: normal;
+    src: url('<?php echo esc_url($font_path); ?>.eot?i8nbsv');
+    src: url('<?php echo esc_url($font_path); ?>.eot?i8nbsv#iefix') format('embedded-opentype'),
+    url('<?php echo esc_url($font_path); ?>.ttf?i8nbsv') format('truetype'),
+    url('<?php echo esc_url($font_path); ?>.woff?i8nbsv') format('woff'),
+    url('<?php echo esc_url($font_path); ?>.svg?i8nbsv#<?php echo esc_attr($font_name); ?>') format('svg');
 }
-[class^="lrm-ficon-"]:before, [class*=" lrm-ficon-"]:before { font-family: '<?= $font_name; ?>' !important; }
+[class^="lrm-ficon-"]:before, [class*=" lrm-ficon-"]:before { font-family: '<?php echo esc_html($font_name); ?>' !important; }
 <?php endif; ?>
 </style>

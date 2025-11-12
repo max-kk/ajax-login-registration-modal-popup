@@ -21,7 +21,7 @@ class LRM_Field_Select_W_PRO {
 		$disabled = '';
 		$lrm_is_pro = lrm_is_pro();
 
-		echo '<select ' . $multiple . ' name="' . $name . '" id="' . $field->input_id() . '" class="' . $pretty . '">';
+		echo '<select ' . $multiple . ' name="' . esc_attr($name) . '" id="' . esc_attr($field->input_id()) . '" class="' . esc_attr($pretty) . '">';
 
 			foreach ( $field->addon( 'options' ) as $option_value => $option_label ) {
 
@@ -29,7 +29,7 @@ class LRM_Field_Select_W_PRO {
 				if ( !$lrm_is_pro ) {
                     $disabled = (false === strpos($option_label, '[PRO]')) ? '' : ' disabled="disabled" ';
                 }
-				echo '<option value="' . $option_value . '" ' . $selected . $disabled . '>' . $option_label . '</option>';
+				echo '<option value="' . esc_attr($option_value) . '" ' . $selected . $disabled . '>' . $option_label . '</option>';
 
 			}
 
