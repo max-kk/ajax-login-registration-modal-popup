@@ -52,14 +52,18 @@ class LRM_Core {
             add_filter('plugin_action_links_' . LRM_BASENAME, array($this, 'add_settings_link'));
         }
 
-        new LRM_Admin_Menus();
+        add_action('init', array($this, 'init_action'), 10);
 
-        WP_Skins_Customizer::init();
-        LRM_Skins::instance()->load_defaults();
+        new LRM_Admin_Menus();
 
         LRM_Pages_Manager::init();
 
 	    LRM_Import_Export_Manager::init();
+    }
+
+    public function init_action(){
+        WP_Skins_Customizer::init();
+        LRM_Skins::instance()->load_defaults();
     }
 
     public function shortcode($atts) {

@@ -212,7 +212,9 @@ If you have login issue with Adminize plugin - go to Adminize plugin settings an
 
 = VER 2.26 - 12/11/2025 =
 
-- Code review to improve overall security
+- Tested with WordPress version to 6.9
+- Tested with PHP 8.4 & tweaks
+- Spelling tweaks
 
 = VER 2.25 - 15/12/2024 =
 
