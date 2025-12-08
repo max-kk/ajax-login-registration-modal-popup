@@ -1095,6 +1095,8 @@ class LRM_Settings {
                     'options'     => array(
                         ''               => '= Please select =',
                         'reCaptcha'      => 'reCaptcha (api keys are required) [PRO]',
+                        'Turnstile'      => 'Turnstile by Cloudflare (api keys are required) [PRO]',
+                        'hCaptcha'       => 'hCaptcha (api keys are required) [PRO]',
                         'MatchCaptcha'    => 'MatchCaptcha (less secure but faster) [PRO]',
                     ),
                 ),
@@ -1185,6 +1187,70 @@ class LRM_Settings {
                 'sanitize'    => array( new CoreFields\Select(), 'sanitize' ),
             ) )
             ->description( __('Find them here: https://www.google.com/recaptcha/admin', 'ajax-login-and-registration-modal-popup' ) );
+
+        // hCaptcha settings (FREE settings, PRO implementation)
+        $SECURITY_SECTION->add_group( __( 'hCaptcha Api Keys', 'ajax-login-and-registration-modal-popup' ), 'hcaptcha' )
+            ->add_field( array(
+                'slug'        => 'type',
+                'name'        => __('hCaptcha type:', 'ajax-login-and-registration-modal-popup'),
+                'addons'      => array(
+                    'options'     => array(
+                        'inline'        => 'Inline',
+                        'invisible'     => 'Invisible',
+                    ),
+                ),
+                'default'     => '',
+                'description' => __('Please make sure that keys are created for the selected hCaptcha type!', 'ajax-login-and-registration-modal-popup' ),
+                'render'      => array( new CoreFields\Select(), 'input' ),
+                'sanitize'    => array( new CoreFields\Select(), 'sanitize' ),
+            ) )
+            ->add_field( array(
+                'slug'        => 'site_key',
+                'name'        => __('Site key', 'ajax-login-and-registration-modal-popup' ),
+                'default'     => '',
+                'render'      => array( new LRM_Field_Password(), 'input' ),
+                'sanitize'    => array( new LRM_Field_Password(), 'sanitize' ),
+            ) )
+            ->add_field( array(
+                'slug'        => 'secret_key',
+                'name'        => __('Secret key', 'ajax-login-and-registration-modal-popup' ),
+                'default'     => '',
+                'render'      => array( new LRM_Field_Password(), 'input' ),
+                'sanitize'    => array( new LRM_Field_Password(), 'sanitize' ),
+            ) )
+            ->description( 'Find them here: <a href="https://dashboard.hcaptcha.com/sites/" target="_blank">https://dashboard.hcaptcha.com/sites</a>' );
+
+        // Turnstile settings (FREE settings, PRO implementation)
+        $SECURITY_SECTION->add_group( __( 'Turnstile Api Keys', 'ajax-login-and-registration-modal-popup' ), 'turnstile' )
+            ->add_field( array(
+                'slug'        => 'type',
+                'name'        => __('Turnstile type:', 'ajax-login-and-registration-modal-popup'),
+                'addons'      => array(
+                    'options'     => array(
+                        'inline'        => 'Inline',
+                        'invisible'     => 'Invisible',
+                    ),
+                ),
+                'default'     => '',
+                'description' => __('Please make sure that keys are created for the selected Turnstile type!', 'ajax-login-and-registration-modal-popup' ),
+                'render'      => array( new CoreFields\Select(), 'input' ),
+                'sanitize'    => array( new CoreFields\Select(), 'sanitize' ),
+            ) )
+            ->add_field( array(
+                'slug'        => 'site_key',
+                'name'        => __('Site key', 'ajax-login-and-registration-modal-popup' ),
+                'default'     => '',
+                'render'      => array( new LRM_Field_Password(), 'input' ),
+                'sanitize'    => array( new LRM_Field_Password(), 'sanitize' ),
+            ) )
+            ->add_field( array(
+                'slug'        => 'secret_key',
+                'name'        => __('Secret key', 'ajax-login-and-registration-modal-popup' ),
+                'default'     => '',
+                'render'      => array( new LRM_Field_Password(), 'input' ),
+                'sanitize'    => array( new LRM_Field_Password(), 'sanitize' ),
+            ) )
+            ->description( 'Find them here: <a href="https://dash.cloudflare.com/?to=/:account/turnstile" target="_blank" rel="noopener">https://dash.cloudflare.com → Turnstile</a>' );
 
 	    $SECURITY_SECTION->add_group( __( 'Match Captcha', 'ajax-login-and-registration-modal-popup' ), 'match_captcha' )
 		    ->description('Label/error messages can be changed on the Expressions > PRO tab');
