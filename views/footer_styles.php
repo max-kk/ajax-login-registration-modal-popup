@@ -1,5 +1,10 @@
 <?php
 $icons_selected = lrm_setting('skins/skin/icons');
+$icons_allowed  = array( 'svg', 'icomoon', 'material', 'fa4', 'fa5-free' );
+
+if ( ! in_array( $icons_selected, $icons_allowed, true ) ) {
+    $icons_selected = 'svg';
+}
 ?>
 <style>/* LRM */
 body.logged-in .lrm-hide-if-logged-in { display: none !important; }
@@ -17,7 +22,7 @@ $font_name = 'lrm-' . $icons_selected . '-icomoon';
 $font_path =  LRM_URL . 'assets/lrm-' . $icons_selected . '/fonts/lrm-' . $icons_map[$icons_selected];
 ?>
 @font-face {
-    font-family: '<?php echo esc_url($font_name); ?>'; font-weight: normal; font-style: normal;
+    font-family: '<?php echo esc_attr($font_name); ?>'; font-weight: normal; font-style: normal;
     src: url('<?php echo esc_url($font_path); ?>.eot?i8nbsv');
     src: url('<?php echo esc_url($font_path); ?>.eot?i8nbsv#iefix') format('embedded-opentype'),
     url('<?php echo esc_url($font_path); ?>.ttf?i8nbsv') format('truetype'),

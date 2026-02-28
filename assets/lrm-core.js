@@ -387,30 +387,189 @@ var LRM = LRM ? LRM : {};
 		 * @param $formModal
 		 * @private
 		 */
-		function _show_modal( $formModal ) {
-			if ( window.LRM_Pro ) {
-				window.LRM_Pro.modal_is_shown = true;
+			function _show_modal( $formModal ) {
+				if ( window.LRM_Pro ) {
+					window.LRM_Pro.modal_is_shown = true;
+				}
+				$formModal.addClass('is-visible');
+				$(document).triggerHandler("lrm/show_modal", $formModal);
 			}
-			$formModal.addClass('is-visible');
-			$(document).triggerHandler("lrm/show_modal", $formModal);
-		}
 
-		window.lrm_submit_form = function(event) {
-			if (LRM.is_customize_preview) {
-				alert("Not possible to submit form in Preview Mode!");
-				return;
+			var nonce_refresh_debounce_timeout = null;
+			var nonce_refresh_request = null;
+			var nonce_refresh_ttl = 2 * 60 * 1000;
+
+			function _nonce_input_name_by_lrm_action(action) {
+				if ('login' === action) {
+					return 'security-login';
+				}
+				if ('signup' === action) {
+					return 'security-signup';
+				}
+				if ('lostpassword' === action) {
+					return 'security-lostpassword';
+				}
+				if ('password_reset' === action) {
+					return 'security-password-reset';
+				}
+
+				return null;
 			}
-			var $form = $(event.target);
+
+			function _is_lrm_nonce_response_invalid(response) {
+				return !!(response && !response.success && response.data && 'invalid_nonce' === response.data.code);
+			}
+
+			function _is_nonce_stale($form) {
+				var refreshed_at = parseInt($form.data('lrm_nonce_refreshed_at') || 0, 10);
+
+				return !refreshed_at || ((new Date()).getTime() - refreshed_at > nonce_refresh_ttl);
+			}
+
+			function _set_form_nonce_refreshed_at($form, refreshed_at) {
+				$form.data('lrm_nonce_refreshed_at', refreshed_at || (new Date()).getTime());
+			}
+
+			function _get_nonce_refresh_forms($scope_form) {
+				var $forms = $scope_form && $scope_form.length ? $scope_form : $('.js-lrm-form');
+
+				return $forms.filter(function () {
+					var $form = $(this);
+					var lrm_action = $form.find('input[name="lrm_action"]').val();
+					var nonce_input_name = _nonce_input_name_by_lrm_action(lrm_action);
+
+					return !!(nonce_input_name && $form.find('input[name="' + nonce_input_name + '"]').length);
+				});
+			}
+
+			function _apply_refreshed_nonces($forms, nonces, refreshed_at) {
+				$forms.each(function () {
+					var $form = $(this);
+					var lrm_action = $form.find('input[name="lrm_action"]').val();
+					var nonce_input_name = _nonce_input_name_by_lrm_action(lrm_action);
+
+					if (!nonce_input_name || !nonces[nonce_input_name]) {
+						return;
+					}
+
+					$form.find('input[name="' + nonce_input_name + '"]').val(nonces[nonce_input_name]);
+					_set_form_nonce_refreshed_at($form, refreshed_at);
+				});
+			}
+
+			function _refresh_nonces($scope_form, force) {
+				var deferred = $.Deferred();
+				var $forms = _get_nonce_refresh_forms($scope_form);
+
+				if (!$forms.length) {
+					deferred.resolve();
+					return deferred.promise();
+				}
+
+				if (!force && !LRM.is_wp_cache) {
+					deferred.resolve();
+					return deferred.promise();
+				}
+
+				if (nonce_refresh_request) {
+					nonce_refresh_request.done(function (response) {
+						if (!response || !response.success || !response.data || !response.data.nonces) {
+							deferred.reject(response);
+							return;
+						}
+
+						var refreshed_at_from_queue = response.data.refreshed_at ? parseInt(response.data.refreshed_at, 10) * 1000 : (new Date()).getTime();
+						_apply_refreshed_nonces($forms, response.data.nonces, refreshed_at_from_queue);
+						deferred.resolve(response);
+					});
+
+					nonce_refresh_request.fail(function (response) {
+						deferred.reject(response);
+					});
+
+					return deferred.promise();
+				}
+
+				nonce_refresh_request = $.ajax({
+					type: 'POST',
+					dataType: 'json',
+					url: LRM.ajax_url,
+					data: {
+						lrm_action: 'refresh_nonces'
+					}
+				});
+
+				nonce_refresh_request.done(function (response) {
+					if (!response || !response.success || !response.data || !response.data.nonces) {
+						deferred.reject(response);
+						return;
+					}
+
+					var refreshed_at = response.data.refreshed_at ? parseInt(response.data.refreshed_at, 10) * 1000 : (new Date()).getTime();
+					_apply_refreshed_nonces($forms, response.data.nonces, refreshed_at);
+					deferred.resolve(response);
+				});
+
+				nonce_refresh_request.fail(function (response) {
+					deferred.reject(response);
+				});
+
+				nonce_refresh_request.always(function () {
+					nonce_refresh_request = null;
+				});
+
+				return deferred.promise();
+			}
+
+			function _schedule_nonce_refresh($form) {
+				if (!LRM.is_wp_cache || !$form || !$form.length || !_is_nonce_stale($form)) {
+					return;
+				}
+
+				clearTimeout(nonce_refresh_debounce_timeout);
+				nonce_refresh_debounce_timeout = setTimeout(function () {
+					_refresh_nonces($form, false);
+				}, 250);
+			}
+
+			window.lrm_submit_form = function(event) {
+				if (LRM.is_customize_preview) {
+					alert("Not possible to submit form in Preview Mode!");
+					return;
+			}
+				var $form = $(event.target);
+				var is_retry_submit = ('yes' === $form.data('lrm_nonce_retry_submit'));
+
+				$form.data('lrm_nonce_retry_submit', 'no');
+
+				if (!is_retry_submit) {
+					$form.data('lrm_nonce_retry_count', 0);
+				}
 
 			if ( $form.hasClass("rcp_form") ) {
 				return true;
 			}
 
-			event.preventDefault();
+				event.preventDefault();
 
-			if ( $form.hasClass("--is-submitting") ) {
-				return false;
-			}
+				if ( $form.hasClass("--is-submitting") ) {
+					return false;
+				}
+
+				if (LRM.is_wp_cache && _is_nonce_stale($form) && 'yes' !== $form.data('lrm_nonce_refresh_submit_in_progress')) {
+					$form.data('lrm_nonce_refresh_submit_in_progress', 'yes');
+
+					_refresh_nonces($form, true)
+						.done(function () {
+							$form.data('lrm_nonce_refresh_submit_in_progress', 'no');
+							$form.trigger('submit');
+						})
+						.fail(function () {
+							$form.data('lrm_nonce_refresh_submit_in_progress', 'no');
+						});
+
+					return false;
+				}
 
 			// Check reCaptha, etc
 			if ( $(document).triggerHandler('lrm/do_not_submit_form', $form) ) {
@@ -441,9 +600,23 @@ var LRM = LRM ? LRM : {};
 				dataType: 'json',
 				url: LRM.ajax_url,
 				data: $form.serialize(),
-				success: function (response) {
-					$form.find(".lrm-button-loader").remove();
-					$form.removeClass("--is-submitting");
+					success: function (response) {
+						$form.find(".lrm-button-loader").remove();
+						$form.removeClass("--is-submitting");
+
+						if (_is_lrm_nonce_response_invalid(response)) {
+							var nonce_retry_count = parseInt($form.data('lrm_nonce_retry_count') || 0, 10);
+
+							if (nonce_retry_count < 1) {
+								$form.data('lrm_nonce_retry_count', nonce_retry_count + 1);
+								_refresh_nonces($form, true)
+									.done(function () {
+										$form.data('lrm_nonce_retry_submit', 'yes');
+										$form.trigger('submit');
+									});
+								return;
+							}
+						}
 
 					if (response.data.message) {
 						if (!response.data.for) {
@@ -530,7 +703,13 @@ var LRM = LRM ? LRM : {};
 			return false;
 		}
 
-		$(document).on('submit', '.js-lrm-form', window.lrm_submit_form);
+			$(document).on('submit', '.js-lrm-form', window.lrm_submit_form);
+			$(document).on('input paste change', '.js-lrm-form input, .js-lrm-form select, .js-lrm-form textarea', function () {
+				_schedule_nonce_refresh($(this).closest('.js-lrm-form'));
+			});
+			$(document).on('click', '.js-lrm-form button[type="submit"], .js-lrm-form input[type="submit"]', function () {
+				_schedule_nonce_refresh($(this).closest('.js-lrm-form'));
+			});
 
 		/**
 		 * @since 1.51

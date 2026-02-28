@@ -25,7 +25,7 @@ class LRM_AJAX
         // Nonce is checked, get the POST data and sign user on
         $info = array();
         $info['user_login'] = trim(sanitize_text_field(wp_unslash($_POST['username'])));
-        $info['user_password'] = trim(sanitize_text_field(wp_unslash($_POST['password'])));
+        $info['user_password'] = wp_unslash($_POST['password']);
         $info['remember'] = isset($_POST['remember-me']) ? true : false;
 
 	    do_action('lrm/login_pre_verify', $info);
@@ -274,12 +274,12 @@ class LRM_AJAX
         }
         
         if ( !empty( $_POST['password'] ) && LRM_Settings::get()->setting('general_pro/all/allow_user_set_password') ) {
-            $password = sanitize_text_field( wp_unslash($_POST['password']));
+            $password = wp_unslash($_POST['password']);
 
             // Defined in: "\wp-includes\default-filters.php"
             remove_action( 'register_new_user', 'wp_send_new_user_notifications' );
 
-            if ( lrm_setting('general_pro/all/use_password_confirmation') && $password !== sanitize_text_field( wp_unslash($_POST['password-confirmation'])) ) {
+            if ( lrm_setting('general_pro/all/use_password_confirmation') && $password !== wp_unslash($_POST['password-confirmation']) ) {
 	            wp_send_json_error(array('message' => lrm_setting('messages/password/passwords_is_mismatch'), 'for'=>'password-confirmation'));
             }
         } else {
@@ -679,7 +679,7 @@ class LRM_AJAX
      */
     public static function password_reset() {
 
-        self::_verify_nonce('security-password-reset2', 'ajax-password-reset-nonce' );
+        self::_verify_nonce('security-password-reset', 'ajax-password-reset-nonce' );
 
         if ( ! isset( $_POST['password1'] ) || empty( trim($_POST['password1']) ) ) {
             wp_send_json_error(array('message' => lrm_setting('messages/password/password_is_missing'), 'for'=>'password1'));
@@ -695,7 +695,7 @@ class LRM_AJAX
             ));
         }
 
-        $new_pass = trim( sanitize_text_field( wp_unslash($_POST['password1']) ) );
+        $new_pass = wp_unslash($_POST['password1']);
 
         list($rp_key, $rp_login, $rp_path, $user) = $rp_data;
 
@@ -787,13 +787,33 @@ class LRM_AJAX
         return [$rp_key, $rp_login, $rp_path, $user];
     }
 
-    public static function _verify_nonce( $post_key, $nonce_key ) {
-       if ( defined("WP_CACHE") ) {
-            return true;
-        }
+    /**
+     * Refresh public form nonces to work around cached markup.
+     *
+     * @since 2.0
+     */
+    public static function refresh_nonces() {
+        nocache_headers();
 
+        wp_send_json_success(
+            array(
+                'nonces' => array(
+                    'security-login'          => wp_create_nonce( 'ajax-login-nonce' ),
+                    'security-signup'         => wp_create_nonce( 'ajax-signup-nonce' ),
+                    'security-lostpassword'   => wp_create_nonce( 'ajax-forgot-nonce' ),
+                    'security-password-reset' => wp_create_nonce( 'ajax-password-reset-nonce' ),
+                ),
+                'refreshed_at' => time(),
+            )
+        );
+    }
+
+    public static function _verify_nonce( $post_key, $nonce_key ) {
         if ( !isset($_POST[$post_key]) || !wp_verify_nonce(sanitize_text_field(wp_unslash($_POST[$post_key])), $nonce_key) ) {
-            wp_send_json_error(array('message' => LRM_Settings::get()->setting('messages/other/invalid_nonce')));
+            wp_send_json_error(array(
+                'message' => LRM_Settings::get()->setting('messages/other/invalid_nonce'),
+                'code'    => 'invalid_nonce',
+            ));
         }
     }
 

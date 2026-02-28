@@ -14,17 +14,24 @@
 
 					<?php
 					$class = ( $section_slug == $current_section ) ? 'current' : '';
-					if ( $section_slug !== 'license' ) {
-                        $page_url = remove_query_arg('updated');
-                        $url = add_query_arg('section', $section_slug, $page_url);
-                    } else {
-					    // MAX
-                        // @since 2.01
-                        $url = admin_url('options-general.php?page=lrm_api_manager_dashboard');
-                    }
+					$page_url = remove_query_arg('updated');
+					$url = add_query_arg('section', $section_slug, $page_url);
 					?>
 
-					<li class="<?php echo esc_attr( $class ); ?>"><a href="<?php echo esc_attr( $url ); ?>"><?php echo $section->name() ?></a></li>
+					<?php
+					$license_badge = '';
+					if ( 'license' === $section_slug && lrm_is_pro('2.20') && function_exists( 'lrm_pro_is_license_active' ) ) {
+						$license_active = lrm_pro_is_license_active();
+						$status_class   = $license_active ? 'is-active' : 'is-inactive';
+						$status_label   = $license_active ? __( 'Active', 'lrm' ) : __( 'Inactive', 'lrm' );
+						$license_badge  = sprintf(
+							'<span class="lrm-license-status %s">%s</span>',
+							esc_attr( $status_class ),
+							esc_html( $status_label )
+						);
+					}
+					?>
+					<li class="<?php echo esc_attr( $class ); ?>"><a href="<?php echo esc_attr( $url ); ?>"><?php echo $section->name(); ?><?php echo $license_badge; ?></a></li>
 
 				<?php endforeach ?>
 

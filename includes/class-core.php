@@ -175,6 +175,8 @@ class LRM_Core {
         add_action('wp_ajax_nopriv_lrm_signup', array('LRM_AJAX', 'signup'));
         add_action('wp_ajax_nopriv_lrm_lostpassword', array('LRM_AJAX', 'lostpassword'));
         add_action('wp_ajax_nopriv_lrm_password_reset', array('LRM_AJAX', 'password_reset'));
+        add_action('wp_ajax_nopriv_lrm_refresh_nonces', array('LRM_AJAX', 'refresh_nonces'));
+        add_action('wp_ajax_lrm_refresh_nonces', array('LRM_AJAX', 'refresh_nonces'));
 
         //var_dump( function_exists('cptch_login_check') );
         //add_filter('authenticate', 'cptch_login_check', 21, 1);
@@ -307,6 +309,7 @@ class LRM_Core {
             //'ajax_url'           => add_query_arg( 'lrm', '1', admin_url('admin-ajax.php') ),
             'is_user_logged_in'  => is_user_logged_in(),
             'reload_after_login' => LRM_Settings::get()->setting('general/registration/reload_after_login'),
+            'is_wp_cache'       => defined('WP_CACHE') ? 1 : 0,
             'selectors_mapping'  => array(
                 'login'     => stripcslashes( LRM_Settings::get()->setting('advanced/selectors_mapping/login') ),
                 'register'  => stripcslashes( LRM_Settings::get()->setting('advanced/selectors_mapping/register') ),

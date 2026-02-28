@@ -32,8 +32,8 @@ class LRM_Settings {
         // register menu as always
         add_action( 'admin_menu', array( $this, 'register_menu' ) );
 
-        // register some settings
-        add_action( 'init', array( $this, 'register_settings' ) );
+        // Register settings after skins are loaded on init by Free/Pro bootstraps.
+        add_action( 'init', array( $this, 'register_settings' ), 20 );
 
         add_action( 'admin_notices', array( $this, 'beg_for_review' ) );
 
@@ -86,6 +86,7 @@ class LRM_Settings {
         }
 
         if ( isset($_GET['action']) && $_GET['action'] === 'lrm_reset_translations' && current_user_can('manage_options') ) {
+            check_admin_referer( 'lrm-reset-translations' );
             $this->_reset_translations();
         }
 

@@ -35,9 +35,31 @@ class LRM_Skins extends WP_Skins_Manager_Abstract {
     }
 
     /**
+     * Ensure at least default skins are loaded before reading registry-dependent data.
+     *
+     * @return void
+     */
+    protected function ensure_skins_loaded() {
+        if ( empty( $this->skins ) ) {
+            $this->load_defaults();
+        }
+    }
+
+    /**
+     * Return list of available skins.
+     *
+     * @return array
+     */
+    public function get_list() {
+        $this->ensure_skins_loaded();
+        return parent::get_list();
+    }
+
+    /**
      * Enqueue skin CSS
      */
     public function load_current_skin_assets() {
+        $this->ensure_skins_loaded();
         $skin_slug = $this->get_current_skin_slug();
         $skin = $this->get( $skin_slug );
 
