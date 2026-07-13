@@ -108,7 +108,7 @@ class LRM_Mailer {
 
 		do_action( "lrm/mail/before_sent", $mail_key );
 
-		$mail_sent = wp_mail( $to, $subject, $mail_body );
+        $mail_sent = wp_mail( $to, $subject, $mail_body );
 
         do_action( "lrm/mail/after_sent", $mail_key );
 

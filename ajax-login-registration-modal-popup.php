@@ -3,7 +3,7 @@
 	Plugin Name:    AJAX Login and Registration modal popup DEV + inline form
 	Plugin URI:     https://maxim-kaminsky.com/shop/product/ajax-login-and-registration-modal-popup-pro/
 	Description:    Easy to integrate modal with Login and Registration features + inline form using shortcode.
-	Version:        2.27
+	Version:        2.28
 	Author URI:     http://maxim-kaminsky.com/
 	Author:         Maxim K
 	Text Domain:    ajax-login-and-registration-modal-popup
@@ -28,15 +28,18 @@ if ( class_exists('LRM_Pro') && defined("LRM_URL") && lrm_is_pro('1.50') && ! de
 
 if ( !defined("LRM_IN_BUILD_FREE") ) {
     define("LRM_URL", plugin_dir_url(__FILE__));
-    define("LRM_ASSETS_URL", LRM_URL . '/assets/');
-
     define("LRM_PATH", plugin_dir_path(__FILE__));
-    define("LRM_BASENAME", plugin_basename(__FILE__));
+    define("LRM_ASSETS_URL", LRM_URL . 'assets/');
 }
 
-define("LRM_VERSION", '2.27');
+define("LRM_BASENAME", plugin_basename(__FILE__));
 
-define("LRM_ASSETS_VER", 57);
+define("LRM_PUBLIC_URL", LRM_URL . 'public/');
+define("LRM_PUBLIC_PATH", LRM_PATH . 'public/');
+
+define("LRM_VERSION", '2.28');
+
+define("LRM_ASSETS_VER", 58);
 
 //define('LRM_LOAD_ASSETS_ONLY_FOR_INLINE', 1); //- if no modal used - only inline form
 
@@ -60,4 +63,3 @@ if (!SHORTINIT && !defined("LRM_IN_BUILD_FREE")) {
      */
     register_deactivation_hook( __FILE__, array( 'LRM_Deactivator', 'deactivate' ) );
 }
-

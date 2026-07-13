@@ -1,0 +1,927 @@
+var LRM = window.LRM ? window.LRM : {};
+window.LRM = LRM;
+
+//jQuery(document).ready(function($) {
+// jQuery(document).ready(
+/** @var $ jQuery */
++(function ($) {
+
+	if ( LRM.home_url_arr.scheme !== window.location.protocol.replace(":", "") ) {
+		alert( "AJAX Login and Registration Popup warning: the WP settings site URL scheme and current url scheme doesn't math. " + "\n\r" +
+			  "WP settings url: " + LRM.home_url + "\n" + "Browser url: " + window.location.href + "\n\r" +
+			  "This could cause a login/registration issues! " +
+			  "Usually this happens when SSL (HTTPS) were added to the site, but HTTP version still accessible. How to set up HTTP to HTTPS redirect: https://websitesetup.org/http-to-https-wordpress/" );
+	}
+
+	if ( LRM.validate_domain && LRM.home_url_arr.host !== window.location.host ) {
+		alert( "AJAX Login and Registration Popup warning: the WP settings site Domain and current url Domain doesn't math. " + "\n\r" +
+			  "WP settings domain: " + LRM.home_url_arr.host + "\n" + "Browser domain: " + window.location.host + "\n\r" +
+			  "This could cause a login/registration issues! ");
+	}
+
+	if ($('.lrm-user-modal').length > 0) {
+		lrm_init()
+	} else {
+		setTimeout(function () {
+			lrm_init();
+		}, 1200);
+	}
+
+	function is_mobile_or_tablet() {
+		var check = false;
+
+		(function (a) {
+			if (/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino|android|ipad|playbook|silk/i.test(a) || /1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i.test(a.substr(0, 4))) check = true;
+		})(navigator.userAgent || navigator.vendor || window.opera);
+
+		return check;
+	}
+
+	function lrm_init() {
+		// var $formModal = $('.lrm-user-modal'),
+		// 	  $formLogin = $formModal.find('#lrm-login'),
+		// 	  $formSignup = $formModal.find('#lrm-signup'),
+		// 	  $formForgotPassword = $formModal.find('#lrm-reset-password'),
+		// 	  $formModalTab = $('.lrm-switcher'),
+		// 	  $tabLogin = $formModalTab.children('li').eq(0).children('a'),
+		// 	  $tabSignup = $formModalTab.children('li').eq(1).children('a'),
+		// 	  $forgotPasswordLink = $formLogin.find('.lrm-form-bottom-message a'),
+		// 	  $backToLoginLink = $formForgotPassword.find('.lrm-form-bottom-message a'),
+
+		var loader_html = '<span class="lrm-button-loader"> <svg version="1.1" id="L4" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 100 40" enable-background="new 0 0 0 0" xml:space="preserve"> <circle fill="#ffffff" stroke="none" cx="30" cy="20" r="6"> <animate attributeName="opacity" dur="1s" values="0;1;0" repeatCount="indefinite" begin="0.1"/> </circle> <circle fill="#ffffff" stroke="none" cx="50" cy="20" r="6"> <animate attributeName="opacity" dur="1s" values="0;1;0" repeatCount="indefinite" begin="0.2"/> </circle> <circle fill="#ffffff" stroke="none" cx="70" cy="20" r="6"> <animate attributeName="opacity" dur="1s" values="0;1;0" repeatCount="indefinite" begin="0.3"/> </circle> </svg></span>';
+
+		$("html").addClass("html-has-lrm");
+		$("body").addClass("has-lrm");
+
+		$(document).on('lrm_show_signup', signup_selected);
+		$(document).on('lrm_show_register', signup_selected);
+
+		$(document).on('lrm_show_signin', login_selected);
+		$(document).on('lrm_show_login', login_selected);
+
+		setTimeout(function () {
+			if (LRM.selectors_mapping.login) {
+				$(LRM.selectors_mapping.login)
+					  .off("click")
+					  .on('click', function (event) {
+						  event.preventDefault();
+						  $(document).trigger('lrm_show_login', [event]);
+						  return false;
+					  });
+			}
+			if (LRM.selectors_mapping.register) {
+				$(LRM.selectors_mapping.register)
+					  .off("click")
+					  .on('click', function (event) {
+						  event.preventDefault();
+						  $(document).trigger('lrm_show_signup', [event]);
+						  return false;
+					  });
+			}
+
+			var hash = window.location.hash.substring(1);
+			if ( hash.length > 0 ) {
+				if (hash === "login") {
+					$(document).trigger('lrm_show_login');
+				} else if (hash === "inline-login") {
+					jQuery(".lrm-inline .lrm-switch-to--login").click();
+				} else if (hash == "register") {
+					$(document).trigger('lrm_show_signup');
+				} else if (hash == "inline-register") {
+					jQuery(".lrm-inline .lrm-switch-to--register").click();
+				} else if (hash == "reset-password") {
+					jQuery(".lrm-inline .lrm-switch-to--reset-password").click();
+				}
+			}
+		}, 300);
+
+		//$("form.cart").on('submit', signup_selected);
+
+		//var handle_event = is_mobile_or_tablet() ? 'touchend' : 'click';
+
+		//open sign-up form
+		$(document).on('click', '.lrm-signup', signup_selected);
+		$(document).on('touchend click', '[class*="lrm-register"]', signup_selected);
+		$(document).on('click', '.lrm-switch-to--register', signup_selected);
+
+		//open login-form form
+		$(document).on('click', '.lrm-signin', login_selected);
+		$(document).on('touchend click', '[class*="lrm-login"]', login_selected);
+		$(document).on('click', '.lrm-switch-to--login', login_selected);
+
+		$(document).on('click', '.lrm-forgot-password,[data-action="login"] .lrm-form-message a,.lrm-switch-to--reset-password', function (event) {
+			event.preventDefault();
+			forgot_password_selected(event);
+		});
+
+		//close modal
+		$('.lrm-user-modal').on('mousedown', function (event) {
+			if ($(event.target).is('.lrm-user-modal') || $(event.target).is('.lrm-close-form')) {
+				// Check reCaptha, etc
+				var can_close = $(document).triggerHandler('lrm/can_close_modal', event);
+				if ( can_close !== undefined && !can_close ) {
+					return false;
+				}
+
+				$(this).removeClass('is-visible');
+				auto_selected_role = false;
+				$(document).triggerHandler("lrm/close_modal", this, event, "click");
+			}
+		});
+		//close modal when clicking the esc keyboard button
+		$(document).on( "keyup", function (event) {
+			if (event.which == '27') {
+				// Check reCaptha, etc
+				var can_close = $(document).triggerHandler('lrm/can_close_modal', event);
+				if ( can_close !== undefined && !can_close ) {
+					return false;
+				}
+
+				$(".lrm-user-modal").removeClass('is-visible');
+				auto_selected_role = false;
+				$(document).triggerHandler("lrm/close_modal", this, event, "esc");
+			}
+		});
+
+		//switch from a tab to another
+		// $formModalTab.on('click', function (event) {
+		// 	event.preventDefault();
+		// 	( $(event.target).is($tabLogin) ) ? login_selected(event, true) : signup_selected(event, true);
+		// });
+
+		//hide or show password
+		$(document).on('click', '.lrm-user-modal-container .hide-password', function () {
+			var togglePass = $(this),
+				  passwordField = togglePass.parent().find('input');
+
+			('password' == passwordField.attr('type')) ? passwordField.attr('type', 'text') : passwordField.attr('type', 'password');
+
+			if ( togglePass.hasClass("hide-password--on") )  {
+				togglePass.attr( "title", togglePass.data("show") );
+				togglePass.removeClass("hide-password--on");
+			} else {
+				togglePass.attr( "title", togglePass.data("hide") );
+				togglePass.addClass("hide-password--on");
+			}
+			//focus and move cursor to the end of input field
+			passwordField.putCursorAtEnd();
+		});
+
+		//show forgot-password form
+		// $forgotPasswordLink.on('click', function (event) {
+		// 	event.preventDefault();
+		// 	forgot_password_selected(event);
+		// });
+		//
+		// //back to login from the forgot-password form
+		// $backToLoginLink.on('click', function (event) {
+		// 	event.preventDefault();
+		// 	login_selected(event, true);
+		// });
+
+		var auto_selected_role = false;
+		var hidden_role = false;
+
+		function _save_auto_role(event) {
+			if ( !event.target || $(event.target).hasClass("lrm-switch-to-link") ) {
+			 	return;
+			}
+			var role = $(event.target).data("lrm-role");
+			if ( role !== undefined ) {
+				auto_selected_role = role;
+			}
+
+			hidden_role = false;
+			if ( $(event.target).data("lrm-role-silent") !== undefined ) {
+				hidden_role = true;
+			}
+		}
+
+		function login_selected(event, event_orig) {
+			if (LRM.is_user_logged_in && !LRM.is_customize_preview) {
+				return true;
+			}
+
+			if (event) {
+				event.stopPropagation();
+				event.preventDefault();
+			}
+			/**
+			 * @since 1.34
+			 * this - clicked element
+			 */
+			$(document).triggerHandler("lrm/before_display/login", this, event);
+
+			_save_auto_role(event);
+
+			var $formModal = $(event.target).closest(".lrm-main");
+
+			if (!$formModal.length) {
+				LRM.redirect_url = "";
+				if (!event_orig) {
+					var el = event.target ? event.target : this;
+				} else {
+					var el = event_orig.target;
+				}
+				if (el && ($(el).hasClass("lrm-redirect") || $(el).parent().hasClass("lrm-redirect"))) {
+					LRM.redirect_url = $(el).attr("href");
+				}
+			}
+
+			if (!$formModal.length) {
+				$formModal = $(".lrm-user-modal");
+			}
+
+			// var $formModal = $('.lrm-user-modal'),
+			// 	  $formLogin = $formModal.find('.lrm-login'),
+			// 	  $formSignup = $formModal.find('.lrm-signup'),
+			// 	  $formForgotPassword = $formModal.find('.lrm-reset-password'),
+			// 	  $formModalTab = $('.lrm-switcher'),
+			// 	  $tabLogin = $formModalTab.children('li').eq(0).children('a'),
+			// 	  $tabSignup = $formModalTab.children('li').eq(1).children('a'),
+			// 	  $forgotPasswordLink = $formLogin.find('.lrm-form-bottom-message a'),
+			// 	  $backToLoginLink = $formForgotPassword.find('.lrm-form-bottom-message a'),
+			//
+			_show_modal($formModal);
+			$formModal.find('.lrm-signin-section').addClass('is-selected');
+			$formModal.find('.lrm-signup-section').removeClass('is-selected');
+			$formModal.find('.lrm-reset-password-section').removeClass('is-selected');
+			$formModal.find('.lrm-switcher').children('li').eq(0).children('a').addClass('selected');
+			$formModal.find('.lrm-switcher').children('li').eq(1).children('a').removeClass('selected');
+
+			setTimeout(function() {
+				if ( $(window).width() > 600 ) {
+					$formModal.find(".lrm-signin-section input[data-autofocus]").trigger('focus');
+				}
+			}, 100);
+
+			return false;
+		}
+
+		function signup_selected(event, event_orig) {
+			if (LRM.is_user_logged_in && !LRM.is_customize_preview) {
+				return true;
+			}
+
+			if (event) {
+				event.stopPropagation();
+				event.preventDefault();
+			}
+			/**
+			 * @since 1.34
+			 * this - clicked element
+			 */
+			$(document).triggerHandler("lrm/before_display/registration", this, event);
+
+			_save_auto_role(event);
+
+			// $formModal.addClass('is-visible');
+			// $formLogin.removeClass('is-selected');
+			// $formSignup.addClass('is-selected');
+			// $formForgotPassword.removeClass('is-selected');
+			// $tabLogin.removeClass('selected');
+			// $tabSignup.addClass('selected');
+
+			var $formModal = $(event.target).closest(".lrm-main");
+
+
+			if (!$formModal.length) {
+				LRM.redirect_url = "";
+				if (!event_orig) {
+					var el = event.target ? event.target : this;
+				} else {
+					var el = event_orig.target;
+				}
+				if (el && ($(el).hasClass("lrm-redirect") || $(el).parent().hasClass("lrm-redirect"))) {
+					LRM.redirect_url = $(el).attr("href");
+				}
+			}
+
+			if (!$formModal.length) {
+				$formModal = $(".lrm-user-modal");
+			}
+
+			_show_modal($formModal);
+			$formModal.find('.lrm-signin-section').removeClass('is-selected');
+			$formModal.find('.lrm-signup-section').addClass('is-selected');
+			$formModal.find('.lrm-reset-password-section').removeClass('is-selected');
+			$formModal.find('.lrm-switcher').children('li').eq(0).children('a').removeClass('selected');
+			$formModal.find('.lrm-switcher').children('li').eq(1).children('a').addClass('selected');
+
+			// User Role selector!
+			if ( $formModal.find(".fieldset--user_role") ) {
+				var $user_role_wrap = $formModal.find(".fieldset--user_role");
+				var $role_option = null, role_id;
+
+				if (auto_selected_role) {
+					$role_option = $user_role_wrap.find("option[data-label='" + auto_selected_role + "']");
+					if ( $role_option.length ) {
+						var role_id = $role_option.val();
+					}
+					if ( role_id ) {
+						$user_role_wrap.find("select[name='user_role']").val(role_id); // aa
+					} else {
+						console.warn( "LRM user role selector: no Role was found with a label:", auto_selected_role );
+					}
+				} else {
+					$user_role_wrap.find("select[name='user_role']").val("");
+				}
+
+				if (hidden_role && ( !auto_selected_role || (auto_selected_role && role_id) )) {
+					$user_role_wrap.hide();
+				} else {
+					$user_role_wrap.show();
+				}
+			}
+
+			setTimeout(function() {
+				if ( $(window).width() > 600 ) {
+					$formModal.find(".lrm-signup-section input:first").trigger('focus');
+				}
+
+				$("#signup-password").trigger("keyup");
+			}, 100);
+
+			return false;
+		}
+
+		function forgot_password_selected(event) {
+			// if (LRM.is_user_logged_in) {
+			// 	return true;
+			// }
+
+			/**
+			 * @since 1.34
+			 * this - clicked element
+			 */
+			$(document).triggerHandler("lrm/before_display/forgot_password", this, event);
+
+			var $formModal = $(event.target).closest(".lrm-main");
+
+			if (!$formModal.length) {
+				$formModal = $(".lrm-user-modal");
+			}
+
+			_show_modal($formModal);
+			$formModal.find('.lrm-signin-section').removeClass('is-selected');
+			$formModal.find('.lrm-signup-section').removeClass('is-selected');
+			$formModal.find('.lrm-reset-password-section').addClass('is-selected');
+
+			setTimeout(function() {
+				if ( $(window).width() > 600 ) {
+					$formModal.find(".lrm-reset-password-section input[data-autofocus]").trigger('focus');
+				}
+			}, 100);
+
+			if (event) {
+				event.preventDefault();
+			}
+
+			// $formLogin.removeClass('is-selected');
+			// $formSignup.removeClass('is-selected');
+			// $formForgotPassword.addClass('is-selected');
+			return false;
+		}
+
+		/**
+		 * Global function for all actions
+		 * @param $formModal
+		 * @private
+		 */
+			function _show_modal( $formModal ) {
+				if ( window.LRM_Pro ) {
+					window.LRM_Pro.modal_is_shown = true;
+				}
+				$formModal.addClass('is-visible');
+				$(document).triggerHandler("lrm/show_modal", $formModal);
+			}
+
+			var nonce_refresh_debounce_timeout = null;
+			var nonce_refresh_request = null;
+			var nonce_refresh_ttl = 2 * 60 * 1000;
+
+			function _nonce_input_name_by_lrm_action(action) {
+				if ('login' === action) {
+					return 'security-login';
+				}
+				if ('signup' === action) {
+					return 'security-signup';
+				}
+				if ('lostpassword' === action) {
+					return 'security-lostpassword';
+				}
+				if ('password_reset' === action) {
+					return 'security-password-reset';
+				}
+
+				return null;
+			}
+
+			function _is_lrm_nonce_response_invalid(response) {
+				return !!(response && !response.success && response.data && 'invalid_nonce' === response.data.code);
+			}
+
+			function _is_nonce_stale($form) {
+				var refreshed_at = parseInt($form.data('lrm_nonce_refreshed_at') || 0, 10);
+
+				return !refreshed_at || ((new Date()).getTime() - refreshed_at > nonce_refresh_ttl);
+			}
+
+			function _set_form_nonce_refreshed_at($form, refreshed_at) {
+				$form.data('lrm_nonce_refreshed_at', refreshed_at || (new Date()).getTime());
+			}
+
+			function _get_nonce_refresh_forms($scope_form) {
+				var $forms = $scope_form && $scope_form.length ? $scope_form : $('.js-lrm-form');
+
+				return $forms.filter(function () {
+					var $form = $(this);
+					var lrm_action = $form.find('input[name="lrm_action"]').val();
+					var nonce_input_name = _nonce_input_name_by_lrm_action(lrm_action);
+
+					return !!(nonce_input_name && $form.find('input[name="' + nonce_input_name + '"]').length);
+				});
+			}
+
+			function _apply_refreshed_nonces($forms, nonces, refreshed_at) {
+				$forms.each(function () {
+					var $form = $(this);
+					var lrm_action = $form.find('input[name="lrm_action"]').val();
+					var nonce_input_name = _nonce_input_name_by_lrm_action(lrm_action);
+
+					if (!nonce_input_name || !nonces[nonce_input_name]) {
+						return;
+					}
+
+					$form.find('input[name="' + nonce_input_name + '"]').val(nonces[nonce_input_name]);
+					_set_form_nonce_refreshed_at($form, refreshed_at);
+				});
+			}
+
+			function _refresh_nonces($scope_form, force) {
+				var deferred = $.Deferred();
+				var $forms = _get_nonce_refresh_forms($scope_form);
+
+				if (!$forms.length) {
+					deferred.resolve();
+					return deferred.promise();
+				}
+
+				if (!force && !LRM.is_wp_cache) {
+					deferred.resolve();
+					return deferred.promise();
+				}
+
+				if (nonce_refresh_request) {
+					nonce_refresh_request.done(function (response) {
+						if (!response || !response.success || !response.data || !response.data.nonces) {
+							deferred.reject(response);
+							return;
+						}
+
+						var refreshed_at_from_queue = response.data.refreshed_at ? parseInt(response.data.refreshed_at, 10) * 1000 : (new Date()).getTime();
+						_apply_refreshed_nonces($forms, response.data.nonces, refreshed_at_from_queue);
+						deferred.resolve(response);
+					});
+
+					nonce_refresh_request.fail(function (response) {
+						deferred.reject(response);
+					});
+
+					return deferred.promise();
+				}
+
+				nonce_refresh_request = $.ajax({
+					type: 'POST',
+					dataType: 'json',
+					url: LRM.ajax_url,
+					data: {
+						lrm_action: 'refresh_nonces'
+					}
+				});
+
+				nonce_refresh_request.done(function (response) {
+					if (!response || !response.success || !response.data || !response.data.nonces) {
+						deferred.reject(response);
+						return;
+					}
+
+					var refreshed_at = response.data.refreshed_at ? parseInt(response.data.refreshed_at, 10) * 1000 : (new Date()).getTime();
+					_apply_refreshed_nonces($forms, response.data.nonces, refreshed_at);
+					deferred.resolve(response);
+				});
+
+				nonce_refresh_request.fail(function (response) {
+					deferred.reject(response);
+				});
+
+				nonce_refresh_request.always(function () {
+					nonce_refresh_request = null;
+				});
+
+				return deferred.promise();
+			}
+
+			function _schedule_nonce_refresh($form) {
+				if (!LRM.is_wp_cache || !$form || !$form.length || !_is_nonce_stale($form)) {
+					return;
+				}
+
+				clearTimeout(nonce_refresh_debounce_timeout);
+				nonce_refresh_debounce_timeout = setTimeout(function () {
+					_refresh_nonces($form, false);
+				}, 250);
+			}
+
+			window.lrm_submit_form = function(event) {
+				if (LRM.is_customize_preview) {
+					alert("Not possible to submit form in Preview Mode!");
+					return;
+			}
+				var $form = $(event.target);
+				var is_retry_submit = ('yes' === $form.data('lrm_nonce_retry_submit'));
+
+				$form.data('lrm_nonce_retry_submit', 'no');
+
+				if (!is_retry_submit) {
+					$form.data('lrm_nonce_retry_count', 0);
+				}
+
+			if ( $form.hasClass("rcp_form") ) {
+				return true;
+			}
+
+				event.preventDefault();
+
+				if ( $form.hasClass("--is-submitting") ) {
+					return false;
+				}
+
+				if (LRM.is_wp_cache && _is_nonce_stale($form) && 'yes' !== $form.data('lrm_nonce_refresh_submit_in_progress')) {
+					$form.data('lrm_nonce_refresh_submit_in_progress', 'yes');
+
+					_refresh_nonces($form, true)
+						.done(function () {
+							$form.data('lrm_nonce_refresh_submit_in_progress', 'no');
+							$form.trigger('submit');
+						})
+						.fail(function () {
+							$form.data('lrm_nonce_refresh_submit_in_progress', 'no');
+						});
+
+					return false;
+				}
+
+			// Check reCaptha, etc
+			if ( $(document).triggerHandler('lrm/do_not_submit_form', $form) ) {
+				return false;
+			}
+
+			// Fix for ACF PRO plugin
+			if ( $form.data("action") == "registration" && $form.find("#acf-form-data").length > 0 && window.acf && window.acf.validation.active ) {
+				if ("yes" !== $form.data("lrm-acf-validated")) {
+					return;
+				}
+				// Reset validation flag
+				$form.data("lrm-acf-validated", "no");
+			}
+
+			$form.find(".has-error").removeClass("has-error")
+				  .next("span").removeClass("is-visible");
+
+			$form.find("button[type='submit']").prepend(loader_html);
+
+			$form.find(".lrm-form-message").html("");
+
+			$form.addClass("--is-submitting");
+
+
+			$.ajax({
+				type: 'POST',
+				dataType: 'json',
+				url: LRM.ajax_url,
+				data: $form.serialize(),
+					success: function (response) {
+						$form.find(".lrm-button-loader").remove();
+						$form.removeClass("--is-submitting");
+
+						if (_is_lrm_nonce_response_invalid(response)) {
+							var nonce_retry_count = parseInt($form.data('lrm_nonce_retry_count') || 0, 10);
+
+							if (nonce_retry_count < 1) {
+								$form.data('lrm_nonce_retry_count', nonce_retry_count + 1);
+								_refresh_nonces($form, true)
+									.done(function () {
+										$form.data('lrm_nonce_retry_submit', 'yes');
+										$form.trigger('submit');
+									});
+								return;
+							}
+						}
+
+					if (response.data.message) {
+						if (!response.data.for) {
+							LRM_Form.set_message( $form, response.data.message, !response.success );
+							//$form.find(".lrm-form-message").html(response.data.message);
+
+							// if (!response.success) {
+							// 	$form.find(".lrm-form-message").addClass("lrm-is-error");
+							// }
+
+							//$form.closest(".lrm-user-modal-container").animate({scrollTop: error_scroll_offset}, 400);
+						} else {
+							// Tweak in case this selector is Missing
+							if ( 0 === $form.find('input[name="' + response.data.for + '"]').length ) {
+								alert(response.data.message);
+							} else {
+								$form.find('input[name="' + response.data.for + '"]').addClass('has-error')
+									// .next('.lrm-error-message') - fix for LastPass Extention
+									.parent()
+									.find('.lrm-error-message')
+									.html(response.data.message).addClass('is-visible');
+								$form.find(".lrm-form-message").removeClass("lrm-is-error").html("");
+
+							}
+						}
+
+						if (response.data.custom_html && response.data.custom_html_selector) {
+							$(response.data.custom_html_selector).html(response.data.custom_html);
+						}
+					}
+
+					// $form.data("action") for get
+					$(document).triggerHandler('lrm/ajax_response', [response, $form, $form.data("action")]);
+
+					if ( window.is_lrm_testing ) {
+						window.lrm_response = response;
+						return;
+					}
+
+					//console.log(response);
+
+					// If user Logged in After Login or Registration
+					// If Email Verify after Registration enabled - we skip this
+					if (response.success && response.data.logged_in) {
+						LRM.is_user_logged_in = true;
+						$(document).triggerHandler('lrm_user_logged_in', [response, $form, $form.data("action")]);
+
+						if ( "reload" == response.data.action ) {
+							window.location.reload( true );
+						} else if ( "hide" == response.data.action ) {
+							$(".lrm-user-modal").removeClass('is-visible');
+							$("body").addClass("logged-in");
+						}
+					}
+
+					$(document).triggerHandler('lrm_pro/maybe_refresh_recaptcha');
+				},
+				error: function (jqXHR, textStatus, errorThrown) {
+					$form.find(".lrm-button-loader").remove();
+					$form.removeClass("--is-submitting");
+
+					if ( jqXHR.responseText.indexOf("GF_AJAX_POSTBACK") > 0 ) {
+						$(document).triggerHandler('lrm_gf_ajax', [jqXHR.responseText, jqXHR.status, $form, $form.data("action")]);
+						console.log('GF_AJAX_POSTBACK found');
+						return;
+					}
+
+					if ( 503 === jqXHR.status && jqXHR.responseText.indexOf("ERROR") > 0 ) {
+						LRM_Form.set_message( $form, jqXHR.responseText, false );
+					} else {
+						alert("An error occurred, please contact with administrator... \n\rFor more details look at the console (F12 or Ctrl+Shift+I, Console tab)!");
+					}
+
+					if (window.console == undefined) {
+						return;
+					}
+					console.log('statusCode:', jqXHR.status);
+					console.log('errorThrown:', errorThrown);
+					console.log('responseText:', jqXHR.responseText);
+				}
+
+			});
+
+			return false;
+		}
+
+			$(document).on('submit', '.js-lrm-form', window.lrm_submit_form);
+			$(document).on('input paste change', '.js-lrm-form input, .js-lrm-form select, .js-lrm-form textarea', function () {
+				_schedule_nonce_refresh($(this).closest('.js-lrm-form'));
+			});
+			$(document).on('click', '.js-lrm-form button[type="submit"], .js-lrm-form input[type="submit"]', function () {
+				_schedule_nonce_refresh($(this).closest('.js-lrm-form'));
+			});
+
+		/**
+		 * @since 1.51
+		 */
+		$( 'body' ).on( 'keyup', '#lrm-password1,#lrm-password2', function( event ) {
+			var passwordStrength = LRM.checkPasswordStrength(
+				  $( "#lrm-password1" ),         // First password field
+				  null,         // First password field
+				  $( "#lrm-password1" ).parent().parent().find(".lrm-pass-strength-result")           // Strength meter
+			);
+
+			if (typeof passwordStrength === "undefined" || passwordStrength === null) {
+				return;
+			}
+
+			if ( "yes_allow_weak" == LRM.validate_password_strength ) {
+				if (!passwordStrength || passwordStrength <= 2) {
+					$(".pw-weak").show()
+					$(".pw-checkbox").attr("required", "required");
+				} else {
+					$(".pw-weak").hide()
+					$(".pw-checkbox").attr("required", false);
+				}
+			}
+		});
+
+		setTimeout(function () {
+			if ( $('#lrm-password1,#lrm-password2').length > 0 ) {
+				$('#lrm-password1,#lrm-password2').trigger('keyup');
+			}
+		}, 500);
+
+	}
+
+	// ajaxSetup is global, but we use it to ensure JSON is valid once returned.
+	$.ajaxSetup({
+		dataFilter: function (raw_response, dataType) {
+			// We only want to work with JSON
+			if ('json' !== dataType || !raw_response) {
+				return raw_response;
+			}
+
+			if (lrm_is_valid_json(raw_response)) {
+				return raw_response;
+			} else {
+				// Attempt to fix the malformed JSON
+				var maybe_valid_json = raw_response.match(/{"success.*}/);
+
+				if (null === maybe_valid_json) {
+					console.log('Unable to fix malformed JSON');
+				} else if (lrm_is_valid_json(maybe_valid_json[0])) {
+					console.log('Fixed malformed JSON. Original:');
+					console.log(raw_response);
+					raw_response = maybe_valid_json[0];
+				} else {
+					console.log('Unable to fix malformed JSON');
+				}
+			}
+
+			return raw_response;
+		}
+	});
+
+
+	function lrm_is_valid_json(raw_json) {
+		try {
+			var json = $.parseJSON(raw_json);
+
+			return (json && 'object' === typeof json);
+		} catch (e) {
+			return false;
+		}
+	}
+
+	window.LRM_Form = {
+		set_message: function($form, message_html, is_error) {
+			var $message = $form.find(".lrm-form-message");
+
+			if ( 0 === $message.length && $form.hasClass("signup-form") ) {
+				$form.prepend( '<div class="lrm-form-message"></div>' );
+				$message = $form.find(".lrm-form-message");
+			}
+
+			// Tweak in case this selector is Missing
+			if ( 0 !== $message.length ) {
+				$message.html(message_html);
+			} else {
+				alert(message_html);
+			}
+
+			var modal_is_visible = $(".lrm-user-modal").hasClass('is-visible');
+
+			var element_to_scroll = modal_is_visible ? ".lrm-user-modal" : "html, body";
+
+			var error_scroll_offset = $(document).triggerHandler("lrm/form/set_message_scroll_offset", [$form, modal_is_visible, $message]);
+			if ( error_scroll_offset === undefined ) {
+				error_scroll_offset = modal_is_visible ? 25 : $message.offset().top - 15;
+			}
+
+			if ( "no" !== error_scroll_offset ) {
+				$(element_to_scroll).animate({
+					scrollTop: error_scroll_offset
+				}, 1500);
+			}
+
+			if ( is_error ) {
+				$message.addClass("lrm-is-error");
+			} else {
+				$message.removeClass("lrm-is-error");
+			}
+		}
+	};
+
+	/**
+	 * https://code.tutsplus.com/articles/using-the-included-password-strength-meter-script-in-wordpress--wp-34736
+	 *
+	 * @param $pass1
+	 * @param $strengthResult
+	 * @returns {*}
+	 */
+	LRM.checkPasswordStrength = function( $pass1, $pass2, $strengthResult ) {
+
+		return LRM.loadPasswordMeter(function() {
+			var pass1 = $pass1.val().trim();
+			if ( !pass1 ) {
+				$strengthResult.data('status','empty');
+				return 0;
+			}
+
+			if (!$pass2) {
+				var pass2 = pass1;
+			} else {
+				var pass2 = $pass2.val();
+			}
+
+			if ( "no" === LRM.validate_password_strength ) {
+				if ( $pass2 && pass2 !== pass1 ) {
+					$strengthResult.attr('data-status', 'short').html(LRM.l10n.passwords_is_mismatch);
+					return 5;
+				} else if ( pass1.length < 3 || $pass2 && pass2.length < 3 ) {
+					$strengthResult.attr('data-status','short').html(LRM.l10n.password_is_short);
+					return 1;
+				} else {
+					$strengthResult.attr('data-status', null);
+				}
+				return 0;
+			}
+
+			//$strengthResult.removeClass('short bad good strong');
+
+			// Extend our blacklist array with those from the inputs & site data
+			var blacklistArray = ["querty", "password", "P@ssword1", "132", "123", "admin", "user"]
+
+			// Get the password strength
+			var strength = 0;
+			if ( "lrm" === LRM.password_strength_lib ) {
+				strength = LRM_Helper.PasswordMeter(pass1, blacklistArray, pass2);
+			} else {
+				blacklistArray = blacklistArray.concat(wp.passwordStrength.userInputBlacklist());
+				strength = wp.passwordStrength.meter(pass1, blacklistArray, pass2);
+			}
+
+			// Add the strength meter results
+			switch (strength) {
+
+				case 2:
+					$strengthResult.attr('data-status','bad').html(LRM.l10n.password_is_bad);
+					break;
+
+				case 3:
+					$strengthResult.attr('data-status','good').html(LRM.l10n.password_is_good);
+					break;
+
+				case 4:
+					$strengthResult.attr('data-status','strong').html(LRM.l10n.password_is_strong);
+					break;
+
+				case 5:
+					if ($pass2) {
+						$strengthResult.attr('data-status','short').html(LRM.l10n.passwords_is_mismatch);
+						break;
+					}
+
+				default:
+					$strengthResult.attr('data-status','short').html(LRM.l10n.password_is_short);
+
+			}
+
+			//console.log( "Pass strength: ", strength );
+
+			return strength;
+		});
+	}
+
+	LRM.passwordMeterIsLoaded = false;
+	LRM.passwordMeterIsLoading = false;
+	LRM.loadPasswordMeter = function ( callback ) {
+		if ( "lrm" === LRM.password_strength_lib || LRM.passwordMeterIsLoaded ) {
+			return callback();
+		}
+		// From "wp-admin/js/password-strength-meter.min.js?ver=5.0.4"
+		window.wp=window.wp||{};var passwordStrength;!function(a){wp.passwordStrength={meter:function(b,c,d){if(a.isArray(c)||(c=[c.toString()]),b!=d&&d&&d.length>0)return 5;if("undefined"==typeof window.zxcvbn)return-1;var e=zxcvbn(b,c);return e.score},userInputBlacklist:function(){var b,c,d,e,f=[],g=[],h=["user_login","first_name","last_name","nickname","display_name","email","url","description","weblog_title","admin_email"];for(f.push(document.title),f.push(document.URL),c=h.length,b=0;b<c;b++)e=a("#"+h[b]),0!==e.length&&(f.push(e[0].defaultValue),f.push(e.val()));for(d=f.length,b=0;b<d;b++)f[b]&&(g=g.concat(f[b].replace(/\W/g," ").split(" ")));return g=a.grep(g,function(b,c){return!(""===b||4>b.length)&&a.inArray(b,g)===c})}},passwordStrength=wp.passwordStrength.meter}(jQuery);
+
+		LRM.passwordMeterIsLoading = true;
+
+		// Usage
+		$.cachedScript( LRM.password_zxcvbn_js_src ).done(function( script, textStatus ) {
+			LRM.passwordMeterIsLoaded = true;
+			callback();
+		});
+	}
+
+//});
+})(jQuery);

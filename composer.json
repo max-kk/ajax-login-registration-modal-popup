@@ -11,12 +11,27 @@
     }
   ],
   "require": {
-    "composer/installers": "1.8.0",
+    "composer/installers": "^2.0",
     "underdev/settings": "1.2",
     "max-kk/wp-skins-customizer": "dev-master"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^9.6",
+    "brain/monkey": "^2.6",
+    "mockery/mockery": "^1.6"
   },
   "autoload": {
     "classmap": ["includes/", "skins/", "vendor/max-kk/wp-notice-lib/"],
     "exclude-from-classmap": ["vendor/plugin-update-checker/"]
+  },
+  "config": {
+    "allow-plugins": {
+      "composer/installers": true
+    }
+  },
+  "scripts": {
+    "test": "@test:unit",
+    "test:unit": "phpunit --configuration phpunit.xml.dist",
+    "test:integration": "phpunit --configuration phpunit.integration.xml.dist"
   }
 }

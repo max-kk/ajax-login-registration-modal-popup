@@ -1,0 +1,52 @@
+.setting-col ul{
+    list-style-type: disc;
+    padding-left: 30px;
+}
+
+.lrm-repeaters-field .selectize-control {
+    width: 65%;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.lrm-repeaters-user_role.lrm-repeaters-field .selectize-control {
+    width: 50%;
+}
+
+.lrm-repeaters-field * {
+    vertical-align: middle;
+
+}
+
+.selectize-input:not(.has-items){
+    border: #ff4b4b 1px solid;
+}
+
+.lrm-repeater-field__row {
+    position: relative;
+}
+
+.lrm-repeater-field__row_actions {
+    width: 25px;
+    position: absolute;
+    left: -30px;
+}
+.js-lrm-delete-row {
+    text-decoration: none;
+}
+.js-lrm-sort-row{
+    display: none;
+    text-decoration: none;
+}
+.lrm-repeater-field__row:hover .js-lrm-sort-row{
+    width: 20px;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    display: inline-block;
+}
+
+.lrm-redirects-field__redirect .redirect-url {
+    width: 45%;
+}
+/*==*/

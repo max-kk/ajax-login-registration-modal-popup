@@ -1,0 +1,183 @@
+@charset "UTF-8";
+// https://dev.maxim-kaminsky.com/wp-content/plugins/ajax-login-and-registration-modal-popup-dev/assets/lrm-fa4-icomoon/demo.html
+@use "sass:string";
+@use "../../assets/lrm-icomoon/variables" as *;
+@use "../../assets/lrm-material/variables" as *;
+@use "../../assets/lrm-fa4/variables" as *;
+@use "../../assets/lrm-fa5-free/scss/variables" as *;
+$use_SVG_icons: true;
+
+@mixin lrm-font-icon( $icomoon-font-code, $material-font-code, $fa4-font-code, $fa5-font-code ) {
+    .lrm-font-icomoon & {
+        &:before {
+            content: string.unquote('"#{$icomoon-font-code}"');
+        }
+    }
+    .lrm-font-material & {
+        &:before {
+            content: string.unquote('"#{$material-font-code}"');
+        }
+    }
+    .lrm-font-fa4 & {
+        &:before {
+            content: string.unquote('"#{$fa4-font-code}"');
+        }
+    }
+    .lrm-font-fa5-free & {
+        &:before {
+            content: string.unquote('"\\#{$fa5-font-code}"');
+        }
+    }
+}
+
+.lrm-ficon-user {
+    @include lrm-font-icon($lrm-ico-icon-user1, $lrm-icon-person, $lrm-fa4-icon-user, $fa-var-user);
+}
+.lrm-ficon-eye {
+    @include lrm-font-icon($lrm-ico-icon-eye, $lrm-icon-visibility, $lrm-fa4-icon-eye, $fa-var-eye);
+}
+.lrm-ficon-eye-blocked {
+    @include lrm-font-icon($lrm-ico-icon-eye-blocked, $lrm-icon-visibility-off, $lrm-fa4-icon-eye-slash, $fa-var-eye-slash);
+}
+.lrm-ficon-key {
+    @include lrm-font-icon($lrm-ico-icon-key, $lrm-icon-vpn_key, $lrm-fa4-icon-unlock-alt, $fa-var-key);
+}
+.lrm-ficon-lock {
+    @include lrm-font-icon($lrm-ico-icon-lock, $lrm-icon-lock, $lrm-fa4-icon-lock, $fa-var-lock);
+}
+.lrm-ficon-mail {
+    @include lrm-font-icon($lrm-ico-icon-envelop, $lrm-icon-mail_outline, $lrm-fa4-icon-envelope-o, $fa-var-envelope);
+}
+.lrm-ficon-login {
+    @include lrm-font-icon($lrm-ico-icon-enter, $lrm-icon-exit_to_app, $lrm-fa4-icon-sign-in, $fa-var-sign-in-alt);
+}
+.lrm-ficon-register {
+    @include lrm-font-icon($lrm-ico-icon-member, $lrm-icon-person_add, $lrm-fa4-icon-user-plus, $fa-var-user-plus);
+}
+.lrm-ficon-close {
+    @include lrm-font-icon($lrm-ico-icon-cancel, $lrm-icon-clear, $lrm-fa4-icon-close, $fa-var-times);
+}
+// NEW 09.2019
+.lrm-ficon-phone {
+    @include lrm-font-icon($lrm-ico-icon-phone, $lrm-icon-phone, $lrm-fa4-icon-phone, $fa-var-phone);
+}
+.lrm-ficon-mobile-phone {
+    @include lrm-font-icon($lrm-ico-icon-cell-phone, $lrm-icon-phone_android, $lrm-fa4-icon-mobile-phone, $fa-var-mobile-alt);
+    &:before {
+        top: 1px;
+        position: relative;
+    }
+}
+.lrm-ficon-location {
+    @include lrm-font-icon($lrm-ico-icon-location, $lrm-icon-edit_location, $lrm-fa4-icon-map-marker, $fa-var-map-marker-alt);
+    &:before {
+        top: 1px;
+        position: relative;
+    }
+}
+.lrm-ficon-map {
+    @include lrm-font-icon($lrm-ico-icon-map, $lrm-icon-map, $lrm-fa4-icon-map-o, $fa-var-map);
+}
+.lrm-ficon-compass {
+    @include lrm-font-icon($lrm-ico-icon-compass, $lrm-icon-location_city, $lrm-fa4-icon-location-arrow, $fa-var-location-arrow);
+    &:before {
+        top: 1px;
+        position: relative;
+    }
+}
+
+
+[class^="lrm-ficon-"], [class*=" lrm-ficon-"] {
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    display: inline-block;
+
+    &:before {
+        font-size: 20px;
+
+        .lrm-font-material & {
+            font-size: 22px;
+        }
+
+    }
+    &.lrm-switch-to-link:before {
+        font-size: 24px;
+        margin-top: -2px;
+    }
+
+}
+
+@if ( $use_SVG_icons ) {
+    .lrm-font-svg {
+
+        .lrm-switch-to-link:before {
+            width: 22px;
+            vertical-align: text-bottom;
+        }
+
+        .lrm-switch-to--login:before {
+            background: url("../../assets/img/login.png") no-repeat center center;
+            background-size: 100%;
+        }
+
+        .lrm-switch-to--register:before {
+            background: url("../../assets/img/user.png") no-repeat center center;
+            background-size: 100%;
+        }
+
+        .lrm-form {
+            label.lrm-username,
+            .lrm-ficon-user {
+                background-image: url("../../assets/img/cd-icon-username.svg");
+            }
+
+            label.lrm-email,
+            .lrm-ficon-mail {
+                background-image: url("../../assets/img/cd-icon-email.svg");
+            }
+
+            label.lrm-password,
+            .lrm-ficon-key {
+                background-image: url("../../assets/img/cd-icon-password.svg");
+            }
+
+            label.lrm-user_role {
+                background-image: url("../../assets/img/lock.svg?v=2");
+            }
+
+            .hide-password,
+            .lrm-ficon-eye {
+
+                padding: 20px 21px;
+                background-size: 24px;
+                text-indent: -300px;
+
+                background-image: url("../../assets/img/iconmonstr-eye-4.svg");
+
+                &.hide-password--on,
+                &.lrm-ficon-eye-blocked {
+                    background-image: url("../../assets/img/iconmonstr-eye-8.svg?v3");
+                }
+
+            }
+        }
+    }
+
+}
+.lrm-is-font {
+    .hide-password {
+        width: 42px;
+        height: auto;
+    }
+
+    @at-root .hide-password--on {
+        @include lrm-font-icon($lrm-ico-icon-eye-blocked, $lrm-icon-visibility-off, $lrm-fa4-icon-eye-slash, $fa-var-eye-slash);
+    }
+}

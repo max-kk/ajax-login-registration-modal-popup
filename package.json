@@ -1,0 +1,26 @@
+{
+  "name": "ajax-login-registration-modal-popup-scss",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Asset build scripts for LRM Free/Pro skins",
+  "scripts": {
+    "clean": "rm -f public/styles-compiled/lrm-core-compiled.css public/styles-compiled/lrm-core-compiled.css.map public/styles-compiled/fonts.css public/styles-compiled/fonts.css.map public/js-compiled/lrm-core.js public/js-compiled/lrm-core.js.map",
+    "sync:admin-assets": "cp assets/lrm-admin.js public/js-compiled/lrm-admin.js && cp assets/lrm-core-settings.css public/styles-compiled/lrm-core-settings.css",
+    "build:css:dev": "sass --style=expanded --source-map resources/scss/index.scss:public/styles-compiled/lrm-core-compiled.css resources/scss-fonts/fonts.scss:public/styles-compiled/fonts.css skins/default/skin.scss:skins/default/skin.css ../ajax-login-and-registration-modal-popup-pro-dev/skins:../ajax-login-and-registration-modal-popup-pro-dev/skins",
+    "build:css:release": "sass --style=compressed --no-source-map resources/scss/index.scss:public/styles-compiled/lrm-core-compiled.css resources/scss-fonts/fonts.scss:public/styles-compiled/fonts.css skins/default/skin.scss:skins/default/skin.css ../ajax-login-and-registration-modal-popup-pro-dev/skins:../ajax-login-and-registration-modal-popup-pro-dev/skins",
+    "build:js:dev": "esbuild resources/js/lrm-core/index.js --bundle --format=iife --target=es2017 --sourcemap --outfile=public/js-compiled/lrm-core.js",
+    "build:js:release": "esbuild resources/js/lrm-core/index.js --bundle --format=iife --target=es2017 --minify --outfile=public/js-compiled/lrm-core.js",
+    "build:dev": "npm run build:css:dev && npm run build:js:dev && npm run sync:admin-assets",
+    "build:release": "npm run build:css:release && npm run build:js:release && npm run sync:admin-assets",
+    "build:scss": "npm run build:release",
+    "watch:css:dev": "sass --watch --style=expanded --source-map resources/scss/index.scss:public/styles-compiled/lrm-core-compiled.css resources/scss-fonts/fonts.scss:public/styles-compiled/fonts.css skins/default/skin.scss:skins/default/skin.css ../ajax-login-and-registration-modal-popup-pro-dev/skins:../ajax-login-and-registration-modal-popup-pro-dev/skins",
+    "watch:js:dev": "esbuild resources/js/lrm-core/index.js --bundle --format=iife --target=es2017 --sourcemap --outfile=public/js-compiled/lrm-core.js --watch",
+    "watch:dev": "npm run sync:admin-assets && npm run watch:css:dev",
+    "watch:release": "npm run watch:dev",
+    "watch:scss": "npm run watch:dev"
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.10",
+    "sass": "^1.98.0"
+  }
+}

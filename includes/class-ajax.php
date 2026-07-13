@@ -584,7 +584,6 @@ class LRM_AJAX
          */
         do_action( 'lostpassword_post', $errors );
 
-
         if( !$errors->get_error_messages() ) {
             // For "wp_update_user"
             add_filter( 'send_password_change_email', '__return_false' );

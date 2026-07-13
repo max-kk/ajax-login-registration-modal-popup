@@ -2,7 +2,7 @@
 Contributors: kaminskym
 Tags: login, registration, register, lost password, modal, popup, ajax
 Requires at least: 4.9
-Tested up to: 6.9.1
+Tested up to: 7.0.1
 Requires PHP: 7.4
 Stable tag: trunk
 License: GPLv3 or later
@@ -210,9 +210,15 @@ If you have login issue with Adminize plugin - go to Adminize plugin settings an
 
 == Changelog ==
 
+= VER 2.28 - 13/06/2026 =
+
+- Tested with WordPress version to 6.9
+- Skin customizer tweaks
+
 = VER 2.27 - 28/02/2026 =
 
 - Security hardening for AJAX auth forms and cached pages (ajax nonce refresh).
+- Fixed admin review notice dismiss flow (`dismiss_rem_beg_message`): message now stays hidden after clicking "I already reviewed it".
 
 = VER 2.26 - 12/11/2025 =
 

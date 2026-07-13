@@ -168,7 +168,7 @@ class LRM_Settings {
 
         // Update notice for 1.18 > 1.20
 
-        if ( true || ! get_option( 'lrm_beg_message' ) ) {
+        if ( ! get_option( 'lrm_beg_message' ) ) {
             echo '<div class="notice notice-info notification-notice"><p>';
 
             printf( __( 'Do you like "Login and Register Modal" plugin? Please consider giving it a %1$sreview%2$s', 'ajax-login-and-registration-modal-popup' ), '<a href="https://wordpress.org/support/plugin/ajax-login-and-registration-modal-popup/reviews/#new-post" class="button button-secondary" target="_blank">⭐⭐⭐⭐⭐ ', '</a>' );
@@ -1294,12 +1294,12 @@ class LRM_Settings {
     }
 
     public function settings_enqueue_scripts() {
-        wp_enqueue_script( 'lrm-admin', LRM_URL . 'assets/lrm-admin.js', array( 'jquery', 'jquery-ui-sortable' ), LRM_VERSION, true );
+        wp_enqueue_script( 'lrm-admin', LRM_PUBLIC_URL . 'js-compiled/lrm-admin.js', array( 'jquery', 'jquery-ui-sortable' ), LRM_VERSION, true );
 	    wp_localize_script('lrm-admin', 'LRM_ADMIN', array(
 	    	'ajax_url' => admin_url('admin-ajax.php'),
 	    ));
 
-        wp_enqueue_style('lrm-admin-css', LRM_URL . '/assets/lrm-core-settings.css', false, LRM_ASSETS_VER);
+        wp_enqueue_style('lrm-admin-css', LRM_PUBLIC_URL . 'styles-compiled/lrm-core-settings.css', false, LRM_ASSETS_VER);
     }
 
     /**
